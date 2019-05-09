@@ -66,17 +66,17 @@ public class Pixel
             }
         }
 
-        for (int i = 0; i < this.distances.Length; i++) this.a[i] = Mathf.Pow(A, this.distances[i] / Chladni.plateSize);
+        for (int i = 0; i < distances.Length; i++) a[i] = Mathf.Pow(A, distances[i] / Chladni.plateSize);
     }
 
     public float interference(float lamda)
     {
-        this.y = 0.0f;
-        for (int i = 0; i < this.distances.Length; i++)
+        y = 0.0f;
+        for (int i = 0; i < distances.Length; i++)
         {
-            this.y += this.a[i] * Mathf.Sin(2.0f * Mathf.PI * (this.distances[i] - Mathf.Floor(this.distances[i] / lamda) * lamda) / lamda);
+            y += a[i] * (float)System.Math.Sin(2.0f * Mathf.PI * (distances[i] - (int)(distances[i] / lamda) * lamda) / lamda);
         }
-        return this.y;
+        return y;
     }
 
     public int getX()

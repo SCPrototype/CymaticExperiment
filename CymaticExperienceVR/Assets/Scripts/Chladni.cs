@@ -5,10 +5,12 @@ using UnityEngine;
 public class Chladni : MonoBehaviour
 {
     //Changable variations
-    public static int plateSize = 50;
+    public static int plateSize = 100;
 
     public GameObject TargetPlane;
-    public GameObject PlatePixel;
+    public GameObject PixelPrefab;
+    public GameObject SandPrefab;
+    public Material[] MaterialCache;
 
     float start = 0.4f;         // a value for start simulation;
     float wfMax = 7.0f;         // a value for end up the simulation;
@@ -16,10 +18,15 @@ public class Chladni : MonoBehaviour
     float k = 0.0f;             // for Wave source shift from plate center
     bool three_d = false;       // 2D/3D draw option;
 
+    float pixelSizeX = 0;
+    float pixelSizeZ = 0;
+
     // unchangable variations
     GameObject[,] pixelGrid = new GameObject[plateSize, plateSize];
+    MeshRenderer[,] pixelRenderers = new MeshRenderer[plateSize, plateSize];
+    float[,] vibrations = new float[plateSize, plateSize];
     List<Pixel> p;
-    //ArrayList p;
+    List<GameObject> sand = new List<GameObject>();
     int R;
     float waveLengthFactor;
     float waveIncrease = 0.01f;
@@ -40,16 +47,16 @@ public class Chladni : MonoBehaviour
 
     void prepare()
     {
-        float pixelSizeX = TargetPlane.transform.localScale.x / plateSize;
-        float pixelSizeZ = TargetPlane.transform.localScale.z / plateSize;
+        pixelSizeX = TargetPlane.transform.localScale.x / plateSize;
+        pixelSizeZ = TargetPlane.transform.localScale.z / plateSize;
         for (int i = 0; i < plateSize; i++)
         {
             for (int j = 0; j < plateSize; j++)
             {
-
-                pixelGrid[i, j] = GameObject.Instantiate(PlatePixel, TargetPlane.transform);
+                pixelGrid[i, j] = GameObject.Instantiate(PixelPrefab, TargetPlane.transform);
                 pixelGrid[i, j].transform.localScale = new Vector3(pixelSizeX, 0.1f, pixelSizeZ);
-                pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.05f, pixelSizeZ * (j - (plateSize / 2)) * 10);
+                pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.001f, pixelSizeZ * (j - (plateSize / 2)) * 10) + new Vector3(pixelSizeX*5f, 0, pixelSizeZ*5f);
+                pixelRenderers[i, j] = pixelGrid[i, j].GetComponent<MeshRenderer>();
             }
         }
 
@@ -73,7 +80,6 @@ public class Chladni : MonoBehaviour
         float lamda = plateSize / (start + waveLengthFactor);
         for (int i = 0; i < p.Count; i++)
         {
-            
             //Pixel pp = (Pixel)p[i];
             p[i].interference(lamda);
             sum += Mathf.Abs(p[i].getY());
@@ -84,6 +90,13 @@ public class Chladni : MonoBehaviour
     void draw()
     {
         //Debug.Log("frameNr=" + frameNr + "  R=" + R + "  waveLengthFactor=" + waveLengthFactor);
+        if (photo)
+        {
+            if (!Input.GetKey(KeyCode.P))
+            {
+                return;
+            }
+        }
 
         waveLengthFactor = Mathf.Ceil(frameNr * waveIncrease * 100) / 100;
         doInterference();
@@ -91,60 +104,67 @@ public class Chladni : MonoBehaviour
         float y = 255.0f / maxY;
 
         Color pixelClr = new Color(0, 0, 0);
+        Material targetMaterial = MaterialCache[0];
 
         for (int i = 0; i < p.Count; i++)
         {
             Pixel pp = p[i];
 
-            float clr = (y * Mathf.Abs(pp.getY())) / 255.0f;
+            float clr = 1.0f - ((y * Mathf.Abs(pp.getY())) / 255.0f);
 
-
-            if (photo)
-            {
-                pixelClr = new Color(clr, clr, clr);
-            }
-            else
-            {
-                if (pp.getY() > 0)
-                {
-                    pixelClr = new Color(clr, 0, 0);
-                }
-                if (pp.getY() < 0)
-                {
-                    pixelClr = new Color(0, 0, clr);
-                }
-            }
+            targetMaterial = MaterialCache[Mathf.Max(0, Mathf.CeilToInt(clr * MaterialCache.Length) - 1)];
+            pixelClr = new Color(clr, clr, clr);
 
             if (three_d)
             {
                 float fy = (float)(0.1 * pp.getY() * y);
-                pixelGrid[pp.getX() + (plateSize/2), pp.getZ() + (plateSize / 2)].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[pp.getX(), pp.getZ() + (plateSize / 2)].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[pp.getX(), pp.getZ()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[pp.getX() + (plateSize / 2), pp.getZ()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[pp.getZ() + (plateSize / 2), pp.getX() + (plateSize / 2)].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[pp.getZ(), pp.getX() + (plateSize / 2)].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[pp.getZ(), pp.getX()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[pp.getZ() + (plateSize / 2), pp.getX()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                //point(pp.getX(), pp.getY(), fz);
-                //point(-pp.getX(), pp.getY(), fz);
-                //point(-pp.getX(), -pp.getY(), fz);
-                //point(pp.getX(), -pp.getY(), fz);
-                //point(pp.getY(), pp.getX(), fz);
-                //point(-pp.getY(), pp.getX(), fz);
-                //point(-pp.getY(), -pp.getX(), fz);
-                //point(pp.getY(), -pp.getX(), fz);
+
+                //pixelRenderers[(plateSize / 2) + pp.getX(), (plateSize / 2) + pp.getZ()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) - pp.getX(), (plateSize / 2) + pp.getZ()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) - pp.getX(), (plateSize / 2) - pp.getZ()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) + pp.getX(), (plateSize / 2) - pp.getZ()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) + pp.getZ(), (plateSize / 2) + pp.getX()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) - pp.getZ(), (plateSize / 2) + pp.getX()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) - pp.getZ(), (plateSize / 2) - pp.getX()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) + pp.getZ(), (plateSize / 2) - pp.getX()].material = targetMaterial;
+
+                vibrations[(plateSize / 2) + pp.getX(), (plateSize / 2) + pp.getZ()] = 1.0f - clr;
+                vibrations[(plateSize / 2) - pp.getX(), (plateSize / 2) + pp.getZ()] = 1.0f - clr;
+                vibrations[(plateSize / 2) - pp.getX(), (plateSize / 2) - pp.getZ()] = 1.0f - clr;
+                vibrations[(plateSize / 2) + pp.getX(), (plateSize / 2) - pp.getZ()] = 1.0f - clr;
+                vibrations[(plateSize / 2) + pp.getZ(), (plateSize / 2) + pp.getX()] = 1.0f - clr;
+                vibrations[(plateSize / 2) - pp.getZ(), (plateSize / 2) + pp.getX()] = 1.0f - clr;
+                vibrations[(plateSize / 2) - pp.getZ(), (plateSize / 2) - pp.getX()] = 1.0f - clr;
+                vibrations[(plateSize / 2) + pp.getZ(), (plateSize / 2) - pp.getX()] = 1.0f - clr;
+
+                //point(pp.getX(), pp.getY(), fy);
+                //point(-pp.getX(), pp.getY(), fy);
+                //point(-pp.getX(), -pp.getY(), fy);
+                //point(pp.getX(), -pp.getY(), fy);
+                //point(pp.getY(), pp.getX(), fy);
+                //point(-pp.getY(), pp.getX(), fy);
+                //point(-pp.getY(), -pp.getX(), fy);
+                //point(pp.getY(), -pp.getX(), fy);
             }
             else
             {
-                pixelGrid[(plateSize / 2) + pp.getX(), (plateSize / 2) + pp.getZ()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[(plateSize / 2) - pp.getX(), (plateSize / 2) + pp.getZ()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[(plateSize / 2) - pp.getX(), (plateSize / 2) - pp.getZ()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[(plateSize / 2) + pp.getX(), (plateSize / 2) - pp.getZ()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[(plateSize / 2) + pp.getZ(), (plateSize / 2) + pp.getX()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[(plateSize / 2) - pp.getZ(), (plateSize / 2) + pp.getX()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[(plateSize / 2) - pp.getZ(), (plateSize / 2) - pp.getX()].GetComponent<MeshRenderer>().material.color = pixelClr;
-                pixelGrid[(plateSize / 2) + pp.getZ(), (plateSize / 2) - pp.getX()].GetComponent<MeshRenderer>().material.color = pixelClr;
+                //pixelRenderers[(plateSize / 2) + pp.getX(), (plateSize / 2) + pp.getZ()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) - pp.getX(), (plateSize / 2) + pp.getZ()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) - pp.getX(), (plateSize / 2) - pp.getZ()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) + pp.getX(), (plateSize / 2) - pp.getZ()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) + pp.getZ(), (plateSize / 2) + pp.getX()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) - pp.getZ(), (plateSize / 2) + pp.getX()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) - pp.getZ(), (plateSize / 2) - pp.getX()].material = targetMaterial;
+                //pixelRenderers[(plateSize / 2) + pp.getZ(), (plateSize / 2) - pp.getX()].material = targetMaterial;
+
+                vibrations[(plateSize / 2) + pp.getX(), (plateSize / 2) + pp.getZ()] = 1.0f - clr;
+                vibrations[(plateSize / 2) - pp.getX(), (plateSize / 2) + pp.getZ()] = 1.0f - clr;
+                vibrations[(plateSize / 2) - pp.getX(), (plateSize / 2) - pp.getZ()] = 1.0f - clr;
+                vibrations[(plateSize / 2) + pp.getX(), (plateSize / 2) - pp.getZ()] = 1.0f - clr;
+                vibrations[(plateSize / 2) + pp.getZ(), (plateSize / 2) + pp.getX()] = 1.0f - clr;
+                vibrations[(plateSize / 2) - pp.getZ(), (plateSize / 2) + pp.getX()] = 1.0f - clr;
+                vibrations[(plateSize / 2) - pp.getZ(), (plateSize / 2) - pp.getX()] = 1.0f - clr;
+                vibrations[(plateSize / 2) + pp.getZ(), (plateSize / 2) - pp.getX()] = 1.0f - clr;
 
                 //point(pp.getX(), pp.getY());
                 //point(-pp.getX(), pp.getY());
@@ -175,8 +195,8 @@ public class Chladni : MonoBehaviour
             sumOfWholePlate2 = sum;
             if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
             {
-                //photo = true;
-                //frameNr--;
+                photo = true;
+                frameNr--;
             }
 
             sumOfWholePlate0 = sumOfWholePlate1;
@@ -189,6 +209,34 @@ public class Chladni : MonoBehaviour
     void Update()
     {
         draw();
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            //Spawn sphere on plate.
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
+                    grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
+                    sand.Add(grainOfSand);
+                }
+            }
+        }
+
+        for (int i = 0; i < sand.Count; i++)
+        {
+            if (sand[i].transform.localPosition.y >= 0.0f)
+            {
+                int xIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.x + (TargetPlane.transform.localScale.x * 5)) / pixelSizeX) / 10, 0, plateSize-1);
+                int yIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.z + (TargetPlane.transform.localScale.z * 5)) / pixelSizeZ) / 10, 0, plateSize-1);
+
+                sand[i].GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * 10, sand[i].GetComponent<Rigidbody>().velocity.y, Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * 10);
+            } else
+            {
+                Destroy(sand[i]);
+                sand.RemoveAt(i);
+            }
+        }
     }
 }
 
@@ -203,148 +251,4 @@ import processing.opengl.*;
 // I am a Taiwan people who love processing and physics.
 // This project has been launched from 2009, after many times
 // trouble shooting in Math, it is almost done.
-
-//Changable variations
-double start = 0.4;         // a value for start simulation;
-double wfMax = 1700.0;      // a value for end up the simulation;
-double A = 0.5;             // for Wave attenuation, should between 0 to 1;
-double k = 0.0;             // for Wave source shift from plate center
-boolean three_d = false;    // 2D/3D draw option;
-
-// unchangable variations
-ArrayList p;
-int R;
-double lamda;
-double waveLengthFactor;
-double waveIncrease = 1.0;
-boolean photo = false;
-double sumOfWholePlate0, sumOfWholePlate1 = 0.0, sumOfWholePlate2;
-double maxZ = 0;
-double sum = 0;
-int frameNr = 1;
-
-void setup()
-{
-  size(251, 251, P2D);
-  sumOfWholePlate0 = sumOfWholePlate2 = width*height;  
-  R = (int)(-2.0/Math.log10(A))+1;
-  prepare();
-  smooth();
-}
-
-void prepare()
-{
-  p = new ArrayList();
-  for (int i = 0; i < floor(height/2.0); i++)
-  {
-    for (int j = 0; j <= i; j++)
-    {
-      Pixel pp = new Pixel(j, i, R, A, k);
-      double lamda = max(width, height)/(start+waveLengthFactor);
-      pp.interference(lamda);
-      p.add(pp);
-    }
-  }
-}
-
-void doInterference()
-{
-  sum = 0.0;
-  maxZ = 0.0;
-  for (int i = 0; i < p.size(); i++)
-  {
-    Pixel pp = (Pixel) p.get(i);
-    double lamda = max(width, height)/(start+waveLengthFactor);
-    pp.interference(lamda);
-    sum += Math.abs(pp.z);
-    maxZ = Math.abs(pp.z) > maxZ ? Math.abs(pp.z) : maxZ;
-  }
-}
-
-void draw()
-{
-  println("frameNr="+frameNr+"  R="+R+"  waveLengthFactor="+waveLengthFactor);
-  
-  waveLengthFactor = Math.ceil(frameNr*waveIncrease*100)/100;
-  doInterference();
-
-  double z = 255/maxZ;
-
-  background(0);
-  if (three_d)
-  {
-    camera(width, height, width, 0, 0, 0, 0, 0, -1);
-    strokeWeight(5);
-  }
-  else
-  {
-    translate(width/2, height/2);
-    strokeWeight(1);
-  }
-  for (int i = 0; i < p.size(); i++)
-  {
-    Pixel pp = (Pixel) p.get(i);
-    
-    int clr = (int)(z*Math.abs(pp.z));
-
-    if (photo)
-    {
-      stroke(clr);
-    }
-    else
-    {
-      if (pp.z > 0) stroke(clr, clr, clr);
-      if (pp.z < 0) stroke(clr, clr, clr);
-    }
-    
-    if (three_d)
-    {
-      float fz = (float)(0.1 * pp.z * z);
-      point(pp.x, pp.y, fz);
-      point(-pp.x, pp.y, fz);
-      point(-pp.x, -pp.y, fz);
-      point(pp.x, -pp.y, fz);
-      point(pp.y, pp.x, fz);
-      point(-pp.y, pp.x, fz);
-      point(-pp.y, -pp.x, fz);
-      point(pp.y, -pp.x, fz);
-    }
-    else
-    {
-      point(pp.x, pp.y);
-      point(-pp.x, pp.y);
-      point(-pp.x, -pp.y);
-      point(pp.x, -pp.y);
-      point(pp.y, pp.x);
-      point(-pp.y, pp.x);
-      point(-pp.y, -pp.x);
-      point(pp.y, -pp.x);
-    }
-  }
-
-  if (frameNr > Math.floor(wfMax/waveIncrease)) exit();
-
-  if (photo)
-  {
-    //saveFrame("Exp2d/"+Math.floor(A*100)/100+"_"+Math.floor(k*100)/100+"/photo/"+frameNr+"-"+waveLengthFactor+".png");
-    photo = false;
-    frameNr++;
-  }
-  //saveFrame("Exp2d/"+Math.floor(A*100)/100+"_"+Math.floor(k*100)/100+"/movie/"+frameNr+"-"+waveLengthFactor+".png");
-
-  if (!photo)
-  {
-    sumOfWholePlate2 = sum;
-    if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
-    {
-      //photo = true;
-      //frameNr--;
-    }
-  
-    sumOfWholePlate0 = sumOfWholePlate1;
-    sumOfWholePlate1 = sumOfWholePlate2;
-    frameNr++;
-  }
-}
-
 */
