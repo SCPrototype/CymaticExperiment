@@ -57,6 +57,9 @@ public class Chladni : MonoBehaviour
                 pixelGrid[i, j].transform.localScale = new Vector3(pixelSizeX, 0.1f, pixelSizeZ);
                 pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.001f, pixelSizeZ * (j - (plateSize / 2)) * 10) + new Vector3(pixelSizeX*5f, 0, pixelSizeZ*5f);
                 pixelRenderers[i, j] = pixelGrid[i, j].GetComponent<MeshRenderer>();
+                //Set all grid pixels to their default state (100% vibration).
+                pixelRenderers[i, j].material = MaterialCache[0];
+                vibrations[i, j] = 1;
             }
         }
 
@@ -80,7 +83,6 @@ public class Chladni : MonoBehaviour
         float lamda = plateSize / (start + waveLengthFactor);
         for (int i = 0; i < p.Count; i++)
         {
-            //Pixel pp = (Pixel)p[i];
             p[i].interference(lamda);
             sum += Mathf.Abs(p[i].getY());
             maxY = Mathf.Abs(p[i].getY()) > maxY ? Mathf.Abs(p[i].getY()) : maxY;
@@ -103,7 +105,6 @@ public class Chladni : MonoBehaviour
 
         float y = 255.0f / maxY;
 
-        Color pixelClr = new Color(0, 0, 0);
         Material targetMaterial = MaterialCache[0];
 
         for (int i = 0; i < p.Count; i++)
@@ -113,7 +114,6 @@ public class Chladni : MonoBehaviour
             float clr = 1.0f - ((y * Mathf.Abs(pp.getY())) / 255.0f);
 
             targetMaterial = MaterialCache[Mathf.Max(0, Mathf.CeilToInt(clr * MaterialCache.Length) - 1)];
-            pixelClr = new Color(clr, clr, clr);
 
             if (three_d)
             {
@@ -212,9 +212,9 @@ public class Chladni : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             //Spawn sphere on plate.
-            for (int i = 0; i < 10; i++)
+            for (int i = 1; i < 10; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 1; j < 10; j++)
                 {
                     GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
                     grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
