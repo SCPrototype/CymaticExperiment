@@ -46,8 +46,7 @@ public class SandSpawner : MonoBehaviour
         {
             Vector3 offSet = new Vector3(0.02f * i, 0, 0.02f * i);
             GameObject sand = Instantiate(SandPrefab, _chladniScript.TargetPlane.transform);
-            sand.transform.localPosition = (_spawnPoint - (widthHeight / 2)) + offSet;
-            _chladniScript.AddSand(sand);
+            sand.transform.position = (_spawnPoint - (widthHeight / 2)) + offSet;
         }
     }
 

@@ -11,6 +11,7 @@ public class Chladni : MonoBehaviour
     public GameObject PixelPrefab;
     public GameObject SandPrefab;
     public Material[] MaterialCache;
+    public GameObject collisionBox;
     public bool changedValue = false;
 
     float start = 0.4f;         // a value for start simulation;
@@ -56,7 +57,7 @@ public class Chladni : MonoBehaviour
             {
                 pixelGrid[i, j] = GameObject.Instantiate(PixelPrefab, TargetPlane.transform);
                 pixelGrid[i, j].transform.localScale = new Vector3(pixelSizeX, 0.1f, pixelSizeZ);
-                pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.001f, pixelSizeZ * (j - (plateSize / 2)) * 10) + new Vector3(pixelSizeX*5f, 0, pixelSizeZ*5f);
+                pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.001f, pixelSizeZ * (j - (plateSize / 2)) * 10) + new Vector3(pixelSizeX * 5f, 0, pixelSizeZ * 5f);
                 pixelRenderers[i, j] = pixelGrid[i, j].GetComponent<MeshRenderer>();
                 //Set all grid pixels to their default state (100% vibration).
                 pixelRenderers[i, j].material = MaterialCache[0];
@@ -96,7 +97,7 @@ public class Chladni : MonoBehaviour
         if (photo)
         {
             if (!Input.GetKey(KeyCode.P) && !changedValue)
-            {         
+            {
                 return;
             }
         }
@@ -210,14 +211,15 @@ public class Chladni : MonoBehaviour
 
     public void AddSand(GameObject pGameObject)
     {
-
         sand.Add(pGameObject);
+        Debug.Log(sand.Count);
     }
 
     // Update is called once per frame
     void Update()
     {
         draw();
+
         if (Input.GetKeyDown(KeyCode.O))
         {
             //Spawn sphere on plate.
@@ -236,11 +238,12 @@ public class Chladni : MonoBehaviour
         {
             if (sand[i].transform.localPosition.y >= 0.0f)
             {
-                int xIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.x + (TargetPlane.transform.localScale.x * 5)) / pixelSizeX) / 10, 0, plateSize-1);
-                int yIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.z + (TargetPlane.transform.localScale.z * 5)) / pixelSizeZ) / 10, 0, plateSize-1);
+                int xIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.x + (TargetPlane.transform.localScale.x * 5)) / pixelSizeX) / 10, 0, plateSize - 1);
+                int yIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.z + (TargetPlane.transform.localScale.z * 5)) / pixelSizeZ) / 10, 0, plateSize - 1);
 
                 sand[i].GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * 10, sand[i].GetComponent<Rigidbody>().velocity.y, Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * 10);
-            } else
+            }
+            else
             {
                 Destroy(sand[i]);
                 sand.RemoveAt(i);
