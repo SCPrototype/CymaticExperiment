@@ -205,6 +205,12 @@ public class Chladni : MonoBehaviour
         }
     }
 
+    public void AddSand(GameObject pGameObject)
+    {
+
+        sand.Add(pGameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -218,7 +224,7 @@ public class Chladni : MonoBehaviour
                 {
                     GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
                     grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
-                    sand.Add(grainOfSand);
+                    AddSand(grainOfSand);
                 }
             }
         }
