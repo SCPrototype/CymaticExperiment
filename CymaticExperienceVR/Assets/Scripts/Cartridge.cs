@@ -5,8 +5,11 @@ using UnityEngine;
 public class Cartridge : MonoBehaviour
 {
 
+    public Chladni _TEMPChladni;
+
     public Camera mainCamera;
     private Texture2D _screenShot;
+    private float[,] _heightMap;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +19,8 @@ public class Cartridge : MonoBehaviour
 
     public void SetPattern()
     {
+        _heightMap = _TEMPChladni.GetVibrations();
+
         RenderTexture rt = new RenderTexture(1920, 1080, 24);
         mainCamera.targetTexture = rt;
         _screenShot = new Texture2D(1080, 1080, TextureFormat.RGB24, false);
@@ -35,6 +40,11 @@ public class Cartridge : MonoBehaviour
         Debug.Log(string.Format("Took screenshot to: {0}", filename));
 
         GameObject.Find("Cartridge").GetComponent<MeshRenderer>().material.mainTexture = _screenShot;
+    }
+
+    public float[,] GetHeightMap()
+    {
+        return _heightMap;
     }
 
     // Update is called once per frame

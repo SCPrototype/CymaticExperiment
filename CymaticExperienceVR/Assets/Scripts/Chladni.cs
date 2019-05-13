@@ -238,6 +238,11 @@ public class Chladni : MonoBehaviour
             }
         }
     }
+
+    public float[,] GetVibrations()
+    {
+        return vibrations;
+    }
 }
 
 /*
