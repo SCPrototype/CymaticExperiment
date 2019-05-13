@@ -6,10 +6,14 @@ public class FrequencyChanger : MonoBehaviour
 {
     public VRTK_BaseControllable controllable;
     public VRTK_ControllerEvents controllerEvents;
+    public Chladni chladni;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (chladni == null)
+        {
+            chladni = GameObject.Find("TableHolder").GetComponent<Chladni>();
+        }
     }
 
     protected virtual void OnEnable()
@@ -26,6 +30,6 @@ public class FrequencyChanger : MonoBehaviour
 
     protected virtual void ValueChanged(object sender, ControllableEventArgs e)
     {
-
+        chladni.changedValue = true;
     }
 }
