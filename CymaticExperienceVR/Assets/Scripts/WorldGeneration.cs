@@ -13,12 +13,26 @@ public class WorldGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        InputCartridge();
+        GenerateWorld();
     }
 
-    public void InputCartridge(Cartridge pCartridge)
+    public void InputCartridge(Cartridge pCartridge = default(Cartridge))
     {
-        _heightMap = pCartridge.GetHeightMap();
+        if (pCartridge != default(Cartridge))
+        {
+            _heightMap = pCartridge.GetHeightMap();
+        } else
+        {
+            _heightMap = new float[100,100];
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    _heightMap[i,j] = Random.Range(0.0f, 0.001f);
+                }
+            }
+        }
 
         poly = new Vector3[_heightMap.LongLength];
         int idx = 0;
@@ -38,7 +52,7 @@ public class WorldGeneration : MonoBehaviour
         }
     }
 
-    private void GenerateWorld()
+    public void GenerateWorld()
     {
         MeshFilter mf;
         if (gameObject.GetComponent<MeshFilter>() == null)

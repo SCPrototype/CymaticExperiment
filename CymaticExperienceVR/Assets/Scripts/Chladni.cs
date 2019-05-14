@@ -231,7 +231,7 @@ public class Chladni : MonoBehaviour
                 }
             }
         }
-
+        
         for (int i = 0; i < sand.Count; i++)
         {
             if (sand[i].transform.localPosition.y >= 0.0f)
@@ -251,6 +251,15 @@ public class Chladni : MonoBehaviour
     public float[,] GetVibrations()
     {
         return vibrations;
+    }
+
+    public void ResetPlate()
+    {
+        for (int i = sand.Count-1; i >= 0; i--)
+        {
+            Destroy(sand[i]);
+        }
+        sand.Clear();
     }
 }
 

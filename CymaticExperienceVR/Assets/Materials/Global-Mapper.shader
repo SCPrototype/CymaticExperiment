@@ -57,17 +57,17 @@ Shader "Global-Mapper" {
 				 } 
 				 else if (diff >= _MediumHeight) //If the vertex is above the middle point between medium and high.
 				 {
-					 cFactor = saturate((diff - _MediumHeight) / (2 * _MaxVarianceHigh) + 0.5);
+					 cFactor = saturate((diff - (_MediumHeight + ((_HighHeight - _MediumHeight) / 2))) / (2 * _MaxVarianceHigh) + 0.5);
 					 v.color = lerp(_HighColor, _MediumColor, cFactor); //Lerp the color between medium and high.
 				 }
 				 else if (diff >= _LowHeight) //If the vertex is above the middle point between low and medium.
 				 {
-					 cFactor = saturate((diff - _LowHeight) / (2 * _MaxVarianceMedium) + 0.5);
+					 cFactor = saturate((diff - (_LowHeight + ((_MediumHeight - _LowHeight) / 2))) / (2 * _MaxVarianceMedium) + 0.5);
 					 v.color = lerp(_MediumColor, _LowColor, cFactor); //Lerp the color between low and medium.
 				 }
 				 else if (diff >= _BottomHeight) //If the vertex is above the middle point between bottom and low.
 				 {
-					 cFactor = saturate((diff - _BottomHeight) / (2 * _MaxVarianceLow) + 0.5);
+					 cFactor = saturate((diff - (_BottomHeight + ((_LowHeight - _BottomHeight) / 2))) / (2 * _MaxVarianceLow) + 0.5);
 					 v.color = lerp(_LowColor, _BottomColor, cFactor); //Lerp the color between bottom and low.
 				 }
 				 else { //If the vertex is below all thresholds
