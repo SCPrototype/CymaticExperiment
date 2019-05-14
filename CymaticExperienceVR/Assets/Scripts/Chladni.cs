@@ -212,7 +212,6 @@ public class Chladni : MonoBehaviour
     public void AddSand(GameObject pGameObject)
     {
         sand.Add(pGameObject);
-        Debug.Log(sand.Count);
     }
 
     // Update is called once per frame
