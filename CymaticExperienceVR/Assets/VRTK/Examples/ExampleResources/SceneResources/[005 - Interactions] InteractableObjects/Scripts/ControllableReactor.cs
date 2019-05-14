@@ -1,6 +1,7 @@
 ﻿namespace VRTK.Examples
 {
     using UnityEngine;
+    using UnityEngine.Events;
     using UnityEngine.UI;
     using VRTK.Controllables;
 
@@ -12,6 +13,8 @@
         public GameObject sandBucket;
 
         private bool _bucketSpawned = false;
+
+        public UnityEvent OnActivate;
 
         protected virtual void OnEnable()
         {
@@ -28,6 +31,8 @@
 
         protected virtual void MaxLimitReached(object sender, ControllableEventArgs e)
         {
+            OnActivate.Invoke();
+
             if (_bucketSpawned == false)
             {
                 GameObject.Instantiate(sandBucket, spawningPoint.transform.position, spawningPoint.transform.rotation);
