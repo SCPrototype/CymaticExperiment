@@ -230,7 +230,7 @@ public class Chladni : MonoBehaviour
                 int xIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.x + (TargetPlane.transform.localScale.x * 5)) / pixelSizeX) / 10, 0, plateSize-1);
                 int yIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.z + (TargetPlane.transform.localScale.z * 5)) / pixelSizeZ) / 10, 0, plateSize-1);
 
-                sand[i].GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * 10, sand[i].GetComponent<Rigidbody>().velocity.y, Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * 10);
+                sand[i].GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * TargetPlane.transform.localScale.x, sand[i].GetComponent<Rigidbody>().velocity.y, Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * TargetPlane.transform.localScale.z);
             } else
             {
                 Destroy(sand[i]);

@@ -7,13 +7,13 @@ Shader "Global-Mapper" {
 
         _HighColor ("High Color", Color) = (1.0, 1.0, 1.0, 1.0)
 		_HighHeight("High Height", Float) = 0.0
-			_MaxVarianceHigh("Maximum Variance High", Float) = 3.0
+		_MaxVarianceHigh("Maximum Variance High", Float) = 3.0
 		_MediumColor ("Medium Color", Color) = (1.0, 1.0, 1.0, 1.0)
 		_MediumHeight("Medium Height", Float) = 0.0
-			_MaxVarianceMedium("Maximum Variance Medium", Float) = 3.0
+		_MaxVarianceMedium("Maximum Variance Medium", Float) = 3.0
         _LowColor ("Low Color", Color) = (1.0, 1.0, 1.0, 1.0)
 		_LowHeight("Low Height", Float) = 0.0
-			_MaxVarianceLow("Maximum Variance Low", Float) = 3.0
+		_MaxVarianceLow("Maximum Variance Low", Float) = 3.0
 		_BottomColor("Bottom Color", Color) = (1.0, 1.0, 1.0, 1.0)
 		_BottomHeight("Bottom Height", Float) = 0.0
      }
@@ -55,7 +55,7 @@ Shader "Global-Mapper" {
 					 //cFactor = saturate((diff - _HighHeight) / (2 * _MaxVarianceHigh) + 0.5);
 					 v.color = _HighColor; //Make the vertex the HighColor.
 				 } 
-				 else if (diff >= _MediumHeight)//If the vertex is above the middle point between medium and high.
+				 else if (diff >= _MediumHeight) //If the vertex is above the middle point between medium and high.
 				 {
 					 cFactor = saturate((diff - _MediumHeight) / (2 * _MaxVarianceHigh) + 0.5);
 					 v.color = lerp(_HighColor, _MediumColor, cFactor); //Lerp the color between medium and high.
