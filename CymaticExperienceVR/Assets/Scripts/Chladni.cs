@@ -11,6 +11,8 @@ public class Chladni : MonoBehaviour
     public GameObject PixelPrefab;
     public GameObject SandPrefab;
     public Material[] MaterialCache;
+    public bool changedValue = false;
+    public GameObject collisionBox;
 
     float start = 0.4f;         // a value for start simulation;
     float wfMax = 7.0f;         // a value for end up the simulation;
@@ -94,12 +96,13 @@ public class Chladni : MonoBehaviour
         //Debug.Log("frameNr=" + frameNr + "  R=" + R + "  waveLengthFactor=" + waveLengthFactor);
         if (photo)
         {
-            if (!Input.GetKey(KeyCode.P))
+            if (!Input.GetKey(KeyCode.P) && !changedValue)
             {
                 return;
             }
         }
 
+        changedValue = false;
         waveLengthFactor = Mathf.Ceil(frameNr * waveIncrease * 100) / 100;
         doInterference();
 
@@ -205,6 +208,11 @@ public class Chladni : MonoBehaviour
         }
     }
 
+    public void AddSand(GameObject pGameObject)
+    {
+        sand.Add(pGameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -218,7 +226,7 @@ public class Chladni : MonoBehaviour
                 {
                     GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
                     grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
-                    sand.Add(grainOfSand);
+                    AddSand(grainOfSand);
                 }
             }
         }
