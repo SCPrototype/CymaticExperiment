@@ -210,6 +210,7 @@ public class Chladni : MonoBehaviour
 
     public void AddSand(GameObject pGameObject)
     {
+        pGameObject.transform.SetParent(TargetPlane.transform);
         sand.Add(pGameObject);
     }
 

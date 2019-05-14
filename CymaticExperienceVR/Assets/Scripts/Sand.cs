@@ -26,6 +26,10 @@ public class Sand : MonoBehaviour
                 isConnectedToTable = true;
                 Destroy(this);
             }
+            if (transform.position.y <= 0.1f)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
