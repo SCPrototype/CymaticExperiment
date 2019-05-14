@@ -7,9 +7,11 @@
     public class ControllableReactor : MonoBehaviour
     {
         public VRTK_BaseControllable controllable;
-        public Text displayText;
-        public string outputOnMax = "Maximum Reached";
-        public string outputOnMin = "Minimum Reached";
+        public VRTK_ControllerEvents controllerEvents;
+        public GameObject spawningPoint;
+        public GameObject sandBucket;
+
+        private bool _bucketSpawned = false;
 
         protected virtual void OnEnable()
         {
@@ -21,26 +23,22 @@
 
         protected virtual void ValueChanged(object sender, ControllableEventArgs e)
         {
-            if (displayText != null)
-            {
-                displayText.text = e.value.ToString("F1");
-            }
+
         }
 
         protected virtual void MaxLimitReached(object sender, ControllableEventArgs e)
         {
-            if (outputOnMax != "")
+            if (_bucketSpawned == false)
             {
-                Debug.Log(outputOnMax);
+                GameObject.Instantiate(sandBucket, spawningPoint.transform.position, spawningPoint.transform.rotation);
+                _bucketSpawned = true;
             }
         }
 
         protected virtual void MinLimitReached(object sender, ControllableEventArgs e)
         {
-            if (outputOnMin != "")
-            {
-                Debug.Log(outputOnMin);
-            }
+            _bucketSpawned = false;
+            Debug.Log("Reset");
         }
     }
 }

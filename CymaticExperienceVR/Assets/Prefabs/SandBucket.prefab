@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6471974783452727890}
   - component: {fileID: -352640933739714154}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: SandBucket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 6471974783452727911}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.476, y: 1, z: 2.047}
-  m_LocalScale: {x: 0.2, y: 0.1, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.05, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -223,8 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfb44b741999e647a149e4353e437c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sandObject: {fileID: 8573550905151529402, guid: 6ab19a8a914a6224485c958d8745475f,
+  SandPrefab: {fileID: 8573550905151529402, guid: 6ab19a8a914a6224485c958d8745475f,
     type: 3}
+  ChladniScript: {fileID: 0}
 --- !u!114 &-352640933739714154
 MonoBehaviour:
   m_ObjectHideFlags: 0
