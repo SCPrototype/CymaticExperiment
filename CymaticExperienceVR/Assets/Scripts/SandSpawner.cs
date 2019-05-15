@@ -50,15 +50,16 @@ public class SandSpawner : MonoBehaviour
     {
         for (int i = 0; i < amountOfSand; i++)
         {   
-            GameObject sand = Instantiate(SandPrefab, this.gameObject.transform);
+            
             float randomX = UnityEngine.Random.Range(-startingScale.x * transform.localScale.x, startingScale.x *transform.localScale.x);
             float randomZ = UnityEngine.Random.Range(-startingScale.z * transform.localScale.z, startingScale.z * transform.localScale.z);
             
             Vector2 vec2 = new Vector2(randomX, randomZ);
             if(vec2.magnitude <= Math.Min(startingScale.x * transform.localScale.x, startingScale.z * transform.localScale.z))
             {
+                GameObject sand = Instantiate(SandPrefab, this.gameObject.transform);
                 sand.transform.localPosition = new Vector3(vec2.x, 1, vec2.y);
-                Debug.Log(startingScale.y);
+                //Debug.Log(startingScale.y);
             }
             break;
             //Vector3 offSet = new Vector3(0.02f * i, 0, 0.02f * i);

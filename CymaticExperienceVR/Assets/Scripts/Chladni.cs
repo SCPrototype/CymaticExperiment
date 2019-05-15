@@ -39,6 +39,7 @@ public class Chladni : MonoBehaviour
     float maxY = 0;
     float sum = 0;
     int frameNr = 1;
+    int[] frameNrArray = new int[] { 4, 47, 67, 107, 167 };
 
 
     // Start is called before the first frame update
@@ -201,17 +202,18 @@ public class Chladni : MonoBehaviour
             if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
             {
                 photo = true;
-                frameNr--;
+                //frameNr--;
             }
 
             sumOfWholePlate0 = sumOfWholePlate1;
             sumOfWholePlate1 = sumOfWholePlate2;
-            frameNr++;
+            //frameNr++;
         }
     }
 
     public void AddSand(Sand pSand)
     {
+        pSand.gameObject.transform.SetParent(TargetPlane.transform);
         sand.Add(pSand);
         if (sand.Count > _MaxSand)
         {
@@ -282,6 +284,13 @@ public class Chladni : MonoBehaviour
             Destroy(sand[i].gameObject);
         }
         sand.Clear();
+    }
+
+    public void ChangeAmplitude(int pCounter)
+    {
+        //Write check here.
+        frameNr = frameNrArray[pCounter];
+        changedValue = true;
     }
 }
 
