@@ -121,7 +121,7 @@ public class WorldGeneration : MonoBehaviour
         triangles[(poly.Length - 1) * 6 + 4] = poly.Length - _heightMap.GetLength(0);
         triangles[(poly.Length - 1) * 6 + 5] = poly.Length - _heightMap.GetLength(0) + 1;
 
-        mesh.triangles = triangles = triangles;
+        mesh.triangles = triangles;
         mesh.uv = BuildUVs(vertices);
 
         mesh.RecalculateBounds();
