@@ -11,10 +11,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1F79FAB8-1518-E950-5E56-0EE81EAD589B}</ProjectGuid>
+    <ProjectGuid>{1F37E1C2-F5F9-CF78-FAF9-8B4168CBA2B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Oculus.VR</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -49,7 +49,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2019.1.1f1</UnityVersion>
   </PropertyGroup>
@@ -62,78 +62,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRCameraComposition.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRComposition.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRCompositionUtil.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRDirectComposition.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRExternalComposition.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRSandwichComposition.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRBoundary.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRCameraRig.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRCommon.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRDebugHeadController.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRDisplay.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRHaptics.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRHapticsClip.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRHeadsetEmulator.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRInput.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRLayerAttribute.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRLint.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRManager.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRMixedReality.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVROnCompleteListener.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVROverlay.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRPlatformMenu.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRPlugin.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRProfile.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\OVRTracker.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRChromaticAberration.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRControllerHelper.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRCubemapCapture.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRCursor.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRDebugInfo.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRGazePointer.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRGearVrControllerTest.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRGrabbable.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRGrabber.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRGridCube.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRInputModule.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRMixedRealityCaptureSettings.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRModeParms.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRMonoscopic.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRNetwork.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRPhysicsRaycaster.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRPlayerController.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRPointerEventData.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRProfiler.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRProgressIndicator.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRRaycaster.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRRecord.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRResetOrientation.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRSceneSampleController.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRScreenFade.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRSystemPerfMetrics.cs" />
-    <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRWaitCursor.cs" />
-    <Compile Include="Assets\Oculus\VR\ThirdParty\openvr_api.cs" />
-    <Compile Include="Assets\Oculus\VR\ThirdParty\SimpleJSON.cs" />
-    <Compile Include="Assets\Oculus\VR\ThirdParty\SimpleJSONUnity.cs" />
-    <None Include="Assets\Oculus\VR\Resources\OVRMRUnlitTransparent.shader" />
-    <None Include="Assets\Oculus\VR\Resources\OVRMRChromaKey.cginc" />
-    <None Include="Assets\Oculus\VR\LICENSE.txt" />
-    <None Include="Assets\Oculus\VR\Shaders\OVRColorRampAlpha.shader" />
-    <None Include="Assets\Oculus\VR\Resources\Cubemap Blit.shader" />
-    <None Include="Assets\Oculus\VR\NOTICE.txt" />
-    <None Include="Assets\Oculus\VR\Resources\OVRMRUnlit.shader" />
-    <None Include="Assets\Oculus\VR\Shaders\Unlit Crosshair.shader" />
-    <None Include="Assets\Oculus\VR\Resources\Unlit Transparent Color.shader" />
-    <None Include="Assets\Oculus\VR\Resources\OVRMRCameraFrameLit.shader" />
-    <None Include="Assets\Oculus\VR\Resources\Underlay Transparent Occluder.shader" />
-    <None Include="Assets\Oculus\VR\Resources\Texture2D Blit.shader" />
-    <None Include="Assets\Oculus\VR\Resources\OVRMRCameraFrame.shader" />
-    <None Include="Assets\Oculus\VR\Oculus.VR.asmdef" />
-    <None Include="Assets\Oculus\VR\Resources\OVRMRClipPlane.shader" />
-    <None Include="Assets\Oculus\VR\Resources\Underlay Impostor.shader" />
-    <None Include="Assets\Oculus\VR\Plugins\placeholder.txt" />
+    <Compile Include="Assets\Standard Assets\Environment\Water (Basic)\Scripts\WaterBasic.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\Displace.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\GerstnerDisplace.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\MeshContainer.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\PlanarReflection.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\SpecularLighting.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\Water.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\WaterTile.cs" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\DO_NOT_WORK_IN_VR.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\DO_NOT_WORK_IN_VR.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -311,59 +276,14 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Vuforia.UnityExtensions.Editor">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Vuforia.UnityExtensions">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.VR">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Graphs">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WebGL.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.OSXStandalone.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.LinuxStandalone.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Facebook.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/Facebook/UnityEditor.Facebook.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.AppleTV.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/AppleTVSupport/UnityEditor.AppleTV.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
@@ -373,9 +293,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/git/CymaticExperienceVR/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -722,6 +639,20 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Oculus.VR.Editor.csproj">
+      <Project>{09AA9FE9-0712-3760-A2AF-50ED4DA6464C}</Project>
+      <Name>Oculus.VR.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Oculus.VR.Scripts.Editor.csproj">
+      <Project>{BFE5E0D1-F7BC-4BE9-FB1F-A8AFFA5B9D7E}</Project>
+      <Name>Oculus.VR.Scripts.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Oculus.VR.csproj">
+      <Project>{1F79FAB8-1518-E950-5E56-0EE81EAD589B}</Project>
+      <Name>Oculus.VR</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
