@@ -13,6 +13,7 @@ public class Chladni : MonoBehaviour
     public Material[] MaterialCache;
     public bool changedValue = false;
     public GameObject collisionBox;
+    private bool isGoingPositive = true;
 
     float start = 0.4f;         // a value for start simulation;
     float wfMax = 7.0f;         // a value for end up the simulation;
@@ -37,6 +38,7 @@ public class Chladni : MonoBehaviour
     float maxY = 0;
     float sum = 0;
     int frameNr = 1;
+    int[] frameNrArray = new int[] { 4, 47, 67, 107, 167 };
 
 
     // Start is called before the first frame update
@@ -57,7 +59,7 @@ public class Chladni : MonoBehaviour
             {
                 pixelGrid[i, j] = GameObject.Instantiate(PixelPrefab, TargetPlane.transform);
                 pixelGrid[i, j].transform.localScale = new Vector3(pixelSizeX, 0.1f, pixelSizeZ);
-                pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.001f, pixelSizeZ * (j - (plateSize / 2)) * 10) + new Vector3(pixelSizeX*5f, 0, pixelSizeZ*5f);
+                pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.001f, pixelSizeZ * (j - (plateSize / 2)) * 10) + new Vector3(pixelSizeX * 5f, 0, pixelSizeZ * 5f);
                 pixelRenderers[i, j] = pixelGrid[i, j].GetComponent<MeshRenderer>();
                 //Set all grid pixels to their default state (100% vibration).
                 pixelRenderers[i, j].material = MaterialCache[0];
@@ -105,7 +107,6 @@ public class Chladni : MonoBehaviour
         changedValue = false;
         waveLengthFactor = Mathf.Ceil(frameNr * waveIncrease * 100) / 100;
         doInterference();
-
         float y = 255.0f / maxY;
 
         Material targetMaterial = MaterialCache[0];
@@ -195,16 +196,16 @@ public class Chladni : MonoBehaviour
 
         if (!photo)
         {
+            
             sumOfWholePlate2 = sum;
-            if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
+            if (sumOfWholePlate0 > sumOfWholePlate1 && sumOfWholePlate1 < sumOfWholePlate2 && !photo)
             {
                 photo = true;
-                frameNr--;
+                //frameNr--;
             }
-
             sumOfWholePlate0 = sumOfWholePlate1;
             sumOfWholePlate1 = sumOfWholePlate2;
-            frameNr++;
+            //frameNr++;
         }
     }
 
@@ -231,16 +232,17 @@ public class Chladni : MonoBehaviour
                 }
             }
         }
-        
+
         for (int i = 0; i < sand.Count; i++)
         {
             if (sand[i].transform.localPosition.y >= 0.0f)
             {
-                int xIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.x + (TargetPlane.transform.localScale.x * 5)) / pixelSizeX) / 10, 0, plateSize-1);
-                int yIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.z + (TargetPlane.transform.localScale.z * 5)) / pixelSizeZ) / 10, 0, plateSize-1);
+                int xIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.x + (TargetPlane.transform.localScale.x * 5)) / pixelSizeX) / 10, 0, plateSize - 1);
+                int yIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.z + (TargetPlane.transform.localScale.z * 5)) / pixelSizeZ) / 10, 0, plateSize - 1);
 
                 sand[i].GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * TargetPlane.transform.localScale.x, sand[i].GetComponent<Rigidbody>().velocity.y, Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * TargetPlane.transform.localScale.z);
-            } else
+            }
+            else
             {
                 Destroy(sand[i]);
                 sand.RemoveAt(i);
@@ -255,11 +257,18 @@ public class Chladni : MonoBehaviour
 
     public void ResetPlate()
     {
-        for (int i = sand.Count-1; i >= 0; i--)
+        for (int i = sand.Count - 1; i >= 0; i--)
         {
             Destroy(sand[i]);
         }
         sand.Clear();
+    }
+
+    public void ChangeAmplitude(int pCounter)
+    {
+        frameNr = frameNrArray[pCounter];
+        isGoingPositive = false;
+        changedValue = true;
     }
 }
 

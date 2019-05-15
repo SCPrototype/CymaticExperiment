@@ -22,7 +22,7 @@ public class EndMe : MonoBehaviour
             counter++;
         } else
         {
-            Debug.Log("Switching!!!");
+            //Debug.Log("Switching!!!");
             waveSwitch = -waveSwitch;
             counter = 0;
         }

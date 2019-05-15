@@ -5,16 +5,21 @@
     using UnityEngine.UI;
     using VRTK.Controllables;
 
+    [System.Serializable]
+    public class ValueChangedEvent : UnityEvent<int>
+    {
+    }
+
     public class ControllableReactor : MonoBehaviour
     {
         public VRTK_BaseControllable controllable;
         public VRTK_ControllerEvents controllerEvents;
-        public GameObject spawningPoint;
-        public GameObject sandBucket;
 
         private bool _bucketSpawned = false;
 
         public UnityEvent OnActivate;
+        public UnityEvent OnReset;
+        public ValueChangedEvent OnValueChanged;
 
         protected virtual void OnEnable()
         {
@@ -26,24 +31,18 @@
 
         protected virtual void ValueChanged(object sender, ControllableEventArgs e)
         {
-
+            Debug.Log("value changed " + e.value);
+            OnValueChanged.Invoke((int)e.value);
         }
 
         protected virtual void MaxLimitReached(object sender, ControllableEventArgs e)
         {
             OnActivate.Invoke();
-
-            if (_bucketSpawned == false)
-            {
-                GameObject.Instantiate(sandBucket, spawningPoint.transform.position, spawningPoint.transform.rotation);
-                _bucketSpawned = true;
-            }
         }
 
         protected virtual void MinLimitReached(object sender, ControllableEventArgs e)
         {
-            _bucketSpawned = false;
-            Debug.Log("Reset");
+            OnReset.Invoke();
         }
     }
 }
