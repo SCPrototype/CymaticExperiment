@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chladni : MonoBehaviour
 {
-    const int _MaxSand = 500;
+    const int _MaxSand = 750;
 
     //Changable variations
     public static int plateSize = 100;
