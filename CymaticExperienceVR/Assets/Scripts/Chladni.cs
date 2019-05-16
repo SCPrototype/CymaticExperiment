@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chladni : MonoBehaviour
 {
-    const int _MaxSand = 1000;
+    const int _MaxSand = 500;
 
     //Changable variations
     public static int plateSize = 100;
@@ -97,9 +97,9 @@ public class Chladni : MonoBehaviour
     void draw()
     {
         //Debug.Log("frameNr=" + frameNr + "  R=" + R + "  waveLengthFactor=" + waveLengthFactor);
-        if (photo)
+        if (!changedValue)
         {
-            if (!Input.GetKey(KeyCode.P) && !changedValue)
+            if (!Input.GetKey(KeyCode.P))
             {
                 return;
             }
@@ -202,7 +202,7 @@ public class Chladni : MonoBehaviour
             if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
             {
                 photo = true;
-                //frameNr--;
+                frameNr--;
             }
 
             sumOfWholePlate0 = sumOfWholePlate1;
@@ -288,9 +288,12 @@ public class Chladni : MonoBehaviour
 
     public void ChangeAmplitude(int pCounter)
     {
-        //Write check here.
-        frameNr = frameNrArray[pCounter];
-        changedValue = true;
+        if (pCounter < frameNrArray.Length)
+        {
+            //Write check here.
+            frameNr = frameNrArray[pCounter];
+            changedValue = true;
+        }
     }
 }
 
