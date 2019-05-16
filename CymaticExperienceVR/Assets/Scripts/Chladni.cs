@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Chladni : MonoBehaviour
 {
+    const int _MaxSand = 1000;
+
     //Changable variations
     public static int plateSize = 100;
 
@@ -28,7 +30,7 @@ public class Chladni : MonoBehaviour
     MeshRenderer[,] pixelRenderers = new MeshRenderer[plateSize, plateSize];
     float[,] vibrations = new float[plateSize, plateSize];
     List<Pixel> p;
-    List<GameObject> sand = new List<GameObject>();
+    List<Sand> sand = new List<Sand>();
     int R;
     float waveLengthFactor;
     float waveIncrease = 0.01f;
@@ -37,6 +39,7 @@ public class Chladni : MonoBehaviour
     float maxY = 0;
     float sum = 0;
     int frameNr = 1;
+    int[] frameNrArray = new int[] { 4, 47, 67, 107, 167 };
 
 
     // Start is called before the first frame update
@@ -199,19 +202,55 @@ public class Chladni : MonoBehaviour
             if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
             {
                 photo = true;
-                frameNr--;
+                //frameNr--;
             }
 
             sumOfWholePlate0 = sumOfWholePlate1;
             sumOfWholePlate1 = sumOfWholePlate2;
-            frameNr++;
+            //frameNr++;
         }
     }
 
-    public void AddSand(GameObject pGameObject)
+    public void AddSand(Sand pSand)
     {
-        pGameObject.transform.SetParent(TargetPlane.transform);
-        sand.Add(pGameObject);
+        pSand.gameObject.transform.SetParent(TargetPlane.transform);
+        sand.Add(pSand);
+        if (sand.Count > _MaxSand)
+        {
+            int sandIndex = Random.Range(0, sand.Count-(_MaxSand/10));
+            Destroy(sand[sandIndex].gameObject);
+            sand.RemoveAt(sandIndex);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        float plateScaleX = TargetPlane.transform.localScale.x;
+        float plateScaleZ = TargetPlane.transform.localScale.z;
+        float plateOffsetX = plateScaleX * 5;
+        float plateOffsetZ = plateScaleZ * 5;
+        Vector3 localPos;
+        int xIndex = 0;
+        int yIndex = 0;
+        for (int i = 0; i < sand.Count; i++)
+        {
+            localPos = sand[i].gameObject.transform.localPosition;
+            if (localPos.y >= 0.0f)
+            {
+                xIndex = Mathf.Clamp((int)((localPos.x + plateOffsetX) / pixelSizeX) / 10, 0, plateSize - 1);
+                yIndex = Mathf.Clamp((int)((localPos.z + plateOffsetZ) / pixelSizeZ) / 10, 0, plateSize - 1);
+
+                if (vibrations[xIndex, yIndex] > 0.1f)
+                {
+                    sand[i].SetVelocity(new Vector3(Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * plateScaleX, sand[i].GetVelocity().y, Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * plateScaleZ));
+                }
+            }
+            else
+            {
+                Destroy(sand[i].gameObject);
+                sand.RemoveAt(i);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -227,23 +266,8 @@ public class Chladni : MonoBehaviour
                 {
                     GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
                     grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
-                    AddSand(grainOfSand);
+                    AddSand(grainOfSand.GetComponent<Sand>());
                 }
-            }
-        }
-        
-        for (int i = 0; i < sand.Count; i++)
-        {
-            if (sand[i].transform.localPosition.y >= 0.0f)
-            {
-                int xIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.x + (TargetPlane.transform.localScale.x * 5)) / pixelSizeX) / 10, 0, plateSize-1);
-                int yIndex = Mathf.Clamp((int)((sand[i].transform.localPosition.z + (TargetPlane.transform.localScale.z * 5)) / pixelSizeZ) / 10, 0, plateSize-1);
-
-                sand[i].GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * TargetPlane.transform.localScale.x, sand[i].GetComponent<Rigidbody>().velocity.y, Random.Range(-vibrations[xIndex, yIndex], vibrations[xIndex, yIndex]) * TargetPlane.transform.localScale.z);
-            } else
-            {
-                Destroy(sand[i]);
-                sand.RemoveAt(i);
             }
         }
     }
@@ -257,9 +281,16 @@ public class Chladni : MonoBehaviour
     {
         for (int i = sand.Count-1; i >= 0; i--)
         {
-            Destroy(sand[i]);
+            Destroy(sand[i].gameObject);
         }
         sand.Clear();
+    }
+
+    public void ChangeAmplitude(int pCounter)
+    {
+        //Write check here.
+        frameNr = frameNrArray[pCounter];
+        changedValue = true;
     }
 }
 
