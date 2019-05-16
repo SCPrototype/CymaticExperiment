@@ -39,8 +39,7 @@ public class Chladni : MonoBehaviour
     float maxY = 0;
     float sum = 0;
     int frameNr = 1;
-    int[] frameNrArray = new int[] { 4, 47, 67, 107, 167 };
-
+    int[] frameNrArray = new int[] { 4, 47, 67, 107,148,165,189,231,248,265,281,307,326,347,364,377,413,447,468,504 };
 
     // Start is called before the first frame update
     void Start()
