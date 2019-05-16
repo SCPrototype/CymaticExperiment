@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chladni : MonoBehaviour
 {
-    const int _MaxSand = 1000;
+    const int _MaxSand = 750;
 
     //Changable variations
     public static int plateSize = 100;
@@ -38,9 +38,8 @@ public class Chladni : MonoBehaviour
     float sumOfWholePlate0, sumOfWholePlate1 = 0.0f, sumOfWholePlate2;
     float maxY = 0;
     float sum = 0;
-    int frameNr = 1;
-    int[] frameNrArray = new int[] { 4, 47, 67, 107, 167 };
-
+    int frameNr = 4;
+    int[] frameNrArray = new int[] { 4, 47, 67, 107,148,165,189,231,248,265,281,307,326,347,364,377,413,447,468,504 };
 
     // Start is called before the first frame update
     void Start()
@@ -97,9 +96,9 @@ public class Chladni : MonoBehaviour
     void draw()
     {
         //Debug.Log("frameNr=" + frameNr + "  R=" + R + "  waveLengthFactor=" + waveLengthFactor);
-        if (photo)
+        if (!changedValue)
         {
-            if (!Input.GetKey(KeyCode.P) && !changedValue)
+            if (!Input.GetKey(KeyCode.P))
             {
                 return;
             }
@@ -202,12 +201,12 @@ public class Chladni : MonoBehaviour
             if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
             {
                 photo = true;
-                //frameNr--;
+                frameNr--;
             }
 
             sumOfWholePlate0 = sumOfWholePlate1;
             sumOfWholePlate1 = sumOfWholePlate2;
-            //frameNr++;
+            frameNr++;
         }
     }
 
@@ -288,9 +287,11 @@ public class Chladni : MonoBehaviour
 
     public void ChangeAmplitude(int pCounter)
     {
-        //Write check here.
-        frameNr = frameNrArray[pCounter];
-        changedValue = true;
+        if (pCounter < frameNrArray.Length)
+        {
+            frameNr = frameNrArray[pCounter];
+            changedValue = true;
+        }
     }
 }
 

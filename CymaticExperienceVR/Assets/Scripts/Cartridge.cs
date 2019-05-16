@@ -19,7 +19,7 @@ public class Cartridge : MonoBehaviour
 
     public void SetPattern()
     {
-        _heightMap = _TEMPChladni.GetVibrations();
+        _heightMap = (float[,])_TEMPChladni.GetVibrations().Clone();
 
         RenderTexture rt = new RenderTexture(1920, 1080, 24);
         mainCamera.targetTexture = rt;
@@ -50,9 +50,6 @@ public class Cartridge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SetPattern();
-        }
+
     }
 }
