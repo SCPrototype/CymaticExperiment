@@ -60,7 +60,7 @@ public class Chladni : MonoBehaviour
             {
                 pixelGrid[i, j] = GameObject.Instantiate(PixelPrefab, TargetPlane.transform);
                 pixelGrid[i, j].transform.localScale = new Vector3(pixelSizeX, 0.1f, pixelSizeZ);
-                pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.001f, pixelSizeZ * (j - (plateSize / 2)) * 10) + new Vector3(pixelSizeX*5f, 0, pixelSizeZ*5f);
+                pixelGrid[i, j].transform.position = TargetPlane.transform.position + new Vector3(pixelSizeX * (i - (plateSize / 2)) * 10, 0.001f, pixelSizeZ * (j - (plateSize / 2)) * 10) + new Vector3(pixelSizeX * 5f, 0, pixelSizeZ * 5f);
                 pixelRenderers[i, j] = pixelGrid[i, j].GetComponent<MeshRenderer>();
                 //Set all grid pixels to their default state (100% vibration).
                 pixelRenderers[i, j].material = MaterialCache[0];
@@ -217,7 +217,7 @@ public class Chladni : MonoBehaviour
         sand.Add(pSand);
         if (sand.Count > _MaxSand)
         {
-            int sandIndex = Random.Range(0, sand.Count-(_MaxSand/10));
+            int sandIndex = Random.Range(0, sand.Count - (_MaxSand / 10));
             Destroy(sand[sandIndex].gameObject);
             sand.RemoveAt(sandIndex);
         }
@@ -225,6 +225,27 @@ public class Chladni : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        draw();
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            //Spawn sphere on plate.
+            for (int i = 1; i < 10; i++)
+            {
+                for (int j = 1; j < 10; j++)
+                {
+                    GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
+                    grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
+                    AddSand(grainOfSand.GetComponent<Sand>());
+                }
+            }
+        }
+
         float plateScaleX = TargetPlane.transform.localScale.x;
         float plateScaleZ = TargetPlane.transform.localScale.z;
         float plateOffsetX = plateScaleX * 5;
@@ -253,25 +274,6 @@ public class Chladni : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        draw();
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            //Spawn sphere on plate.
-            for (int i = 1; i < 10; i++)
-            {
-                for (int j = 1; j < 10; j++)
-                {
-                    GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
-                    grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
-                    AddSand(grainOfSand.GetComponent<Sand>());
-                }
-            }
-        }
-    }
-
     public float[,] GetVibrations()
     {
         return vibrations;
@@ -279,7 +281,7 @@ public class Chladni : MonoBehaviour
 
     public void ResetPlate()
     {
-        for (int i = sand.Count-1; i >= 0; i--)
+        for (int i = sand.Count - 1; i >= 0; i--)
         {
             Destroy(sand[i].gameObject);
         }
@@ -289,8 +291,13 @@ public class Chladni : MonoBehaviour
     public void ChangeAmplitude(int pCounter)
     {
         //Write check here.
-        frameNr = frameNrArray[pCounter];
-        changedValue = true;
+        if (pCounter >= frameNrArray.Length || pCounter < 0)
+        { }
+        else
+        {
+            frameNr = frameNrArray[pCounter];
+            changedValue = true;
+        }
     }
 }
 

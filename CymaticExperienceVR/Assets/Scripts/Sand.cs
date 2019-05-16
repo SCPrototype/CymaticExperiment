@@ -46,10 +46,6 @@ public class Sand : MonoBehaviour
                 Debug.Log("Destroying sand.");
                 Destroy(this);
             }
-            if (transform.position.y <= 0.1f)
-            {
-                Destroy(this.gameObject);
-            }
         }
     }
 }
