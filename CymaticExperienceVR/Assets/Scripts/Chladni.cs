@@ -207,7 +207,7 @@ public class Chladni : MonoBehaviour
 
             sumOfWholePlate0 = sumOfWholePlate1;
             sumOfWholePlate1 = sumOfWholePlate2;
-            //frameNr++;
+            frameNr++;
         }
     }
 

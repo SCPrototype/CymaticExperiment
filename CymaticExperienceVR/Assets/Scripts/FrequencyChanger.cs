@@ -33,4 +33,6 @@ public class FrequencyChanger : MonoBehaviour
         chladni.changedValue = true;
         Debug.Log(e.value.ToString());
     }
+
+   
 }

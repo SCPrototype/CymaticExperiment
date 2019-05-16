@@ -21,19 +21,19 @@ public class Oscilator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             ChangeAmplitude(_amplitude + 1);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ChangeAmplitude(_amplitude - 1);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             ChangeFrequency(_frequency + 1);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             ChangeFrequency(_frequency - 1);
         }
