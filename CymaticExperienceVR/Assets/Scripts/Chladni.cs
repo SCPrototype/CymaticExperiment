@@ -38,7 +38,7 @@ public class Chladni : MonoBehaviour
     float sumOfWholePlate0, sumOfWholePlate1 = 0.0f, sumOfWholePlate2;
     float maxY = 0;
     float sum = 0;
-    int frameNr = 1;
+    int frameNr = 4;
     int[] frameNrArray = new int[] { 4, 47, 67, 107,148,165,189,231,248,265,281,307,326,347,364,377,413,447,468,504 };
 
     // Start is called before the first frame update
@@ -289,7 +289,6 @@ public class Chladni : MonoBehaviour
     {
         if (pCounter < frameNrArray.Length)
         {
-            //Write check here.
             frameNr = frameNrArray[pCounter];
             changedValue = true;
         }
