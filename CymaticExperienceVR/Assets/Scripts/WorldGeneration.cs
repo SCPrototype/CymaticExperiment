@@ -33,6 +33,11 @@ public class WorldGeneration : MonoBehaviour
                 }
             }
         }
+        if (_heightMap == null)
+        {
+            InputCartridge();
+            return;
+        }
 
         poly = new Vector3[_heightMap.LongLength];
         int idx = 0;
@@ -173,10 +178,6 @@ public class WorldGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            InputCartridge(myCartridge);
-            GenerateWorld();
-        }
+
     }
 }

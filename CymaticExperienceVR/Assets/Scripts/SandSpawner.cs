@@ -7,14 +7,20 @@ using VRTK;
 
 public class SandSpawner : MonoBehaviour
 {
+    private static float RespawnDelay = 30.0f;
+
     public GameObject SandPrefab;
+    public Transform RespawnPoint;
 
     private GameObject spawningPlate;
     private Chladni _chladniScript;
     private Vector3 _spawnPoint;
+    private bool _isOnSpawn = true;
     private Vector3 widthHeight;
     private int amountOfSand = 30;
     private bool _isBeingGrabbed = false;
+    private float _droppedTime;
+
     private Vector3 startingScale;
     // Start is called before the first frame update
     void Start()
@@ -44,6 +50,20 @@ public class SandSpawner : MonoBehaviour
             _spawnPoint = (transform.position + (transform.up * transform.lossyScale.y));
             SpawnSand();
         }
+        else if (!_isBeingGrabbed && !_isOnSpawn && Time.time - _droppedTime >= RespawnDelay)
+        {
+            //GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<Rigidbody>().isKinematic = true;
+            transform.position = RespawnPoint.position;
+            transform.rotation = RespawnPoint.rotation;
+            _isOnSpawn = true;
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
+        else if (_isOnSpawn && GetComponent<Rigidbody>().velocity.magnitude > 0)
+        {
+            _droppedTime = Time.time;
+            _isOnSpawn = false;
+        }
     }
 
     void SpawnSand()
@@ -59,6 +79,7 @@ public class SandSpawner : MonoBehaviour
             {
                 GameObject sand = Instantiate(SandPrefab, this.gameObject.transform);
                 sand.transform.localPosition = new Vector3(vec2.x, 1, vec2.y);
+                sand.transform.SetParent(null);
                 //Debug.Log(startingScale.y);
             }
             break;
@@ -71,11 +92,13 @@ public class SandSpawner : MonoBehaviour
     {
         Debug.Log("Im Grabbed");
         _isBeingGrabbed = true;
+        _isOnSpawn = false;
     }
 
     private void ObjectReleased(object sender, InteractableObjectEventArgs e)
     {
         Debug.Log("I'm Dropped");
+        _droppedTime = Time.time;
         _isBeingGrabbed = false;
     }
 }
