@@ -1160,6 +1160,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cartridge
       objectReference: {fileID: 0}
+    - target: {fileID: 2919648112100353086, guid: f0151c627d534ba46bed7cb95b5739ae,
+        type: 3}
+      propertyPath: _TEMPChladni
+      value: 
+      objectReference: {fileID: 326858744}
+    - target: {fileID: 2919648112100353086, guid: f0151c627d534ba46bed7cb95b5739ae,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1332491130}
     - target: {fileID: 2919648112100353082, guid: f0151c627d534ba46bed7cb95b5739ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1215,16 +1225,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 98.921005
       objectReference: {fileID: 0}
-    - target: {fileID: 2919648112100353086, guid: f0151c627d534ba46bed7cb95b5739ae,
-        type: 3}
-      propertyPath: _TEMPChladni
-      value: 
-      objectReference: {fileID: 326858744}
-    - target: {fileID: 2919648112100353086, guid: f0151c627d534ba46bed7cb95b5739ae,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1332491130}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0151c627d534ba46bed7cb95b5739ae, type: 3}
 --- !u!1 &337813497
@@ -4530,6 +4530,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1254049800}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1290525047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5690140613544811171, guid: aafcd411c7869cf4c87381a62eec1d76,
+    type: 3}
+  m_PrefabInstance: {fileID: 1947100144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1290525049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290525047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc4b5dd2be1cea4aaea2850b910d3f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nearTouchHighlight: {r: 0.22347812, g: 0.3219472, b: 0.8773585, a: 0}
+  touchHighlight: {r: 0, g: 0, b: 0, a: 0}
+  grabHighlight: {r: 0.7735849, g: 0.58689046, b: 0.13866146, a: 0}
+  useHighlight: {r: 0, g: 0, b: 0, a: 0}
+  objectToMonitor: {fileID: 0}
+  objectToHighlight: {fileID: 3731250641829739938}
+  objectHighlighter: {fileID: 0}
+  objectToAffect: {fileID: 0}
 --- !u!20 &1332491130 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2268210470690262188, guid: a57ca6f8c469580428580685a088b47d,

@@ -99,19 +99,16 @@ public class Chladni : MonoBehaviour
     {
         //Debug.Log("frameNr=" + frameNr + "  R=" + R + "  waveLengthFactor=" + waveLengthFactor);
 
+        //While This is not true, calculate untill the right value is there.
         if (_resonnanceIndex != resonnanceTarget)
         {
-
-            //if (!Input.GetKey(KeyCode.P) || !changedValue)
-            //{
-            //    return;
-            //}
             changedValue = false;
             waveLengthFactor = Mathf.Ceil(frameNr * waveIncrease * 100) / 100;
             doInterference();
 
             float y = 255.0f / maxY;
             Material targetMaterial = MaterialCache[0];
+
 
             for (int i = 0; i < p.Count; i++)
             {
@@ -187,7 +184,6 @@ public class Chladni : MonoBehaviour
             {
                 //saveFrame("Exp2d/"+Math.floor(A*100)/100+"_"+Math.floor(k*100)/100+"/photo/"+frameNr+"-"+waveLengthFactor+".png");
                 photo = false;
-
                 frameNr++;
             }
 
@@ -264,6 +260,7 @@ public class Chladni : MonoBehaviour
                 sand.RemoveAt(i);
             }
         }
+        draw();
     }
 
     // Update is called once per frame
@@ -301,8 +298,16 @@ public class Chladni : MonoBehaviour
 
     public void ChangeAmplitude(int pCounter)
     {
-        resonnanceTarget = pCounter+1;
+        resonnanceTarget = pCounter + 1;
         changedValue = true;
+    }
+
+    private void HandleCalculations()
+    {
+        while (_resonnanceIndex != resonnanceTarget)
+        {
+
+        }
     }
 }
 
