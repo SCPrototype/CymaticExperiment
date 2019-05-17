@@ -13,6 +13,7 @@ public class SandSpawner : VR_Object
     private int amountOfSand = 30;
 
     private Vector3 startingScale;
+    private Vector3 localScale;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -28,7 +29,8 @@ public class SandSpawner : VR_Object
             return;
         }
 
-        startingScale = transform.localScale;
+        startingScale = transform.localScale / 50;
+        
     }
 
     // Update is called once per frame
@@ -50,14 +52,15 @@ public class SandSpawner : VR_Object
     {
         for (int i = 0; i < amountOfSand; i++)
         {   
-            float randomX = UnityEngine.Random.Range(-startingScale.x * transform.localScale.x, startingScale.x *transform.localScale.x);
-            float randomZ = UnityEngine.Random.Range(-startingScale.z * transform.localScale.z, startingScale.z * transform.localScale.z);
+
+            float randomX = UnityEngine.Random.Range(-startingScale.x * startingScale.x, startingScale.x * startingScale.x);
+            float randomZ = UnityEngine.Random.Range(-startingScale.z * startingScale.z, startingScale.z * startingScale.z);
             
             Vector2 vec2 = new Vector2(randomX, randomZ);
-            if(vec2.magnitude <= Math.Min(startingScale.x * transform.localScale.x, startingScale.z * transform.localScale.z))
+            if(vec2.magnitude <= Math.Min(startingScale.x * startingScale.x, startingScale.z * startingScale.z))
             {
                 GameObject sand = Instantiate(SandPrefab, this.gameObject.transform);
-                sand.transform.localPosition = new Vector3(vec2.x, 1, vec2.y);
+                sand.transform.localPosition = new Vector3(vec2.x, .15f, vec2.y);
                 sand.transform.SetParent(null);
             }
             break;
