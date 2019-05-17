@@ -40,7 +40,7 @@ public class Chladni : MonoBehaviour
     float sumOfWholePlate0, sumOfWholePlate1 = 0.0f, sumOfWholePlate2;
     float maxY = 0;
     float sum = 0;
-    int frameNr = 4;
+    int frameNr = 1;
     // int[] frameNrArray = new int[] { 4, 47, 67, 107,148,165,189,231,248,265,281,307,326,347,364,377,413,447,468,504 };
 
     // Start is called before the first frame update
@@ -187,41 +187,43 @@ public class Chladni : MonoBehaviour
             {
                 //saveFrame("Exp2d/"+Math.floor(A*100)/100+"_"+Math.floor(k*100)/100+"/photo/"+frameNr+"-"+waveLengthFactor+".png");
                 photo = false;
+
                 frameNr++;
             }
 
             if (!photo)
             {
-                sumOfWholePlate2 = sum;
-                if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
-                {
-                    photo = true;
-
-                    if (_resonnanceIndex < resonnanceTarget)
-                    {
-                        _resonnanceIndex++;
-                        frameNr--;
-                        Debug.Log("Resonnance Index increasing" + _resonnanceIndex);
-                    }
-                    else if (_resonnanceIndex > resonnanceTarget)
-                    {
-                        _resonnanceIndex--;
-
-                        Debug.Log("Resonnance Index decreasing" + _resonnanceIndex);
-                    }
-                }
-                sumOfWholePlate0 = sumOfWholePlate1;
-                sumOfWholePlate1 = sumOfWholePlate2;
                 if (_resonnanceIndex < resonnanceTarget)
                 {
+                    sumOfWholePlate2 = sum;
+                    if (sumOfWholePlate0 < sumOfWholePlate1 && sumOfWholePlate1 > sumOfWholePlate2 && !photo)
+                    {
+                        photo = true;
+                        _resonnanceIndex++;
+                        frameNr--;
+                    }
+
+                    sumOfWholePlate0 = sumOfWholePlate1;
+                    sumOfWholePlate1 = sumOfWholePlate2;
                     frameNr++;
-                    Debug.Log(frameNr);
                 }
+                else
+                {
+                    sumOfWholePlate2 = sum;
+                    if (sumOfWholePlate0 > sumOfWholePlate1 && sumOfWholePlate1 < sumOfWholePlate2 && !photo)
+                    {
+                        photo = true;
+                        _resonnanceIndex--;
+                    }
 
+                    sumOfWholePlate0 = sumOfWholePlate1;
+                    sumOfWholePlate1 = sumOfWholePlate2;
+                    frameNr--;
+                }
             }
-
             Debug.Log("Current Resonnance is: " + _resonnanceIndex + " current target is: " + resonnanceTarget);
         }
+        Debug.Log(frameNr);
     }
 
     public void AddSand(Sand pSand)

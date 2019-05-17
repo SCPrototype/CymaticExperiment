@@ -65,7 +65,6 @@ public class Oscilator : MonoBehaviour
         {
             _frequency = 1;
         }
-        Debug.Log(_amplitude + " amplitude");
     }
 
     public void ChangeFrequency(int pFrequency)
@@ -75,6 +74,5 @@ public class Oscilator : MonoBehaviour
         {
             _amplitude = 1;
         }
-        Debug.Log(_frequency + " frequency");
     }
 }
