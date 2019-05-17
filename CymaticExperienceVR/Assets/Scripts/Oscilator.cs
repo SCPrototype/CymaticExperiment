@@ -12,7 +12,6 @@ public class Oscilator : MonoBehaviour
     private float _waveOffsetX = 0.0f;
 
     public Material LineMaterial;
-    public Color LineColor;
 
     private Vector3[] audioWaveVertices = new Vector3[WaveDetailLevel];
 
@@ -23,11 +22,11 @@ public class Oscilator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startVertex = transform.position + new Vector3(1.57f, 0, -0.425f);
-        endVertex = transform.position + new Vector3(-0.455f, 0, -0.425f);
+        startVertex = transform.position + new Vector3(1.065f, 0, -0.425f);
+        endVertex = transform.position + new Vector3(0.06f, 0, -0.425f);
         for (int i = 0; i < audioWaveVertices.Length; i++)
         {
-            audioWaveVertices[i] = new Vector3(Mathf.Lerp(startVertex.x, endVertex.x, ((float)i / audioWaveVertices.Length)), 0.1f, startVertex.z);
+            audioWaveVertices[i] = new Vector3(Mathf.Lerp(startVertex.x, endVertex.x, ((float)i / audioWaveVertices.Length)), 0.6f, startVertex.z);
         }
     }
 
@@ -40,15 +39,12 @@ public class Oscilator : MonoBehaviour
             audioWaveVertices[i].z = startVertex.z + freqOffset;
         }
 
-        //GetComponent<Renderer>().material.SetFloat("_WaveOffsetX", _waveOffsetX);
         _waveOffsetX += 0.01f;
     }
 
     public void ChangeAmplitude(int pAmplitude)
     {
-        _amplitude = (pAmplitude / 10.0f);
-        //GetComponent<Renderer>().material.SetFloat("_Amplitude", _amplitude);
-        Debug.Log(_amplitude + " amplitude");
+        _amplitude = (pAmplitude / 20.0f);
     }
 
     public void ChangeFrequency(int pFrequency)
@@ -58,8 +54,6 @@ public class Oscilator : MonoBehaviour
         {
             _frequency = 1;
         }
-        //GetComponent<Renderer>().material.SetFloat("_Frequency", _frequency);
-        Debug.Log(_frequency + " frequency");
     }
 
     public void DrawLine()
@@ -71,12 +65,9 @@ public class Oscilator : MonoBehaviour
         }
         GL.PushMatrix();
         LineMaterial.SetPass(0);
-        //GL.LoadIdentity();
         GL.MultMatrix(transform.localToWorldMatrix);
 
-
         GL.Begin(GL.QUADS);
-        GL.Color(LineColor);
         for (int i = 0; i < audioWaveVertices.Length-1; i++)
         {
             GL.Vertex(audioWaveVertices[i] + new Vector3(0, 0, LineWidth*0.5f));

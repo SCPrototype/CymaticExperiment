@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WorldGeneration : MonoBehaviour
 {
-    public Cartridge myCartridge;
-
     public Material mat;
     public Vector3[] poly;  // Initialized in the inspector
     private float[,] _heightMap;
@@ -89,7 +87,6 @@ public class WorldGeneration : MonoBehaviour
 
         for (int i = 0; i < poly.Length; i++)
         {
-            //poly[i].z = 0.0f;
             vertices[i + 1] = poly[i] - center;
         }
 
