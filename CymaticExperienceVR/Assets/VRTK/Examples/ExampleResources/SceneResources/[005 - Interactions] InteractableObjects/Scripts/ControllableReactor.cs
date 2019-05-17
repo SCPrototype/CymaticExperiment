@@ -31,7 +31,6 @@
 
         protected virtual void ValueChanged(object sender, ControllableEventArgs e)
         {
-            Debug.Log("value changed " + e.value);
             OnValueChanged.Invoke((int)e.value);
         }
 
