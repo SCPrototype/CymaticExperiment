@@ -16,7 +16,7 @@ public class Chladni : MonoBehaviour
     public bool changedValue = false;
     public GameObject collisionBox;
     private int _resonnanceIndex = 0;
-    private int resonnanceTarget = 0;
+    private int resonnanceTarget = 1;
 
     float start = 0.4f;         // a value for start simulation;
     float wfMax = 7.0f;         // a value for end up the simulation;
@@ -221,9 +221,7 @@ public class Chladni : MonoBehaviour
                     frameNr--;
                 }
             }
-            Debug.Log("Current Resonnance is: " + _resonnanceIndex + " current target is: " + resonnanceTarget);
         }
-        Debug.Log(frameNr);
     }
 
     public void AddSand(Sand pSand)
@@ -303,7 +301,7 @@ public class Chladni : MonoBehaviour
 
     public void ChangeAmplitude(int pCounter)
     {
-        resonnanceTarget = pCounter;
+        resonnanceTarget = pCounter+1;
         changedValue = true;
     }
 }
