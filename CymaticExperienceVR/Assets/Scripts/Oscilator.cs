@@ -4,77 +4,81 @@ using UnityEngine;
 
 public class Oscilator : MonoBehaviour
 {
-    private float _yPoint;
-    private float _xPoint;
+    const int WaveDetailLevel = 100;
+    public float LineWidth = 0.2f;
+
     private int _frequency = 1;
-    private int _amplitude = 1;
-    private Vector2 _2dPosition;
-    private MeshRenderer _mesh;
-    private Texture2D _texture;
+    private float _amplitude = 0.1f;
+    private float _waveOffsetX = 0.0f;
+
+    public Material LineMaterial;
+
+    private Vector3[] audioWaveVertices = new Vector3[WaveDetailLevel];
+
+    private Vector3 startVertex;
+    private Vector3 endVertex;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        _mesh = GameObject.Find("Oscilator").GetComponent<MeshRenderer>();
-        _texture = new Texture2D(1920, 20, TextureFormat.ARGB32, false);
+        startVertex = transform.position + new Vector3(1.065f, 0, -0.425f);
+        endVertex = transform.position + new Vector3(0.06f, 0, -0.425f);
+        for (int i = 0; i < audioWaveVertices.Length; i++)
+        {
+            audioWaveVertices[i] = new Vector3(Mathf.Lerp(startVertex.x, endVertex.x, ((float)i / audioWaveVertices.Length)), 0.6f, startVertex.z);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        for (int i = 0; i < audioWaveVertices.Length; i++)
         {
-            ChangeAmplitude(_amplitude + 1);
+            float freqOffset = Mathf.Sin((_waveOffsetX + audioWaveVertices[i].x) * _frequency) * _amplitude;
+            audioWaveVertices[i].z = startVertex.z + freqOffset;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ChangeAmplitude(_amplitude - 1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ChangeFrequency(_frequency + 1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            ChangeFrequency(_frequency - 1);
-        }
-        if (_xPoint < 1920)
-        {
-            _xPoint += 0.2f;
-        } else
-        {
-            _texture = new Texture2D(1920, 20, TextureFormat.ARGB32, false);
-            _xPoint = 0;
-        }
-        _2dPosition = new Vector2(_xPoint ,CalculateYPoint(_xPoint, _frequency, _amplitude));
-        _texture.SetPixel((int)_2dPosition.x, (int)_2dPosition.y + 10, Color.green);
-        _texture.Apply();
-        _mesh.material.mainTexture = _texture;
-    }
 
-    private float CalculateYPoint(float pXpoint, float pFrequency, float pAmplitude)
-    {
-       _yPoint = Mathf.Sin(pXpoint * pFrequency) * pAmplitude;
-        return _yPoint;
+        _waveOffsetX += 0.01f;
     }
 
     public void ChangeAmplitude(int pAmplitude)
     {
-        
-        _frequency = pAmplitude + 1;
-        if(_frequency <= 0)
-        {
-            _frequency = 1;
-        }
-        Debug.Log(_amplitude + " amplitude");
+        _amplitude = (pAmplitude / 20.0f);
     }
 
     public void ChangeFrequency(int pFrequency)
     { 
-        _amplitude = pFrequency + 1;
-        if(_amplitude <= 0)
+        _frequency = pFrequency + 1;
+        if(_frequency <= 0)
         {
-            _amplitude = 1;
+            _frequency = 1;
         }
-        Debug.Log(_frequency + " frequency");
     }
+
+    public void DrawLine()
+    {
+        if (!LineMaterial)
+        {
+            Debug.LogError("Please Assign a material on the inspector");
+            return;
+        }
+        GL.PushMatrix();
+        LineMaterial.SetPass(0);
+        GL.MultMatrix(transform.localToWorldMatrix);
+
+        GL.Begin(GL.QUADS);
+        for (int i = 0; i < audioWaveVertices.Length-1; i++)
+        {
+            GL.Vertex(audioWaveVertices[i] + new Vector3(0, 0, LineWidth*0.5f));
+            GL.Vertex(audioWaveVertices[i] - new Vector3(0, 0, LineWidth * 0.5f));
+            GL.Vertex(audioWaveVertices[i + 1] - new Vector3(0, 0, LineWidth * 0.5f));
+            GL.Vertex(audioWaveVertices[i + 1] + new Vector3(0, 0, LineWidth * 0.5f));
+        }
+
+        GL.End();
+
+        GL.PopMatrix();
+    }
+
 }
