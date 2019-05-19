@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class WorldGeneration : MonoBehaviour
 {
-    public Cartridge myCartridge;
-
     public Material mat;
     public Vector3[] poly;  // Initialized in the inspector
+    public AudioSource CompletedSound;
     private float[,] _heightMap;
+
+    private bool _shouldPlayCompletedSound = false;
 
     // Start is called before the first frame update
     void Start()
@@ -89,7 +90,6 @@ public class WorldGeneration : MonoBehaviour
 
         for (int i = 0; i < poly.Length; i++)
         {
-            //poly[i].z = 0.0f;
             vertices[i + 1] = poly[i] - center;
         }
 
@@ -131,6 +131,14 @@ public class WorldGeneration : MonoBehaviour
 
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
+
+        if (_shouldPlayCompletedSound)
+        {
+            CompletedSound.Play();
+        } else
+        {
+            _shouldPlayCompletedSound = true;
+        }
     }
 
     Vector3 FindCenter()
