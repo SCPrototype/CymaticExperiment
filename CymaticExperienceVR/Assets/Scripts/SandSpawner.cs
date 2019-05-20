@@ -29,7 +29,7 @@ public class SandSpawner : VR_Object
             return;
         }
 
-        startingScale = transform.localScale / 50;
+        startingScale = transform.localScale / 10;
         
     }
 
@@ -52,16 +52,18 @@ public class SandSpawner : VR_Object
     {
         for (int i = 0; i < amountOfSand; i++)
         {   
-
             float randomX = UnityEngine.Random.Range(-startingScale.x * startingScale.x, startingScale.x * startingScale.x);
             float randomZ = UnityEngine.Random.Range(-startingScale.z * startingScale.z, startingScale.z * startingScale.z);
             
             Vector2 vec2 = new Vector2(randomX, randomZ);
             if(vec2.magnitude <= Math.Min(startingScale.x * startingScale.x, startingScale.z * startingScale.z))
             {
-                GameObject sand = Instantiate(SandPrefab, this.gameObject.transform);
-                sand.transform.localPosition = new Vector3(vec2.x, .15f, vec2.y);
-                sand.transform.SetParent(null);
+                GameObject sand1 = Instantiate(SandPrefab, this.gameObject.transform);
+                sand1.transform.localPosition = new Vector3(vec2.x, .15f, vec2.y);
+                sand1.transform.SetParent(null);
+                GameObject sand2 = Instantiate(SandPrefab, this.gameObject.transform);
+                sand2.transform.localPosition = new Vector3(-vec2.x, .15f, -vec2.y);
+                sand2.transform.SetParent(null);
             }
             break;
         }
@@ -69,7 +71,6 @@ public class SandSpawner : VR_Object
         {
             SandAudio.Play();
         }
-
     }
 
     //private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
