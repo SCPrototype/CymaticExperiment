@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TerrainShader
-  m_Shader: {fileID: 4800000, guid: cefe67131cb514d41867c0c6cecea145, type: 3}
+  m_Name: Water
+  m_Shader: {fileID: 4800000, guid: 259768cf8bddd95439274166b07a7d8e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FoamTex:
+        m_Texture: {fileID: 2800000, guid: 9582e387c62e45d40a63402a613b2ce4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -56,22 +60,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BottomHeight: -40
     - _BumpScale: 1
-    - _CenterHeight: -250
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HighHeight: 70
-    - _LowHeight: 10
-    - _MaxVariance: -20
-    - _MaxVarianceHigh: -5
-    - _MaxVarianceLow: -5
-    - _MaxVarianceMedium: -5
-    - _MediumHeight: 20
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -80,11 +75,15 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WaveBuildUp: 0.15
+    - _WaveHeight: 10
+    - _WaveInterval: 2.7
+    - _WaveLength: 0.75
+    - _WaveSpeed: 0.01
     - _ZWrite: 1
     m_Colors:
-    - _BottomColor: {r: 0.36238053, g: 0.3679245, b: 0.28982732, a: 1}
-    - _Color: {r: 0.17795478, g: 0.4056604, b: 0.18410902, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HighColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
-    - _LowColor: {r: 0.11854753, g: 0.2264151, b: 0.12792732, a: 1}
-    - _MediumColor: {r: 0.1792453, g: 0.14424174, b: 0.120906025, a: 1}
+    - _WaterColor: {r: 0.6673193, g: 0.8659985, b: 0.8679245, a: 0.49019608}
+    - _WaterFoamColor: {r: 0.15699537, g: 0.5283019, b: 0.52046764, a: 0.26666668}
+    - _WaveDirection: {r: 2, g: 1, b: 1, a: 0}
