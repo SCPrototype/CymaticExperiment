@@ -8,6 +8,7 @@ public class WorldGeneration : MonoBehaviour
     public Vector3[] poly;  // Initialized in the inspector
     public AudioSource CompletedSound;
     private float[,] _heightMap;
+    private float _amplitude = 1;
 
     private bool _shouldPlayCompletedSound = false;
 
@@ -52,7 +53,7 @@ public class WorldGeneration : MonoBehaviour
                 }
                 else
                 {
-                    poly[idx++] = new Vector3(i, _heightMap[i, j] * 10, j);
+                    poly[idx++] = new Vector3(i, _heightMap[i, j] * 2.0f * _amplitude, j);
                 }
             }
         }
@@ -181,6 +182,11 @@ public class WorldGeneration : MonoBehaviour
 
         }
         return uvs;
+    }
+
+    public void SetAmplitude(int pAmplitude)
+    {
+        _amplitude = pAmplitude;
     }
 
     // Update is called once per frame
