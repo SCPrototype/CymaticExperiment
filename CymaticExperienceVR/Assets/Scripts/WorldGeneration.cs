@@ -51,7 +51,7 @@ public class WorldGeneration : MonoBehaviour
             {
                 if (i == 0 || i == _heightMap.GetLength(0) - 1 || j == 0 || j == _heightMap.GetLength(1) - 1)
                 {
-                    poly[idx++] = new Vector3(i, -3, j);
+                    poly[idx++] = new Vector3(i, -EdgeLength, j);
                 }
                 else
                 {
