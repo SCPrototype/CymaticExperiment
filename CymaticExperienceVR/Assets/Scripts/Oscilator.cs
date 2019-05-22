@@ -11,6 +11,7 @@ public class Oscilator : MonoBehaviour
     private float _amplitude = 0.1f;
     private float _waveOffsetX = 0.0f;
 
+    public int MaxAmplitude;
     public Material LineMaterial;
 
     private Vector3[] audioWaveVertices = new Vector3[WaveDetailLevel];
@@ -44,7 +45,7 @@ public class Oscilator : MonoBehaviour
 
     public void ChangeAmplitude(int pAmplitude)
     {
-        _amplitude = (pAmplitude / 20.0f);
+        _amplitude = (pAmplitude / (MaxAmplitude * 2.5f));
     }
 
     public void ChangeFrequency(int pFrequency)

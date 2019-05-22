@@ -42,7 +42,7 @@ public class Chladni : MonoBehaviour
     float sum = 0;
     int frameNr = 0;
     float amplitude = 0.5f;
-    int[] frameNrArray = new int[] { 0,4, 47, 65, 107, 148, 165, 189, 231, 248, 265, 281, 307, 326, 347, 364, 377, 413, 447, 468, 504, 531, 548, 573, 603, 636, 671, 690, 727, 747, 771, 790 };
+    public static int[] frameNrArray = new int[] { 0, 4, 47, 65, 107, 148, 165, 189, 231, 248, 265, 281, 307, 326, 347, 364, 377, 413, 447, 468, 504, 531, 548, 573, 603, 636, 671, 690, 727, 747, 771, 790 };
 
     // Start is called before the first frame update
     void Start()
