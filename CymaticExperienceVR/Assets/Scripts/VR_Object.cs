@@ -6,7 +6,7 @@ using VRTK;
 
 public class VR_Object : MonoBehaviour
 {
-    private static float RespawnDelay = 15.0f;
+    private static float RespawnDelay = 5.0f;
 
     public Transform RespawnPoint;
     public AudioSource ImpactSound;
