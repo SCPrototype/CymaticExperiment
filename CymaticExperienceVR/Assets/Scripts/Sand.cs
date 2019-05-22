@@ -16,7 +16,7 @@ public class Sand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chladni = GameObject.Find("TableHolder").GetComponent<Chladni>();
+        chladni = GameObject.Find("ChladniTable").GetComponent<Chladni>();
         plateCollider = chladni.collisionBox.GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
         spawnTime = Time.time;
