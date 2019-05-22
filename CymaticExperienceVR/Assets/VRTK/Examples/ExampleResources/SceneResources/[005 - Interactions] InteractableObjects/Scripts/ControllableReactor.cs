@@ -8,6 +8,7 @@
     [System.Serializable]
     public class ValueChangedEvent : UnityEvent<int>
     {
+
     }
 
     public class ControllableReactor : MonoBehaviour
