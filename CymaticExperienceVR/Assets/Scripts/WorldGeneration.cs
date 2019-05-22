@@ -5,9 +5,12 @@ using UnityEngine;
 public class WorldGeneration : MonoBehaviour
 {
     public Material mat;
-    public Vector3[] poly;  // Initialized in the inspector
     public AudioSource CompletedSound;
+    public float EdgeLength;
+
+    private Vector3[] poly;  // Initialized in the inspector
     private float[,] _heightMap;
+    private float _amplitude = 1;
 
     private bool _shouldPlayCompletedSound = false;
 
@@ -30,7 +33,7 @@ public class WorldGeneration : MonoBehaviour
             {
                 for (int j = 0; j < 100; j++)
                 {
-                    _heightMap[i,j] = Random.Range(0.0f, 0.001f);
+                    _heightMap[i,j] = Random.Range(0.0f, 0.01f);
                 }
             }
         }
@@ -48,11 +51,11 @@ public class WorldGeneration : MonoBehaviour
             {
                 if (i == 0 || i == _heightMap.GetLength(0) - 1 || j == 0 || j == _heightMap.GetLength(1) - 1)
                 {
-                    poly[idx++] = new Vector3(i, 0, j);
+                    poly[idx++] = new Vector3(i, -3, j);
                 }
                 else
                 {
-                    poly[idx++] = new Vector3(i, _heightMap[i, j] * 10, j);
+                    poly[idx++] = new Vector3(i, _heightMap[i, j] * 2.0f * _amplitude, j);
                 }
             }
         }
@@ -181,6 +184,11 @@ public class WorldGeneration : MonoBehaviour
 
         }
         return uvs;
+    }
+
+    public void SetAmplitude(int pAmplitude)
+    {
+        _amplitude = pAmplitude;
     }
 
     // Update is called once per frame
