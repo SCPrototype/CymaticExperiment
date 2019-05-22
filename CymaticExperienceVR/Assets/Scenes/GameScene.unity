@@ -643,7 +643,7 @@ Transform:
   - {fileID: 1651376434}
   - {fileID: 51577518}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &241605789
 MonoBehaviour:
@@ -717,7 +717,7 @@ PrefabInstance:
     - target: {fileID: 1293849060537459465, guid: 0c844d31d62939745bf58702c7666833,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1293849060537459465, guid: 0c844d31d62939745bf58702c7666833,
         type: 3}
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0fb2c936e3c714fab75010157cd361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1572249404}
+  mainCamera: {fileID: 0}
 --- !u!23 &378359316
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2550,7 +2550,7 @@ Transform:
   m_Children:
   - {fileID: 659661664}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &582564950
 GameObject:
@@ -2718,7 +2718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bcae914220acd4907840a029bb9d9aec, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bcae914220acd4907840a029bb9d9aec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3093,7 +3093,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: 30, z: 0}
 --- !u!1001 &769220328
 PrefabInstance:
@@ -3346,7 +3346,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1126714478}
+      objectReference: {fileID: 0}
     - target: {fileID: 7787665335853952507, guid: 0248961e38713a842ad55dfe88576443,
         type: 3}
       propertyPath: OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -3484,18 +3484,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1126714478 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5097229753506662886, guid: 3d5941e00dd8294469b066636e54308b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1865637806}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76ed4e0ae42e73249ab9e76451d39c3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1126998913
 GameObject:
   m_ObjectHideFlags: 0
@@ -4573,7 +4561,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1126714478}
+      objectReference: {fileID: 0}
     - target: {fileID: 7787665335853952507, guid: 0248961e38713a842ad55dfe88576443,
         type: 3}
       propertyPath: OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4814,7 +4802,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1126714478}
+      objectReference: {fileID: 0}
     - target: {fileID: 5690140613544811173, guid: aafcd411c7869cf4c87381a62eec1d76,
         type: 3}
       propertyPath: OnActivate.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -5212,7 +5200,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1126714478}
+      objectReference: {fileID: 0}
     - target: {fileID: 5690140613544811173, guid: aafcd411c7869cf4c87381a62eec1d76,
         type: 3}
       propertyPath: OnReset.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -5435,12 +5423,6 @@ PrefabInstance:
       objectReference: {fileID: 748628503}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21774f9fdc88be04693cea291082aad4, type: 3}
---- !u!20 &1572249404 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5097229753762286939, guid: 3d5941e00dd8294469b066636e54308b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1865637806}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1591080933
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,7 +6098,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1126714478}
+      objectReference: {fileID: 0}
     - target: {fileID: 5690140613544811173, guid: aafcd411c7869cf4c87381a62eec1d76,
         type: 3}
       propertyPath: OnActivate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
