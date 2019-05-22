@@ -19,7 +19,9 @@ public class AudioFade : MonoBehaviour
 
     public void SetFrequency(int pFrequency)
     {
-        AudioToFade.pitch = pFrequency * 0.1f;
+        Debug.Log(pFrequency);
+        AudioToFade.pitch = (Chladni.frameNrArray[pFrequency] / 261.667f); //261.667f is the number that converts frequency to unity pitch.
+        //261.667f frequency = unity pitch 1.
     }
 
     public void PlayAudio()
