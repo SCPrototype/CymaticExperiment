@@ -24,6 +24,8 @@ public class BottleFlip : VR_Object
         base.Start();
 
         _partSystem = GetComponent<ParticleSystem>();
+
+        //rb.centerOfMass = new Vector3(0, -1, 0);
     }
 
     // Update is called once per frame
