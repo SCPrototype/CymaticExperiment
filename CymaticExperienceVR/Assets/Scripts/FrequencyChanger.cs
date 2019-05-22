@@ -31,8 +31,5 @@ public class FrequencyChanger : MonoBehaviour
     protected virtual void ValueChanged(object sender, ControllableEventArgs e)
     {
         chladni.changedValue = true;
-        Debug.Log(e.value.ToString());
     }
-
-   
 }
