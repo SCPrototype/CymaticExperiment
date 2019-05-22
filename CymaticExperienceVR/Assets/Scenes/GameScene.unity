@@ -815,7 +815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &196876723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3467,8 +3467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 3333e38015e356c4993f8755c54c33bd, type: 2}
+  poly: []
   CompletedSound: {fileID: 1833800803}
-  EdgeLength: -250
 --- !u!4 &573584058
 Transform:
   m_ObjectHideFlags: 0
@@ -9714,6 +9714,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1865637806
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5097229753506662887, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_Name
+      value: TableHolder (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097229753506662881, guid: 3d5941e00dd8294469b066636e54308b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d5941e00dd8294469b066636e54308b, type: 3}
 --- !u!1001 &1871099685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10156,7 +10225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineWidth: 0.03
-  MaxAmplitude: 20
   LineMaterial: {fileID: 2100000, guid: 6b6e4d7d09dc4dd489076f7c32c8327c, type: 2}
 --- !u!23 &1997246777
 MeshRenderer:
