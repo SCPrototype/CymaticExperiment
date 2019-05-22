@@ -20,15 +20,6 @@ public class SandSpawner : VR_Object
     {
         base.Start();
 
-        //Add event listener for interactable object.
-        GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
-        GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
-        if (GetComponent<VRTK_InteractableObject>() == null)
-        {
-            Debug.LogError("Team3_Interactable_Object_Extension is required to be attached to an Object that has the VRTK_InteractableObject script attached to it");
-            return;
-        }
-
         startingScale = transform.localScale / 10;
         
     }
