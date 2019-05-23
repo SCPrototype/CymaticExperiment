@@ -20,7 +20,7 @@ public class SandSpawner : VR_Object
     {
         base.Start();
 
-        startingScale = transform.localScale / 5;
+        startingScale = transform.localScale ;
         
     }
 
