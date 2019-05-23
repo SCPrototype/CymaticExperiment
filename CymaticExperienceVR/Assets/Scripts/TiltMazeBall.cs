@@ -42,10 +42,15 @@ public class TiltMazeBall : MonoBehaviour
 
         if (transform.position.y < RepawnLevelY)
         {
-            rb.isKinematic = true;
-            transform.position = RespawnPoint.position;
-            transform.rotation = RespawnPoint.rotation;
-            rb.isKinematic = false;
+            ResetBall();
         }
+    }
+
+    public void ResetBall()
+    {
+        rb.isKinematic = true;
+        transform.position = RespawnPoint.position;
+        transform.rotation = RespawnPoint.rotation;
+        rb.isKinematic = false;
     }
 }
