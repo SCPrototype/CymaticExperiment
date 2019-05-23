@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshCollider))]
 public class WorldGeneration : MonoBehaviour
 {
     public Material mat;
     public AudioSource CompletedSound;
     public float EdgeLength;
+
+    private MeshCollider myColl;
 
     private Vector3[] poly;  // Initialized in the inspector
     private float[,] _heightMap;
@@ -17,6 +20,8 @@ public class WorldGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myColl = GetComponent<MeshCollider>();
+
         InputCartridge();
         GenerateWorld();
     }
@@ -142,6 +147,8 @@ public class WorldGeneration : MonoBehaviour
         {
             _shouldPlayCompletedSound = true;
         }
+
+        myColl.sharedMesh = mesh;
     }
 
     Vector3 FindCenter()
