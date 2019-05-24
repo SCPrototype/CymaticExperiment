@@ -5,9 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class WorldGeneration : MonoBehaviour
 {
-    public Material mat;
-    public AudioSource CompletedSound;
+    [Header("Terrain settings")]
+    public Material TerrainMaterial;
     public float EdgeLength;
+
+    [Header("Sound settings")]
+    public AudioSource CompletedSound;
 
     private MeshCollider myColl;
 
@@ -16,6 +19,22 @@ public class WorldGeneration : MonoBehaviour
     private float _amplitude = 1;
 
     private bool _shouldPlayCompletedSound = false;
+
+
+    [Header("Destructible object settings")]
+    public bool PlaceObjects = true;
+    public GameObject[] BuildingPool;
+    public int BuildingCount = 50;
+    public int BuildingGroupSize = 10;
+    public int BuildingMaxAngle = 25;
+    public int BuildingMaxHeight = 35;
+    public GameObject[] ForestPool;
+    public int ForestCount = 50;
+    public int ForestGroupSize = 10;
+    public int ForestMaxAngle = 45;
+    public int ForestMaxHeight = 75;
+
+    private List<GameObject> ObjectPool = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -89,7 +108,7 @@ public class WorldGeneration : MonoBehaviour
         {
             rend = gameObject.GetComponent<MeshRenderer>();
         }
-        rend.material = mat;
+        rend.material = TerrainMaterial;
 
         Vector3 center = FindCenter();
 
@@ -149,6 +168,86 @@ public class WorldGeneration : MonoBehaviour
         }
 
         myColl.sharedMesh = mesh;
+
+        PopulateWorld();
+    }
+
+    private void PopulateWorld()
+    {
+        for (int i = 0; i < ObjectPool.Count; i++)
+        {
+            Destroy(ObjectPool[i]);
+        }
+        ObjectPool.Clear();
+
+        int crashPrevent = 0;
+
+        int BuildingsLeft = BuildingCount;
+        RaycastHit hit;
+        Ray newRay;
+
+        while (BuildingsLeft > 0 && crashPrevent < 1000)
+        {
+            crashPrevent++;
+            //Shoot a ray with a random X and Z downwards at our generated world.
+            newRay = new Ray(new Vector3(transform.position.x + Random.Range(-250, 250), transform.position.y + 150, transform.position.z + Random.Range(-250, 250)), new Vector3(0, -300, 0));
+            //If the ray hit something.
+            if (Physics.Raycast(newRay, out hit))
+            {
+                //If the ray hit our terrain.
+                if (hit.transform.gameObject == gameObject)
+                {
+                    //If the point is below the building height threshold.
+                    if (hit.point.y - transform.position.y <= BuildingMaxHeight)
+                    {
+                        Debug.Log(Vector3.Angle(transform.up, hit.normal));
+                        if (Vector3.Angle(transform.up, hit.normal) <= BuildingMaxAngle)
+                        {
+                            GameObject newBuilding = Instantiate(BuildingPool[Random.Range(0, BuildingPool.Length)], hit.point, new Quaternion(0, 0, 0, 0), transform);
+                            newBuilding.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+                            newBuilding.transform.localScale = new Vector3(newBuilding.transform.localScale.x / transform.lossyScale.x, newBuilding.transform.localScale.y / transform.lossyScale.y, newBuilding.transform.localScale.z / transform.lossyScale.z);
+                            newBuilding.transform.position += new Vector3(0, newBuilding.transform.lossyScale.y / 2, 0);
+                            ObjectPool.Add(newBuilding);
+                            BuildingsLeft--;
+                        }
+                    }
+                }
+            }
+        }
+        Debug.Log("Buildings left: " + BuildingsLeft);
+
+        crashPrevent = 0;
+
+        int ForestsLeft = ForestCount;
+
+        while (ForestsLeft > 0 && crashPrevent < 1000)
+        {
+            crashPrevent++;
+            //Shoot a ray with a random X and Z downwards at our generated world.
+            newRay = new Ray(new Vector3(transform.position.x + Random.Range(-250, 250), transform.position.y + 150, transform.position.z + Random.Range(-250, 250)), new Vector3(0, -300, 0));
+            //If the ray hit something.
+            if (Physics.Raycast(newRay, out hit))
+            {
+                //If the ray hit our terrain.
+                if (hit.transform.gameObject == gameObject)
+                {
+                    //If the point is below the forest height threshold.
+                    if (hit.point.y - transform.position.y <= ForestMaxHeight)
+                    {
+                        if (Vector3.Angle(transform.up, hit.normal) <= ForestMaxAngle)
+                        {
+                            GameObject newForest = Instantiate(ForestPool[Random.Range(0, ForestPool.Length)], hit.point, new Quaternion(0, 0, 0, 0), transform);
+                            newForest.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+                            newForest.transform.localScale = new Vector3(newForest.transform.localScale.x / transform.lossyScale.x, newForest.transform.localScale.y / transform.lossyScale.y, newForest.transform.localScale.z / transform.lossyScale.z);
+                            newForest.transform.position += new Vector3(0, newForest.transform.lossyScale.y / 2, 0);
+                            ObjectPool.Add(newForest);
+                            ForestsLeft--;
+                        }
+                    }
+                }
+            }
+        }
+        Debug.Log("Forests left: " + ForestsLeft);
     }
 
     Vector3 FindCenter()

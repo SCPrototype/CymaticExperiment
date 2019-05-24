@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 3358946738630309134}
   - component: {fileID: 4674359161309325196}
   - component: {fileID: -161932546141862236}
+  - component: {fileID: 2091397121}
+  - component: {fileID: 2091397120}
   m_Layer: 0
   m_Name: Bottle
   m_TagString: Untagged
@@ -36,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 4674359161309325193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.3773, y: 0.557, z: -0.2752}
-  m_LocalScale: {x: 0.08, y: 0.04, z: 0.08}
+  m_LocalScale: {x: 0.07999999, y: 0.04, z: 0.08}
   m_Children:
   - {fileID: 3083086156822378057}
   m_Father: {fileID: 0}
@@ -110,9 +112,9 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4674359161309325193}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e8a9654d166ff0c47ad85da674d70818, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
@@ -166,6 +168,8 @@ MonoBehaviour:
   ImpactSound: {fileID: 4674359161309325194}
   CelebrationSound: {fileID: 3358946738630309134}
   SuccesfullLandDelay: 0.25
+  CenterOfMassDistance: {x: 0.01, y: 0.075, z: 0.01}
+  MassShiftSpeed: 0.3
 --- !u!82 &4674359161309325194
 AudioSource:
   m_ObjectHideFlags: 0
@@ -557,7 +561,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 50
-      minScalar: 15
+      minScalar: 25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5163,6 +5167,39 @@ MonoBehaviour:
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 0
+--- !u!65 &2091397121
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674359161309325193}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 2, z: 0.9}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &2091397120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674359161309325193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc4b5dd2be1cea4aaea2850b910d3f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nearTouchHighlight: {r: 0, g: 0, b: 0, a: 0}
+  touchHighlight: {r: 0, g: 1, b: 0, a: 1}
+  grabHighlight: {r: 0, g: 0, b: 0, a: 0}
+  useHighlight: {r: 0, g: 0, b: 0, a: 0}
+  objectToMonitor: {fileID: 0}
+  objectToHighlight: {fileID: 0}
+  objectHighlighter: {fileID: 0}
+  objectToAffect: {fileID: 0}
 --- !u!1 &7366403547460985054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5248,7 +5285,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7366403547460985054}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e8a9654d166ff0c47ad85da674d70818, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
