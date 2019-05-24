@@ -44,7 +44,7 @@ public class VR_Object : MonoBehaviour
         //If the object has been moved, and is not currently being held, and the respawn delay has elapsed.
         if (!_isBeingGrabbed && !_isOnSpawn && Time.time - _droppedTime >= RespawnDelay)
         {
-            Debug.Log("Respawning item." + _isOnSpawn + " " + _isBeingGrabbed);
+            //Debug.Log("Respawning item." + _isOnSpawn + " " + _isBeingGrabbed);
             //Disable velocity.
             rb.isKinematic = true;
             //Set object back to respawn point.

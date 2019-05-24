@@ -8,6 +8,7 @@ public class WorldGeneration : MonoBehaviour
     public Material mat;
     public AudioSource CompletedSound;
     public float EdgeLength;
+    public Animator _cupulaAnimation;
 
     private MeshCollider myColl;
 

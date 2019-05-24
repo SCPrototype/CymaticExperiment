@@ -20,7 +20,7 @@ public class SandSpawner : VR_Object
     {
         base.Start();
 
-        startingScale = transform.localScale ;
+        startingScale = transform.localScale / 100;
         
     }
 
@@ -51,10 +51,12 @@ public class SandSpawner : VR_Object
             {
 
                 GameObject sand1 = Instantiate(SandPrefab, this.gameObject.transform);
-                sand1.transform.localPosition = new Vector3(vec2.x, .16f, vec2.y);
+                sand1.transform.localPosition = new Vector3(vec2.x, .01f, vec2.y);
+                sand1.transform.localScale = startingScale / 50;
                 sand1.transform.SetParent(null);
                 GameObject sand2 = Instantiate(SandPrefab, this.gameObject.transform);
-                sand2.transform.localPosition = new Vector3(-vec2.x, .16f, -vec2.y);
+                sand2.transform.localPosition = new Vector3(-vec2.x, .01f, -vec2.y);
+                sand2.transform.localScale = startingScale / 50;
                 sand2.transform.SetParent(null);
             }
             break;
