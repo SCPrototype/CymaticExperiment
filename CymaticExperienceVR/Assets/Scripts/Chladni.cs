@@ -98,6 +98,8 @@ public class Chladni : MonoBehaviour
 
     void draw()
     {
+        pixelSizeX = TargetPlane.transform.localScale.x / plateSize;
+        pixelSizeZ = TargetPlane.transform.localScale.z / plateSize;
         if (_resonnanceIndex != resonnanceTarget)
         {
             frameNr = frameNrArray[resonnanceTarget];
