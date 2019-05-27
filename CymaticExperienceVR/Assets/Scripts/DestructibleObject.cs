@@ -29,7 +29,10 @@ public class DestructibleObject : MonoBehaviour
             disintegrateStep += DisintegrateSpeed;
             for (int i = 0; i < childRenderers.Length; i++)
             {
-                childRenderers[i].material.SetFloat("_DisintegrateAmount", disintegrateStep);
+                for (int j = 0; j < childRenderers[i].materials.Length; j++)
+                {
+                    childRenderers[i].materials[j].SetFloat("_DisintegrateAmount", disintegrateStep);
+                }
             }
             //myRend.material.SetFloat("_DisintegrateAmount", disintegrateStep);
             if (!myPart.isPlaying)

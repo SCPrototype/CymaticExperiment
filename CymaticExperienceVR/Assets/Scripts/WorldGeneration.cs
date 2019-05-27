@@ -200,7 +200,6 @@ public class WorldGeneration : MonoBehaviour
                     //If the point is below the building height threshold.
                     if (hit.point.y - transform.position.y <= BuildingMaxHeight)
                     {
-                        Debug.Log(Vector3.Angle(transform.up, hit.normal));
                         if (Vector3.Angle(transform.up, hit.normal) <= BuildingMaxAngle)
                         {
                             GameObject newBuilding = Instantiate(BuildingPool[Random.Range(0, BuildingPool.Length)], hit.point, new Quaternion(0, 0, 0, 0), transform);
@@ -214,7 +213,6 @@ public class WorldGeneration : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Buildings left: " + BuildingsLeft);
 
         crashPrevent = 0;
 
@@ -247,7 +245,6 @@ public class WorldGeneration : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Forests left: " + ForestsLeft);
     }
 
     Vector3 FindCenter()
