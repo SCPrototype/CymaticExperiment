@@ -54,8 +54,6 @@ public class Chladni : MonoBehaviour
 
     void prepare()
     {
-        pixelSizeX = TargetPlane.transform.localScale.x / plateSize;
-        pixelSizeZ = TargetPlane.transform.localScale.z / plateSize;
         for (int i = 0; i < plateSize; i++)
         {
             for (int j = 0; j < plateSize; j++)
@@ -174,7 +172,6 @@ public class Chladni : MonoBehaviour
                     //point(pp.getY(), -pp.getX());
                 }
             }
-
             #region old code.
             //if (photo)
             //{
@@ -285,6 +282,16 @@ public class Chladni : MonoBehaviour
                 }
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            manualAmplitude();
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            manualTest();
+        }
+
     }
 
     public float[,] GetVibrations()
@@ -309,6 +316,15 @@ public class Chladni : MonoBehaviour
     public void ChangeAmplitude(int pValue)
     {
         amplitude = 0.5f + (pValue * 0.1f);
+    }
+
+    private void manualTest()
+    {
+        resonnanceTarget = 10;
+    }
+    private void manualAmplitude()
+    {
+        amplitude = 1.5f;
     }
 }
 

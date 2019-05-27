@@ -24,15 +24,17 @@ public class CupulaBehaviour : MonoBehaviour
     public void PlayCupulaAnimation()
     {
         Debug.Log("Animation being called " + openBool);
-        if (cupulaOpen)
+        if (!cupulaOpen)
         {
             _cupulaAnimator.SetBool(openBool, true);
             cupulaOpen = true;
+            Debug.Log("Cupula open should be: " + cupulaOpen);
         }
         else
         {
             _cupulaAnimator.SetBool(openBool, false);
             cupulaOpen = false;
+            Debug.Log("Cupula open should be: " + cupulaOpen);
         }
     }
 }
