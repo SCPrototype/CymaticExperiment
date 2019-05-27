@@ -54,6 +54,8 @@ public class Chladni : MonoBehaviour
 
     void prepare()
     {
+        pixelSizeX = TargetPlane.transform.localScale.x / plateSize;
+        pixelSizeZ = TargetPlane.transform.localScale.z / plateSize;
         for (int i = 0; i < plateSize; i++)
         {
             for (int j = 0; j < plateSize; j++)

@@ -16,7 +16,13 @@ public class Sand : MonoBehaviour
     void Start()
     {
         chladni = GameObject.Find("TableFunctionality").GetComponent<Chladni>();
-        plateCollider = chladni.collisionBox.GetComponent<Collider>();
+        if (chladni != null)
+        {
+            plateCollider = chladni.collisionBox.GetComponent<Collider>();
+        } else
+        {
+            Debug.Log("Chladni plate not found.");
+        }
         rb = GetComponent<Rigidbody>();
         spawnTime = Time.time;
     }
