@@ -14,6 +14,12 @@ public class TiltMazeTablet : VR_Object
 
     private Vector3 startRotation;
 
+    public TextMesh scoreText;
+    public TextMesh highscoreText;
+    private bool setHighScore = false;
+    private int highScore = 0;
+    private int currentScore = 0;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -66,5 +72,34 @@ public class TiltMazeTablet : VR_Object
             TargetTerrain.transform.eulerAngles = Vector3.Lerp(eulerHolder, startRotation, 0.1f);
             //TargetTerrain.transform.eulerAngles = startRotation;
         }
+    }
+
+    public void AddScore(int pAmount)
+    {
+        currentScore += pAmount;
+        scoreText.text = "Huidige Score : " + currentScore;
+        if (currentScore > highScore)
+        {
+            SetNewHighscore();
+        }
+    }
+
+    private void SetNewHighscore()
+    {
+        highScore = currentScore;
+        highscoreText.text = "Hoogste Score : " + highScore;
+
+        if (!setHighScore)
+        {
+            //Put any victory effects here
+
+            setHighScore = true;
+        }
+    }
+
+    public void ResetScore()
+    {
+        currentScore = 0;
+        setHighScore = false;
     }
 }
