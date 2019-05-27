@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-[RequireComponent(typeof(ParticleSystem))]
 public class BottleFlip : VR_Object
 {
     public AudioSource CelebrationSound;
-    private ParticleSystem _partSystem;
+    public ParticleSystem PartSystem;
 
     public float SuccesfullLandDelay;
     private float _landTime;
@@ -27,8 +26,6 @@ public class BottleFlip : VR_Object
     protected override void Start()
     {
         base.Start();
-
-        _partSystem = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -63,7 +60,7 @@ public class BottleFlip : VR_Object
                         if (!_landedSuccesfully)
                         {
                             _landedSuccesfully = true;
-                            _partSystem.Play();
+                            PartSystem.Play();
                             CelebrationSound.Play();
                         }
                     }

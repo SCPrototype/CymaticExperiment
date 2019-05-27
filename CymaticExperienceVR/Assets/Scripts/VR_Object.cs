@@ -5,6 +5,7 @@ using UnityEngine;
 using VRTK;
 
 [RequireComponent(typeof(VRTK_InteractableObject))]
+[RequireComponent(typeof(VRTK_InteractObjectHighlighter))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(AudioSource))] 
 public class VR_Object : MonoBehaviour

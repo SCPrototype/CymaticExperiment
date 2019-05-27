@@ -7,7 +7,7 @@ using UnityEngine;
 public class TiltMazeBall : MonoBehaviour
 {
     public Transform RespawnPoint;
-    public int RepawnLevelY = 0;
+    public int RespawnLevelY = -500;
     public BoxCollider ParentBounds;
 
     private Rigidbody rb;
@@ -40,12 +40,17 @@ public class TiltMazeBall : MonoBehaviour
             }
         }
 
-        if (transform.position.y < RepawnLevelY)
+        if (transform.position.y < RespawnLevelY)
         {
-            rb.isKinematic = true;
-            transform.position = RespawnPoint.position;
-            transform.rotation = RespawnPoint.rotation;
-            rb.isKinematic = false;
+            ResetBall();
         }
+    }
+
+    public void ResetBall()
+    {
+        rb.isKinematic = true;
+        transform.position = RespawnPoint.position;
+        transform.rotation = RespawnPoint.rotation;
+        rb.isKinematic = false;
     }
 }
