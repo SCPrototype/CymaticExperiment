@@ -6,8 +6,8 @@ public class MoveTable : MonoBehaviour
 {
     public GameObject tableController;
     public GameObject tableObject;
+    public GameObject tableController2;
     private bool positionHasChanged = false;
-    private float _startingPOS = 0.7112985f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +18,18 @@ public class MoveTable : MonoBehaviour
     void Update()
     {
         if (positionHasChanged)
-        { 
-            tableObject.transform.position = new Vector3(-0.108901f, (float) tableController.transform.position.y - _startingPOS, 0.02523238f); 
+        {
+            if(tableController.transform.childCount != 0)
+            {
+                //Left one is selected.
+                tableController2.transform.position = new Vector3(tableController2.transform.position.x, tableController.transform.position.y, tableController2.transform.position.z);
+            } else
+            {
+                //Right one is selected.
+                tableController.transform.position = new Vector3(tableController.transform.position.x, tableController2.transform.position.y, tableController.transform.position.z);
+            }
+            tableObject.transform.position = new Vector3(tableObject.transform.position.x, tableController.transform.position.y, tableObject.transform.position.z);
+           
             positionHasChanged = false;    
         }
     }
