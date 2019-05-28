@@ -6,8 +6,8 @@ public class MoveTable : MonoBehaviour
 {
     public GameObject tableController;
     public GameObject tableObject;
-    private bool positionHasChanged = false;
     private float _startingPOS = 0.7112985f;
+    private bool positionHasChanged = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +18,8 @@ public class MoveTable : MonoBehaviour
     void Update()
     {
         if (positionHasChanged)
-        { 
-            tableObject.transform.position = new Vector3(-0.108901f, (float) tableController.transform.position.y - _startingPOS, 0.02523238f); 
+        {
+            tableObject.transform.position = new Vector3(-0.108901f, (float)tableController.transform.position.y - _startingPOS, 0.02523238f);
             positionHasChanged = false;    
         }
     }
