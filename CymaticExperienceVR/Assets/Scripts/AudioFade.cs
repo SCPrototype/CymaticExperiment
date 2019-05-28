@@ -11,6 +11,7 @@ public class AudioFade : MonoBehaviour
     private bool audioIsPlaying = false;
     private float fadeStartTime;
     private float audioStartVolume = 1;
+    public int MaxAmplitude = 12;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class AudioFade : MonoBehaviour
     }
     public void SetAmplitude(int pAmplitude)
     {
-        audioStartVolume = pAmplitude / 20.0f;
+        audioStartVolume = (float)pAmplitude / MaxAmplitude;
     }
 
     public void PlayAudio()
