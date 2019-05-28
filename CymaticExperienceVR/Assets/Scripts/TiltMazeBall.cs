@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class TiltMazeBall : MonoBehaviour
 {
+    public TiltMazeTablet MyTablet;
+
     public Transform RespawnPoint;
     public int RespawnLevelY = -500;
     public BoxCollider ParentBounds;
@@ -52,5 +54,14 @@ public class TiltMazeBall : MonoBehaviour
         transform.position = RespawnPoint.position;
         transform.rotation = RespawnPoint.rotation;
         rb.isKinematic = false;
+        MyTablet.ResetScore();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Destructible Object"))
+        {
+            MyTablet.AddScore(1);
+        }
     }
 }

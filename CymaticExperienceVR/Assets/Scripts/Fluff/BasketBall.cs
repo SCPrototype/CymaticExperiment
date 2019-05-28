@@ -33,10 +33,10 @@ public class BasketBall : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (!particleEmitter.GetComponent<ParticleSystem>().isPlaying)
-        {
+        //if (!particleEmitter.GetComponent<ParticleSystem>().isPlaying)
+        //{
             particleEmitter.GetComponent<ParticleSystem>().Play();
-        }
+        //}
         _lastScoreTime = Time.time;
         _score++;
         text.text = "Huidige \nScore : " + _score;
