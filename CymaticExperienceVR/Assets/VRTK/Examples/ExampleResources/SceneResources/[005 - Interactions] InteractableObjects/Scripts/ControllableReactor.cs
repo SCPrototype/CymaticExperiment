@@ -8,6 +8,7 @@
     [System.Serializable]
     public class ValueChangedEvent : UnityEvent<int>
     {
+
     }
 
     public class ControllableReactor : MonoBehaviour
@@ -31,7 +32,6 @@
 
         protected virtual void ValueChanged(object sender, ControllableEventArgs e)
         {
-            Debug.Log("value changed " + e.value);
             OnValueChanged.Invoke((int)e.value);
         }
 
