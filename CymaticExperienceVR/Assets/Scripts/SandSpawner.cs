@@ -20,16 +20,7 @@ public class SandSpawner : VR_Object
     {
         base.Start();
 
-        //Add event listener for interactable object.
-        GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
-        GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
-        if (GetComponent<VRTK_InteractableObject>() == null)
-        {
-            Debug.LogError("Team3_Interactable_Object_Extension is required to be attached to an Object that has the VRTK_InteractableObject script attached to it");
-            return;
-        }
-
-        startingScale = transform.localScale / 10;
+        startingScale = transform.localScale / 100;
         
     }
 
@@ -58,11 +49,14 @@ public class SandSpawner : VR_Object
             Vector2 vec2 = new Vector2(randomX, randomZ);
             if(vec2.magnitude <= Math.Min(startingScale.x * startingScale.x, startingScale.z * startingScale.z))
             {
+
                 GameObject sand1 = Instantiate(SandPrefab, this.gameObject.transform);
-                sand1.transform.localPosition = new Vector3(vec2.x, .15f, vec2.y);
+                sand1.transform.localPosition = new Vector3(vec2.x, .01f, vec2.y);
+                sand1.transform.localScale = startingScale / 50;
                 sand1.transform.SetParent(null);
                 GameObject sand2 = Instantiate(SandPrefab, this.gameObject.transform);
-                sand2.transform.localPosition = new Vector3(-vec2.x, .15f, -vec2.y);
+                sand2.transform.localPosition = new Vector3(-vec2.x, .01f, -vec2.y);
+                sand2.transform.localScale = startingScale / 50;
                 sand2.transform.SetParent(null);
             }
             break;

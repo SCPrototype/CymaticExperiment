@@ -5,7 +5,6 @@ using UnityEngine;
 public class Sand : MonoBehaviour
 {
     const float _DestroyAfter = 2.0f;
-
     public bool isConnectedToTable = false;
     private Chladni chladni;
     private Collider plateCollider;
@@ -16,8 +15,14 @@ public class Sand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chladni = GameObject.Find("TableHolder").GetComponent<Chladni>();
-        plateCollider = chladni.collisionBox.GetComponent<Collider>();
+        chladni = GameObject.Find("TableFunctionality").GetComponent<Chladni>();
+        if (chladni != null)
+        {
+            plateCollider = chladni.collisionBox.GetComponent<Collider>();
+        } else
+        {
+            Debug.Log("Chladni plate not found.");
+        }
         rb = GetComponent<Rigidbody>();
         spawnTime = Time.time;
     }
