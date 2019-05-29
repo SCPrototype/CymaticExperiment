@@ -17,26 +17,32 @@ public class MoveTable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            positionHasChanged = true;
+        }
         if (positionHasChanged)
         {
             if (tableController.transform.childCount != 0)
             {
                 //Left one is selected.
-                tableController2.transform.position = new Vector3(tableController2.transform.position.x, tableController.transform.position.y, tableController2.transform.position.z);
+                //tableController2.transform.position = new Vector3(tableController2.transform.position.x, tableController.transform.position.y, tableController2.transform.position.z);
+                
             }
             else
             {
                 //Right one is selected.
-                tableController.transform.position = new Vector3(tableController.transform.position.x, tableController2.transform.position.y, tableController.transform.position.z);
+                //tableController.transform.position = new Vector3(tableController.transform.position.x, tableController2.transform.position.y, tableController.transform.position.z);
             }
-            tableObject.transform.position = new Vector3(tableObject.transform.position.x, tableController.transform.position.y, tableObject.transform.position.z);
-
+            Debug.Log("Position Y of controller is: " + tableController.transform.localPosition.y);
+            tableObject.transform.position = new Vector3(tableObject.transform.position.x, tableController.transform.localPosition.y, tableObject.transform.position.z);
+            Debug.Log(" \t Position of table is: " + tableObject.transform.position.y);
             positionHasChanged = false;
         }
     }
 
     public void ChangeTablePosition(int pValue)
     {
-        positionHasChanged = true;
+        //positionHasChanged = true;
     }
 }
