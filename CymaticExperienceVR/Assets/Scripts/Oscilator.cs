@@ -23,11 +23,13 @@ public class Oscilator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startVertex = transform.position + new Vector3(1.065f, 0, -0.425f);
-        endVertex = transform.position + new Vector3(0.06f, 0, -0.425f);
+        //startVertex = transform.position + new Vector3(0.5f, 0, -0.425f);
+        //endVertex = transform.position + new Vector3(-0.5f, 0, -0.425f);
+        startVertex = new Vector3(0.5f, 0.6f, 0);
+        endVertex = new Vector3(-0.5f, 0.6f, 0);
         for (int i = 0; i < audioWaveVertices.Length; i++)
         {
-            audioWaveVertices[i] = new Vector3(Mathf.Lerp(startVertex.x, endVertex.x, ((float)i / audioWaveVertices.Length)), 0.6f, startVertex.z);
+            audioWaveVertices[i] = new Vector3(Mathf.Lerp(startVertex.x, endVertex.x, ((float)i / audioWaveVertices.Length)), startVertex.y, startVertex.z);
         }
     }
 
@@ -64,6 +66,7 @@ public class Oscilator : MonoBehaviour
             Debug.LogError("Please Assign a material on the inspector");
             return;
         }
+
         GL.PushMatrix();
         LineMaterial.SetPass(0);
         GL.MultMatrix(transform.localToWorldMatrix);
@@ -71,7 +74,7 @@ public class Oscilator : MonoBehaviour
         GL.Begin(GL.QUADS);
         for (int i = 0; i < audioWaveVertices.Length-1; i++)
         {
-            GL.Vertex(audioWaveVertices[i] + new Vector3(0, 0, LineWidth*0.5f));
+            GL.Vertex(audioWaveVertices[i] + new Vector3(0, 0, LineWidth * 0.5f));
             GL.Vertex(audioWaveVertices[i] - new Vector3(0, 0, LineWidth * 0.5f));
             GL.Vertex(audioWaveVertices[i + 1] - new Vector3(0, 0, LineWidth * 0.5f));
             GL.Vertex(audioWaveVertices[i + 1] + new Vector3(0, 0, LineWidth * 0.5f));
