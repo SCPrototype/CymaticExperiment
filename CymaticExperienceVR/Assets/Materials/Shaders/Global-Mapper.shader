@@ -46,8 +46,9 @@ Shader "Global-Mapper" {
              
              void vert(inout appdata_full v){
                  // Convert to world position
-                 float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
-                 float diff = worldPos.y - _CenterHeight;
+                 //float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
+
+                 float diff = v.vertex.y - _CenterHeight;
 				 float cFactor = saturate(diff / (2 * _MaxVarianceHigh) + 0.5);
 
 				 if (diff >= _HighHeight) //If the vertex is above the HighHeight.

@@ -27,7 +27,7 @@ namespace VRTK
         [Header("Straight Pointer Appearance Settings")]
 
         [Tooltip("The maximum length the pointer tracer can reach.")]
-        public float maximumLength = 100f;
+        public float maximumLength = 0f;
         [Tooltip("The scale factor to scale the pointer tracer object by.")]
         public float scaleFactor = 0.002f;
         [Tooltip("The scale multiplier to scale the pointer cursor object by in relation to the `Scale Factor`.")]
