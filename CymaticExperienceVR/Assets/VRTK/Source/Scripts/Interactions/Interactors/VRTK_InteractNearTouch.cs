@@ -231,8 +231,11 @@ namespace VRTK
 
         protected virtual void OnTriggerEnter(Collider collider)
         {
-            StartNearTouch(collider);
-            VRTK_SharedMethods.AddListValue(nearTouchedObjects, collider.gameObject, true);
+            if (!collider.CompareTag("Sand"))
+            {
+                StartNearTouch(collider);
+                VRTK_SharedMethods.AddListValue(nearTouchedObjects, collider.gameObject, true);
+            }
         }
 
         protected virtual void OnTriggerExit(Collider collider)

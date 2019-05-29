@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class Sand : MonoBehaviour
 {
+    const float _DestroyAfter = 2.0f;
     public bool isConnectedToTable = false;
     private Chladni chladni;
-    private Collider collider;
+    private Collider plateCollider;
+    private Rigidbody rb;
+
+    private float spawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        chladni = GameObject.Find("TableHolder").GetComponent<Chladni>();
-        collider = chladni.collisionBox.GetComponent<Collider>();
+        chladni = GameObject.Find("TableFunctionality").GetComponent<Chladni>();
+        if (chladni != null)
+        {
+            plateCollider = chladni.collisionBox.GetComponent<Collider>();
+        } else
+        {
+            Debug.Log("Chladni plate not found.");
+        }
+        rb = GetComponent<Rigidbody>();
+        spawnTime = Time.time;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return rb.velocity;
+    }
+    public void SetVelocity(Vector3 pVel)
+    {
+        rb.velocity = pVel;
     }
 
     // Update is called once per frame
@@ -20,14 +41,14 @@ public class Sand : MonoBehaviour
     {
         if (!isConnectedToTable)
         {
-            if (collider.bounds.Contains(transform.position))
+            if (plateCollider.bounds.Contains(transform.position))
             {
-                chladni.AddSand(this.gameObject);
+                chladni.AddSand(this);
                 isConnectedToTable = true;
-                Destroy(this);
             }
-            if (transform.position.y <= 0.1f)
+            else if (Time.time >= spawnTime + _DestroyAfter)
             {
+                Debug.Log("Destroying sand.");
                 Destroy(this.gameObject);
             }
         }

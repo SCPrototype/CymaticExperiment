@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Cartridge : MonoBehaviour
 {
-
-    public Chladni _TEMPChladni;
-
     public Camera mainCamera;
     private Texture2D _screenShot;
     private float[,] _heightMap;
@@ -17,16 +14,16 @@ public class Cartridge : MonoBehaviour
         
     }
 
-    public void SetPattern()
+    public void SetPattern(Chladni pChladni)
     {
-        _heightMap = _TEMPChladni.GetVibrations();
+        _heightMap = (float[,])pChladni.GetVibrations().Clone();
 
         RenderTexture rt = new RenderTexture(1920, 1080, 24);
         mainCamera.targetTexture = rt;
         _screenShot = new Texture2D(1080, 1080, TextureFormat.RGB24, false);
         mainCamera.Render();
         RenderTexture.active = rt;
-        _screenShot.ReadPixels(new Rect(385, 0, 1080, 1080), 0, 0);
+        _screenShot.ReadPixels(new Rect(420, 0, 1080, 1080), 0, 0);
         _screenShot.Apply();
         mainCamera.targetTexture = null;
         RenderTexture.active = null;
@@ -50,9 +47,6 @@ public class Cartridge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SetPattern();
-        }
+
     }
 }

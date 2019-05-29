@@ -8,6 +8,7 @@ public class SpawningButton : MonoBehaviour
     public VRTK_ControllerEvents controllerEvents;
     public GameObject spawningPoint;
     public GameObject sandBucket;
+    private bool _bucketSpawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,17 @@ public class SpawningButton : MonoBehaviour
         
     }
 
-    void SpawnBucket()
+    public void SpawnBucket()
     {
-        //controllerEvents.buttonOnePressed += VRTK_ControllerEvents
-        Debug.Log("Spawning bucket");
-        Instantiate(sandBucket, this.transform.position, this.transform.rotation);
+        if (_bucketSpawned == false)
+        {
+            GameObject.Instantiate(sandBucket, spawningPoint.transform.position, spawningPoint.transform.rotation);
+            _bucketSpawned = true;
+        }
+    }
+
+    public void EnableSpawnBucket()
+    {
+        _bucketSpawned = false;
     }
 }
