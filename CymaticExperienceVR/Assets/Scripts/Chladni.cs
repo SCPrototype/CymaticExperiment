@@ -50,6 +50,12 @@ public class Chladni : MonoBehaviour
         sumOfWholePlate0 = sumOfWholePlate2 = plateSize * plateSize;
         R = (int)(-2.0 / Mathf.Log10(A)) + 1;
         prepare();
+
+        SpawnSand();
+        SpawnSand();
+        SpawnSand();
+        SpawnSand();
+        SpawnSand();
     }
 
     void prepare()
@@ -275,16 +281,7 @@ public class Chladni : MonoBehaviour
         draw();
         if (Input.GetKeyDown(KeyCode.O))
         {
-            //Spawn sphere on plate.
-            for (int i = 1; i < 10; i++)
-            {
-                for (int j = 1; j < 10; j++)
-                {
-                    GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
-                    grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
-                    AddSand(grainOfSand.GetComponent<Sand>());
-                }
-            }
+            SpawnSand();
         }
 
         if(Input.GetKeyDown(KeyCode.B))
@@ -296,6 +293,21 @@ public class Chladni : MonoBehaviour
             manualTest();
         }
 
+    }
+
+    private void SpawnSand()
+    {
+        //Spawn sand on plate.
+        for (int i = 1; i < 10; i++)
+        {
+            for (int j = 1; j < 10; j++)
+            {
+                GameObject grainOfSand = GameObject.Instantiate(SandPrefab, TargetPlane.transform);
+                grainOfSand.transform.localPosition = new Vector3((-TargetPlane.transform.localScale.x * 5) + i, 1, (-TargetPlane.transform.localScale.z * 5) + j);
+                grainOfSand.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                //AddSand(grainOfSand.GetComponent<Sand>());
+            }
+        }
     }
 
     public float[,] GetVibrations()
