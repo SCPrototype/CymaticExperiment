@@ -27,22 +27,21 @@ public class MoveTable : MonoBehaviour
             {
                 //Left one is selected.
                 //tableController2.transform.position = new Vector3(tableController2.transform.position.x, tableController.transform.position.y, tableController2.transform.position.z);
-                
             }
             else
             {
                 //Right one is selected.
                 //tableController.transform.position = new Vector3(tableController.transform.position.x, tableController2.transform.position.y, tableController.transform.position.z);
             }
-            Debug.Log("Position Y of controller is: " + tableController.transform.localPosition.y);
+            //Debug.Log("Position Y of controller is: " + tableController.transform.localPosition.y);
             tableObject.transform.position = new Vector3(tableObject.transform.position.x, tableController.transform.localPosition.y, tableObject.transform.position.z);
-            Debug.Log(" \t Position of table is: " + tableObject.transform.position.y);
+           //Debug.Log(" \t Position of table is: " + tableObject.transform.position.y);
             positionHasChanged = false;
         }
     }
 
     public void ChangeTablePosition(int pValue)
     {
-        //positionHasChanged = true;
+        positionHasChanged = true;
     }
 }
