@@ -16,7 +16,8 @@
         public VRTK_BaseControllable controllable;
         public VRTK_ControllerEvents controllerEvents;
 
-        private bool _bucketSpawned = false;
+        public bool SnapToInt = false;
+        private int currentValue = -5000;
 
         public UnityEvent OnActivate;
         public UnityEvent OnReset;
@@ -32,7 +33,18 @@
 
         protected virtual void ValueChanged(object sender, ControllableEventArgs e)
         {
-            OnValueChanged.Invoke((int)e.value);
+            if (SnapToInt)
+            {
+                if (currentValue != (int)e.value)
+                {
+                    OnValueChanged.Invoke((int)e.value);
+                    currentValue = (int)e.value;
+                }
+            }
+            else
+            {
+                OnValueChanged.Invoke((int)e.value);
+            }
         }
 
         protected virtual void MaxLimitReached(object sender, ControllableEventArgs e)

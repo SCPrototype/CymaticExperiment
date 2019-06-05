@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class TiltMazeBall : MonoBehaviour
 {
+    public float SpeedModifier = 1.5f;
+
     public TiltMazeTablet MyTablet;
 
     public Transform RespawnPoint;
@@ -27,6 +29,8 @@ public class TiltMazeBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rb.AddForce(new Vector3(0, -1, 0) * SpeedModifier, ForceMode.Acceleration);
+
         if (!ParentBounds.bounds.Intersects(myColl.bounds))
         {
             if (transform.parent != null)

@@ -7,7 +7,7 @@ public class Chladni : MonoBehaviour
     const int _MaxSand = 750;
 
     //Changable variations
-    public static int plateSize = 100;
+    public static int plateSize = 75;
 
     public GameObject TargetPlane;
     public GameObject PixelPrefab;
@@ -113,13 +113,13 @@ public class Chladni : MonoBehaviour
             doInterference();
             waveLengthFactor = Mathf.Ceil(frameNr * waveIncrease * 100) / 100;
             float y = 255.0f / maxY;
-            Material targetMaterial = MaterialCache[0];
+            //Material targetMaterial = MaterialCache[0];
 
             for (int i = 0; i < p.Count; i++)
             {
                 Pixel pp = p[i];
                 float clr = 1.0f - ((y * Mathf.Abs(pp.getY())) / 255.0f);
-                targetMaterial = MaterialCache[Mathf.Max(0, Mathf.CeilToInt(clr * MaterialCache.Length) - 1)];
+                //targetMaterial = MaterialCache[Mathf.Max(0, Mathf.CeilToInt(clr * MaterialCache.Length) - 1)];
 
                 if (three_d)
                 {
@@ -238,14 +238,6 @@ public class Chladni : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            amplitude += 0.5f;
-        }
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            amplitude -= 0.5f;
-        }
         float plateScaleX = TargetPlane.transform.localScale.x;
         float plateScaleZ = TargetPlane.transform.localScale.z;
         float plateOffsetX = plateScaleX * 5;
@@ -272,26 +264,12 @@ public class Chladni : MonoBehaviour
                 sand.RemoveAt(i);
             }
         }
-        draw();
+        //draw();
     }
 
     // Update is called once per frame
     void Update()
     {
-        draw();
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SpawnSand();
-        }
-
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            manualAmplitude();
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            manualTest();
-        }
 
     }
 
@@ -327,6 +305,7 @@ public class Chladni : MonoBehaviour
     public void ChangeFrequency(int pCounter)
     {
         resonnanceTarget = pCounter;
+        draw();
     }
 
     public void ChangeAmplitude(int pValue)
