@@ -7,14 +7,23 @@
 		_LineColor("Line Color", Color) = (1,1,1,1)
 		_BackgroundColor("Background Color", Color) = (0,0,0,1)
 		_LineDirection("Move Direction", Vector) = (0,1,1,0)
-		_LineSpeed("Move Speed", Range(0.1, 10)) = 1
+		_LineSpeed("Move Speed", Range(0, 10)) = 1
+		_LineDistance("Line Distance", Range(1, 500)) = 100
 	}
 	SubShader {
 		Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-		Lighting Off Cull Back ZWrite On
-		Blend SrcAlpha DstAlpha
+		Lighting Off Cull Back
+		Blend SrcAlpha OneMinusSrcAlpha
 
 		Pass {
+			ColorMask 0
+			ZWrite On
+		}
+
+		Pass {
+			ZWrite Off
+			ZTest Equal
+
 			CGPROGRAM
 			#pragma vertex myVertexShader
 			#pragma fragment myFragmentShader
@@ -27,6 +36,7 @@
 			float4 _BackgroundColor;
 			float4 _LineDirection;
 			float _LineSpeed;
+			float _LineDistance;
 
 			struct vertexInput {
 				float4 vertex : POSITION;
@@ -42,11 +52,7 @@
 			vertexToFragment myVertexShader(vertexInput v) {
 				vertexToFragment o;
 
-				float sinX = sin(_LineSpeed * _Time);
-				float cosX = cos(_LineSpeed * _Time);
-				float sinY = sin(_LineSpeed * _Time);
-				float2x2 rotationMatrix = float2x2(cosX, sinX, -sinY, cosX);
-				o.modelPosition = mul(v.uv, rotationMatrix);
+				o.modelPosition = float2((v.vertex.x / _LineDistance) + (_LineSpeed * _Time.x * _LineDirection.x), (v.vertex.z / _LineDistance) + (_LineSpeed * _Time.x * _LineDirection.z));// mul(float2(v.uv.x + _Time.x, v.uv.y), rotationMatrix);
 				
 				// Transform the point to clip space:
 				//o.vertex = mul(UNITY_MATRIX_MVP,v.vertex); //mul = multiplication
@@ -58,9 +64,9 @@
 
 			fixed4 myFragmentShader(vertexToFragment i) : SV_Target{
 
-				float4 hologramTex = tex2D(_HologramTex, i.modelPosition/4);
-
 				float4 output = _BackgroundColor;
+
+				float4 hologramTex = tex2D(_HologramTex, i.modelPosition);
 				if (hologramTex.a > 0)
 				{
 					output = _LineColor;
