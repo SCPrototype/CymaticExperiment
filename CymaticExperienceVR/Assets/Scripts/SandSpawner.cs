@@ -15,7 +15,7 @@ public class SandSpawner : VR_Object
 
     private Vector3 startingScale;
     private Vector3 localScale;
-    private Rigidbody rb;
+    private Rigidbody _rigidBody;
 
     private Vector3 velocity;
     private Vector3 prevPos;
@@ -27,7 +27,7 @@ public class SandSpawner : VR_Object
     {
         base.Start();
         startingScale = transform.localScale / 100;
-        //ShakeSand = FMODUnity.RuntimeManager.CreateInstance("PlayArea:/Jar");
+        ShakeSand = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/Jar");
 
     }
 
@@ -45,12 +45,15 @@ public class SandSpawner : VR_Object
             if (velocity.magnitude > _shakeSensitivity)
             {
                 //Debug.DrawRay(transform.position, velocity * 10, Color.yellow, 10, false);
-                if(!SandShakeAudio.isPlaying)
+                if (SandShakeAudio != null)
                 {
-                    Debug.Log("Playing SandShake");
-                    SandShakeAudio.Play();
+                    if (!SandShakeAudio.isPlaying)
+                    {
+                        Debug.Log("Playing SandShake");
+                        SandShakeAudio.Play();
+                    }
                 }
-            } 
+            }
         }
         if (this.transform.worldToLocalMatrix[1, 1] < 0 && _isBeingGrabbed == true)
         {
@@ -98,7 +101,7 @@ public class SandSpawner : VR_Object
             }
             break;
         }
-        
+
     }
 
     //private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)

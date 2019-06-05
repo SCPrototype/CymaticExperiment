@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3416763211461964308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/PlayArea/LeverRelease
+  guid: 4ec1491112ca0f4eab464ef5eb6d7b7c
+  Banks:
+  - {fileID: 3900094323839645879}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1843
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,11 +38,37 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: 5819213173702409994}
   - {fileID: 3900094323839645879}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: 6733468289988225260}
+  - {fileID: -3416763211461964308}
+  - {fileID: 749082707555638032}
   MasterBankRef: {fileID: 3900094323839645879}
   StringsBankRef: {fileID: 5819213173702409994}
-  stringsBankWriteTime: 636952543096801503
+  stringsBankWriteTime: 636953319910925850
   cacheVersion: 2
+--- !u!114 &749082707555638032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/PlayArea/Lever
+  guid: 87f09fd77b25214a8823e4eb26da7d37
+  Banks:
+  - {fileID: 3900094323839645879}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1437
 --- !u!114 &3900094323839645879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,11 +83,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\student\Documents\CymaticExperiment\CymaticExperienceVR\Assets\Sounds\FmodPojectExposure\Build\Desktop\Master
     Bank.bank
-  lastModified: 636952543096751633
+  lastModified: 636953319910866014
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 12474
+    Value: 75392
   Exists: 1
 --- !u!114 &5819213173702409994
 MonoBehaviour:
@@ -53,9 +102,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Sounds\FmodPojectExposure\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636952543096801503
+  lastModified: 636953319910925850
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 672
+    Value: 820
   Exists: 1
+--- !u!114 &6733468289988225260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/PlayArea/Jar
+  guid: 2b8796a0972ae54b95c544d048ef69fd
+  Banks:
+  - {fileID: 3900094323839645879}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
