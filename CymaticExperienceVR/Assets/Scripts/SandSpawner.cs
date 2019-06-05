@@ -9,45 +9,82 @@ public class SandSpawner : VR_Object
 {
     public GameObject SandPrefab;
     public AudioSource SandAudio;
+    public AudioSource SandShakeAudio;
 
     private int amountOfSand = 30;
 
     private Vector3 startingScale;
     private Vector3 localScale;
+    private Rigidbody rb;
+
+    private Vector3 velocity;
+    private Vector3 prevPos;
+    private float _shakeSensitivity = 1.5f;
+    private FMOD.Studio.EventInstance ShakeSand;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-
         startingScale = transform.localScale / 100;
-        
+        //ShakeSand = FMODUnity.RuntimeManager.CreateInstance("PlayArea:/Jar");
+
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+        if (_isBeingGrabbed)
+        {
+            float fwdDotProduct = Vector3.Dot(transform.forward, velocity);
+            float upDotProduct = Vector3.Dot(transform.up, velocity);
+            float rightDotProduct = Vector3.Dot(transform.right, velocity);
 
+            Vector3 velocityVector = new Vector3(rightDotProduct, upDotProduct, fwdDotProduct);
+            if (velocity.magnitude > _shakeSensitivity)
+            {
+                //Debug.DrawRay(transform.position, velocity * 10, Color.yellow, 10, false);
+                if(!SandShakeAudio.isPlaying)
+                {
+                    Debug.Log("Playing SandShake");
+                    SandShakeAudio.Play();
+                }
+            } 
+        }
         if (this.transform.worldToLocalMatrix[1, 1] < 0 && _isBeingGrabbed == true)
         {
             SpawnSand();
         }
         else if (SandAudio.isPlaying)
         {
+            Debug.Log("Stopping audio");
             SandAudio.Stop();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isBeingGrabbed)
+        {
+            velocity = (transform.position - prevPos) / Time.deltaTime;
+            prevPos = transform.position;
         }
     }
 
     void SpawnSand()
     {
+        if (!SandAudio.isPlaying)
+        {
+            SandAudio.Play();
+        }
         for (int i = 0; i < amountOfSand; i++)
-        {   
+        {
             float randomX = UnityEngine.Random.Range(-startingScale.x * startingScale.x, startingScale.x * startingScale.x);
             float randomZ = UnityEngine.Random.Range(-startingScale.z * startingScale.z, startingScale.z * startingScale.z);
-            
+
             Vector2 vec2 = new Vector2(randomX, randomZ);
-            if(vec2.magnitude <= Math.Min(startingScale.x * startingScale.x, startingScale.z * startingScale.z))
+            if (vec2.magnitude <= Math.Min(startingScale.x * startingScale.x, startingScale.z * startingScale.z))
             {
 
                 GameObject sand1 = Instantiate(SandPrefab, this.gameObject.transform);
@@ -61,10 +98,7 @@ public class SandSpawner : VR_Object
             }
             break;
         }
-        if (!SandAudio.isPlaying)
-        {
-            SandAudio.Play();
-        }
+        
     }
 
     //private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
