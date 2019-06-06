@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpotlightHandler))]
 public class Tutorial : MonoBehaviour
 {
     private SpotlightHandler _spotLightHandler;

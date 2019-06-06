@@ -7,8 +7,13 @@ using UnityEngine.Video;
 public class VideoScreen : MonoBehaviour
 {
     private VideoPlayer vp;
+    [Tooltip("Start playing videos on awake?")]
     public bool PlayOnAwake = false;
+    [Tooltip("Should clips restart when finished?")]
+    public bool LoopVideos = true;
+    [Tooltip("Should we return to the start of the clip array if we reached the end?")]
     public bool ReturnToStart = true;
+    [Tooltip("Should the next clip start playing when the previous one is finished?")]
     public bool ContinueOnFinish = true;
     public VideoClip[] Videos;
     private int clipIndex = -1;
@@ -20,7 +25,11 @@ public class VideoScreen : MonoBehaviour
 
         if (PlayOnAwake)
         {
-            PlayNextVideo(true);
+            PlayNextVideo(LoopVideos);
+        }
+        if (ContinueOnFinish)
+        {
+            vp.loopPointReached += EndReached;
         }
     }
 
@@ -50,7 +59,7 @@ public class VideoScreen : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            PlayNextVideo(true);
+            PlayNextVideo(LoopVideos);
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -63,15 +72,20 @@ public class VideoScreen : MonoBehaviour
                 vp.Play();
             }
         }
+    }
 
-        if (ContinueOnFinish && (ulong)vp.frame == vp.frameCount)
+    void EndReached(UnityEngine.Video.VideoPlayer pVidPlayer)
+    {
+        //If the current clip is not looping
+        if (!pVidPlayer.isLooping)
         {
-            PlayNextVideo(true);
+            //Play the next clip
+            PlayNextVideo(LoopVideos);
         }
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        PlayNextVideo(true);
+        PlayNextVideo(LoopVideos);
     }
 }
