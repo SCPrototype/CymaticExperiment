@@ -40,10 +40,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowTex:
+        m_Texture: {fileID: 2800000, guid: 67a28e8a215e02646ab868dd1d580ed3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hight:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 983a332b9105ee34e916685aa32af30c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetalicGlossiness:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -52,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a53cf5449d11a15d1100a04b44295342, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -76,7 +84,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GlowInterval: 10
-    - _GlowLength: 0.5
+    - _GlowLength: 0.15
     - _GlowSpeed: 0.5
     - _Metallic: 0
     - _Mode: 0
@@ -90,6 +98,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.19215688, g: 0.19215688, b: 0.19215688, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0.47166008, g: 0.4625756, b: 0.990566, a: 1}
-    - _GlowDirection: {r: -1, g: 1, b: 0, a: 0}
-    - _GlowTraceColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GlowColor: {r: 1, g: 1, b: 0, a: 1}
+    - _GlowDirection: {r: -1, g: 1, b: -1, a: 0}
+    - _GlowTraceColor: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0}
