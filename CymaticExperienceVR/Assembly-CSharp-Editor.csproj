@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Editor\FMODMigrationUtil.cs" />
+    <Compile Include="Assets\GoogleVR\Editor\FmodGvrAudioRoomEditor.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\Editor\AudioImportPostProcessor.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\Editor\AudioManagerInspector.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\Editor\MinMaxPropertyDrawer.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Assets\Oculus\Spatializer\editor\ONSPPropagationMaterialEditor.cs" />
     <Compile Include="Assets\Oculus\Spatializer\editor\ONSPPropagationSerializationManager.cs" />
     <Compile Include="Assets\Oculus\Spatializer\editor\ONSPReflectionCustomGUI.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\FmodResonanceAudioRoomEditor.cs" />
     <Compile Include="Assets\VRTK\Examples\ExampleResources\SharedResources\Scripts\Editor\VRTKExample_FixSetupEditor.cs" />
     <Compile Include="Assets\VRTK\Source\Editor\Attributes\MinMaxRangeDrawer.cs" />
     <Compile Include="Assets\VRTK\Source\Editor\Attributes\ObsoleteInspectorDrawer.cs" />
@@ -105,25 +108,25 @@
     <Compile Include="Assets\VRTK\Source\Editor\VRTK_SupportInfoWindow.cs" />
     <Compile Include="Assets\VRTK\Source\Editor\VRTK_UpdatePrompt.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -327,19 +330,19 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -704,6 +707,10 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{837E3E34-409A-411A-17FD-1D0D5B8D7B8D}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{BEB0C343-DEB0-17F2-92EC-DB98BC8059CF}</Project>
+      <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.VR.Editor.csproj">
       <Project>{09AA9FE9-0712-3760-A2AF-50ED4DA6464C}</Project>
