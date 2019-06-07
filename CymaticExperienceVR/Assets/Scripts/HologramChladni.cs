@@ -81,7 +81,7 @@ public class HologramChladni : MonoBehaviour
         }
         rend.material = TerrainMaterial;
 
-        Vector3 center = new Vector3(37, 0, 37); //NOTE: This is hardcoded
+        Vector3 center = new Vector3(49.5f, 0, 49.5f); //NOTE: This is hardcoded
         //Vector3 center = FindCenter();
 
         Vector3[] vertices = new Vector3[poly.Length + 1];
