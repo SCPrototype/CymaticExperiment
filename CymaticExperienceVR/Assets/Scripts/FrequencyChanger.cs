@@ -15,10 +15,6 @@ public class FrequencyChanger : MonoBehaviour
         {
             chladni = GameObject.Find("TableHolder").GetComponent<Chladni>();
         }
-        if(_tutorial == null)
-        {
-            _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
-        }
     }
 
     protected virtual void OnEnable()

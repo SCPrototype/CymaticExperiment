@@ -23,6 +23,7 @@ public class Tutorial : MonoBehaviour
 
     public void CompleteStage1()
     {
+        
         if (stages[0] == false)
         {
             _spotLightHandler.SetLightState(SpotlightHandler.LightState.PLATE);
@@ -41,6 +42,7 @@ public class Tutorial : MonoBehaviour
 
     public void CompletedTutorial()
     {
+        Debug.Log("Completed tutorial");
         if (stages[2] == false)
         {
             if (stages[0] == true && stages[1] == true) {

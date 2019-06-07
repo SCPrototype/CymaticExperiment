@@ -53,7 +53,7 @@ public class SpotlightHandler : MonoBehaviour
 
     public void SetLightState(LightState pLightState)
     {
-        _spotLightSound.start();
+        //_spotLightSound.start();
         _lightState = pLightState;
         SwitchLights(_lightState);
     }

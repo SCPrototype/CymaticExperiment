@@ -50,7 +50,6 @@ public class Sand : MonoBehaviour
             }
             else if (Time.time >= spawnTime + _DestroyAfter)
             {
-                Debug.Log("Destroying sand.");
                 Destroy(this.gameObject);
             }
         }

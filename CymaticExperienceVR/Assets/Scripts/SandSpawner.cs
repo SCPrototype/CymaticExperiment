@@ -20,16 +20,16 @@ public class SandSpawner : VR_Object
     private Vector3 velocity;
     private Vector3 prevPos;
     private float _shakeSensitivity = 1.5f;
-    private FMOD.Studio.EventInstance ShakeSand;
+    private FMOD.Studio.EventInstance _pourSandSound;
     private Tutorial _tutorial;
-    private FMOD.Studio.PLAYBACK_STATE _playBackState;
+    private FMOD.Studio.PLAYBACK_STATE _playBackStatePour;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         startingScale = transform.localScale / 100;
-        ShakeSand = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPourSandSound);
+        _pourSandSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPourSandSound);
         _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
     }
 
@@ -38,7 +38,7 @@ public class SandSpawner : VR_Object
     {
         base.Update();
         
-        ShakeSand.getPlaybackState(out _playBackState);
+        _pourSandSound.getPlaybackState(out _playBackStatePour);
         if (_isBeingGrabbed)
         {
             float fwdDotProduct = Vector3.Dot(transform.forward, velocity);
@@ -63,11 +63,11 @@ public class SandSpawner : VR_Object
         {
             SpawnSand();
         }
-        else if (_playBackState == FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        else if (_playBackStatePour == FMOD.Studio.PLAYBACK_STATE.PLAYING)
         {
-            Debug.Log("Stopping audio");
-            //ShakeSand.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            ShakeSand.release();
+            _pourSandSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _pourSandSound.getPlaybackState(out _playBackStatePour);
+            //ShakeSand.release();
         }
     }
 
@@ -82,11 +82,10 @@ public class SandSpawner : VR_Object
 
     void SpawnSand()
     {
-        ShakeSand.getPlaybackState(out _playBackState);
-        if (_playBackState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
-        {
-            ShakeSand.start();
-            Debug.Log("Start sound");
+        _pourSandSound.getPlaybackState(out _playBackStatePour);
+        if (_playBackStatePour != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        {   
+            _pourSandSound.start();
         }
         for (int i = 0; i < amountOfSand; i++)
         {
@@ -111,8 +110,9 @@ public class SandSpawner : VR_Object
 
     }
 
-    private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
+    protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
+        base.ObjectGrabbed(sender, e);
         _tutorial.CompleteStage1();
     }
 
