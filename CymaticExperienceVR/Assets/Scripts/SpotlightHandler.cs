@@ -17,9 +17,11 @@ public class SpotlightHandler : MonoBehaviour
     public GameObject _lightSliders;
 
     private LightState _lightState;
+    private FMOD.Studio.EventInstance _spotLightSound;
     // Start is called before the first frame update
     public void Start()
     {
+        _spotLightSound = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/LeverRelease");
         SwitchLights(LightState.JARS);
     }
     private void SwitchLights(LightState pLightState)
@@ -51,6 +53,7 @@ public class SpotlightHandler : MonoBehaviour
 
     public void SetLightState(LightState pLightState)
     {
+        _spotLightSound.start();
         _lightState = pLightState;
         SwitchLights(_lightState);
     }

@@ -36,16 +36,34 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 5819213173702409994}
-  - {fileID: 3900094323839645879}
+  - {fileID: 522116393444226553}
+  - {fileID: 837435109395670356}
   EditorEvents:
-  - {fileID: 6733468289988225260}
-  - {fileID: -3416763211461964308}
-  - {fileID: 749082707555638032}
-  MasterBankRef: {fileID: 3900094323839645879}
-  StringsBankRef: {fileID: 5819213173702409994}
-  stringsBankWriteTime: 636953319910925850
+  - {fileID: 1686031651725841144}
+  - {fileID: 9155011258402165064}
+  MasterBankRef: {fileID: 837435109395670356}
+  StringsBankRef: {fileID: 522116393444226553}
+  stringsBankWriteTime: 636955055910053690
   cacheVersion: 2
+--- !u!114 &522116393444226553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: Assets\Sounds\FmodPojectExposure\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636955055910053690
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 782
+  Exists: 1
 --- !u!114 &749082707555638032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +87,49 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1437
+--- !u!114 &837435109395670356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\student\Documents\CymaticExperiment\CymaticExperienceVR\Assets\Sounds\FmodPojectExposure\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636955055909983883
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 114944
+  Exists: 1
+--- !u!114 &1686031651725841144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/PlayArea/LeverRelease
+  guid: 4ec1491112ca0f4eab464ef5eb6d7b7c
+  Banks:
+  - {fileID: 837435109395670356}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1843
 --- !u!114 &3900094323839645879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,3 +192,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &9155011258402165064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/PlayArea/SandPour
+  guid: ec948b25c9c2fb4ba8f08ed572d1b1cc
+  Banks:
+  - {fileID: 837435109395670356}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5125

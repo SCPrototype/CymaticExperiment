@@ -21,20 +21,24 @@ public class SandSpawner : VR_Object
     private Vector3 prevPos;
     private float _shakeSensitivity = 1.5f;
     private FMOD.Studio.EventInstance ShakeSand;
+    private Tutorial _tutorial;
+    private FMOD.Studio.PLAYBACK_STATE _playBackState;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         startingScale = transform.localScale / 100;
-        ShakeSand = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/Jar");
-
+        ShakeSand = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPourSandSound);
+        _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+        
+        ShakeSand.getPlaybackState(out _playBackState);
         if (_isBeingGrabbed)
         {
             float fwdDotProduct = Vector3.Dot(transform.forward, velocity);
@@ -59,10 +63,11 @@ public class SandSpawner : VR_Object
         {
             SpawnSand();
         }
-        else if (SandAudio.isPlaying)
+        else if (_playBackState == FMOD.Studio.PLAYBACK_STATE.PLAYING)
         {
             Debug.Log("Stopping audio");
-            SandAudio.Stop();
+            //ShakeSand.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            ShakeSand.release();
         }
     }
 
@@ -77,9 +82,11 @@ public class SandSpawner : VR_Object
 
     void SpawnSand()
     {
-        if (!SandAudio.isPlaying)
+        ShakeSand.getPlaybackState(out _playBackState);
+        if (_playBackState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
         {
-            SandAudio.Play();
+            ShakeSand.start();
+            Debug.Log("Start sound");
         }
         for (int i = 0; i < amountOfSand; i++)
         {
@@ -104,12 +111,10 @@ public class SandSpawner : VR_Object
 
     }
 
-    //private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
-    //{
-    //    Debug.Log("Im Grabbed");
-    //    _isBeingGrabbed = true;
-    //    _isOnSpawn = false;
-    //}
+    private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
+    {
+        _tutorial.CompleteStage1();
+    }
 
     //private void ObjectReleased(object sender, InteractableObjectEventArgs e)
     //{

@@ -9,7 +9,7 @@ public class Sand : MonoBehaviour
     private Chladni chladni;
     private Collider plateCollider;
     private Rigidbody rb;
-
+    private Tutorial _tutorial;
     private float spawnTime;
 
     // Start is called before the first frame update
@@ -24,6 +24,7 @@ public class Sand : MonoBehaviour
             Debug.Log("Chladni plate not found.");
         }
         rb = GetComponent<Rigidbody>();
+        _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
         spawnTime = Time.time;
     }
 
@@ -45,6 +46,7 @@ public class Sand : MonoBehaviour
             {
                 chladni.AddSand(this);
                 isConnectedToTable = true;
+                _tutorial.CompleteStage2();
             }
             else if (Time.time >= spawnTime + _DestroyAfter)
             {
