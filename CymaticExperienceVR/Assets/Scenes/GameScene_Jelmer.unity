@@ -636,16 +636,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27790758}
     m_Modifications:
-    - target: {fileID: -5541956328280056821, guid: 48f7d8a5d3999184a999bde6accab294,
-        type: 3}
-      propertyPath: RespawnPoint
-      value: 
-      objectReference: {fileID: 1310438560}
     - target: {fileID: 6104737195260456960, guid: 48f7d8a5d3999184a999bde6accab294,
         type: 3}
       propertyPath: m_Name
       value: JarYellowPrefab 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5541956328280056821, guid: 48f7d8a5d3999184a999bde6accab294,
+        type: 3}
+      propertyPath: RespawnPoint
+      value: 
+      objectReference: {fileID: 1310438560}
     - target: {fileID: 7125604982187606547, guid: 48f7d8a5d3999184a999bde6accab294,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -820,6 +820,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 573584058}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 519ea341bb51fd24da188c6c28dfb7ce,
+        type: 3}
+      propertyPath: m_Name
+      value: kids room
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 519ea341bb51fd24da188c6c28dfb7ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 519ea341bb51fd24da188c6c28dfb7ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -888,16 +898,6 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 519ea341bb51fd24da188c6c28dfb7ce,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 519ea341bb51fd24da188c6c28dfb7ce,
-        type: 3}
-      propertyPath: m_Name
-      value: kids room
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 519ea341bb51fd24da188c6c28dfb7ce,
-        type: 3}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4270652667081486044, guid: 519ea341bb51fd24da188c6c28dfb7ce,
@@ -1086,11 +1086,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand (4)
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1161,6 +1156,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1605,7 +1605,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2061287073}
+      - m_Target: {fileID: 2061287077}
         m_MethodName: PlayCupulaAnimation
         m_Mode: 1
         m_Arguments:
@@ -1782,11 +1782,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand (1)
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1857,6 +1852,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3653,11 +3653,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand (3)
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3728,6 +3723,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9946,6 +9946,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &493239392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3153908310271951864, guid: 9ee691731d8eac7438032cf7871a7476,
+    type: 3}
+  m_PrefabInstance: {fileID: 763502024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &493567548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10055,6 +10061,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 6317106008045385693, guid: 1d3119e0f785d7c4d9d83f519a711319, type: 3}
+--- !u!1 &500314038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6325964764588389695, guid: 84ca68d48016f6b488824a98449572fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1542779107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &503999319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10062,16 +10074,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27790758}
     m_Modifications:
-    - target: {fileID: 1262268586983440507, guid: 0f94a760cb9ef9f47acf1ce7d08f6b68,
-        type: 3}
-      propertyPath: RespawnPoint
-      value: 
-      objectReference: {fileID: 1013060455}
     - target: {fileID: 700907538858921792, guid: 0f94a760cb9ef9f47acf1ce7d08f6b68,
         type: 3}
       propertyPath: m_Name
       value: JarGreenPrefab 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1262268586983440507, guid: 0f94a760cb9ef9f47acf1ce7d08f6b68,
+        type: 3}
+      propertyPath: RespawnPoint
+      value: 
+      objectReference: {fileID: 1013060455}
     - target: {fileID: 4603037713174805843, guid: 0f94a760cb9ef9f47acf1ce7d08f6b68,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10630,8 +10642,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567967253}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5269, z: -1.0182}
-  m_LocalScale: {x: 0.4, y: 0.009090911, z: 0.15000007}
+  m_LocalPosition: {x: -0, y: 0.5269, z: -1.024}
+  m_LocalScale: {x: 0.4, y: 0.001, z: 0.14}
   m_Children: []
   m_Father: {fileID: 1343249925}
   m_RootOrder: 5
@@ -10788,11 +10800,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand Blue
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10863,6 +10870,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11428,11 +11440,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand (5)
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11503,6 +11510,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11657,11 +11669,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand Teal
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11732,6 +11739,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11865,11 +11877,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand Yellow
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11940,6 +11947,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12102,11 +12114,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12177,6 +12184,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12415,6 +12427,12 @@ Transform:
   m_Father: {fileID: 1626278556}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &750460275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9067249563095026522, guid: a5f8a78f52bcf2a48a18e8791cd24e12,
+    type: 3}
+  m_PrefabInstance: {fileID: 846416735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &761147765
 GameObject:
   m_ObjectHideFlags: 0
@@ -12513,16 +12531,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27790758}
     m_Modifications:
-    - target: {fileID: -357516077989029027, guid: 9ee691731d8eac7438032cf7871a7476,
-        type: 3}
-      propertyPath: RespawnPoint
-      value: 
-      objectReference: {fileID: 1943487942}
     - target: {fileID: 3153908310271951864, guid: 9ee691731d8eac7438032cf7871a7476,
         type: 3}
       propertyPath: m_Name
       value: JarPurplePrefab 1
       objectReference: {fileID: 0}
+    - target: {fileID: -357516077989029027, guid: 9ee691731d8eac7438032cf7871a7476,
+        type: 3}
+      propertyPath: RespawnPoint
+      value: 
+      objectReference: {fileID: 1943487942}
     - target: {fileID: 2134626221160362475, guid: 9ee691731d8eac7438032cf7871a7476,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12920,6 +12938,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab2473f656558c43a85932d920c2b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &802173231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 700907538858921792, guid: 0f94a760cb9ef9f47acf1ce7d08f6b68,
+    type: 3}
+  m_PrefabInstance: {fileID: 503999319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &805058604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12932,11 +12956,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand (6)
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13007,6 +13026,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -13200,16 +13224,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27790758}
     m_Modifications:
-    - target: {fileID: -8286771125525347583, guid: a5f8a78f52bcf2a48a18e8791cd24e12,
-        type: 3}
-      propertyPath: RespawnPoint
-      value: 
-      objectReference: {fileID: 126918187}
     - target: {fileID: 9067249563095026522, guid: a5f8a78f52bcf2a48a18e8791cd24e12,
         type: 3}
       propertyPath: m_Name
       value: JarBluePrefab 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8286771125525347583, guid: a5f8a78f52bcf2a48a18e8791cd24e12,
+        type: 3}
+      propertyPath: RespawnPoint
+      value: 
+      objectReference: {fileID: 126918187}
     - target: {fileID: 5444305179175205193, guid: a5f8a78f52bcf2a48a18e8791cd24e12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13286,16 +13310,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27790758}
     m_Modifications:
-    - target: {fileID: -7111688151825240820, guid: 5b7789779c8883b41be17ca217e04692,
-        type: 3}
-      propertyPath: RespawnPoint
-      value: 
-      objectReference: {fileID: 305112999}
     - target: {fileID: 6003171831403185146, guid: 5b7789779c8883b41be17ca217e04692,
         type: 3}
       propertyPath: m_Name
       value: JarTealPrefab 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7111688151825240820, guid: 5b7789779c8883b41be17ca217e04692,
+        type: 3}
+      propertyPath: RespawnPoint
+      value: 
+      objectReference: {fileID: 305112999}
     - target: {fileID: 7283680837625573865, guid: 5b7789779c8883b41be17ca217e04692,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14739,6 +14763,13 @@ MonoBehaviour:
   ignoreCollisionsWith:
   - {fileID: 1361658304}
   - {fileID: 2024432188}
+  - {fileID: 493239392}
+  - {fileID: 750460275}
+  - {fileID: 967771972}
+  - {fileID: 802173231}
+  - {fileID: 2132513099}
+  - {fileID: 500314038}
+  - {fileID: 1961710150}
   excludeColliderCheckOn: []
   equalityFidelity: 0.001
   connectedTo: {fileID: 0}
@@ -14867,6 +14898,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2340363785664970686, guid: 5558138a483997347820bb30508b4bb2,
     type: 3}
   m_PrefabInstance: {fileID: 621145118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &967771972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6003171831403185146, guid: 5b7789779c8883b41be17ca217e04692,
+    type: 3}
+  m_PrefabInstance: {fileID: 851851502}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &973140024 stripped
 GameObject:
@@ -16732,11 +16769,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand (2)
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16807,6 +16839,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4da2d52d7e4e6b74e93cbc289b00fd3a, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -17321,16 +17358,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8107929754145912856, guid: 3508acced9cff2f41841be4f85d049bc,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ea021256cacc4ff47b2d510cd8dfce88, type: 2}
-    - target: {fileID: -5097817514175713774, guid: 3508acced9cff2f41841be4f85d049bc,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6c3593b0cc2327342a55010b82dea756, type: 2}
     - target: {fileID: -4216859302048453862, guid: 3508acced9cff2f41841be4f85d049bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17386,6 +17413,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8107929754145912856, guid: 3508acced9cff2f41841be4f85d049bc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea021256cacc4ff47b2d510cd8dfce88, type: 2}
+    - target: {fileID: -5097817514175713774, guid: 3508acced9cff2f41841be4f85d049bc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c3593b0cc2327342a55010b82dea756, type: 2}
     - target: {fileID: -3843906194088649907, guid: 3508acced9cff2f41841be4f85d049bc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -17974,11 +18011,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand Red
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18049,6 +18081,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -18469,16 +18506,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27790758}
     m_Modifications:
-    - target: {fileID: 851284309727769179, guid: a05a29a8cd72f86498c467f17007fef4,
-        type: 3}
-      propertyPath: RespawnPoint
-      value: 
-      objectReference: {fileID: 157702117}
     - target: {fileID: 8994324780463330975, guid: a05a29a8cd72f86498c467f17007fef4,
         type: 3}
       propertyPath: m_Name
       value: JarRedPrefab 1
       objectReference: {fileID: 0}
+    - target: {fileID: 851284309727769179, guid: a05a29a8cd72f86498c467f17007fef4,
+        type: 3}
+      propertyPath: RespawnPoint
+      value: 
+      objectReference: {fileID: 157702117}
     - target: {fileID: 5370854143463548044, guid: a05a29a8cd72f86498c467f17007fef4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21145,16 +21182,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27790758}
     m_Modifications:
-    - target: {fileID: 658177231246773325, guid: 84ca68d48016f6b488824a98449572fc,
-        type: 3}
-      propertyPath: RespawnPoint
-      value: 
-      objectReference: {fileID: 1028275510}
     - target: {fileID: 6325964764588389695, guid: 84ca68d48016f6b488824a98449572fc,
         type: 3}
       propertyPath: m_Name
       value: JarOrangePrefab 1
       objectReference: {fileID: 0}
+    - target: {fileID: 658177231246773325, guid: 84ca68d48016f6b488824a98449572fc,
+        type: 3}
+      propertyPath: RespawnPoint
+      value: 
+      objectReference: {fileID: 1028275510}
     - target: {fileID: 7030416673274021676, guid: 84ca68d48016f6b488824a98449572fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22613,11 +22650,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand Green
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22688,6 +22720,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24699,6 +24736,13 @@ MonoBehaviour:
   ignoreCollisionsWith:
   - {fileID: 1361658304}
   - {fileID: 2024432188}
+  - {fileID: 493239392}
+  - {fileID: 750460275}
+  - {fileID: 967771972}
+  - {fileID: 802173231}
+  - {fileID: 2132513099}
+  - {fileID: 500314038}
+  - {fileID: 1961710150}
   excludeColliderCheckOn: []
   equalityFidelity: 0.001
   connectedTo: {fileID: 0}
@@ -24709,7 +24753,7 @@ MonoBehaviour:
   forceRestingPositionThreshold: 0
   stepValueRange:
     minimum: 1
-    maximum: 31
+    maximum: 12
   stepSize: 1
   useStepAsValue: 1
   snapToStep: 1
@@ -25109,11 +25153,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand Purple
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25184,6 +25223,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -25789,6 +25833,12 @@ MonoBehaviour:
   objectToHighlight: {fileID: 0}
   objectHighlighter: {fileID: 0}
   objectToAffect: {fileID: 0}
+--- !u!1 &1961710150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8994324780463330975, guid: a05a29a8cd72f86498c467f17007fef4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1346185950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1971999157
 GameObject:
   m_ObjectHideFlags: 0
@@ -26704,6 +26754,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 9885cb9a143173446bfdb690a661a9f6,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 194f419a51204b047bd4f56f2f28e7b6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
 --- !u!1 &2061287072 stripped
@@ -26719,7 +26774,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061287072}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b28d2dbcfbe85749a74b419b2dcd4d7, type: 3}
   m_Name: 
@@ -26733,17 +26788,42 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061287072}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
   m_Controller: {fileID: 9100000, guid: 194f419a51204b047bd4f56f2f28e7b6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &2061287075 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 9885cb9a143173446bfdb690a661a9f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2061287071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2061287076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 9885cb9a143173446bfdb690a661a9f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2061287071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2061287077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061287076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b28d2dbcfbe85749a74b419b2dcd4d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cupulaAnimator: {fileID: 2061287075}
 --- !u!1 &2064933070
 GameObject:
   m_ObjectHideFlags: 0
@@ -27243,16 +27323,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8107929754145912856, guid: 3508acced9cff2f41841be4f85d049bc,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ea021256cacc4ff47b2d510cd8dfce88, type: 2}
-    - target: {fileID: -5097817514175713774, guid: 3508acced9cff2f41841be4f85d049bc,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6c3593b0cc2327342a55010b82dea756, type: 2}
     - target: {fileID: -4216859302048453862, guid: 3508acced9cff2f41841be4f85d049bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27308,6 +27378,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8107929754145912856, guid: 3508acced9cff2f41841be4f85d049bc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea021256cacc4ff47b2d510cd8dfce88, type: 2}
+    - target: {fileID: -5097817514175713774, guid: 3508acced9cff2f41841be4f85d049bc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c3593b0cc2327342a55010b82dea756, type: 2}
     - target: {fileID: -3843906194088649907, guid: 3508acced9cff2f41841be4f85d049bc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -27545,11 +27625,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar stand Orange
       objectReference: {fileID: 0}
-    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27620,6 +27695,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -6500061857624149730, guid: 43ca4f0f58e574f469ffc114b22ead2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2faeec8b7f0ff0b4e9277aca70aa54a0, type: 2}
     - target: {fileID: -829333147308878954, guid: 43ca4f0f58e574f469ffc114b22ead2e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -27958,6 +28038,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dae0ede0c77ee948b969f7d3d361651, type: 3}
+--- !u!1 &2132513099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6104737195260456960, guid: 48f7d8a5d3999184a999bde6accab294,
+    type: 3}
+  m_PrefabInstance: {fileID: 66103460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2140163010
 GameObject:
   m_ObjectHideFlags: 0
