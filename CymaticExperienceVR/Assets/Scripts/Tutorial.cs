@@ -6,13 +6,13 @@ using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     private SpotlightHandler _spotLightHandler;
-    private bool[] stages = new bool[3] { false, false, false };
+    private bool[] stages = new bool[3] { false, false, false }; //TODO: Terrain lever still needs to be added.
 
     // Start is called before the first frame update
     void Start()
     {
         _spotLightHandler = this.GetComponent<SpotlightHandler>();
-      
+        ResetTutorial();
     }
 
     // Update is called once per frame
@@ -42,7 +42,6 @@ public class Tutorial : MonoBehaviour
 
     public void CompletedTutorial()
     {
-        Debug.Log("Completed tutorial");
         if (stages[2] == false)
         {
             if (stages[0] == true && stages[1] == true) {
