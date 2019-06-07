@@ -19,7 +19,7 @@ public class VR_Object : MonoBehaviour
     protected bool _isBeingGrabbed = false;
     protected bool _isOnSpawn = true;
     private float _droppedTime;
-    private float _spawnTime;
+    protected float _spawnTime;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -45,17 +45,7 @@ public class VR_Object : MonoBehaviour
         //If the object has been moved, and is not currently being held, and the respawn delay has elapsed.
         if (!_isBeingGrabbed && !_isOnSpawn && Time.time - _droppedTime >= RespawnDelay)
         {
-            //Debug.Log("Respawning item." + _isOnSpawn + " " + _isBeingGrabbed);
-            //Disable velocity.
-            rb.isKinematic = true;
-            //Set object back to respawn point.
-            transform.position = RespawnPoint.position;
-            transform.rotation = RespawnPoint.rotation;
-            _isOnSpawn = true;
-            //Re-enable velocity.
-            rb.isKinematic = false;
-            _spawnTime = Time.time;
-
+            HandleRespawn();
         }
         //If the object is being moved from its spawn position.
         else if (_isOnSpawn && rb.velocity.magnitude > 0 && Time.time > _spawnTime + 0.5f)
@@ -63,6 +53,18 @@ public class VR_Object : MonoBehaviour
             _droppedTime = Time.time;
             _isOnSpawn = false;
         }
+    }
+
+    protected virtual void HandleRespawn()
+    {
+        rb.isKinematic = true;
+        //Set object back to respawn point.
+        transform.position = RespawnPoint.position;
+        transform.rotation = RespawnPoint.rotation;
+        _isOnSpawn = true;
+        //Re-enable velocity.
+        rb.isKinematic = false;
+        _spawnTime = Time.time;
     }
 
     protected virtual void ObjectGrabbed(object sender, InteractableObjectEventArgs e)

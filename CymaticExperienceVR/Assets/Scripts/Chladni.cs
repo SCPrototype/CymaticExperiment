@@ -7,7 +7,7 @@ public class Chladni : MonoBehaviour
     const int _MaxSand = 750;
 
     //Changable variations
-    public static int plateSize = 75;
+    public static int plateSize = 100;
 
     public GameObject TargetPlane;
     public GameObject PixelPrefab;

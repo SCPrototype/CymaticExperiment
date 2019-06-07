@@ -11,8 +11,9 @@ public class CupulaBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         openBool = Animator.StringToHash("OpenCupula");
-        this.gameObject.GetComponent<Animator>();
+        _cupulaAnimator = this.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
