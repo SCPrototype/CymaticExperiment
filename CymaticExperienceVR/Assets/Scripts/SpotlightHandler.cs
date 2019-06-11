@@ -10,8 +10,11 @@ public class SpotlightHandler : MonoBehaviour
         JARS = 1,
         PLATE = 2,
         SLIDERS = 3,
-        LEVER = 4
+        LEVER = 4,
+        TABLET = 5
     };
+
+    public VideoScreen[] _videoScreens; //NOTE: The video players cause frame rate drops when switching videos.
 
     public GameObject _lightJars;
     public ParticleSystem[] _partJars;
@@ -55,13 +58,20 @@ public class SpotlightHandler : MonoBehaviour
         switch (pLightState)
         {
             case LightState.OFF:
-                
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].StopVideo();
+                }
                 break;
             case LightState.JARS:
                 _lightJars.SetActive(true);
                 for (int i = 0; i < _partJars.Length; i++)
                 {
                     _partJars[i].Play();
+                }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.JARS - 1);
                 }
                 break;
             case LightState.PLATE:
@@ -70,12 +80,20 @@ public class SpotlightHandler : MonoBehaviour
                 {
                     _partPlate[i].Play();
                 }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.PLATE - 1);
+                }
                 break;
             case LightState.SLIDERS:
                 _lightSliders.SetActive(true);
                 for (int i = 0; i < _partSliders.Length; i++)
                 {
                     _partSliders[i].Play();
+                }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.SLIDERS - 1);
                 }
                 break;
             case LightState.LEVER:
@@ -84,9 +102,27 @@ public class SpotlightHandler : MonoBehaviour
                 {
                     _partLever[i].Play();
                 }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.LEVER - 1);
+                }
+                break;
+            case LightState.TABLET:
+                _lightLever.SetActive(true);
+                for (int i = 0; i < _partLever.Length; i++)
+                {
+                    _partLever[i].Play(); //NOTE: Tablet uses the same lights and particles as the lever.
+                }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.TABLET - 1);
+                }
                 break;
             default:
-
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].StopVideo();
+                }
                 break;
         }
     }

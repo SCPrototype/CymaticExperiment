@@ -27,6 +27,8 @@ public class TiltMazeTablet : VR_Object
     private bool IsActive;
     private bool IsActivating = false;
 
+    private Tutorial _tutorial;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -34,6 +36,7 @@ public class TiltMazeTablet : VR_Object
 
         //GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ResetKinematic);
         GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ResetKinematic);
+        _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
 
         startRotation = TargetTerrain.transform.eulerAngles;
 
@@ -185,5 +188,11 @@ public class TiltMazeTablet : VR_Object
     private void ResetKinematic(object sender, InteractableObjectEventArgs e)
     {
         rb.isKinematic = false;
+    }
+
+    protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
+    {
+        base.ObjectGrabbed(sender, e);
+        _tutorial.CompleteStage(5);
     }
 }
