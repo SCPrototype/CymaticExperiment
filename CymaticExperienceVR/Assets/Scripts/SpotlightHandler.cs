@@ -6,10 +6,11 @@ public class SpotlightHandler : MonoBehaviour
 {
     public enum LightState
     {
-        OFF,
-        JARS,
-        PLATE,
-        SLIDERS
+        OFF = 0,
+        JARS = 1,
+        PLATE = 2,
+        SLIDERS = 3,
+        LEVER = 4
     };
 
     public GameObject _lightJars;
@@ -17,7 +18,9 @@ public class SpotlightHandler : MonoBehaviour
     public GameObject _lightPlate;
     public ParticleSystem[] _partPlate;
     public GameObject _lightSliders;
-    public ParticleSystem[] _partSliders; //TODO: Terrain lever still needs to be added.
+    public ParticleSystem[] _partSliders;
+    public GameObject _lightLever;
+    public ParticleSystem[] _partLever;
 
     private LightState _lightState;
     private FMOD.Studio.EventInstance _spotLightSound;
@@ -31,6 +34,7 @@ public class SpotlightHandler : MonoBehaviour
         _lightJars.SetActive(false);
         _lightPlate.SetActive(false);
         _lightSliders.SetActive(false);
+        _lightLever.SetActive(false);
         for (int i = 0; i < _partJars.Length; i++)
         {
             _partJars[i].Stop();
@@ -42,6 +46,10 @@ public class SpotlightHandler : MonoBehaviour
         for (int i = 0; i < _partSliders.Length; i++)
         {
             _partSliders[i].Stop();
+        }
+        for (int i = 0; i < _partLever.Length; i++)
+        {
+            _partLever[i].Stop();
         }
 
         switch (pLightState)
@@ -69,6 +77,16 @@ public class SpotlightHandler : MonoBehaviour
                 {
                     _partSliders[i].Play();
                 }
+                break;
+            case LightState.LEVER:
+                _lightLever.SetActive(true);
+                for (int i = 0; i < _partLever.Length; i++)
+                {
+                    _partLever[i].Play();
+                }
+                break;
+            default:
+
                 break;
         }
     }

@@ -46,7 +46,7 @@ public class Sand : MonoBehaviour
             {
                 chladni.AddSand(this);
                 isConnectedToTable = true;
-                _tutorial.CompleteStage2();
+                _tutorial.CompleteStage(2);
             }
             else if (Time.time >= spawnTime + _DestroyAfter)
             {

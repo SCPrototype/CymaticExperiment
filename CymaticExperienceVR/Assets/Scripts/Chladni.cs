@@ -311,13 +311,13 @@ public class Chladni : MonoBehaviour
     {
         resonnanceTarget = pCounter;
         draw();
-        _tutorial.CompletedTutorial();
+        _tutorial.CompleteStage(3);
     }
 
     public void ChangeAmplitude(int pValue)
     {
         amplitude = 0.5f + (pValue * 0.1f);
-        _tutorial.CompletedTutorial();
+        _tutorial.CompleteStage(3);
     }
 
     private void manualTest()

@@ -114,7 +114,7 @@ public class SandSpawner : VR_Object
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
-        _tutorial.CompleteStage1();
+        _tutorial.CompleteStage(1);
     }
 
     //private void ObjectReleased(object sender, InteractableObjectEventArgs e)

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     private SpotlightHandler _spotLightHandler;
-    private bool[] stages = new bool[3] { false, false, false }; //TODO: Terrain lever still needs to be added.
+    private int _currentStage = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,38 +21,18 @@ public class Tutorial : MonoBehaviour
 
     }
 
-    public void CompleteStage1()
+    public void CompleteStage(int pStage)
     {
-        
-        if (stages[0] == false)
+        if (_currentStage == pStage)
         {
-            _spotLightHandler.SetLightState(SpotlightHandler.LightState.PLATE);
-            stages[0] = true;
-        }
-    }
-
-    public void CompleteStage2()
-    {
-        if (stages[1] == false && stages[0] == true)
-        {
-            _spotLightHandler.SetLightState(SpotlightHandler.LightState.SLIDERS);
-            stages[1] = true;
-        }
-    }
-
-    public void CompletedTutorial()
-    {
-        if (stages[2] == false)
-        {
-            if (stages[0] == true && stages[1] == true) {
-                _spotLightHandler.SetLightState(SpotlightHandler.LightState.OFF);
-                stages[2] = true;
-            }
+            _currentStage++;
+            _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
         }
     }
 
     public void ResetTutorial()
     {
-        _spotLightHandler.SetLightState(SpotlightHandler.LightState.JARS);
+        _currentStage = 1;
+        _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
     }
 }
