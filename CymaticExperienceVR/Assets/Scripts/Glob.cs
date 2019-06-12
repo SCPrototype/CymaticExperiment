@@ -19,4 +19,6 @@ public static class GLOB
     public const string SpotlightSound = "event:/PlayArea/Spotlight";
     public const string TouchingSliderSound = "event:/PlayArea/TouchingSlider";
 
+    public const string SandPourSoundPath = "Sandspill";
+
 }
