@@ -139,7 +139,6 @@ public class SandSpawner : VR_Object
         if (SandPourAudio.volume > 0)
         {
             SandPourAudio.volume = audioStartVolume * (1 - ((Time.time - fadeStartTime) / FadeTime));
-            Debug.Log(SandPourAudio.volume);
         }
         else
         {
