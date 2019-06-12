@@ -82,7 +82,7 @@ public class VR_Object : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (ImpactSound != null)
+        if (ImpactSound != null && Time.time > _spawnTime + 0.5f)
         {
             ImpactSound.Play();
         }
