@@ -90,7 +90,7 @@
 
 			fixed4 frag(v2f i) : SV_Target{
 				float nu = (i.uv.x < .5) ? i.uv.x : (1. - i.uv.x);
-
+			nu = i.uv.x;
 				nu = pow(nu, 2.);
 				float2 n_uv = float2(nu, i.uv.y);
 
@@ -119,6 +119,15 @@
 				// fade out
 				float fade = saturate(pow(i.uv.y, _Fade));
 				//float fade = saturate(i.vertex.y * ((1. - _Fade) * 0.01));
+				
+				if (i.uv.y < _Fade)
+				{
+					col.a = 0;
+				}
+				else {
+					fade = (1.0 - _Fade) - (1.0 - i.uv.y);
+				}
+				
 
 				col.a *= fresnel * _AlphaOffset * fade;
 
