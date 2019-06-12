@@ -33,6 +33,31 @@ public class VideoScreen : MonoBehaviour
         }
     }
 
+    public void StopVideo()
+    {
+        if (vp.isPlaying)
+        {
+            vp.Stop();
+        }
+    }
+
+    public void PlayVideo(int pIndex, bool pLoop = true)
+    {
+        if (vp.isPlaying)
+        {
+            vp.Stop();
+        }
+
+        vp.isLooping = pLoop;
+
+        if (pIndex < Videos.Length)
+        {
+            vp.clip = Videos[pIndex];
+            vp.Play();
+            clipIndex = pIndex;
+        }
+    }
+
     public void PlayNextVideo(bool pLoop = true)
     {
         if (vp.isPlaying)
@@ -86,6 +111,6 @@ public class VideoScreen : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        PlayNextVideo(LoopVideos);
+        //PlayNextVideo(LoopVideos);
     }
 }

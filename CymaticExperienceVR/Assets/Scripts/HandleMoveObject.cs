@@ -21,8 +21,8 @@ public class HandleMoveObject : MonoBehaviour
     {
         if (positionHasChanged)
         {
-            tableObject.transform.position = new Vector3(neutralPosTable.x, tableController.transform.localPosition.y, neutralPosTable.z);
-            neutralPosTable = tableObject.transform.position;
+            tableObject.transform.position = new Vector3(neutralPosTable.x, neutralPosTable.y + tableController.transform.localPosition.y, neutralPosTable.z);
+            //neutralPosTable = tableObject.transform.position;
             positionHasChanged = false;
         }
     }
