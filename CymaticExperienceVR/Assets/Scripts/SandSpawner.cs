@@ -27,7 +27,6 @@ public class SandSpawner : VR_Object
     // Start is called before the first frame update
     protected override void Start()
     {
-        Debug.Log("que?");
         base.Start();
         startingScale = transform.localScale / 100;
         _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
