@@ -1,13 +1,12 @@
 ﻿Shader "Custom/VolumetricLight" {
 	Properties{
 		_Color("Color", Color) = (1,1,1,1)
-		_Noise("Noise Texture", 2D) = "white" {}
 		_Fresnel("Fresnel", Range(0., 10.)) = 1.
 		_AlphaOffset("Alpha Offset", Range(0., 1.)) = 1.
 		_NoiseSpeed("Noise Speed", Range(0., 1.)) = .5
 		_Ambient("Ambient", Range(0., 1.)) = .3
 		_Intensity("Intensity", Range(0., 1.5)) = .2
-		_Fade("Fade", Range(0., 10.)) = 1.
+		_Fade("Fade", Range(0., 1.)) = 1.
 		_Wind("Wind", Range(0., 1.)) = .1
 	}
 
@@ -64,7 +63,6 @@
 			};
 
 			fixed4 _Color;
-			sampler2D _Noise;
 			float _Fresnel;
 			float _AlphaOffset;
 			float _NoiseSpeed;
@@ -76,11 +74,8 @@
 			v2f vert(appdata_t v) {
 				v2f o;
 
-				//float4 output = tex2D(_Noise, v.uv);
-
 				// add noise to vertices 
 				float noise = _Wind * cnoise(v.normal + _Time.y);
-				//float noise = _Wind * sin(v.normal + _Time.y);
 				float4 nv = float4(v.vertex.xyz + noise * v.normal, v.vertex.w);
 				// move model's vertices to screen position 
 				o.vertex = UnityObjectToClipPos(nv);
@@ -95,6 +90,7 @@
 
 			fixed4 frag(v2f i) : SV_Target{
 				float nu = (i.uv.x < .5) ? i.uv.x : (1. - i.uv.x);
+
 				nu = pow(nu, 2.);
 				float2 n_uv = float2(nu, i.uv.y);
 
@@ -121,7 +117,8 @@
 				float fresnel = pow(raycast, _Fresnel);
 
 				// fade out
-				float fade = saturate(pow(1. - i.uv.y, _Fade));
+				float fade = saturate(pow(i.uv.y, _Fade));
+				//float fade = saturate(i.vertex.y * ((1. - _Fade) * 0.01));
 
 				col.a *= fresnel * _AlphaOffset * fade;
 

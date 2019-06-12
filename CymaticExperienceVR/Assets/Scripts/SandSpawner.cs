@@ -20,21 +20,25 @@ public class SandSpawner : VR_Object
     private Vector3 velocity;
     private Vector3 prevPos;
     private float _shakeSensitivity = 1.5f;
-    private FMOD.Studio.EventInstance ShakeSand;
+    private FMOD.Studio.EventInstance _pourSandSound;
+    private Tutorial _tutorial;
+    private FMOD.Studio.PLAYBACK_STATE _playBackStatePour;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         startingScale = transform.localScale / 100;
-        ShakeSand = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/Jar");
-
+        _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
+        _pourSandSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPourSandSound);
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+        
+        _pourSandSound.getPlaybackState(out _playBackStatePour);
         if (_isBeingGrabbed)
         {
             float fwdDotProduct = Vector3.Dot(transform.forward, velocity);
@@ -59,10 +63,11 @@ public class SandSpawner : VR_Object
         {
             SpawnSand();
         }
-        else if (SandAudio.isPlaying)
+        else if (_playBackStatePour == FMOD.Studio.PLAYBACK_STATE.PLAYING)
         {
-            Debug.Log("Stopping audio");
-            SandAudio.Stop();
+            _pourSandSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _pourSandSound.getPlaybackState(out _playBackStatePour);
+            //ShakeSand.release();
         }
     }
 
@@ -77,9 +82,10 @@ public class SandSpawner : VR_Object
 
     void SpawnSand()
     {
-        if (!SandAudio.isPlaying)
-        {
-            SandAudio.Play();
+        _pourSandSound.getPlaybackState(out _playBackStatePour);
+        if (_playBackStatePour != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        {   
+            _pourSandSound.start();
         }
         for (int i = 0; i < amountOfSand; i++)
         {
@@ -104,12 +110,11 @@ public class SandSpawner : VR_Object
 
     }
 
-    //private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
-    //{
-    //    Debug.Log("Im Grabbed");
-    //    _isBeingGrabbed = true;
-    //    _isOnSpawn = false;
-    //}
+    protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
+    {
+        base.ObjectGrabbed(sender, e);
+        _tutorial.CompleteStage(1);
+    }
 
     //private void ObjectReleased(object sender, InteractableObjectEventArgs e)
     //{
