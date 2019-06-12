@@ -82,4 +82,16 @@ public class BottleFlip : VR_Object
             _landedSuccesfully = false;
         }
     }
+
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        base.OnCollisionEnter(collision);
+        FMODUnity.RuntimeManager.PlayOneShot(GLOB.BottleFallSound, GetComponent<Transform>().position);
+    }
+
+    protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
+    {
+        base.ObjectGrabbed(sender, e);
+        FMODUnity.RuntimeManager.PlayOneShot(GLOB.BottlePickupSound, GetComponent<Transform>().position);
+    }
 }

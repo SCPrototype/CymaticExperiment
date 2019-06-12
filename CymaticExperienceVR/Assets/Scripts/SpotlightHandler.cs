@@ -56,5 +56,6 @@ public class SpotlightHandler : MonoBehaviour
         //_spotLightSound.start();
         _lightState = pLightState;
         SwitchLights(_lightState);
+        FMODUnity.RuntimeManager.PlayOneShot(GLOB.SpotlightSound, GetComponent<Transform>().position);
     }
 }

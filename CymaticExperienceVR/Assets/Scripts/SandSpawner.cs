@@ -20,9 +20,12 @@ public class SandSpawner : VR_Object
     private Vector3 velocity;
     private Vector3 prevPos;
     private float _shakeSensitivity = 1.5f;
-    private FMOD.Studio.EventInstance _pourSandSound;
-    private Tutorial _tutorial;
+    public FMOD.Studio.EventInstance _pourSandSound;
+    private FMOD.Studio.EventInstance _sandShakeSound;
+    private FMOD.Studio.EventInstance _jarPickUpSound;
     private FMOD.Studio.PLAYBACK_STATE _playBackStatePour;
+    private FMOD.Studio.PLAYBACK_STATE _playBackStateShake;
+    private Tutorial _tutorial;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -30,14 +33,16 @@ public class SandSpawner : VR_Object
         base.Start();
         startingScale = transform.localScale / 100;
         _pourSandSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPourSandSound);
-        _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
+        _sandShakeSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarShakeSound);
+        _jarPickUpSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPickUpSound);
+         _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        
+        _sandShakeSound.getPlaybackState(out _playBackStateShake);
         _pourSandSound.getPlaybackState(out _playBackStatePour);
         if (_isBeingGrabbed)
         {
@@ -47,15 +52,10 @@ public class SandSpawner : VR_Object
 
             Vector3 velocityVector = new Vector3(rightDotProduct, upDotProduct, fwdDotProduct);
             if (velocity.magnitude > _shakeSensitivity)
-            {
-                //Debug.DrawRay(transform.position, velocity * 10, Color.yellow, 10, false);
-                if (SandShakeAudio != null)
+            {       
+                if(_playBackStateShake != FMOD.Studio.PLAYBACK_STATE.PLAYING && _playBackStateShake != FMOD.Studio.PLAYBACK_STATE.STARTING)
                 {
-                    if (!SandShakeAudio.isPlaying)
-                    {
-                        Debug.Log("Playing SandShake");
-                        SandShakeAudio.Play();
-                    }
+                    _sandShakeSound.start();
                 }
             }
         }
@@ -63,11 +63,9 @@ public class SandSpawner : VR_Object
         {
             SpawnSand();
         }
-        else if (_playBackStatePour == FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        else if (_playBackStatePour == FMOD.Studio.PLAYBACK_STATE.PLAYING || _playBackStatePour == FMOD.Studio.PLAYBACK_STATE.STARTING)
         {
             _pourSandSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            _pourSandSound.getPlaybackState(out _playBackStatePour);
-            //ShakeSand.release();
         }
     }
 
@@ -82,11 +80,7 @@ public class SandSpawner : VR_Object
 
     void SpawnSand()
     {
-        _pourSandSound.getPlaybackState(out _playBackStatePour);
-        if (_playBackStatePour != FMOD.Studio.PLAYBACK_STATE.PLAYING)
-        {   
-            _pourSandSound.start();
-        }
+        SandPourSand();
         for (int i = 0; i < amountOfSand; i++)
         {
             float randomX = UnityEngine.Random.Range(-startingScale.x * startingScale.x, startingScale.x * startingScale.x);
@@ -107,12 +101,22 @@ public class SandSpawner : VR_Object
             }
             break;
         }
+    }
 
+    private void SandPourSand()
+    {
+        if (_playBackStatePour != FMOD.Studio.PLAYBACK_STATE.PLAYING && _playBackStatePour != FMOD.Studio.PLAYBACK_STATE.STARTING)
+        {
+            _pourSandSound.start();
+            _pourSandSound.getPlaybackState(out _playBackStatePour);
+            FMODUnity.RuntimeManager.PlayOneShot(GLOB.JarPourSandSound, GetComponent<Transform>().position);
+        }
     }
 
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
+        _jarPickUpSound.start();
         _tutorial.CompleteStage1();
     }
 
