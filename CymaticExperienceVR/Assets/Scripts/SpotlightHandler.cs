@@ -25,15 +25,47 @@ public class SpotlightHandler : MonoBehaviour
     public GameObject _lightLever;
     public ParticleSystem[] _partLever;
 
+    public Transform TargetMoveObject1;
+    private Vector3 startRotation1;
+    public Vector3[] StepRotation1;
+    public Transform TargetMoveObject2;
+    private Vector3 startRotation2;
+    public Vector3[] StepRotation2;
+    [Range(0.0f, 1.0f)]
+    public float RotationSpeed = 0.1f;
+    private float lerpTime = 0.0f;
+
     private LightState _lightState;
     private FMOD.Studio.EventInstance _spotLightSound;
     // Start is called before the first frame update
     public void Start()
     {
         _spotLightSound = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/LeverRelease");
+        startRotation1 = TargetMoveObject1.localEulerAngles;
+        startRotation2 = TargetMoveObject2.localEulerAngles;
     }
+
+    public void Update()
+    {
+        if (lerpTime <= 1)
+        {
+            if (TargetMoveObject1.localEulerAngles != StepRotation1[(int)_lightState])
+            {
+                TargetMoveObject1.localEulerAngles = Vector3.LerpUnclamped(startRotation1, StepRotation1[(int)_lightState], lerpTime);
+                //TargetMoveObject1.localEulerAngles += (StepRotation1[(int)_lightState] - TargetMoveObject1.localEulerAngles) * RotationSpeed;
+            }
+            if (TargetMoveObject2.localEulerAngles != StepRotation2[(int)_lightState])
+            {
+                TargetMoveObject2.localEulerAngles = Vector3.LerpUnclamped(startRotation2, StepRotation2[(int)_lightState], lerpTime);
+                //TargetMoveObject2.localEulerAngles += (StepRotation2[(int)_lightState] - TargetMoveObject2.localEulerAngles) * RotationSpeed;
+            }
+            lerpTime = Mathf.Clamp(lerpTime + RotationSpeed, 0.0f, 1.0f);
+        }
+    }
+
     private void SwitchLights(LightState pLightState)
     {
+        lerpTime = 0;
         _lightJars.SetActive(false);
         _lightPlate.SetActive(false);
         _lightSliders.SetActive(false);
@@ -135,7 +167,25 @@ public class SpotlightHandler : MonoBehaviour
     public void SetLightState(LightState pLightState)
     {
         //_spotLightSound.start();
-        _lightState = pLightState;
+        if (_lightState >= 0 && (int)_lightState <= (int)LightState.TABLET)
+        {
+            startRotation1 = StepRotation1[(int)_lightState];
+            startRotation2 = StepRotation2[(int)_lightState];
+        }
+        else //If the current light state is invalid.
+        {
+            startRotation1 = TargetMoveObject1.localEulerAngles; //NOTE: Could cause issues if dealing with negative rotations. (I.E. A -20 rotation would be read as a 340 rotation.)
+            startRotation2 = TargetMoveObject2.localEulerAngles;
+        }
+
+        if ((int)pLightState > (int)LightState.TABLET) //If the new light state is invalid, turn lights off.
+        {
+            _lightState = LightState.OFF;
+        }
+        else
+        {
+            _lightState = pLightState;
+        }
         SwitchLights(_lightState);
     }
 }

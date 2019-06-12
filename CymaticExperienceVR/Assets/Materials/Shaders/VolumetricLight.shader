@@ -76,7 +76,6 @@
 
 				// add noise to vertices 
 				float noise = _Wind * cnoise(v.normal + _Time.y);
-				//float noise = _Wind * sin(v.normal + _Time.y);
 				float4 nv = float4(v.vertex.xyz + noise * v.normal, v.vertex.w);
 				// move model's vertices to screen position 
 				o.vertex = UnityObjectToClipPos(nv);
@@ -91,6 +90,7 @@
 
 			fixed4 frag(v2f i) : SV_Target{
 				float nu = (i.uv.x < .5) ? i.uv.x : (1. - i.uv.x);
+
 				nu = pow(nu, 2.);
 				float2 n_uv = float2(nu, i.uv.y);
 
@@ -117,8 +117,8 @@
 				float fresnel = pow(raycast, _Fresnel);
 
 				// fade out
-				//float fade = saturate(pow(i.uv.y, _Fade));
-				float fade = saturate(i.vertex.y * ((1. - _Fade) * 0.01));
+				float fade = saturate(pow(i.uv.y, _Fade));
+				//float fade = saturate(i.vertex.y * ((1. - _Fade) * 0.01));
 
 				col.a *= fresnel * _AlphaOffset * fade;
 
