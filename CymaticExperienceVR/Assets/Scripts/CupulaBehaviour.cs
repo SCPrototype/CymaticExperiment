@@ -11,7 +11,6 @@ public class CupulaBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         openBool = Animator.StringToHash("OpenCupula");
         _cupulaAnimator = this.gameObject.GetComponent<Animator>();
     }
@@ -24,18 +23,11 @@ public class CupulaBehaviour : MonoBehaviour
 
     public void PlayCupulaAnimation()
     {
-        Debug.Log("Animation being called " + openBool);
         if (!cupulaOpen)
         {
             _cupulaAnimator.SetBool(openBool, true);
             cupulaOpen = true;
-            Debug.Log("Cupula open should be: " + cupulaOpen);
-        }
-        else
-        {
-            _cupulaAnimator.SetBool(openBool, false);
-            cupulaOpen = false;
-            Debug.Log("Cupula open should be: " + cupulaOpen);
+            FMODUnity.RuntimeManager.PlayOneShot(GLOB.DomeOpeningSound, GetComponent<Transform>().position);
         }
     }
 }

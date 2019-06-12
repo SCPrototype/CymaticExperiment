@@ -8,37 +8,42 @@ using VRTK;
 public class SandSpawner : VR_Object
 {
     public GameObject SandPrefab;
-    public AudioSource SandAudio;
-    public AudioSource SandShakeAudio;
-
+    private AudioSource SandPourAudio;
     private int amountOfSand = 30;
-
     private Vector3 startingScale;
     private Vector3 localScale;
     private Rigidbody _rigidBody;
-
     private Vector3 velocity;
     private Vector3 prevPos;
     private float _shakeSensitivity = 1.5f;
-    private FMOD.Studio.EventInstance _pourSandSound;
+    private FMOD.Studio.EventInstance _sandShakeSound;
+    private FMOD.Studio.EventInstance _jarPickUpSound;
+    private FMOD.Studio.PLAYBACK_STATE _playBackStateShake;
     private Tutorial _tutorial;
-    private FMOD.Studio.PLAYBACK_STATE _playBackStatePour;
+    private bool _sandPourPlaying = false;
+    private float fadeStartTime;
+    private float audioStartVolume = 1;
+    private float FadeTime = 0.5f;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         startingScale = transform.localScale / 100;
+        _sandShakeSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarShakeSound);
+        _jarPickUpSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPickUpSound);
         _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
-        _pourSandSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPourSandSound);
+        SandPourAudio = this.gameObject.AddComponent<AudioSource>();
+        AudioClip audioClip = Resources.Load<AudioClip>(GLOB.SandPourSoundPath);
+        SandPourAudio.clip = audioClip;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        
-        _pourSandSound.getPlaybackState(out _playBackStatePour);
+        _sandShakeSound.getPlaybackState(out _playBackStateShake);
+        //_pourSandSound.getPlaybackState(out _playBackStatePour);
         if (_isBeingGrabbed)
         {
             float fwdDotProduct = Vector3.Dot(transform.forward, velocity);
@@ -48,26 +53,20 @@ public class SandSpawner : VR_Object
             Vector3 velocityVector = new Vector3(rightDotProduct, upDotProduct, fwdDotProduct);
             if (velocity.magnitude > _shakeSensitivity)
             {
-                //Debug.DrawRay(transform.position, velocity * 10, Color.yellow, 10, false);
-                if (SandShakeAudio != null)
+                if (_playBackStateShake != FMOD.Studio.PLAYBACK_STATE.PLAYING && _playBackStateShake != FMOD.Studio.PLAYBACK_STATE.STARTING)
                 {
-                    if (!SandShakeAudio.isPlaying)
-                    {
-                        Debug.Log("Playing SandShake");
-                        SandShakeAudio.Play();
-                    }
+                    _sandShakeSound.start();
                 }
             }
         }
         if (this.transform.worldToLocalMatrix[1, 1] < 0 && _isBeingGrabbed == true)
         {
             SpawnSand();
+            fadeStartTime = Time.time;
         }
-        else if (_playBackStatePour == FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        else if (SandPourAudio.isPlaying)
         {
-            _pourSandSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            _pourSandSound.getPlaybackState(out _playBackStatePour);
-            //ShakeSand.release();
+            FadeOutSandPour();
         }
     }
 
@@ -82,11 +81,7 @@ public class SandSpawner : VR_Object
 
     void SpawnSand()
     {
-        _pourSandSound.getPlaybackState(out _playBackStatePour);
-        if (_playBackStatePour != FMOD.Studio.PLAYBACK_STATE.PLAYING)
-        {   
-            _pourSandSound.start();
-        }
+        SandPourSound();
         for (int i = 0; i < amountOfSand; i++)
         {
             float randomX = UnityEngine.Random.Range(-startingScale.x * startingScale.x, startingScale.x * startingScale.x);
@@ -107,12 +102,28 @@ public class SandSpawner : VR_Object
             }
             break;
         }
+    }
 
+    private void SandPourSound()
+    {
+        if (!SandPourAudio.isPlaying)
+        {
+            SandPourAudio.volume = 1;
+            _sandPourPlaying = true;
+            SandPourAudio.Play();
+        }
+        //if (_playBackStatePour != FMOD.Studio.PLAYBACK_STATE.PLAYING && _playBackStatePour != FMOD.Studio.PLAYBACK_STATE.STARTING)
+        //{
+        //    _pourSandSound.start();
+        //    _pourSandSound.getPlaybackState(out _playBackStatePour);
+        //    FMODUnity.RuntimeManager.PlayOneShot(GLOB.JarPourSandSound, GetComponent<Transform>().position);
+        //}
     }
 
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
+        _jarPickUpSound.start();
         _tutorial.CompleteStage(1);
     }
 
@@ -122,4 +133,18 @@ public class SandSpawner : VR_Object
     //    _droppedTime = Time.time;
     //    _isBeingGrabbed = false;
     //}
+
+    private void FadeOutSandPour()
+    {
+        if (SandPourAudio.volume > 0)
+        {
+            SandPourAudio.volume = audioStartVolume * (1 - ((Time.time - fadeStartTime) / FadeTime));
+        }
+        else
+        {
+            SandPourAudio.Stop();
+            _sandPourPlaying = false;
+        }
+
+    }
 }
