@@ -30,12 +30,12 @@ public class SandSpawner : VR_Object
     {
         base.Start();
         startingScale = transform.localScale / 100;
-        _sandShakeSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarShakeSound);
-        _jarPickUpSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPickUpSound);
         _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
         SandPourAudio = this.gameObject.AddComponent<AudioSource>();
         AudioClip audioClip = Resources.Load<AudioClip>(GLOB.SandPourSoundPath);
         SandPourAudio.clip = audioClip;
+        _sandShakeSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarShakeSound);
+        _jarPickUpSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPickUpSound);
     }
 
     // Update is called once per frame

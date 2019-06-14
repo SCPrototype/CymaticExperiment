@@ -38,7 +38,7 @@ MonoBehaviour:
   Path: event:/Outside/DomeOpening
   guid: 280ad11419a80a42a2d3970391b271f4
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: event:/PlayArea/TouchingSlider
   guid: 49d6fbe668565447be4edf2316f2f4de
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -199,7 +199,7 @@ MonoBehaviour:
   Path: event:/PlayArea/JarPickup
   guid: 49a6ac532abbb440843fca48b31b7338
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -265,7 +265,7 @@ MonoBehaviour:
   Path: event:/PlayArea/JarShake
   guid: 8651a60e2c91c24ebb318e47941f9239
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -311,7 +311,7 @@ MonoBehaviour:
   Path: event:/PlayArea/BottlePickup
   guid: 68b56b16a30b2b41ad312cd7e3e74783
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -334,7 +334,7 @@ MonoBehaviour:
   Path: event:/PlayArea/Spotlight
   guid: 5b1b68cc76a10448bb98dea7d5b50c62
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -357,10 +357,10 @@ MonoBehaviour:
   Path: event:/PlayArea/Bouncyball
   guid: 42fc13ee9df8ae4b87805c78d6f6d379
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
   Path: event:/PlayArea/Celebration
   guid: a80679102ff2be45be9552bc3e255a60
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 2465112412528208558}
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   EditorEvents:
   - {fileID: -8724706041001835438}
   - {fileID: 2881356754488137052}
@@ -441,9 +441,9 @@ MonoBehaviour:
   - {fileID: -394768401275882717}
   - {fileID: 5390017548707473824}
   - {fileID: 1025664257151318022}
-  MasterBankRef: {fileID: 934066237242485867}
+  MasterBankRef: {fileID: 3540554055601080738}
   StringsBankRef: {fileID: 2465112412528208558}
-  stringsBankWriteTime: 636958604685945919
+  stringsBankWriteTime: 636959390692815683
   cacheVersion: 2
 --- !u!114 &428156011511288953
 MonoBehaviour:
@@ -460,7 +460,7 @@ MonoBehaviour:
   Path: event:/PlayArea/LeverRelease
   guid: 4ec1491112ca0f4eab464ef5eb6d7b7c
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -565,10 +565,10 @@ MonoBehaviour:
   Path: event:/PlayArea/SandPour
   guid: ec948b25c9c2fb4ba8f08ed572d1b1cc
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -653,7 +653,7 @@ MonoBehaviour:
   Path: event:/PlayArea/Lever
   guid: 87f09fd77b25214a8823e4eb26da7d37
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636958604685945919
+  lastModified: 636959390692815683
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -695,7 +695,7 @@ MonoBehaviour:
   Path: event:/PlayArea/JarFall
   guid: 2b8796a0972ae54b95c544d048ef69fd
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -703,6 +703,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &3540554055601080738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\student\Documents\CymaticExperiment\CymaticExperienceVR\Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636959390692755849
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 613216
+  Exists: 1
 --- !u!114 &3900094323839645879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,7 +781,7 @@ MonoBehaviour:
   Path: event:/PlayArea/GeneralPickup
   guid: daac0859b6ab0346978010257befd247
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -834,6 +854,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &7035660814642565548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\student\Documents\CymaticExperiment\CymaticExperienceVR\Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636959390692755849
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 613216
+  Exists: 1
 --- !u!114 &7218831250322512553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,7 +958,7 @@ MonoBehaviour:
   Path: event:/PlayArea/Bottlefall
   guid: 2b957b3fad529c4db9340122e2fa67e4
   Banks:
-  - {fileID: 934066237242485867}
+  - {fileID: 3540554055601080738}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
