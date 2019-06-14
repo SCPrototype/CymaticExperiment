@@ -8,9 +8,11 @@ public class TiltMazeTablet : VR_Object
 {
     public Transform TargetTerrain;
     public Vector3 RotationLimit = new Vector3(30, 0, 30);
+    public Vector3 RotationOffset = new Vector3(0, 0, 0);
 
     [Range(0.1f, 1.0f)]
     public float RotationSpeed = 0.1f;
+
 
     private Vector3 startRotation;
 
@@ -62,7 +64,7 @@ public class TiltMazeTablet : VR_Object
 
     public void SetActive(bool pToggle)
     {
-        if (pToggle && !IsActive)
+        if (pToggle && !IsActive && !IsActivating)
         {
             IsActivating = true;
             transform.position = RespawnPoint.position;
@@ -124,11 +126,11 @@ public class TiltMazeTablet : VR_Object
         }
         else if (IsActive)
         {
-            base.Update(); //TODO: How to handle this respawn?
+            base.Update();
 
             if (_isBeingGrabbed)
             {
-                Vector3 eulerHolder = transform.eulerAngles;
+                Vector3 eulerHolder = transform.eulerAngles + RotationOffset;
                 if (eulerHolder.x > 180)
                 {
                     eulerHolder.x -= 360;
