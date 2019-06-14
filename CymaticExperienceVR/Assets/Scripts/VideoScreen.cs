@@ -43,6 +43,11 @@ public class VideoScreen : MonoBehaviour
 
     public void PlayVideo(int pIndex, bool pLoop = true)
     {
+        if (vp == null)
+        {
+            return;
+        }
+
         if (vp.isPlaying)
         {
             vp.Stop();
