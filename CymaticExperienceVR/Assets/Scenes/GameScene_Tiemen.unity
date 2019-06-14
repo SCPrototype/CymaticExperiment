@@ -4770,7 +4770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482121666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 0, z: 0.45}
+  m_LocalPosition: {x: 0.07, y: 1.35, z: 0.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 581119298}
@@ -17299,6 +17299,11 @@ PrefabInstance:
       propertyPath: EnableHands
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 446361379945489161, guid: 56f4956f64d98bc4fa5a72c3a1fe4bbb,
+        type: 3}
+      propertyPath: _trackingOriginType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56f4956f64d98bc4fa5a72c3a1fe4bbb, type: 3}
 --- !u!1001 &817290335
@@ -25059,6 +25064,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1690704279}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1125990091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5283253843580195368, guid: 58080e048a1c2f04593da80ec39bc957,
+    type: 3}
+  m_PrefabInstance: {fileID: 204887784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1125990092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125990091}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.005, y: 0.02, z: 0.005}
+  m_Center: {x: 0, y: 0.0045, z: 0}
 --- !u!1001 &1126795109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46417,7 +46441,7 @@ MonoBehaviour:
   forceRestingPositionThreshold: 0
   stepValueRange:
     minimum: 1
-    maximum: 12
+    maximum: 31
   stepSize: 1
   useStepAsValue: 1
   snapToStep: 1
