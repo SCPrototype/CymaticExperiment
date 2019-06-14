@@ -94,12 +94,24 @@ public class TiltMazeTablet : VR_Object
     {
         if (IsActivating)
         {
-
+            Vector3 tempRotation = ActiveRotation;
+            if (ActiveRotation.x < 0)
+            {
+                tempRotation.x += 360;
+            }
+            if (ActiveRotation.y < 0)
+            {
+                tempRotation.y += 360;
+            }
+            if (ActiveRotation.z < 0)
+            {
+                tempRotation.z += 360;
+            }
             if ((transform.position - RespawnPoint.position).magnitude < ActivePosition.magnitude)
             {
                 transform.position += (ActivePosition * ActivateSpeed);
             }
-            else if((transform.eulerAngles - RespawnPoint.eulerAngles).magnitude < ActiveRotation.magnitude)
+            else if(((tempRotation - (transform.eulerAngles - RespawnPoint.eulerAngles)).magnitude) >= (ActiveRotation * ActivateSpeed).magnitude)
             {
                 transform.eulerAngles += (ActiveRotation * ActivateSpeed);
             }

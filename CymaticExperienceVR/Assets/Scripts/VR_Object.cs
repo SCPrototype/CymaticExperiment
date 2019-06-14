@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-[RequireComponent(typeof(VRTK.SecondaryControllerGrabActions.VRTK_SwapControllerGrabAction))] //TODO: Don't think this one works.
+[RequireComponent(typeof(VRTK.SecondaryControllerGrabActions.VRTK_SwapControllerGrabAction))]
 [RequireComponent(typeof(VRTK_InteractableObject))]
 [RequireComponent(typeof(VRTK_InteractObjectHighlighter))]
 [RequireComponent(typeof(Rigidbody))]
