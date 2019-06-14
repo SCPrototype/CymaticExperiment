@@ -17,13 +17,13 @@ public class SliderSoundHandler : MonoBehaviour
     {
         if (!_soundPlayed)
         {
-            if (this.gameObject.transform.GetChildCount() > 1)
+            if (this.gameObject.transform.childCount > 1)
             {
                 _soundPlayed = true;
                 _sliderSound.start();
             } 
         }
-        if(this.gameObject.transform.GetChildCount() <= 1 && _soundPlayed == true)
+        if(this.gameObject.transform.childCount <= 1 && _soundPlayed == true)
         {
             _soundPlayed = false;
         }
