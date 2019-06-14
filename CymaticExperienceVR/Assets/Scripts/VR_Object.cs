@@ -78,6 +78,13 @@ public class VR_Object : MonoBehaviour
     {
         _droppedTime = Time.time;
         _isBeingGrabbed = false;
+        if (RespawnPoint.GetComponent<Collider>() != null)
+        {
+            if (RespawnPoint.GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds))
+            {
+                HandleRespawn();
+            }
+        }
     }
 
     protected virtual void OnCollisionEnter(Collision collision)
@@ -85,6 +92,14 @@ public class VR_Object : MonoBehaviour
         if (ImpactSound != null && Time.time > _spawnTime + 0.5f)
         {
             ImpactSound.Play();
+        }
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other == RespawnPoint.GetComponent<Collider>())
+        {
+
         }
     }
 }

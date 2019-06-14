@@ -908,8 +908,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 86353252}
+  - component: {fileID: 86353253}
   m_Layer: 0
-  m_Name: Respawnpoint_Ball2
+  m_Name: Respawnpoint_Ball1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -929,6 +930,19 @@ Transform:
   m_Father: {fileID: 287742849}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &86353253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86353251}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &104430205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -942,6 +956,11 @@ PrefabInstance:
       value: kids room
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 519ea341bb51fd24da188c6c28dfb7ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3264142803402599264, guid: 519ea341bb51fd24da188c6c28dfb7ce,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1154,6 +1173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 126918187}
+  - component: {fileID: 126918188}
   m_Layer: 0
   m_Name: Spawnpoint_Blue
   m_TagString: Untagged
@@ -1175,6 +1195,19 @@ Transform:
   m_Father: {fileID: 27790758}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &126918188
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126918186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &145805274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1394,6 +1427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 157702117}
+  - component: {fileID: 157702118}
   m_Layer: 0
   m_Name: Spawnpoint_Red
   m_TagString: Untagged
@@ -1415,6 +1449,19 @@ Transform:
   m_Father: {fileID: 27790758}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &157702118
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157702116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &161330383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,6 +2087,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle flip bottle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5283253843580195368, guid: 58080e048a1c2f04593da80ec39bc957,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9154334492344082491, guid: 58080e048a1c2f04593da80ec39bc957,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2107,6 +2159,34 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 5ae218debd4ac7d44b0201274cfbb948, type: 3}
+    - target: {fileID: 581162465, guid: 58080e048a1c2f04593da80ec39bc957, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446437692025008052, guid: 58080e048a1c2f04593da80ec39bc957,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221830297663529842, guid: 58080e048a1c2f04593da80ec39bc957,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552543524, guid: 58080e048a1c2f04593da80ec39bc957, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934206347, guid: 58080e048a1c2f04593da80ec39bc957, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: e8a9654d166ff0c47ad85da674d70818,
+        type: 2}
+    - target: {fileID: 1934206348, guid: 58080e048a1c2f04593da80ec39bc957, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: e8a9654d166ff0c47ad85da674d70818,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58080e048a1c2f04593da80ec39bc957, type: 3}
 --- !u!1 &213195502 stripped
@@ -3626,6 +3706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 305112999}
+  - component: {fileID: 305113000}
   m_Layer: 0
   m_Name: Spawnpoint_Teal
   m_TagString: Untagged
@@ -3647,6 +3728,19 @@ Transform:
   m_Father: {fileID: 27790758}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &305113000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305112998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &307137167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10630,7 +10724,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.03, z: 0.45}
+  m_Size: {x: 0.05, y: 0.03, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &640068191
 MeshRenderer:
@@ -17751,6 +17845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 857107928}
+  - component: {fileID: 857107929}
   m_Layer: 0
   m_Name: Respawnpoint_Ball2
   m_TagString: Untagged
@@ -17772,6 +17867,19 @@ Transform:
   m_Father: {fileID: 287742849}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &857107929
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857107927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &868140094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19897,6 +20005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1013060455}
+  - component: {fileID: 1013060456}
   m_Layer: 0
   m_Name: Spawnpoint_Green
   m_TagString: Untagged
@@ -19918,6 +20027,19 @@ Transform:
   m_Father: {fileID: 27790758}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1013060456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013060454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1021892759
 GameObject:
   m_ObjectHideFlags: 0
@@ -19957,6 +20079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1028275510}
+  - component: {fileID: 1028275511}
   m_Layer: 0
   m_Name: Spawnpoint_Orange
   m_TagString: Untagged
@@ -19978,6 +20101,19 @@ Transform:
   m_Father: {fileID: 27790758}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1028275511
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028275509}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1047378877
 GameObject:
   m_ObjectHideFlags: 0
@@ -24882,6 +25018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1108392028}
+  - component: {fileID: 1108392029}
   m_Layer: 0
   m_Name: Respawnpoint_Bottle
   m_TagString: Untagged
@@ -24903,6 +25040,19 @@ Transform:
   m_Father: {fileID: 287742849}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1108392029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108392027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1124134678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 43ca4f0f58e574f469ffc114b22ead2e,
@@ -25379,6 +25529,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tablet
       objectReference: {fileID: 0}
+    - target: {fileID: 1183341798545069645, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1183341798545069644, guid: 93683f9f8521d70408a6ad61141ec471,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25498,6 +25653,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183341798474235845, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183341798153500360, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183341799070688836, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183341798520342346, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183341800159708503, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93683f9f8521d70408a6ad61141ec471, type: 3}
@@ -27199,6 +27379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1310438560}
+  - component: {fileID: 1310438561}
   m_Layer: 0
   m_Name: Spawnpoint_Yellow
   m_TagString: Untagged
@@ -27220,6 +27401,19 @@ Transform:
   m_Father: {fileID: 27790758}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1310438561
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310438559}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1337795324
 GameObject:
   m_ObjectHideFlags: 0
@@ -27743,15 +27937,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380308842}
-  m_LocalRotation: {x: -0, y: 0.73397535, z: -0, w: -0.6791763}
-  m_LocalPosition: {x: 0.846, y: 0, z: -0.017}
+  m_LocalRotation: {x: -0, y: 0.31536785, z: -0, w: -0.9489695}
+  m_LocalPosition: {x: 0.756, y: 0, z: -0.185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 912555772}
   - {fileID: 443767277}
   m_Father: {fileID: 998897719}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 265.559, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 323.234, z: 0}
 --- !u!1 &1424777722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4343354100840554701, guid: 43ca4f0f58e574f469ffc114b22ead2e,
@@ -27783,6 +27977,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Basketball
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142493385598017240, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8142493385598017247, guid: ac0896e8bcafad442adf58df2b034379,
         type: 3}
@@ -27864,11 +28063,22 @@ PrefabInstance:
       propertyPath: holdButtonToGrab
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8142493385598017233, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 6d757e183d700cf47b427ad89cf30a67,
+        type: 2}
     - target: {fileID: 8142493385598017232, guid: ac0896e8bcafad442adf58df2b034379,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 655b3ea73a7cc584abb7aa79886c745a, type: 2}
+    - target: {fileID: 8142493385598017245, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac0896e8bcafad442adf58df2b034379, type: 3}
 --- !u!1 &1433745887 stripped
@@ -34358,6 +34568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basketball (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8142493385598017240, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8142493385598017247, guid: ac0896e8bcafad442adf58df2b034379,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34438,11 +34653,22 @@ PrefabInstance:
       propertyPath: holdButtonToGrab
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8142493385598017233, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 6d757e183d700cf47b427ad89cf30a67,
+        type: 2}
     - target: {fileID: 8142493385598017232, guid: ac0896e8bcafad442adf58df2b034379,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e7c3749ab384c97498e84b951b5cd053, type: 2}
+    - target: {fileID: 8142493385598017245, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac0896e8bcafad442adf58df2b034379, type: 3}
 --- !u!1 &1621568815 stripped
@@ -46804,7 +47030,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.03, z: 0.45}
+  m_Size: {x: 0.05, y: 0.03, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1920418502
 MeshRenderer:
@@ -47015,6 +47241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1943487942}
+  - component: {fileID: 1943487943}
   m_Layer: 0
   m_Name: Spawnpoint_Purple
   m_TagString: Untagged
@@ -47036,6 +47263,19 @@ Transform:
   m_Father: {fileID: 27790758}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1943487943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943487941}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1944779901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54164,7 +54404,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6562817310118818591, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 7c57ce2d90a248d4e8ab6ead71fa8bb1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54528,7 +54768,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -592240613751980234, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 7c74fae899837724eae7ab6ca7bd8986, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54709,7 +54949,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -592240613751980234, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 7c74fae899837724eae7ab6ca7bd8986, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54839,7 +55079,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3919789574843059566, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 50a8a2e319d128c42b609934c32113b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55013,7 +55253,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5430099273894104067, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 81087a32f5de9ff4bbbf654cef5444de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55120,7 +55360,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3919789574843059566, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 50a8a2e319d128c42b609934c32113b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55277,8 +55517,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6832942475479214039, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
-  - {fileID: -1370288610019035, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: ec9e983d10289f14394d41657217a067, type: 2}
+  - {fileID: 2100000, guid: 5e343a78330f94b4b90fdd87c212f830, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55329,7 +55569,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -592240613751980234, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 7c74fae899837724eae7ab6ca7bd8986, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55398,7 +55638,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3919789574843059566, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 50a8a2e319d128c42b609934c32113b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55521,7 +55761,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -592240613751980234, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 7c74fae899837724eae7ab6ca7bd8986, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55622,7 +55862,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3919789574843059566, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 50a8a2e319d128c42b609934c32113b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
