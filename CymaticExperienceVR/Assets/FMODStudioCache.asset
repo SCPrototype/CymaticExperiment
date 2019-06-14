@@ -92,6 +92,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 221
+--- !u!114 &-6899855293399178291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/PlayArea/LeverClicks
+  guid: 5d0b7293c67f0f43bfb3083b906adafa
+  Banks:
+  - {fileID: 934066237242485867}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 125
 --- !u!114 &-5714262842053858232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +365,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2156
+--- !u!114 &-1992511746795660250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/PlayArea/MonitorTurnOn
+  guid: 0c529119ad2ddc4db43ad9bf2a7b3d25
+  Banks:
+  - {fileID: 934066237242485867}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1440
 --- !u!114 &-1643394491444163516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +406,7 @@ MonoBehaviour:
   - {fileID: 934066237242485867}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
@@ -441,9 +487,11 @@ MonoBehaviour:
   - {fileID: -394768401275882717}
   - {fileID: 5390017548707473824}
   - {fileID: 1025664257151318022}
+  - {fileID: -1992511746795660250}
+  - {fileID: -6899855293399178291}
   MasterBankRef: {fileID: 934066237242485867}
   StringsBankRef: {fileID: 2465112412528208558}
-  stringsBankWriteTime: 636958604685945919
+  stringsBankWriteTime: 636959653106476926
   cacheVersion: 2
 --- !u!114 &428156011511288953
 MonoBehaviour:
@@ -544,11 +592,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\piete\Documents\CymaticExperiment\CymaticExperienceVR\Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master
     Bank.bank
-  lastModified: 636958604685866213
+  lastModified: 636959653106397540
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 613472
+    Value: 645600
   Exists: 1
 --- !u!114 &1025664257151318022
 MonoBehaviour:
@@ -568,7 +616,7 @@ MonoBehaviour:
   - {fileID: 934066237242485867}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -674,11 +722,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636958604685945919
+  lastModified: 636959653106476926
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1332
+    Value: 1414
   Exists: 1
 --- !u!114 &2881356754488137052
 MonoBehaviour:
