@@ -10,6 +10,7 @@ public class SliderSoundHandler : MonoBehaviour
     void Start()
     {
         _sliderSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.TouchingSliderSound);
+        _sliderSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
     }
 
     // Update is called once per frame
@@ -17,7 +18,7 @@ public class SliderSoundHandler : MonoBehaviour
     {
         if (!_soundPlayed)
         {
-            if (this.gameObject.transform.childCount > 1)
+            if (this.gameObject.transform.childCount > 1 || Input.GetKeyDown(KeyCode.Q))
             {
                 _soundPlayed = true;
                 _sliderSound.start();
