@@ -8,14 +8,14 @@ using VRTK;
 [RequireComponent(typeof(VRTK_InteractableObject))]
 [RequireComponent(typeof(VRTK_InteractObjectHighlighter))]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(AudioSource))] 
+[RequireComponent(typeof(AudioSource))]
 public class VR_Object : MonoBehaviour
 {
     private static float RespawnDelay = 5.0f;
 
     public Transform RespawnPoint;
-    public AudioSource ImpactSound;
 
+    protected FMODUnity.StudioEventEmitter ImpactSound;
     protected Rigidbody rb;
     protected bool _isBeingGrabbed = false;
     protected bool _isOnSpawn = true;
@@ -26,6 +26,19 @@ public class VR_Object : MonoBehaviour
     protected virtual void Start()
     {
         //Add event listener for interactable object.
+        ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        if (this is SandSpawner)
+        {
+            ImpactSound.Event = GLOB.JarFallSound;
+        }
+        else if (this is BottleFlip)
+        {
+            ImpactSound.Event = GLOB.BottleFallSound;
+        }
+        else if(this is BouncyBall)
+        {
+            ImpactSound.Event = GLOB.BouncyBallSound;
+        }
         GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
         GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
         if (GetComponent<VRTK_InteractableObject>() == null)
@@ -33,9 +46,10 @@ public class VR_Object : MonoBehaviour
             Debug.LogError("Team3_Interactable_Object_Extension is required to be attached to an Object that has the VRTK_InteractableObject script attached to it");
             return;
         }
+        
 
         rb = GetComponent<Rigidbody>();
-
+        ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         //Adds the time of the spawning of the object (only listening on movement after X amount) This to patch the non-perfect spawns.
         _spawnTime = Time.time;
     }

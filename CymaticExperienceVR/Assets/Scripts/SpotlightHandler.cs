@@ -36,11 +36,13 @@ public class SpotlightHandler : MonoBehaviour
     private float lerpTime = 0.0f;
 
     private LightState _lightState;
-    private FMOD.Studio.EventInstance _spotLightSound;
+    private FMODUnity.StudioEventEmitter _spotLightSound;
     // Start is called before the first frame update
     public void Start()
     {
-        _spotLightSound = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/LeverRelease");
+        _spotLightSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _spotLightSound.Event = GLOB.SpotlightSound;
+        _spotLightSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         startRotation1 = TargetMoveObject1.localEulerAngles;
         startRotation2 = TargetMoveObject2.localEulerAngles;
     }
