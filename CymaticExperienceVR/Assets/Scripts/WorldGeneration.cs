@@ -10,17 +10,11 @@ public class WorldGeneration : MonoBehaviour
     public float EdgeLength;
     public Animator _cupulaAnimation;
 
-    [Header("Sound settings")]
-    public AudioSource CompletedSound;
-
     private MeshCollider myColl;
 
     private Vector3[] poly;  // Initialized in the inspector
     private float[,] _heightMap;
     private float _amplitude = 1;
-
-    private bool _shouldPlayCompletedSound = false;
-
 
     [Header("Destructible object settings")]
     public bool PlaceObjects = true;
@@ -159,14 +153,6 @@ public class WorldGeneration : MonoBehaviour
 
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
-
-        if (_shouldPlayCompletedSound)
-        {
-            CompletedSound.Play();
-        } else
-        {
-            _shouldPlayCompletedSound = true;
-        }
 
         myColl.sharedMesh = mesh;
 

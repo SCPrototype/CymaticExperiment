@@ -8,12 +8,10 @@ using VRTK;
 public class SandSpawner : VR_Object
 {
     public GameObject SandPrefab;
-    private FMOD.Studio.EventInstance _sandShakeSound;
-    private AudioSource _sandPourAudio;
-    private AudioSource _sandShakeAudio;
-    private AudioSource _sandShakeAudio2;
-    private AudioSource _sandShakeAudio3;
-    
+    private FMODUnity.StudioEventEmitter _sandPourSoundEmitter;
+    private FMODUnity.StudioEventEmitter _sandShakeSoundEmitter;
+    private FMODUnity.StudioEventEmitter _sandJarPickUpSoundEmitter;
+
     private int amountOfSand = 30;
     private Vector3 startingScale;
     private Vector3 localScale;
@@ -21,13 +19,12 @@ public class SandSpawner : VR_Object
     private Vector3 velocity;
     private Vector3 prevPos;
     private float _shakeSensitivity = 1.5f;
-    private FMOD.Studio.EventInstance _jarPickUpSound;
-    private FMOD.Studio.PLAYBACK_STATE _playBackStateShake;
     private Tutorial _tutorial;
     private bool _sandPourPlaying = false;
     private float fadeStartTime;
     private float audioStartVolume = 1;
     private float FadeTime = 0.5f;
+    private float sandPourVolume = 1;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -36,27 +33,17 @@ public class SandSpawner : VR_Object
         startingScale = transform.localScale / 100;
         _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
 
-        _sandPourAudio = this.gameObject.AddComponent<AudioSource>();
-        _sandShakeAudio = this.gameObject.AddComponent<AudioSource>();
-        _sandShakeAudio2 = this.gameObject.AddComponent<AudioSource>();
-        _sandShakeAudio3 = this.gameObject.AddComponent<AudioSource>();
+        _sandPourSoundEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _sandShakeSoundEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _sandJarPickUpSoundEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
 
-        AudioClip audioSandPour = Resources.Load<AudioClip>(GLOB.SandPourSoundPath);
-        AudioClip audioShake = Resources.Load<AudioClip>(GLOB.SandShakeSoundPath);
-        AudioClip audioShake2 = Resources.Load<AudioClip>(GLOB.SandShakeSoundPath2);
-        AudioClip audioShake3 = Resources.Load<AudioClip>(GLOB.SandShakeSoundPath3);
+        _sandPourSoundEmitter.Event = GLOB.JarPourSandSound;
+        _sandShakeSoundEmitter.Event = GLOB.JarShakeSound;
+        _sandShakeSoundEmitter.Event = GLOB.JarPickUpSound;
 
-        _sandPourAudio.clip = audioSandPour;
-        _sandShakeAudio.clip = audioShake;
-        _sandShakeAudio2.clip = audioShake2;
-        _sandShakeAudio3.clip = audioShake3;
-
-        _sandPourAudio.spatialBlend = 1;
-        _sandShakeAudio.spatialBlend = 1;
-        _sandShakeAudio2.spatialBlend = 1;
-        _sandShakeAudio3.spatialBlend = 1;
-   
-        _jarPickUpSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.JarPickUpSound);
+        _sandPourSoundEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        _sandShakeSoundEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        _sandJarPickUpSoundEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
     }
 
     // Update is called once per frame
@@ -72,20 +59,9 @@ public class SandSpawner : VR_Object
             Vector3 velocityVector = new Vector3(rightDotProduct, upDotProduct, fwdDotProduct);
             if (velocity.magnitude > _shakeSensitivity)
             {
-                if(!_sandShakeAudio.isPlaying && !_sandShakeAudio2.isPlaying && !_sandShakeAudio3.isPlaying)
+                if(!_sandShakeSoundEmitter.IsPlaying())
                 {
-                    switch(UnityEngine.Random.Range(0,2))
-                    {
-                        case 0:
-                            _sandShakeAudio.Play();
-                                break;
-                        case 1:
-                            _sandShakeAudio2.Play();
-                            break;
-                        case 2:
-                            _sandShakeAudio3.Play();
-                            break;
-                    }
+                    _sandShakeSoundEmitter.Play();
                 }
             }
         }
@@ -94,7 +70,7 @@ public class SandSpawner : VR_Object
             SpawnSand();
             fadeStartTime = Time.time;
         }
-        else if (_sandPourAudio.isPlaying)
+        else if (_sandPourSoundEmitter.IsPlaying())
         {
             FadeOutSandPour();
         }
@@ -136,45 +112,31 @@ public class SandSpawner : VR_Object
 
     private void SandPourSound()
     {
-        if (!_sandPourAudio.isPlaying)
+        if (!_sandPourSoundEmitter.IsPlaying())
         {
-            _sandPourAudio.volume = 1;
-            _sandPourPlaying = true;
-            _sandPourAudio.Play();
+            _sandPourSoundEmitter.Play();
         }
-        //if (_playBackStatePour != FMOD.Studio.PLAYBACK_STATE.PLAYING && _playBackStatePour != FMOD.Studio.PLAYBACK_STATE.STARTING)
-        //{
-        //    _pourSandSound.start();
-        //    _pourSandSound.getPlaybackState(out _playBackStatePour);
-        //    FMODUnity.RuntimeManager.PlayOneShot(GLOB.JarPourSandSound, GetComponent<Transform>().position);
-        //}
     }
 
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
-        _jarPickUpSound.start();
+        _sandJarPickUpSoundEmitter.Play();
         _tutorial.CompleteStage(1);
     }
 
-    //private void ObjectReleased(object sender, InteractableObjectEventArgs e)
-    //{
-    //    Debug.Log("I'm Dropped");
-    //    _droppedTime = Time.time;
-    //    _isBeingGrabbed = false;
-    //}
-
     private void FadeOutSandPour()
     {
-        if (_sandPourAudio.volume > 0)
+        _sandPourSoundEmitter.EventInstance.getVolume(out sandPourVolume, out float finalvolume);
+        if (sandPourVolume > 0)
         {
-            _sandPourAudio.volume = audioStartVolume * (1 - ((Time.time - fadeStartTime) / FadeTime));
+            _sandPourSoundEmitter.EventInstance.setVolume(audioStartVolume * (1 - ((Time.time - fadeStartTime) / FadeTime))); 
         }
         else
         {
-            _sandPourAudio.Stop();
+            _sandPourSoundEmitter.Stop();
             _sandPourPlaying = false;
         }
-
     }
 }
+ 
