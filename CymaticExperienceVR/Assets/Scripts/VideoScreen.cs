@@ -17,11 +17,15 @@ public class VideoScreen : MonoBehaviour
     public bool ContinueOnFinish = true;
     public VideoClip[] Videos;
     private int clipIndex = -1;
+    private FMODUnity.StudioEventEmitter _monitorTurningOn;
 
     // Start is called before the first frame update
     void Start()
     {
         vp = GetComponent<VideoPlayer>();
+        _monitorTurningOn = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _monitorTurningOn.Event = GLOB.MonitorTurnOnSound;
+        _monitorTurningOn.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
 
         if (PlayOnAwake)
         {
@@ -48,6 +52,11 @@ public class VideoScreen : MonoBehaviour
             return;
         }
 
+        if (!_monitorTurningOn.IsPlaying())
+        {
+            _monitorTurningOn.Play();
+        }
+
         if (vp.isPlaying)
         {
             vp.Stop();
@@ -65,11 +74,15 @@ public class VideoScreen : MonoBehaviour
 
     public void PlayNextVideo(bool pLoop = true)
     {
+        if (!_monitorTurningOn.IsPlaying())
+        {
+            _monitorTurningOn.Play();
+        }
         if (vp.isPlaying)
         {
             vp.Stop();
         }
-
+       
         if (clipIndex + 1 < Videos.Length && clipIndex + 1 >= 0)
         {
             clipIndex++;
