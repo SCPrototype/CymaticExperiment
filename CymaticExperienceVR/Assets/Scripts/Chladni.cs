@@ -43,10 +43,15 @@ public class Chladni : MonoBehaviour
     int frameNr = 0;
     float amplitude = 0.5f;
     public static int[] frameNrArray = new int[] { 0, 4, 47, 65, 107, 148, 165, 189, 231, 248, 265, 281, 307, 326, 347, 364, 377, 413, 447, 468, 504, 531, 548, 573, 603, 636, 671, 690, 727, 747, 771, 790 };
+    private Tutorial _tutorial;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (_tutorial == null)
+        {
+            _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
+        }
         sumOfWholePlate0 = sumOfWholePlate2 = plateSize * plateSize;
         R = (int)(-2.0 / Mathf.Log10(A)) + 1;
         prepare();
@@ -113,13 +118,13 @@ public class Chladni : MonoBehaviour
             doInterference();
             waveLengthFactor = Mathf.Ceil(frameNr * waveIncrease * 100) / 100;
             float y = 255.0f / maxY;
-            Material targetMaterial = MaterialCache[0];
+            //Material targetMaterial = MaterialCache[0];
 
             for (int i = 0; i < p.Count; i++)
             {
                 Pixel pp = p[i];
                 float clr = 1.0f - ((y * Mathf.Abs(pp.getY())) / 255.0f);
-                targetMaterial = MaterialCache[Mathf.Max(0, Mathf.CeilToInt(clr * MaterialCache.Length) - 1)];
+                //targetMaterial = MaterialCache[Mathf.Max(0, Mathf.CeilToInt(clr * MaterialCache.Length) - 1)];
 
                 if (three_d)
                 {
@@ -238,14 +243,6 @@ public class Chladni : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            amplitude += 0.5f;
-        }
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            amplitude -= 0.5f;
-        }
         float plateScaleX = TargetPlane.transform.localScale.x;
         float plateScaleZ = TargetPlane.transform.localScale.z;
         float plateOffsetX = plateScaleX * 5;
@@ -272,26 +269,12 @@ public class Chladni : MonoBehaviour
                 sand.RemoveAt(i);
             }
         }
-        draw();
+        //draw();
     }
 
     // Update is called once per frame
     void Update()
     {
-        draw();
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SpawnSand();
-        }
-
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            manualAmplitude();
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            manualTest();
-        }
 
     }
 
@@ -327,11 +310,14 @@ public class Chladni : MonoBehaviour
     public void ChangeFrequency(int pCounter)
     {
         resonnanceTarget = pCounter;
+        draw();
+        _tutorial.CompleteStage(3);
     }
 
     public void ChangeAmplitude(int pValue)
     {
         amplitude = 0.5f + (pValue * 0.1f);
+        _tutorial.CompleteStage(3);
     }
 
     private void manualTest()
