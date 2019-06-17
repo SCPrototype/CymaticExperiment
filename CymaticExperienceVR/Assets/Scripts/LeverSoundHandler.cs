@@ -4,33 +4,58 @@ using UnityEngine;
 
 public class LeverSoundHandler : MonoBehaviour
 {
-    private FMOD.Studio.EventInstance _leverClickSound;
-    private FMOD.Studio.PLAYBACK_STATE _leverClickPlaybackState;
+    private FMODUnity.StudioEventEmitter _leverClickSound;
+    private FMODUnity.StudioEventEmitter _leverEndClickSound;
+    private FMODUnity.StudioEventEmitter _leverResetSound;
 
+    private bool goingBack = false;
     // Start is called before the first frame update
     void Start()
     {
-        _leverClickSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.GeneralPickupSound);
-        _leverClickSound.getPlaybackState(out _leverClickPlaybackState);
+        _leverClickSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _leverEndClickSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _leverResetSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+
+        _leverClickSound.Event = GLOB.LeverClickSound;
+        _leverEndClickSound.Event = GLOB.LeverSound;
+        _leverResetSound.Event = GLOB.LeverReleaseSound;
+
+        _leverClickSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        _leverEndClickSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        _leverResetSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
     }
 
     // Update is called once per frame
     void Update()
     {
-        _leverClickSound.getPlaybackState(out _leverClickPlaybackState);
     }
 
     public void PlayClickingSound()
     {
-        if(_leverClickPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING && _leverClickPlaybackState != FMOD.Studio.PLAYBACK_STATE.STARTING)
+        if (!goingBack)
         {
-            _leverClickSound.start();
-            FMODUnity.RuntimeManager.PlayOneShot(GLOB.GeneralPickupSound, GetComponent<Transform>().position);
+            if (!_leverClickSound.IsPlaying())
+            {
+                _leverClickSound.Play();
+            }
         }
     }
 
     public void PlayEndClickSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(GLOB.LeverSound, GetComponent<Transform>().position);
+        if(!_leverEndClickSound.IsPlaying())
+        {
+            _leverEndClickSound.Play();
+            goingBack = true;
+        }
+    }
+
+    public void PlayResetSound()
+    {
+        if(!_leverResetSound.IsPlaying())
+        {
+            _leverResetSound.Play();
+            goingBack = false;
+        }
     }
 }

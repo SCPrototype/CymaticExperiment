@@ -33,6 +33,8 @@ namespace VRTK.SecondaryControllerGrabActions
         protected Quaternion releaseRotation;
         protected Coroutine snappingOnRelease;
 
+        public VRTK_InteractGrab RightController;
+
         /// <summary>
         /// The Initalise method is used to set up the state of the secondary action when the object is initially grabbed by a secondary controller.
         /// </summary>
@@ -43,6 +45,17 @@ namespace VRTK.SecondaryControllerGrabActions
         /// <param name="secondaryGrabPoint">The point on the Interactable Object where the secondary Interact Grab initially grabbed the Interactable Object.</param>
         public override void Initialise(VRTK_InteractableObject currentGrabbdObject, VRTK_InteractGrab currentPrimaryGrabbingObject, VRTK_InteractGrab currentSecondaryGrabbingObject, Transform primaryGrabPoint, Transform secondaryGrabPoint)
         {
+            if (currentSecondaryGrabbingObject == RightController)
+            {
+                Debug.Log("Swapping shit");
+                VRTK_InteractGrab grabHolder = currentPrimaryGrabbingObject;
+                Transform pointHolder = primaryGrabPoint;
+                currentPrimaryGrabbingObject = currentSecondaryGrabbingObject;
+                currentSecondaryGrabbingObject = grabHolder;
+                primaryGrabPoint = secondaryGrabPoint;
+                secondaryGrabPoint = pointHolder;
+            }
+
             base.Initialise(currentGrabbdObject, currentPrimaryGrabbingObject, currentSecondaryGrabbingObject, primaryGrabPoint, secondaryGrabPoint);
             initialPosition = currentGrabbdObject.transform.localPosition;
             initialRotation = currentGrabbdObject.transform.localRotation;

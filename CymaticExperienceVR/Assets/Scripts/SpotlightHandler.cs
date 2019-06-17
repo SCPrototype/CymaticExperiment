@@ -14,58 +14,120 @@ public class SpotlightHandler : MonoBehaviour
         TABLET = 5
     };
 
+    public Light[] GlobalLights;
     public VideoScreen[] _videoScreens; //NOTE: The video players cause frame rate drops when switching videos.
 
+    [Space(10)]
     public GameObject _lightJars;
     public ParticleSystem[] _partJars;
+    public GameObject _fakeJars;
+    public GameObject _realJars;
+    [Space(10)]
     public GameObject _lightPlate;
     public ParticleSystem[] _partPlate;
+    public GameObject _fakePlate;
+    public GameObject _realPlate;
+    [Space(10)]
     public GameObject _lightSliders;
     public ParticleSystem[] _partSliders;
+    public GameObject _fakeSliders;
+    public GameObject _realSliders;
+    [Space(10)]
     public GameObject _lightLever;
     public ParticleSystem[] _partLever;
+    public GameObject _fakeLever;
+    public GameObject _realLever;
 
+    [Space(10)]
+    public GameObject[] _realSceneObjects;
+    public GameObject[] _fakeSceneObjects;
+
+    public bool DoFakeVersions = false;
+
+    [Space(10)]
     public Transform TargetMoveObject1;
     private Vector3 startRotation1;
     public Vector3[] StepRotation1;
     public Transform TargetMoveObject2;
     private Vector3 startRotation2;
     public Vector3[] StepRotation2;
+
+    [Space(10)]
     [Range(0.0f, 1.0f)]
-    public float RotationSpeed = 0.1f;
-    private float lerpTime = 0.0f;
+    public float RotationSpeed = 0.01f;
+    private float rotationLerpTime = 0.0f;
+
+    [Space(10)]
+    [Range(0.0f, 1.0f)]
+    public float LightIntensitySpeed = 0.01f;
+    private float lightLerpTime = 0.0f;
+    private bool lightsAreOn = false;
 
     private LightState _lightState;
     private FMOD.Studio.EventInstance _spotLightSound;
     // Start is called before the first frame update
     public void Start()
     {
-        _spotLightSound = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/LeverRelease");
         startRotation1 = TargetMoveObject1.localEulerAngles;
         startRotation2 = TargetMoveObject2.localEulerAngles;
+
+        if (DoFakeVersions)
+        {
+            _realJars.SetActive(false);
+            _realLever.SetActive(false);
+            _realPlate.SetActive(false);
+            _realSliders.SetActive(false);
+            for (int i = 0; i < _realSceneObjects.Length; i++)
+            {
+                _realSceneObjects[i].SetActive(false);
+            }
+
+            _fakeJars.SetActive(true);
+            _fakeLever.SetActive(true);
+            _fakePlate.SetActive(true);
+            _fakeSliders.SetActive(true);
+            for (int i = 0; i < _fakeSceneObjects.Length; i++)
+            {
+                _fakeSceneObjects[i].SetActive(true);
+            }
+        }
+
+        _spotLightSound = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/LeverRelease");
     }
 
     public void Update()
     {
-        if (lerpTime <= 1)
+        if (rotationLerpTime < 1)
         {
+            rotationLerpTime = Mathf.Clamp(rotationLerpTime + RotationSpeed, 0.0f, 1.0f);
             if (TargetMoveObject1.localEulerAngles != StepRotation1[(int)_lightState])
             {
-                TargetMoveObject1.localEulerAngles = Vector3.LerpUnclamped(startRotation1, StepRotation1[(int)_lightState], lerpTime);
+                TargetMoveObject1.localEulerAngles = Vector3.LerpUnclamped(startRotation1, StepRotation1[(int)_lightState], rotationLerpTime);
                 //TargetMoveObject1.localEulerAngles += (StepRotation1[(int)_lightState] - TargetMoveObject1.localEulerAngles) * RotationSpeed;
             }
             if (TargetMoveObject2.localEulerAngles != StepRotation2[(int)_lightState])
             {
-                TargetMoveObject2.localEulerAngles = Vector3.LerpUnclamped(startRotation2, StepRotation2[(int)_lightState], lerpTime);
+                TargetMoveObject2.localEulerAngles = Vector3.LerpUnclamped(startRotation2, StepRotation2[(int)_lightState], rotationLerpTime);
                 //TargetMoveObject2.localEulerAngles += (StepRotation2[(int)_lightState] - TargetMoveObject2.localEulerAngles) * RotationSpeed;
             }
-            lerpTime = Mathf.Clamp(lerpTime + RotationSpeed, 0.0f, 1.0f);
+        }
+
+        if (lightsAreOn)
+        {
+            if (lightLerpTime < 1)
+            {
+                lightLerpTime = Mathf.Clamp(lightLerpTime + LightIntensitySpeed, 0.0f, 1.0f);
+                for (int i = 0; i < GlobalLights.Length; i++)
+                {
+                    GlobalLights[i].intensity = lightLerpTime;
+                }
+            }
         }
     }
 
     private void SwitchLights(LightState pLightState)
     {
-        lerpTime = 0;
+        rotationLerpTime = 0;
         _lightJars.SetActive(false);
         _lightPlate.SetActive(false);
         _lightSliders.SetActive(false);
@@ -86,6 +148,14 @@ public class SpotlightHandler : MonoBehaviour
         {
             _partLever[i].Stop();
         }
+        if (!lightsAreOn)
+        {
+            for (int i = 0; i < GlobalLights.Length; i++)
+            {
+                GlobalLights[i].enabled = false;
+                lightLerpTime = 1;
+            }
+        }
 
         switch (pLightState)
         {
@@ -94,8 +164,35 @@ public class SpotlightHandler : MonoBehaviour
                 {
                     _videoScreens[i].StopVideo();
                 }
+                if (!lightsAreOn)
+                {
+                    lightsAreOn = true;
+                    for (int i = 0; i < GlobalLights.Length; i++)
+                    {
+                        GlobalLights[i].intensity = 0;
+                        lightLerpTime = 0;
+                        GlobalLights[i].enabled = true;
+                    }
+                }
+                if (DoFakeVersions)
+                {
+                    for (int i = 0; i < _fakeSceneObjects.Length; i++)
+                    {
+                        _fakeSceneObjects[i].SetActive(false);
+                    }
+                    for (int i = 0; i < _realSceneObjects.Length; i++)
+                    {
+                        _realSceneObjects[i].SetActive(true);
+                    }
+                }
+
                 break;
             case LightState.JARS:
+                if (DoFakeVersions)
+                {
+                    _fakeJars.SetActive(false);
+                    _realJars.SetActive(true);
+                }
                 _lightJars.SetActive(true);
                 for (int i = 0; i < _partJars.Length; i++)
                 {
@@ -107,6 +204,11 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 break;
             case LightState.PLATE:
+                if (DoFakeVersions)
+                {
+                    _fakePlate.SetActive(false);
+                    _realPlate.SetActive(true);
+                }
                 _lightPlate.SetActive(true);
                 for (int i = 0; i < _partPlate.Length; i++)
                 {
@@ -118,6 +220,11 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 break;
             case LightState.SLIDERS:
+                if (DoFakeVersions)
+                {
+                    _fakeSliders.SetActive(false);
+                    _realSliders.SetActive(true);
+                }
                 _lightSliders.SetActive(true);
                 for (int i = 0; i < _partSliders.Length; i++)
                 {
@@ -129,6 +236,11 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 break;
             case LightState.LEVER:
+                if (DoFakeVersions)
+                {
+                    _fakeLever.SetActive(false);
+                    _realLever.SetActive(true);
+                }
                 _lightLever.SetActive(true);
                 for (int i = 0; i < _partLever.Length; i++)
                 {
@@ -178,7 +290,7 @@ public class SpotlightHandler : MonoBehaviour
             startRotation2 = TargetMoveObject2.localEulerAngles;
         }
 
-        if ((int)pLightState > (int)LightState.TABLET) //If the new light state is invalid, turn lights off.
+        if ((int)pLightState > (int)LightState.SLIDERS) //If the new light state is invalid, turn lights off.
         {
             _lightState = LightState.OFF;
         }
