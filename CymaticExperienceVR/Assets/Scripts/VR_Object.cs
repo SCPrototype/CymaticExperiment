@@ -31,11 +31,11 @@ public class VR_Object : MonoBehaviour
         {
             ImpactSound.Event = GLOB.JarFallSound;
         }
-        else if (this is BottleFlip)
+        if (this is BottleFlip)
         {
             ImpactSound.Event = GLOB.BottleFallSound;
         }
-        else if(this is BouncyBall)
+        if(this is BouncyBall)
         {
             ImpactSound.Event = GLOB.BouncyBallSound;
         }
@@ -103,7 +103,7 @@ public class VR_Object : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (ImpactSound != null && Time.time > _spawnTime + 0.5f)
+        if (ImpactSound.Event != null && Time.time > _spawnTime + 0.5f)
         {
             ImpactSound.Play();
         }

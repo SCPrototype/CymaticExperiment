@@ -52,11 +52,6 @@ public class VideoScreen : MonoBehaviour
             return;
         }
 
-        if (!_monitorTurningOn.IsPlaying())
-        {
-            _monitorTurningOn.Play();
-        }
-
         if (vp.isPlaying)
         {
             vp.Stop();
