@@ -7,6 +7,11 @@ public class ResetGame : MonoBehaviour
     private static float pressDelay = 3.0f;
     private float pressStartTime;
 
+    void Awake()
+    {
+        FMODUnity.RuntimeManager.LoadBank("Master Bank");
+        FMODUnity.RuntimeManager.LoadBank("Master Bank.strings");
+    }
     // Update is called once per frame
     void Update()
     {
