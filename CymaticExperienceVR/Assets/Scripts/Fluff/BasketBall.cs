@@ -12,11 +12,15 @@ public class BasketBall : MonoBehaviour
     private GameObject _lastObjectHit;
     private float _resetTimer = 30.0f;
     private float _lastScoreTime;
+    private FMODUnity.StudioEventEmitter _scoreSound;
 
     // Start is called before the first frame update
     void Start()
     {
         _lastScoreTime = Time.time;
+        _scoreSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _scoreSound.Event = GLOB.CelebrationSound;
+        _scoreSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
     }
 
     // Update is called once per frame
@@ -33,10 +37,11 @@ public class BasketBall : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        //if (!particleEmitter.GetComponent<ParticleSystem>().isPlaying)
-        //{
-            particleEmitter.GetComponent<ParticleSystem>().Play();
-        //}
+        if (!_scoreSound.IsPlaying())
+        {
+            _scoreSound.Play();
+        }
+        particleEmitter.GetComponent<ParticleSystem>().Play();
         _lastScoreTime = Time.time;
         _score++;
         text.text = "Huidige \nScore : " + _score;

@@ -82,15 +82,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/TouchingSlider
-  guid: 49d6fbe668565447be4edf2316f2f4de
+  guid: e91c00331517d24b907d5eaa895eb405
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 221
 --- !u!114 &-8065877344792835980
 MonoBehaviour:
@@ -105,15 +105,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/Bottlefall
-  guid: 2b957b3fad529c4db9340122e2fa67e4
+  guid: 2c1ace8de08c3d468dcc4a90809b042d
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 562
 --- !u!114 &-7923853913084816165
 MonoBehaviour:
@@ -286,15 +286,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/JarShake
-  guid: 8651a60e2c91c24ebb318e47941f9239
+  guid: 877795645c04bf4fb0b9025b0015d075
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 328
 --- !u!114 &-5714262842053858232
 MonoBehaviour:
@@ -447,15 +447,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/Bouncyball
-  guid: 42fc13ee9df8ae4b87805c78d6f6d379
+  guid: 45b0eecf36397b499f427d918e9536a0
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 318
 --- !u!114 &-3742707213477282308
 MonoBehaviour:
@@ -763,16 +763,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/Spotlight
-  guid: 5b1b68cc76a10448bb98dea7d5b50c62
+  guid: c2240c655bbe7b47aee420db8763adeb
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2156
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2085
 --- !u!114 &-791991245516616625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,9 +874,10 @@ MonoBehaviour:
   - {fileID: 7455314813647375837}
   - {fileID: 8211295101683919764}
   - {fileID: 840801476165138002}
+  - {fileID: 859581928128645473}
   MasterBankRef: {fileID: 8797204997396485040}
   StringsBankRef: {fileID: 4695015228354577616}
-  stringsBankWriteTime: 636961276738115628
+  stringsBankWriteTime: 636964546480924476
   cacheVersion: 2
 --- !u!114 &34722492390327130
 MonoBehaviour:
@@ -891,15 +892,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/JarFall
-  guid: 2b8796a0972ae54b95c544d048ef69fd
+  guid: 5bdbca3302024449bc48533bf32ddd84
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 500
 --- !u!114 &428156011511288953
 MonoBehaviour:
@@ -1055,6 +1056,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5125
+--- !u!114 &859581928128645473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Outside/DomeClosing
+  guid: 4c7fe26a38b5784f97ef57c33415704e
+  Banks:
+  - {fileID: 8797204997396485040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 7180
 --- !u!114 &934066237242485867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,15 +1423,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/Lever
-  guid: 87f09fd77b25214a8823e4eb26da7d37
+  guid: 2eb5068d1309d54d93e3d8e0c8c3c1f1
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 1093
 --- !u!114 &4329638088539490854
 MonoBehaviour:
@@ -1445,15 +1469,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/LeverRelease
-  guid: 4ec1491112ca0f4eab464ef5eb6d7b7c
+  guid: b18361ca26b6894db34cbe2fdfc89a2b
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 1843
 --- !u!114 &4695015228354577616
 MonoBehaviour:
@@ -1468,11 +1492,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636961276738115628
+  lastModified: 636964546480924476
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1414
+    Value: 1464
   Exists: 1
 --- !u!114 &4695904647713199890
 MonoBehaviour:
@@ -1496,7 +1520,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1440
+  Length: 1406
 --- !u!114 &5390017548707473824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,15 +1665,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/JarPickup
-  guid: 49a6ac532abbb440843fca48b31b7338
+  guid: d345ab609571d04eaa82d9b92220fd13
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 484
 --- !u!114 &7218831250322512553
 MonoBehaviour:
@@ -1687,16 +1711,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/Celebration
-  guid: a80679102ff2be45be9552bc3e255a60
+  guid: 39e80df3cbbd024a9bbff68d4deda7e8
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3548
 --- !u!114 &8062295202890026416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,7 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/GeneralPickup
-  guid: daac0859b6ab0346978010257befd247
+  guid: 8156094ad5cf0f4299ee1513ebaa7a70
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
@@ -1803,11 +1827,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\piete\Documents\CymaticExperiment\CymaticExperienceVR\Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master
     Bank.bank
-  lastModified: 636961276738056107
+  lastModified: 636964546480814768
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 645600
+    Value: 785728
   Exists: 1
 --- !u!114 &9004163458525298523
 MonoBehaviour:
@@ -1868,15 +1892,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/PlayArea/BottlePickup
-  guid: 68b56b16a30b2b41ad312cd7e3e74783
+  guid: 4b78f4a9ab70a0459cba250fba246c16
   Banks:
   - {fileID: 8797204997396485040}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 500
 --- !u!114 &9090113543633335167
 MonoBehaviour:
