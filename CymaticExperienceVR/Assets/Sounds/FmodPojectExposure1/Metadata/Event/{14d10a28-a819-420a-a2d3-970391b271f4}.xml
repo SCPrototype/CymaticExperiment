@@ -41,9 +41,6 @@
         </relationship>
     </object>
     <object class="MasterTrack" id="{4562824a-865e-4bb3-a3b4-7f8e41498f05}">
-        <relationship name="modules">
-            <destination>{f3bf5401-13ca-457d-8755-c2742ebc9225}</destination>
-        </relationship>
         <relationship name="mixerGroup">
             <destination>{82f93cb4-8dc3-41c5-8adf-79cdb93e561c}</destination>
         </relationship>
@@ -62,6 +59,9 @@
     <object class="EventAutomatableProperties" id="{7b6e3d66-188f-4a02-99e9-6a35f16ceb8f}"/>
     <object class="MarkerTrack" id="{19095295-2227-41ef-a00f-036600e2bc04}"/>
     <object class="GroupTrack" id="{0363a9f0-89b0-4f45-a7d5-1527a51d59a0}">
+        <relationship name="modules">
+            <destination>{f3bf5401-13ca-457d-8755-c2742ebc9225}</destination>
+        </relationship>
         <relationship name="mixerGroup">
             <destination>{c13469fe-9d82-46a0-a4b7-c14c43a5858f}</destination>
         </relationship>
@@ -82,6 +82,12 @@
             <destination>{4aa53b33-2621-4e33-aab0-795fcdd5c848}</destination>
         </relationship>
     </object>
+    <object class="MixerBusEffectChain" id="{e96e3d64-9c30-4446-807b-8b4c76a03d16}">
+        <relationship name="effects">
+            <destination>{4c692032-31a9-456a-83e8-a7d05a97ef25}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusPanner" id="{acade559-da84-4dd7-ad85-fa2f14a792e6}"/>
     <object class="SingleSound" id="{f3bf5401-13ca-457d-8755-c2742ebc9225}">
         <property name="length">
             <value>14.626145124716553</value>
@@ -90,12 +96,6 @@
             <destination>{01fac607-2a45-4a3a-a526-89e9f6cbb149}</destination>
         </relationship>
     </object>
-    <object class="MixerBusEffectChain" id="{e96e3d64-9c30-4446-807b-8b4c76a03d16}">
-        <relationship name="effects">
-            <destination>{4c692032-31a9-456a-83e8-a7d05a97ef25}</destination>
-        </relationship>
-    </object>
-    <object class="MixerBusPanner" id="{acade559-da84-4dd7-ad85-fa2f14a792e6}"/>
     <object class="EventMixerGroup" id="{c13469fe-9d82-46a0-a4b7-c14c43a5858f}">
         <property name="volume">
             <value>5</value>
