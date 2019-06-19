@@ -56,11 +56,11 @@ public class Chladni : MonoBehaviour
         R = (int)(-2.0 / Mathf.Log10(A)) + 1;
         prepare();
 
-        SpawnSand();
-        SpawnSand();
-        SpawnSand();
-        SpawnSand();
-        SpawnSand();
+        //SpawnSand();
+        //SpawnSand();
+        //SpawnSand();
+        //SpawnSand();
+        //SpawnSand();
     }
 
     void prepare()

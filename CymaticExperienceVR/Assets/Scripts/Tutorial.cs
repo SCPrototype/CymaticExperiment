@@ -8,7 +8,9 @@ public class Tutorial : MonoBehaviour
     private SpotlightHandler _spotLightHandler;
     private int _currentStage = 0;
 
-    public float StageDelay = 0.5f;
+    public float StartDelay = 5.0f;
+    public float NextStageDelay = 0.5f;
+    public float CompleteDelay = 0.5f;
     private float stageSwitchTime;
     private bool isSwitchingStage = false;
 
@@ -20,15 +22,25 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         _spotLightHandler = this.GetComponent<SpotlightHandler>();
-        ResetTutorial();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_currentStage <= 0)
+        {
+            if (Time.time >= StartDelay)
+            {
+                ResetTutorial();
+            } else
+            {
+                return;
+            }
+        }
+
         if (isSwitchingStage)
         {
-            if (Time.time - stageSwitchTime >= StageDelay)
+            if (Time.time - stageSwitchTime >= CompleteDelay)
             {
                 isSwitchingStage = false;
             }
@@ -48,7 +60,7 @@ public class Tutorial : MonoBehaviour
     {
         if (_currentStage == pStage && !isSwitchingStage)
         {
-            if (StageDelay > 0)
+            if (CompleteDelay > 0)
             {
                 stageSwitchTime = Time.time;
                 isSwitchingStage = true;
@@ -60,7 +72,7 @@ public class Tutorial : MonoBehaviour
 
     public void ResetTutorial()
     {
-        if (StageDelay > 0)
+        if (CompleteDelay > 0)
         {
             stageSwitchTime = Time.time;
             isSwitchingStage = true;

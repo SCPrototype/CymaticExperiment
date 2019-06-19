@@ -7,6 +7,7 @@
 		_Ambient("Ambient", Range(0., 1.)) = .3
 		_Intensity("Intensity", Range(0., 1.5)) = .2
 		_Fade("Fade", Range(0., 1.)) = 1.
+		_TopFade("Top Fade", Range(0., 1.)) = 0.65
 		_Wind("Wind", Range(0., 1.)) = .1
 	}
 
@@ -69,6 +70,7 @@
 			float _Ambient;
 			float _Intensity;
 			float _Fade;
+			float _TopFade;
 			float _Wind;
 
 			v2f vert(appdata_t v) {
@@ -90,7 +92,7 @@
 
 			fixed4 frag(v2f i) : SV_Target{
 				float nu = (i.uv.x < .5) ? i.uv.x : (1. - i.uv.x);
-			nu = i.uv.x;
+				nu = i.uv.x;
 				nu = pow(nu, 2.);
 				float2 n_uv = float2(nu, i.uv.y);
 
@@ -125,7 +127,13 @@
 					col.a = 0;
 				}
 				else {
+					//(1.0 - 0.15) - (1.0 - 1.0)		(0.85) - (1.0) = -0.15		(0.85) - (0.35) = 0.5
 					fade = (1.0 - _Fade) - (1.0 - i.uv.y);
+
+					if (i.uv.y >= _TopFade)
+					{
+						fade -= (i.uv.y - _TopFade) * 5;
+					}
 				}
 				
 

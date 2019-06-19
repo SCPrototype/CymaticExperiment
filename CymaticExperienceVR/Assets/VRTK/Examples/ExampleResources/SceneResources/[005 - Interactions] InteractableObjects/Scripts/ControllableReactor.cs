@@ -21,6 +21,7 @@
 
         public UnityEvent OnActivate;
         public UnityEvent OnReset;
+        public UnityEvent OnEnabled;
         public ValueChangedEvent OnValueChanged;
 
         private float _timer;
@@ -33,6 +34,7 @@
             controllable.ValueChanged += ValueChanged;
             controllable.MaxLimitReached += MaxLimitReached;
             controllable.MinLimitReached += MinLimitReached;
+            OnEnabled.Invoke();
         }
 
         protected virtual void Start()
