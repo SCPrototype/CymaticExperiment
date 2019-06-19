@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class SliderSoundHandler : MonoBehaviour
 {
-    private FMOD.Studio.EventInstance _sliderSound;
+    private FMODUnity.StudioEventEmitter _sliderSoundSoundEmitter;
     private bool _soundPlayed = false;
     // Start is called before the first frame update
     void Start()
     {
-        _sliderSound = FMODUnity.RuntimeManager.CreateInstance(GLOB.TouchingSliderSound);
+        _sliderSoundSoundEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _sliderSoundSoundEmitter.Event = GLOB.TouchingSliderSound;
+        _sliderSoundSoundEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
     }
 
     // Update is called once per frame
@@ -17,13 +19,13 @@ public class SliderSoundHandler : MonoBehaviour
     {
         if (!_soundPlayed)
         {
-            if (this.gameObject.transform.GetChildCount() > 1)
+            if (this.gameObject.transform.childCount > 1 || Input.GetKeyDown(KeyCode.Q))
             {
                 _soundPlayed = true;
-                _sliderSound.start();
+                _sliderSoundSoundEmitter.Play();
             } 
         }
-        if(this.gameObject.transform.GetChildCount() <= 1 && _soundPlayed == true)
+        if(this.gameObject.transform.childCount <= 1 && _soundPlayed == true)
         {
             _soundPlayed = false;
         }
