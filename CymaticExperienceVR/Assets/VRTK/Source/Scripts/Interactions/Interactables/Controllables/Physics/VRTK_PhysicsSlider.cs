@@ -102,14 +102,17 @@ namespace VRTK.Controllables.PhysicsBased
         /// <param name="value">The new position value</param>
         public override void SetValue(float value)
         {
-            Vector3 tempPos = new Vector3();
-            tempPos = transform.localPosition;
-            tempPos[(int)operateAxis] = value;
+            if (controlJoint != null)
+            {
+                Vector3 tempPos = new Vector3();
+                tempPos = transform.localPosition;
+                tempPos[(int)operateAxis] = value;
 
-            transform.localPosition = tempPos;
+                transform.localPosition = tempPos;
 
-            positionTarget = VRTK_SharedMethods.NormalizeValue(value, originalLocalPosition[(int)operateAxis], MaximumLength()[(int)operateAxis]);
-            SetPositionWithNormalizedValue(positionTarget);
+                positionTarget = VRTK_SharedMethods.NormalizeValue(value, originalLocalPosition[(int)operateAxis], MaximumLength()[(int)operateAxis]);
+                SetPositionWithNormalizedValue(positionTarget);
+            }
         }
 
         /// <summary>
