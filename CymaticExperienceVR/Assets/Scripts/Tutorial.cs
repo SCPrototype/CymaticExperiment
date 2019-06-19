@@ -9,7 +9,7 @@ public class Tutorial : MonoBehaviour
     private int _currentStage = 0;
 
     public float StartDelay = 5.0f;
-    public float NextStageDelay = 0.5f;
+    //public float NextStageDelay = 0.5f;
     public float CompleteDelay = 0.5f;
     private float stageSwitchTime;
     private bool isSwitchingStage = false;
