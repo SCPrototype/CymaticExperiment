@@ -39,7 +39,7 @@ public class SandSpawner : VR_Object
 
         _sandPourSoundEmitter.Event = GLOB.JarPourSandSound;
         _sandShakeSoundEmitter.Event = GLOB.JarShakeSound;
-        _sandShakeSoundEmitter.Event = GLOB.JarPickUpSound;
+        _sandJarPickUpSoundEmitter.Event = GLOB.JarPickUpSound;
 
         _sandPourSoundEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         _sandShakeSoundEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));

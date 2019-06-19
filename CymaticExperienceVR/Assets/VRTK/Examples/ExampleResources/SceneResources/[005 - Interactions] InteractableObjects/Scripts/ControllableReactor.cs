@@ -24,6 +24,10 @@
         public UnityEvent OnEnabled;
         public ValueChangedEvent OnValueChanged;
 
+        private float _timer;
+        private float _gracePeriod = 0.2f;
+        private bool _enabledBool = false;
+
         protected virtual void OnEnable()
         {
             controllable = (controllable == null ? GetComponent<VRTK_BaseControllable>() : controllable);
@@ -33,30 +37,55 @@
             OnEnabled.Invoke();
         }
 
-        protected virtual void ValueChanged(object sender, ControllableEventArgs e)
+        protected virtual void Start()
         {
-            if (SnapToInt)
+            _timer = Time.time;
+        }
+
+        protected virtual void Update()
+        {
+            if (_enabledBool == false)
             {
-                if (currentValue != (int)e.value)
+                if (Time.time > _timer + _gracePeriod)
                 {
-                    OnValueChanged.Invoke((int)e.value);
-                    currentValue = (int)e.value;
+                    _enabledBool = true;
                 }
             }
-            else
+        }
+
+        protected virtual void ValueChanged(object sender, ControllableEventArgs e)
+        {
+            if (_enabledBool)
             {
-                OnValueChanged.Invoke((int)e.value);
+                if (SnapToInt)
+                {
+                    if (currentValue != (int)e.value)
+                    {
+                        OnValueChanged.Invoke((int)e.value);
+                        currentValue = (int)e.value;
+                    }
+                }
+                else
+                {
+                    OnValueChanged.Invoke((int)e.value);
+                }
             }
         }
 
         protected virtual void MaxLimitReached(object sender, ControllableEventArgs e)
         {
-            OnActivate.Invoke();
+            if (_enabledBool)
+            {
+                OnActivate.Invoke();
+            }
         }
 
         protected virtual void MinLimitReached(object sender, ControllableEventArgs e)
         {
-            OnReset.Invoke();
+            if (_enabledBool)
+            {
+                OnReset.Invoke();
+            }
         }
     }
 }
