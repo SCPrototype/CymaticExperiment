@@ -13,6 +13,17 @@ public class BasketBall : MonoBehaviour
     private float _resetTimer = 30.0f;
     private float _lastScoreTime;
     private FMODUnity.StudioEventEmitter _scoreSound;
+    private string scores;
+    private System.IO.StreamReader _streamReader;
+    private System.IO.StreamWriter _streamWriter;
+    private string _path = "Assets/Resources/Scores/Highscores.txt";
+    private int[] _scores;
+
+    void Awake()
+    {
+        _streamReader = new System.IO.StreamReader(_path, true);
+        scores = _streamReader.ReadToEnd();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +33,7 @@ public class BasketBall : MonoBehaviour
         _scoreSound.Event = GLOB.CelebrationSound;
         _scoreSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
     }
+
 
     // Update is called once per frame
     void Update()

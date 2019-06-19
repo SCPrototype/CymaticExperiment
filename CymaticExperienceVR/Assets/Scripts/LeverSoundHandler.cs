@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class LeverSoundHandler : MonoBehaviour
 {
     private FMODUnity.StudioEventEmitter _leverClickSound;
     private FMODUnity.StudioEventEmitter _leverEndClickSound;
     private FMODUnity.StudioEventEmitter _leverResetSound;
+    private bool _overHalfWay = false;
 
     private bool goingBack = false;
     // Start is called before the first frame update
@@ -23,15 +25,20 @@ public class LeverSoundHandler : MonoBehaviour
         _leverClickSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         _leverEndClickSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         _leverResetSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+
+        GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayClickingSound(int pValue)
     {
-    }
-
-    public void PlayClickingSound()
-    {
+        if (pValue >= 5)
+        {
+            _overHalfWay = true;
+        }
+        else
+        {
+            _overHalfWay = false;
+        }
         if (!goingBack)
         {
             if (!_leverClickSound.IsPlaying())
@@ -43,19 +50,18 @@ public class LeverSoundHandler : MonoBehaviour
 
     public void PlayEndClickSound()
     {
-        if(!_leverEndClickSound.IsPlaying())
+        if (!_leverEndClickSound.IsPlaying())
         {
             _leverEndClickSound.Play();
             goingBack = true;
         }
     }
 
-    public void PlayResetSound()
+    void ObjectReleased(object sender, InteractableObjectEventArgs e)
     {
-        if(!_leverResetSound.IsPlaying())
+        if (_overHalfWay && !_leverResetSound.IsPlaying())
         {
             _leverResetSound.Play();
-            goingBack = false;
         }
     }
 }
