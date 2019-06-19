@@ -4,27 +4,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
+[RequireComponent(typeof(VRTK.SecondaryControllerGrabActions.VRTK_SwapControllerGrabAction))]
 [RequireComponent(typeof(VRTK_InteractableObject))]
 [RequireComponent(typeof(VRTK_InteractObjectHighlighter))]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(AudioSource))] 
+[RequireComponent(typeof(AudioSource))]
 public class VR_Object : MonoBehaviour
 {
     private static float RespawnDelay = 5.0f;
 
     public Transform RespawnPoint;
-    public AudioSource ImpactSound;
 
+    protected FMODUnity.StudioEventEmitter ImpactSound;
     protected Rigidbody rb;
     protected bool _isBeingGrabbed = false;
     protected bool _isOnSpawn = true;
     private float _droppedTime;
-    private float _spawnTime;
+    protected float _spawnTime;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         //Add event listener for interactable object.
+        ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        if (this is SandSpawner)
+        {
+            ImpactSound.Event = GLOB.JarFallSound;
+        }
+        else if (this is BottleFlip)
+        {
+            ImpactSound.Event = GLOB.BottleFallSound;
+        }
+        else if(this is BouncyBall)
+        {
+            ImpactSound.Event = GLOB.BouncyBallSound;
+        }
         GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
         GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
         if (GetComponent<VRTK_InteractableObject>() == null)
@@ -32,9 +46,10 @@ public class VR_Object : MonoBehaviour
             Debug.LogError("Team3_Interactable_Object_Extension is required to be attached to an Object that has the VRTK_InteractableObject script attached to it");
             return;
         }
+        
 
         rb = GetComponent<Rigidbody>();
-
+        ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         //Adds the time of the spawning of the object (only listening on movement after X amount) This to patch the non-perfect spawns.
         _spawnTime = Time.time;
     }
@@ -45,17 +60,7 @@ public class VR_Object : MonoBehaviour
         //If the object has been moved, and is not currently being held, and the respawn delay has elapsed.
         if (!_isBeingGrabbed && !_isOnSpawn && Time.time - _droppedTime >= RespawnDelay)
         {
-            //Debug.Log("Respawning item." + _isOnSpawn + " " + _isBeingGrabbed);
-            //Disable velocity.
-            rb.isKinematic = true;
-            //Set object back to respawn point.
-            transform.position = RespawnPoint.position;
-            transform.rotation = RespawnPoint.rotation;
-            _isOnSpawn = true;
-            //Re-enable velocity.
-            rb.isKinematic = false;
-            _spawnTime = Time.time;
-
+            HandleRespawn();
         }
         //If the object is being moved from its spawn position.
         else if (_isOnSpawn && rb.velocity.magnitude > 0 && Time.time > _spawnTime + 0.5f)
@@ -63,6 +68,18 @@ public class VR_Object : MonoBehaviour
             _droppedTime = Time.time;
             _isOnSpawn = false;
         }
+    }
+
+    protected virtual void HandleRespawn()
+    {
+        rb.isKinematic = true;
+        //Set object back to respawn point.
+        transform.position = RespawnPoint.position;
+        transform.rotation = RespawnPoint.rotation;
+        _isOnSpawn = true;
+        //Re-enable velocity.
+        rb.isKinematic = false;
+        _spawnTime = Time.time;
     }
 
     protected virtual void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
@@ -75,13 +92,28 @@ public class VR_Object : MonoBehaviour
     {
         _droppedTime = Time.time;
         _isBeingGrabbed = false;
+        if (RespawnPoint.GetComponent<Collider>() != null)
+        {
+            if (RespawnPoint.GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds))
+            {
+                HandleRespawn();
+            }
+        }
     }
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (ImpactSound != null)
+        if (ImpactSound != null && Time.time > _spawnTime + 0.5f)
         {
             ImpactSound.Play();
+        }
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other == RespawnPoint.GetComponent<Collider>())
+        {
+
         }
     }
 }

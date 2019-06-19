@@ -7,6 +7,7 @@ public class FrequencyChanger : MonoBehaviour
     public VRTK_BaseControllable controllable;
     public VRTK_ControllerEvents controllerEvents;
     private Chladni chladni;
+    private Tutorial _tutorial;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +32,6 @@ public class FrequencyChanger : MonoBehaviour
     protected virtual void ValueChanged(object sender, ControllableEventArgs e)
     {
         chladni.changedValue = true;
+        _tutorial.CompleteStage(3);
     }
 }
