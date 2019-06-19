@@ -34,7 +34,6 @@ public class Hover : MonoBehaviour
                 lerpValue = Mathf.Clamp(lerpValue + (Speed + Random.Range(-RandomSpeedRange, RandomSpeedRange)), 0.0f, Mathf.PI);
                 if (lerpValue >= Mathf.PI)
                 {
-                    Debug.Log("Going down now.");
                     goingUp = false;
                 }
             }
@@ -43,11 +42,9 @@ public class Hover : MonoBehaviour
                 lerpValue = Mathf.Clamp(lerpValue - (Speed + Random.Range(-RandomSpeedRange, RandomSpeedRange)), 0.0f, Mathf.PI);
                 if (lerpValue <= 0)
                 {
-                    Debug.Log("Going up now.");
                     goingUp = true;
                 }
             }
-            Debug.Log((Mathf.Sin(lerpValue - (Mathf.PI / 2)) + 1) / 2);
             transform.localPosition = startPosition + new Vector3(0, Mathf.Lerp(0.0f, Distance, (Mathf.Sin(lerpValue - (Mathf.PI/2)) + 1) / 2), 0);
         }
         else
@@ -57,7 +54,6 @@ public class Hover : MonoBehaviour
                 lerpValue = Mathf.Clamp(lerpValue + (Speed + Random.Range(-RandomSpeedRange, RandomSpeedRange)), 0.0f, 1.0f);
                 if (lerpValue >= 1)
                 {
-                    Debug.Log("Going down now.");
                     goingUp = false;
                 }
             }
@@ -66,7 +62,6 @@ public class Hover : MonoBehaviour
                 lerpValue = Mathf.Clamp(lerpValue - (Speed + Random.Range(-RandomSpeedRange, RandomSpeedRange)), 0.0f, 1.0f);
                 if (lerpValue <= 0)
                 {
-                    Debug.Log("Going up now.");
                     goingUp = true;
                 }
             }
