@@ -22,4 +22,11 @@ public static class GLOB
     public const string MonitorSwitchSound = "event:/PlayArea/MonitorSwitch";
     public const string MonitorTurnOnSound = "event:/PlayArea/MonitorTurnOn";
 
+    //Sounds for tutorial
+    public const string TutorialStartSound = "event:/Tutorial/Start";
+    public const string TutorialShakeSound = "event:/Tutorial/Shake";
+    public const string TutorialPickingUpSound = "event:/Tutorial/Pickingup";
+    public const string TutorialAslidersSound = "event:/Tutorial/Asliders";
+    public const string TutorialFslidersSound = "event:/Tutorial/Fsliders";
+    public const string TutorialEndingSound = "event:/Tutorial/Start";
 }

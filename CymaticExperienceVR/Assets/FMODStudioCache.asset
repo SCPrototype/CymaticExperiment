@@ -46,6 +46,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 502
+--- !u!114 &-9089849597118318675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tutorial/Ending
+  guid: 59e3e166ad1de14499fb1a66a654bb6e
+  Banks:
+  - {fileID: -7923810329100795589}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14392
 --- !u!114 &-8724706041001835438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +92,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 14626
+--- !u!114 &-8399038494889703684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tutorial/Shake
+  guid: 67f914eaa6b2f04d86a846d1f9b9b0dd
+  Banks:
+  - {fileID: -7923810329100795589}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7326
 --- !u!114 &-8335891854727008079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,12 +218,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\piete\Documents\CymaticExperiment\CymaticExperienceVR\Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master
     Bank.bank
-  lastModified: 636965382152547981
+  lastModified: 636965575613429514
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 810528
+    Value: 1513856
   Exists: 1
+--- !u!114 &-7708198718226910915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tutorial/Start
+  guid: 4fc1e5a8aa4a9241a597a1aeb32e0349
+  Banks:
+  - {fileID: -7923810329100795589}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4084
 --- !u!114 &-7545667988786106401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +744,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 14626
+--- !u!114 &-2915438782636331348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tutorial/Fsliders
+  guid: 608d75fc5f45094987f485cd09ffdb16
+  Banks:
+  - {fileID: -7923810329100795589}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16386
 --- !u!114 &-2863896248631610899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,9 +1074,15 @@ MonoBehaviour:
   - {fileID: 840801476165138002}
   - {fileID: -2863896248631610899}
   - {fileID: -5651469545920572870}
+  - {fileID: 9075007304076824999}
+  - {fileID: -7708198718226910915}
+  - {fileID: -9089849597118318675}
+  - {fileID: -2915438782636331348}
+  - {fileID: -8399038494889703684}
+  - {fileID: 5455065141215156078}
   MasterBankRef: {fileID: -7923810329100795589}
   StringsBankRef: {fileID: 4695015228354577616}
-  stringsBankWriteTime: 636965382152627669
+  stringsBankWriteTime: 636965575613489386
   cacheVersion: 2
 --- !u!114 &34722492390327130
 MonoBehaviour:
@@ -1599,11 +1697,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636965382152627669
+  lastModified: 636965575613489386
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1512
+    Value: 1772
   Exists: 1
 --- !u!114 &4695904647713199890
 MonoBehaviour:
@@ -1697,6 +1795,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2156
+--- !u!114 &5455065141215156078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tutorial/Pickingup
+  guid: 8f580ea1d07b8b49a461291cbd17f77e
+  Banks:
+  - {fileID: -7923810329100795589}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9015
 --- !u!114 &5591974765031129587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,6 +2153,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
+--- !u!114 &9075007304076824999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tutorial/Asliders
+  guid: 472c85082e13dc4a9105ee1963e23e95
+  Banks:
+  - {fileID: -7923810329100795589}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5473
 --- !u!114 &9090113543633335167
 MonoBehaviour:
   m_ObjectHideFlags: 0
