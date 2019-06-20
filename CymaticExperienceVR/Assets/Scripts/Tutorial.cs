@@ -14,6 +14,10 @@ public class Tutorial : MonoBehaviour
     private float stageSwitchTime;
     private bool isSwitchingStage = false;
 
+    private float _startupTime;
+    private float _delayOnStart = 5.0f;
+    private bool _sceneStarting = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +43,15 @@ public class Tutorial : MonoBehaviour
             if (Time.time - stageSwitchTime >= CompleteDelay)
             {
                 isSwitchingStage = false;
+            }
+        }
+
+        if (!_sceneStarting)
+        {
+            if (Time.time > _startupTime + _delayOnStart)
+            {
+                _sceneStarting = true;
+                
             }
         }
     }

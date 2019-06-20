@@ -1877,7 +1877,8 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 5ae218debd4ac7d44b0201274cfbb948, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1552543522, guid: 58080e048a1c2f04593da80ec39bc957, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58080e048a1c2f04593da80ec39bc957, type: 3}
 --- !u!1 &213195502 stripped
 GameObject:
@@ -14480,6 +14481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2944c08848f9bfd4fa44a8ec53234874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GlobalLights: []
   _videoScreens:
   - {fileID: 1626470241}
   - {fileID: 71562606}
@@ -14487,15 +14489,26 @@ MonoBehaviour:
   _partJars:
   - {fileID: 2051296897}
   - {fileID: 1365494999}
+  _fakeJars: {fileID: 0}
+  _realJars: {fileID: 0}
   _lightPlate: {fileID: 1137392106}
   _partPlate:
   - {fileID: 367381826}
+  _fakePlate: {fileID: 0}
+  _realPlate: {fileID: 0}
   _lightSliders: {fileID: 1094508120}
   _partSliders:
   - {fileID: 1860787972}
+  _fakeSliders: {fileID: 0}
+  _realSliders: {fileID: 0}
   _lightLever: {fileID: 307137168}
   _partLever:
   - {fileID: 1231120846}
+  _fakeLever: {fileID: 0}
+  _realLever: {fileID: 0}
+  _realSceneObjects: []
+  _fakeSceneObjects: []
+  DoFakeVersions: 0
   TargetMoveObject1: {fileID: 245444237}
   StepRotation1:
   - {x: 0, y: 0, z: 0}
@@ -14513,6 +14526,7 @@ MonoBehaviour:
   - {x: 0, y: 110, z: 0}
   - {x: 0, y: 110, z: 0}
   RotationSpeed: 0.01
+  LightIntensitySpeed: 0.01
 --- !u!114 &673282686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14525,6 +14539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496e836ca2209bb46be17f17be033249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StageDelay: 0.5
 --- !u!4 &673282687
 Transform:
   m_ObjectHideFlags: 0
@@ -17274,6 +17289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669064bea761d34eb4213d9995d32cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RespawnPoint: {fileID: 0}
 --- !u!1 &967771972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6003171831403185146, guid: 5b7789779c8883b41be17ca217e04692,
@@ -24318,6 +24334,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1293849061059712209, guid: 0c844d31d62939745bf58702c7666833,
+        type: 3}
+      propertyPath: grabButton
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1293849060537459465, guid: 0c844d31d62939745bf58702c7666833,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24822,11 +24843,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293849061059712209, guid: 0c844d31d62939745bf58702c7666833,
-        type: 3}
-      propertyPath: grabButton
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1293849062311788432, guid: 0c844d31d62939745bf58702c7666833,
         type: 3}
@@ -25511,6 +25527,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basketball
       objectReference: {fileID: 0}
+    - target: {fileID: 8142493385598017240, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8142493385598017247, guid: ac0896e8bcafad442adf58df2b034379,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25591,6 +25612,12 @@ PrefabInstance:
       propertyPath: holdButtonToGrab
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8142493385598017233, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 6d757e183d700cf47b427ad89cf30a67,
+        type: 2}
     - target: {fileID: 8142493385598017232, guid: ac0896e8bcafad442adf58df2b034379,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -25604,19 +25631,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1433745886}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1433745888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433745887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da1f39d6b5aeac43ba92800518ccce1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RespawnPoint: {fileID: 86353252}
 --- !u!82 &1433745889
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25733,6 +25747,19 @@ MonoBehaviour:
   objectToHighlight: {fileID: 0}
   objectHighlighter: {fileID: 0}
   objectToAffect: {fileID: 0}
+--- !u!114 &1433745891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433745887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfa3f5036b11ed408d4e6f19c5a7f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RespawnPoint: {fileID: 86353252}
 --- !u!4 &1433745899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8142493385598017247, guid: ac0896e8bcafad442adf58df2b034379,
@@ -31840,6 +31867,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basketball (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8142493385598017240, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8142493385598017247, guid: ac0896e8bcafad442adf58df2b034379,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31920,6 +31952,12 @@ PrefabInstance:
       propertyPath: holdButtonToGrab
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8142493385598017233, guid: ac0896e8bcafad442adf58df2b034379,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 6d757e183d700cf47b427ad89cf30a67,
+        type: 2}
     - target: {fileID: 8142493385598017232, guid: ac0896e8bcafad442adf58df2b034379,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -31933,19 +31971,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1621568814}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1621568816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621568815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da1f39d6b5aeac43ba92800518ccce1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RespawnPoint: {fileID: 857107928}
 --- !u!82 &1621568817
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32062,6 +32087,19 @@ MonoBehaviour:
   objectToHighlight: {fileID: 0}
   objectHighlighter: {fileID: 0}
   objectToAffect: {fileID: 0}
+--- !u!114 &1621568819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621568815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfa3f5036b11ed408d4e6f19c5a7f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RespawnPoint: {fileID: 857107928}
 --- !u!4 &1621568827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8142493385598017247, guid: ac0896e8bcafad442adf58df2b034379,
@@ -43443,6 +43481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669064bea761d34eb4213d9995d32cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RespawnPoint: {fileID: 0}
 --- !u!1001 &1885960451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50796,7 +50835,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6832942475479214039, guid: 9885cb9a143173446bfdb690a661a9f6, type: 3}
+  - {fileID: 2100000, guid: 266abffc9041c0e469cda66ba8fd8772, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
