@@ -336,6 +336,11 @@ namespace VRTK.Controllables.ArtificialBased
                 controlInteractableObject.ignoredColliders = (onlyInteractWith.Length > 0 ? VRTK_SharedMethods.ColliderExclude(GetComponentsInChildren<Collider>(true), VRTK_SharedMethods.GetCollidersInGameObjects(onlyInteractWith, true, true)) : new Collider[0]);
                 SetupGrabMechanic();
                 SetupSecondaryAction();
+
+                if (GetComponent<VRTK_InteractObjectHighlighter>() != null)
+                {
+                    GetComponent<VRTK_InteractObjectHighlighter>().objectToMonitor = controlInteractableObject;
+                }
             }
             ManageInteractableListeners(true);
         }
@@ -382,11 +387,15 @@ namespace VRTK.Controllables.ArtificialBased
                 {
                     controlInteractableObject.InteractableObjectGrabbed += InteractableObjectGrabbed;
                     controlInteractableObject.InteractableObjectUngrabbed += InteractableObjectUngrabbed;
+                    controlInteractableObject.InteractableObjectTouched += InteractableObjectTouched;
+                    controlInteractableObject.InteractableObjectUntouched += InteractableObjectUntouched;
                 }
                 else
                 {
                     controlInteractableObject.InteractableObjectGrabbed -= InteractableObjectGrabbed;
                     controlInteractableObject.InteractableObjectUngrabbed -= InteractableObjectUngrabbed;
+                    controlInteractableObject.InteractableObjectTouched -= InteractableObjectTouched;
+                    controlInteractableObject.InteractableObjectUntouched -= InteractableObjectUntouched;
                 }
             }
         }
@@ -401,6 +410,22 @@ namespace VRTK.Controllables.ArtificialBased
             rotationReset = false;
             ForceRestingPosition();
             ForceSnapToStep();
+        }
+
+        protected virtual void InteractableObjectTouched(object sender, InteractableObjectEventArgs e)
+        {
+            if (GetComponent<VRTK_InteractObjectHighlighter>() != null)
+            {
+                GetComponent<VRTK_InteractObjectHighlighter>().Highlight(GetComponent<VRTK_InteractObjectHighlighter>().touchHighlight);
+            }
+        }
+
+        protected virtual void InteractableObjectUntouched(object sender, InteractableObjectEventArgs e)
+        {
+            if (GetComponent<VRTK_InteractObjectHighlighter>() != null)
+            {
+                GetComponent<VRTK_InteractObjectHighlighter>().Unhighlight();
+            }
         }
 
         protected virtual void CheckLock()

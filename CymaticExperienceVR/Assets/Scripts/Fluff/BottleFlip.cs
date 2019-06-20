@@ -6,7 +6,6 @@ using VRTK;
 
 public class BottleFlip : VR_Object
 {
-    public AudioSource CelebrationSound;
     public ParticleSystem PartSystem;
 
     public float SuccesfullLandDelay;
@@ -21,11 +20,15 @@ public class BottleFlip : VR_Object
     public Vector3 CenterOfMassDistance = new Vector3(0.05f, 0.1f, 0.05f);
     [Range(0.0f, 1.0f)]
     public float MassShiftSpeed = 0.3f;
+    private FMODUnity.StudioEventEmitter _celebrationSound;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
+        _celebrationSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _celebrationSound.Event = GLOB.CelebrationSound;
+        _celebrationSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
     }
 
     // Update is called once per frame
@@ -57,11 +60,11 @@ public class BottleFlip : VR_Object
                     }
                     else if (Time.time - _landTime >= SuccesfullLandDelay) //After a delay, play celebration.
                     {
-                        if (!_landedSuccesfully)
+                        if (!_landedSuccesfully || Input.GetKeyDown(KeyCode.O))
                         {
                             _landedSuccesfully = true;
                             PartSystem.Play();
-                            CelebrationSound.Play();
+                            _celebrationSound.Play();
                         }
                     }
                 } else
@@ -86,12 +89,11 @@ public class BottleFlip : VR_Object
     protected override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
-        FMODUnity.RuntimeManager.PlayOneShot(GLOB.BottleFallSound, GetComponent<Transform>().position);
     }
 
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
-        FMODUnity.RuntimeManager.PlayOneShot(GLOB.BottlePickupSound, GetComponent<Transform>().position);
+
     }
 }

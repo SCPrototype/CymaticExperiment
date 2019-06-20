@@ -39,7 +39,7 @@ public class VideoScreen : MonoBehaviour
 
     public void StopVideo()
     {
-        if (vp.isPlaying)
+        if (vp != null && vp.isPlaying)
         {
             vp.Stop();
         }
@@ -50,11 +50,6 @@ public class VideoScreen : MonoBehaviour
         if (vp == null)
         {
             return;
-        }
-
-        if (!_monitorTurningOn.IsPlaying())
-        {
-            _monitorTurningOn.Play();
         }
 
         if (vp.isPlaying)
