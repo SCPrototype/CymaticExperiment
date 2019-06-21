@@ -28,5 +28,5 @@ public static class GLOB
     public const string TutorialPickingUpSound = "event:/Tutorial/Pickingup";
     public const string TutorialAslidersSound = "event:/Tutorial/Asliders";
     public const string TutorialFslidersSound = "event:/Tutorial/Fsliders";
-    public const string TutorialEndingSound = "event:/Tutorial/Start";
+    public const string TutorialEndingSound = "event:/Tutorial/Ending";
 }
