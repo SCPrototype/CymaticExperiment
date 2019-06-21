@@ -317,7 +317,10 @@ public class Chladni : MonoBehaviour
     public void ChangeAmplitude(int pValue)
     {
         amplitude = 0.5f + (pValue * 0.1f);
-        _tutorial.CompleteStage(3);
+        if (_tutorial != null)
+        {
+            _tutorial.CompleteStage(3);
+        }
     }
 
     private void manualTest()
