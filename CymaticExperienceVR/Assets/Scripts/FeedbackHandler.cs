@@ -38,6 +38,13 @@ public class FeedbackHandler : MonoBehaviour
         }
     }
 
+
+    private void OnDestroy()
+    {
+        _streamWriter.WriteLine("__________");
+        _streamWriter.Close();
+    }
+
     private void OnApplicationQuit()
     {
         _streamWriter.WriteLine("__________");

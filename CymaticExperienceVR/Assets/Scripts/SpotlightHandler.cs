@@ -20,21 +20,25 @@ public class SpotlightHandler : MonoBehaviour
 
     [Space(10)]
     public GameObject _lightJars;
+    public GameObject _softLightJars;
     public ParticleSystem[] _partJars;
     public GameObject _fakeJars;
     public GameObject _realJars;
     [Space(10)]
     public GameObject _lightPlate;
+    public GameObject _softLightPlate;
     public ParticleSystem[] _partPlate;
     public GameObject _fakePlate;
     public GameObject _realPlate;
     [Space(10)]
     public GameObject _lightSliders;
+    public GameObject _softLightSliders;
     public ParticleSystem[] _partSliders;
     public GameObject _fakeSliders;
     public GameObject _realSliders;
     [Space(10)]
     public GameObject _lightLever;
+    public GameObject _softLightLever;
     public ParticleSystem[] _partLever;
     public GameObject _fakeLever;
     public GameObject _realLever;
@@ -92,6 +96,11 @@ public class SpotlightHandler : MonoBehaviour
                 _fakeSceneObjects[i].SetActive(true);
             }
         }
+
+        _softLightJars.SetActive(false);
+        _softLightPlate.SetActive(false);
+        _softLightSliders.SetActive(false);
+        _softLightLever.SetActive(false);
 
         SwitchLights(0);
 
@@ -201,6 +210,7 @@ public class SpotlightHandler : MonoBehaviour
                     _realJars.SetActive(true);
                 }
                 _lightJars.SetActive(true);
+                //_softLightJars.SetActive(true);
                 for (int i = 0; i < _partJars.Length; i++)
                 {
                     _partJars[i].Play();
@@ -218,6 +228,7 @@ public class SpotlightHandler : MonoBehaviour
                     _realPlate.SetActive(true);
                 }
                 _lightPlate.SetActive(true);
+                _softLightJars.SetActive(true);
                 for (int i = 0; i < _partPlate.Length; i++)
                 {
                     _partPlate[i].Play();
@@ -235,6 +246,7 @@ public class SpotlightHandler : MonoBehaviour
                     _realSliders.SetActive(true);
                 }
                 _lightSliders.SetActive(true);
+                _softLightPlate.SetActive(true);
                 for (int i = 0; i < _partSliders.Length; i++)
                 {
                     _partSliders[i].Play();
@@ -252,6 +264,7 @@ public class SpotlightHandler : MonoBehaviour
                     _realLever.SetActive(true);
                 }
                 _lightLever.SetActive(true);
+                _softLightSliders.SetActive(true);
                 for (int i = 0; i < _partLever.Length; i++)
                 {
                     _partLever[i].Play();
@@ -264,6 +277,7 @@ public class SpotlightHandler : MonoBehaviour
 
             case LightState.TABLET:
                 _lightLever.SetActive(true);
+                _softLightLever.SetActive(true);
                 for (int i = 0; i < _partLever.Length; i++)
                 {
                     _partLever[i].Play(); //NOTE: Tablet uses the same lights and particles as the lever.
@@ -279,6 +293,12 @@ public class SpotlightHandler : MonoBehaviour
                 {
                     _videoScreens[i].StopVideo();
                 }
+
+                _softLightJars.SetActive(false);
+                _softLightPlate.SetActive(false);
+                _softLightSliders.SetActive(false);
+                _softLightLever.SetActive(false);
+
                 if (!lightsAreOn)
                 {
                     lightsAreOn = true;
