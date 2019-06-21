@@ -14,26 +14,26 @@ public class BasketBall : MonoBehaviour
     private float _lastScoreTime;
     private FMODUnity.StudioEventEmitter _scoreSound;
     private string scores;
-  //  private System.IO.StreamReader _streamReader;
-  //  private System.IO.StreamWriter _streamWriter;
+    private System.IO.StreamReader _streamReader;
+    private System.IO.StreamWriter _streamWriter;
     private string _path = "Assets/Resources/Scores/Highscores.txt";
     private int _highScore;
 
     void Awake()
     {
-        //_streamReader = new System.IO.StreamReader(_path, true);
-        //scores = _streamReader.ReadToEnd();
-        //_streamReader.Dispose();
-        //_streamReader.Close();
-        //if (scores != "")
-        //{
-        //    _highScore = int.Parse(scores);
-        //}
-        //else
-        //{
-        //    _highScore = 0;
-        //}
-        //_streamWriter = new System.IO.StreamWriter(_path, false);
+        _streamReader = new System.IO.StreamReader(_path, true);
+        scores = _streamReader.ReadToEnd();
+        _streamReader.Dispose();
+        _streamReader.Close();
+        if (scores != "")
+        {
+            _highScore = int.Parse(scores);
+        }
+        else
+        {
+            _highScore = 0;
+        }
+        _streamWriter = new System.IO.StreamWriter(_path, false);
     }
 
     // Start is called before the first frame update
@@ -44,7 +44,7 @@ public class BasketBall : MonoBehaviour
         _scoreSound.Event = GLOB.CelebrationSound;
         _scoreSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         highscoreText.text = "Hoogste \nScore : " + _highScore;
-       // _streamWriter.WriteLine(_highScore.ToString());
+        _streamWriter.WriteLine(_highScore.ToString());
     }
 
 
@@ -71,10 +71,21 @@ public class BasketBall : MonoBehaviour
         _score++;
         if(_score > _highScore)
         {
-            //_streamWriter.WriteLine(_score.ToString());
+            _streamWriter.WriteLine(_score.ToString());
         }
         text.text = "Huidige \nScore : " + _score;
         FMODUnity.RuntimeManager.PlayOneShot(GLOB.CelebrationSound, GetComponent<Transform>().position);
     }
 
+    private void OnDestroy()
+    {
+       
+        _streamWriter.Close();
+    }
+
+    private void OnApplicationQuit()
+    {
+       
+        _streamWriter.Close();
+    }
 }
