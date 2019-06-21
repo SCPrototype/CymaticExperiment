@@ -61,6 +61,10 @@ public class Oscilator : MonoBehaviour
 
     public void DrawLine()
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         if (!LineMaterial)
         {
             Debug.LogError("Please Assign a material on the inspector");
