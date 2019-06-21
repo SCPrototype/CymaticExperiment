@@ -18,6 +18,7 @@ public class VideoScreen : MonoBehaviour
     public VideoClip[] Videos;
     private int clipIndex = -1;
     private FMODUnity.StudioEventEmitter _monitorTurningOn;
+    private FMODUnity.StudioEventEmitter _monitorSwitchClip;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,9 @@ public class VideoScreen : MonoBehaviour
         _monitorTurningOn = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _monitorTurningOn.Event = GLOB.MonitorTurnOnSound;
         _monitorTurningOn.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        _monitorSwitchClip = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _monitorSwitchClip.Event = GLOB.MonitorSwitchSound;
+        _monitorSwitchClip.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
 
         if (PlayOnAwake)
         {
@@ -45,8 +49,14 @@ public class VideoScreen : MonoBehaviour
         }
     }
 
+    public void StartUpMonitor()
+    {
+        _monitorTurningOn.Play();
+    }
+
     public void PlayVideo(int pIndex, bool pLoop = true)
     {
+
         if (vp == null)
         {
             return;
@@ -69,9 +79,9 @@ public class VideoScreen : MonoBehaviour
 
     public void PlayNextVideo(bool pLoop = true)
     {
-        if (!_monitorTurningOn.IsPlaying())
+        if (!_monitorSwitchClip.IsPlaying())
         {
-            _monitorTurningOn.Play();
+            _monitorSwitchClip.Play();
         }
         if (vp.isPlaying)
         {

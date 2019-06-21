@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ResetGame : MonoBehaviour
 {
-    private static float pressDelay = 3.0f;
+    public float pressDelay = 3.0f;
     private float pressStartTime;
+    public KeyCode DutchReset;
+    public KeyCode GermanReset;
+    public KeyCode DutchQuestions;
+    public KeyCode GermanQuestions;
 
     void Awake()
     {
@@ -15,11 +19,11 @@ public class ResetGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(DutchReset) || Input.GetKeyDown(GermanReset))
         {
             pressStartTime = Time.time;
         }
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(DutchReset) || Input.GetKey(GermanReset))
         {
             if (Time.time - pressStartTime >= pressDelay)
             {
@@ -27,10 +31,27 @@ public class ResetGame : MonoBehaviour
                 DoResetGame();
             }
         }
+
+        if (Input.GetKeyDown(DutchQuestions) || Input.GetKeyDown(GermanQuestions))
+        {
+            pressStartTime = Time.time;
+        }
+        if (Input.GetKey(DutchQuestions) || Input.GetKey(GermanQuestions))
+        {
+            if (Time.time - pressStartTime >= pressDelay)
+            {
+                pressStartTime = Time.time;
+                GoToQuestions();
+            }
+        }
     }
 
     public void DoResetGame()
     {
         Application.LoadLevel(0);
+    }
+    public void GoToQuestions()
+    {
+        Application.LoadLevel(1);
     }
 }

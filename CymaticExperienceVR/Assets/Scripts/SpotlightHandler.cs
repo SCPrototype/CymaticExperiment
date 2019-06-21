@@ -138,18 +138,22 @@ public class SpotlightHandler : MonoBehaviour
         for (int i = 0; i < _partJars.Length; i++)
         {
             _partJars[i].Stop();
+            _partJars[i].Clear(true);
         }
         for (int i = 0; i < _partPlate.Length; i++)
         {
             _partPlate[i].Stop();
+            _partPlate[i].Clear(true);
         }
         for (int i = 0; i < _partSliders.Length; i++)
         {
             _partSliders[i].Stop();
+            _partSliders[i].Clear(true);
         }
         for (int i = 0; i < _partLever.Length; i++)
         {
             _partLever[i].Stop();
+            _partLever[i].Clear(true);
         }
         if (!lightsAreOn)
         {

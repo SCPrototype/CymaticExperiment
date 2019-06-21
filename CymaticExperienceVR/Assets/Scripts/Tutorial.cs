@@ -9,14 +9,16 @@ public class Tutorial : MonoBehaviour
     private int _currentStage = 0;
 
     public float StartDelay = 5.0f;
-    public float NextStageDelay = 0.5f;
+    //public float NextStageDelay = 0.5f;
     public float CompleteDelay = 0.5f;
+    public GameObject AudioSourcePoint;
     private float stageSwitchTime;
     private bool isSwitchingStage = false;
 
     private float _startupTime;
     private float _delayOnStart = 5.0f;
     private bool _sceneStarting = false;
+    
 
     // Start is called before the first frame update
     void Start()
