@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="Event" id="{66e1e359-1dad-44e1-99fb-1a66a654bb6e}">
         <property name="name">
-            <value>Ending</value>
+            <value>TEnding</value>
         </property>
         <property name="outputFormat">
             <value>2</value>
@@ -27,6 +27,7 @@
         </relationship>
         <relationship name="groupTracks">
             <destination>{16e3bfe5-ff41-4d13-ab66-02c9dae42564}</destination>
+            <destination>{9adb763d-6e08-4549-ad45-27c7ae74a91a}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{c4059305-03b5-42c2-9a89-78004ecc6e78}</destination>
@@ -66,9 +67,18 @@
             <destination>{a3187983-d3cd-4b98-92e5-116c67929e2c}</destination>
         </relationship>
     </object>
+    <object class="GroupTrack" id="{9adb763d-6e08-4549-ad45-27c7ae74a91a}">
+        <relationship name="modules">
+            <destination>{7625ce2c-4925-4481-9162-e72fdccc9cdb}</destination>
+        </relationship>
+        <relationship name="mixerGroup">
+            <destination>{3fae3651-ccf8-4a22-a794-859dee017066}</destination>
+        </relationship>
+    </object>
     <object class="Timeline" id="{c4059305-03b5-42c2-9a89-78004ecc6e78}">
         <relationship name="modules">
             <destination>{cdb749a0-e53a-40fa-9a73-9a14a5df2557}</destination>
+            <destination>{7625ce2c-4925-4481-9162-e72fdccc9cdb}</destination>
         </relationship>
     </object>
     <object class="EventMixerMaster" id="{8379a2fb-78b4-4548-8dd1-290e510702f7}">
@@ -90,7 +100,7 @@
     <object class="MixerBusPanner" id="{24a1be13-632c-41b1-abca-cf4b777f45be}"/>
     <object class="SingleSound" id="{cdb749a0-e53a-40fa-9a73-9a14a5df2557}">
         <property name="length">
-            <value>14.392086167800453</value>
+            <value>12</value>
         </property>
         <relationship name="audioFile">
             <destination>{429a5293-fd3d-4edb-8f50-af4b9163ec61}</destination>
@@ -98,7 +108,7 @@
     </object>
     <object class="EventMixerGroup" id="{a3187983-d3cd-4b98-92e5-116c67929e2c}">
         <property name="volume">
-            <value>10</value>
+            <value>5</value>
         </property>
         <property name="name">
             <value>Audio 1</value>
@@ -113,8 +123,40 @@
             <destination>{8379a2fb-78b4-4548-8dd1-290e510702f7}</destination>
         </relationship>
     </object>
+    <object class="SingleSound" id="{7625ce2c-4925-4481-9162-e72fdccc9cdb}">
+        <property name="start">
+            <value>12</value>
+        </property>
+        <property name="length">
+            <value>2.2131226842938432</value>
+        </property>
+        <property name="timelockedOffset">
+            <value>12.17896348350661</value>
+        </property>
+        <relationship name="audioFile">
+            <destination>{429a5293-fd3d-4edb-8f50-af4b9163ec61}</destination>
+        </relationship>
+    </object>
+    <object class="EventMixerGroup" id="{3fae3651-ccf8-4a22-a794-859dee017066}">
+        <property name="volume">
+            <value>2.5</value>
+        </property>
+        <property name="name">
+            <value>Audio 2</value>
+        </property>
+        <relationship name="effectChain">
+            <destination>{aa9e7382-9950-4fcc-9baa-ba73ff25feaf}</destination>
+        </relationship>
+        <relationship name="panner">
+            <destination>{2815e13c-81ac-436e-b451-b1279be0a3bb}</destination>
+        </relationship>
+        <relationship name="output">
+            <destination>{8379a2fb-78b4-4548-8dd1-290e510702f7}</destination>
+        </relationship>
+    </object>
     <object class="MixerBusEffectChain" id="{49bfe827-7be7-4b2c-b4cb-8bb3a3d8f50d}">
         <relationship name="effects">
+            <destination>{0274058c-de2c-4126-a4b0-6e01f9e598f1}</destination>
             <destination>{810e982c-56d9-4a3f-9e90-597277eb94db}</destination>
             <destination>{9e7702ce-c4ea-4fe8-94e3-77879ffb9e2e}</destination>
         </relationship>
@@ -128,6 +170,22 @@
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{6ef3cf4b-7858-4f7b-bfc6-4c9431268e2a}"/>
+    <object class="MixerBusEffectChain" id="{aa9e7382-9950-4fcc-9baa-ba73ff25feaf}">
+        <relationship name="effects">
+            <destination>{f20e1e90-f687-49d9-aa1c-b452b2365fcf}</destination>
+            <destination>{10ca9c76-f60a-4216-82d5-2200763d555a}</destination>
+            <destination>{15fc3d1f-a109-4727-93fc-91fa3415f26e}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusPanner" id="{2815e13c-81ac-436e-b451-b1279be0a3bb}"/>
+    <object class="ThreeEQEffect" id="{0274058c-de2c-4126-a4b0-6e01f9e598f1}">
+        <property name="lowGain">
+            <value>-55</value>
+        </property>
+        <property name="highGain">
+            <value>-3.5</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{810e982c-56d9-4a3f-9e90-597277eb94db}"/>
     <object class="SpatialiserEffect" id="{9e7702ce-c4ea-4fe8-94e3-77879ffb9e2e}"/>
     <object class="MixerBusFader" id="{96437be4-331d-4466-87da-d6729f9bcfb1}"/>
@@ -139,7 +197,27 @@
             <value>61</value>
         </property>
         <property name="wetLevel">
-            <value>-31</value>
+            <value>-44</value>
+        </property>
+    </object>
+    <object class="ThreeEQEffect" id="{f20e1e90-f687-49d9-aa1c-b452b2365fcf}">
+        <property name="lowGain">
+            <value>-55</value>
+        </property>
+        <property name="highGain">
+            <value>-3.5</value>
+        </property>
+    </object>
+    <object class="MixerBusFader" id="{10ca9c76-f60a-4216-82d5-2200763d555a}"/>
+    <object class="SFXReverbEffect" id="{15fc3d1f-a109-4727-93fc-91fa3415f26e}">
+        <property name="decayTime">
+            <value>2600</value>
+        </property>
+        <property name="earlyLateMix">
+            <value>61</value>
+        </property>
+        <property name="wetLevel">
+            <value>-46</value>
         </property>
     </object>
 </objects>
