@@ -51,10 +51,8 @@ public class VR_Object : MonoBehaviour
             Debug.LogError("Team3_Interactable_Object_Extension is required to be attached to an Object that has the VRTK_InteractableObject script attached to it");
             return;
         }
-        
-
+       
         rb = GetComponent<Rigidbody>();
-
         //Adds the time of the spawning of the object (only listening on movement after X amount) This to patch the non-perfect spawns.
         _spawnTime = Time.time;
     }

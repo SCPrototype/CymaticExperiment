@@ -21,9 +21,9 @@ public class Tutorial : MonoBehaviour
     public GameObject chladniSoundEmitter;
     private bool _soundShouldChange = false;
     private string _soundTargetString = "";
-    private bool _intoSpeechSound = false;
-    private bool _firstSoundHasPlayed = false;
+    private bool _welcomeSoundHasPlayed = false;
     private bool _fsliderSoundHasPlayed = false;
+    private bool _sandMoveSoundHasPlayed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,19 +37,15 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_chladniTalkBoard.Event == GLOB.TutorialFslidersSound)
+        if (_chladniTalkBoard.Event == GLOB.TutorialStartSound && !_chladniTalkBoard.IsPlaying() && _welcomeSoundHasPlayed)
         {
-            Debug.Log("true");
-        }
-        if(_chladniTalkBoard.Event == GLOB.TutorialStartSound && _chladniTalkBoard.IsPlaying())
-        {
-            _firstSoundHasPlayed = true;
-        }
-        if(_firstSoundHasPlayed && _chladniTalkBoard.IsPlaying() && _intoSpeechSound == false)
-        {
-            _intoSpeechSound = true;
-            _soundShouldChange = true;
             _soundTargetString = GLOB.TutorialPickingUpSound;
+            _soundShouldChange = true;
+        }
+        if (_chladniTalkBoard.Event == GLOB.TutorialSandMoveSound && !_chladniTalkBoard.IsPlaying() && _sandMoveSoundHasPlayed)
+        {
+            _soundTargetString = GLOB.TutorialFslidersSound;
+            _soundShouldChange = true;
         }
         if(_chladniTalkBoard.Event == GLOB.TutorialFslidersSound && !_chladniTalkBoard.IsPlaying() && _fsliderSoundHasPlayed)
         {
@@ -100,7 +96,7 @@ public class Tutorial : MonoBehaviour
                     _soundTargetString = GLOB.TutorialShakeSound;
                     break;
                 case 2:
-                    _soundTargetString = GLOB.TutorialFslidersSound;
+                    _soundTargetString = GLOB.TutorialSandMoveSound;
                     break;
                 case 3:
                      _soundTargetString = GLOB.TutorialEndingSound;
@@ -127,6 +123,7 @@ public class Tutorial : MonoBehaviour
         _currentStage = 1;
         ChangeSounds(GLOB.TutorialStartSound);
         _chladniTalkBoard.Play();
+        _welcomeSoundHasPlayed = true;
         _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
     }
 
@@ -134,6 +131,7 @@ public class Tutorial : MonoBehaviour
     {
         if (_chladniTalkBoard.IsPlaying())
         {
+            _chladniTalkBoard.Stop();
             //Fade out.
         } else
         {
@@ -143,6 +141,10 @@ public class Tutorial : MonoBehaviour
             if(pGlobName == GLOB.TutorialFslidersSound)
             {
                 _fsliderSoundHasPlayed = true;
+            }
+            if(pGlobName == GLOB.TutorialSandMoveSound)
+            {
+                _sandMoveSoundHasPlayed = true;
             }
         }
     }
