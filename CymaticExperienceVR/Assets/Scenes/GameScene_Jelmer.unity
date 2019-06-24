@@ -1386,6 +1386,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: -285669034732579516, guid: 519ea341bb51fd24da188c6c28dfb7ce,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ebc065a30d57d3439605fa6f4f55a34, type: 2}
+    - target: {fileID: -285669034732579516, guid: 519ea341bb51fd24da188c6c28dfb7ce,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 29216fb909f7d0d4ea5ee25882acc7a0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 519ea341bb51fd24da188c6c28dfb7ce, type: 3}
 --- !u!4 &104430206 stripped
@@ -11303,6 +11313,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.11968006
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 928f8ac4dc68c074c85530ad20d1376e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 521972594b6b48b4f96f745dd67aabc5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 928f8ac4dc68c074c85530ad20d1376e, type: 3}
 --- !u!4 &415985494 stripped
@@ -30934,7 +30949,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: e501edbc1939a314fab7e1be7010c6bd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.029
+      value: 0.0024
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e501edbc1939a314fab7e1be7010c6bd,
         type: 3}
@@ -30944,7 +30959,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: e501edbc1939a314fab7e1be7010c6bd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.001
+      value: -0.5497
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e501edbc1939a314fab7e1be7010c6bd,
         type: 3}
@@ -31509,6 +31524,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.04
       objectReference: {fileID: 0}
+    - target: {fileID: 1183341798474235847, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1749a1f5fa54554388d5ccdc84ef6be, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93683f9f8521d70408a6ad61141ec471, type: 3}
 --- !u!4 &1145469343 stripped
@@ -31964,22 +31984,26 @@ MonoBehaviour:
   - {fileID: 1399206460716280910}
   - {fileID: 2142898536}
   _lightJars: {fileID: 1770446343}
+  _softLightJars: {fileID: 0}
   _partJars:
   - {fileID: 60929454}
   - {fileID: 1384191902}
   _fakeJars: {fileID: 1606898634}
   _realJars: {fileID: 27790757}
   _lightPlate: {fileID: 472135620}
+  _softLightPlate: {fileID: 0}
   _partPlate:
   - {fileID: 1346212208}
   _fakePlate: {fileID: 1912637750}
   _realPlate: {fileID: 47450235}
   _lightSliders: {fileID: 1441793887}
+  _softLightSliders: {fileID: 0}
   _partSliders:
   - {fileID: 795907881}
   _fakeSliders: {fileID: 657735463}
   _realSliders: {fileID: 1265210003}
   _lightLever: {fileID: 1830240724}
+  _softLightLever: {fileID: 0}
   _partLever:
   - {fileID: 218888491}
   _fakeLever: {fileID: 150175352}
@@ -32025,7 +32049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDelay: 5
   CompleteDelay: 0.5
-  AudioSourcePoint: {fileID: 0}
+  chladniSoundEmitter: {fileID: 0}
 --- !u!4 &1176221364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3985276816466246865, guid: 5c56141b4eefd814498e432f365b76e2,
@@ -44519,7 +44543,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 33757794f3877034d8049fe265e40b54, type: 2}
+      objectReference: {fileID: 2100000, guid: d6c04e23feb8a6e4ab6a081e7eacbb23, type: 2}
+    - target: {fileID: -3065830599712880350, guid: b49fb4a4fdeb48b439ac06822e998f14,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 04e0186d2dfaede4e8d39fd2a2ac4117, type: 2}
+    - target: {fileID: -274273193750734869, guid: b49fb4a4fdeb48b439ac06822e998f14,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 959c5f148d71d6743bc66f0c5225ee48, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b49fb4a4fdeb48b439ac06822e998f14, type: 3}
 --- !u!1 &1605143032 stripped
@@ -48228,6 +48262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Terain lever
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 93e9a48abd2efe94ab7b47bf65dd77ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8664059859517800638, guid: 93e9a48abd2efe94ab7b47bf65dd77ad,
         type: 3}
