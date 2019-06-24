@@ -19,7 +19,7 @@ public class VR_Object : MonoBehaviour
     protected Rigidbody rb;
     protected bool _isBeingGrabbed = false;
     protected bool _isOnSpawn = true;
-    private float _droppedTime;
+    protected float _droppedTime;
     protected float _spawnTime;
 
     // Start is called before the first frame update
@@ -89,6 +89,7 @@ public class VR_Object : MonoBehaviour
     {
         _isBeingGrabbed = true;
         _isOnSpawn = false;
+        rb.isKinematic = false;
     }
 
     protected virtual void ObjectReleased(object sender, InteractableObjectEventArgs e)

@@ -6220,6 +6220,50 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 6329158148709259305, guid: a78fac775b1b94a4791ca0743167e47a, type: 3}
+--- !u!1 &464378276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 464378277}
+  - component: {fileID: 464378278}
+  m_Layer: 0
+  m_Name: TabletHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &464378277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464378276}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: -0.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 558829925}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &464378278
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464378276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1574875, y: 0.19143867, z: 0.3672977}
+  m_Center: {x: 0, y: 0.000000018626451, z: 0}
 --- !u!1 &468232437 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1183341798474235845, guid: 93683f9f8521d70408a6ad61141ec471,
@@ -12165,6 +12209,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16aea222c53f7c478370af88ea90207, type: 3}
+--- !u!4 &558829925 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6580231254249938442, guid: 9360cb7a5df69194384bc46cddcba918,
+    type: 3}
+  m_PrefabInstance: {fileID: 653685524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &563272995
 GameObject:
   m_ObjectHideFlags: 0
@@ -31693,6 +31743,31 @@ PrefabInstance:
       propertyPath: RotationOffset.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1183341798545069640, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: LaunchPosition
+      value: 
+      objectReference: {fileID: 464378277}
+    - target: {fileID: 1183341798545069640, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: Force
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183341798545069640, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: LaunchOffsetY
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183341798545069640, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: LaunchForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183341798545069640, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: TabletHolder
+      value: 
+      objectReference: {fileID: 464378277}
     - target: {fileID: 1183341798474235844, guid: 93683f9f8521d70408a6ad61141ec471,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -31818,6 +31893,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1183341798545069642, guid: 93683f9f8521d70408a6ad61141ec471,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93683f9f8521d70408a6ad61141ec471, type: 3}
 --- !u!4 &1384291950 stripped
@@ -31860,19 +31940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1384291954
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384291951}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.03, y: 0.15, z: 0.3}
-  m_Center: {x: 0, y: 0.04, z: 0}
 --- !u!114 &1384291960 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1183341798545069640, guid: 93683f9f8521d70408a6ad61141ec471,
