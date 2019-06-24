@@ -26,18 +26,23 @@ public class VR_Object : MonoBehaviour
     protected virtual void Start()
     {
         //Add event listener for interactable object.
-        ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         if (this is SandSpawner)
         {
+            ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
             ImpactSound.Event = GLOB.JarFallSound;
+            ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         }
         if (this is BottleFlip)
         {
+            ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
             ImpactSound.Event = GLOB.BottleFallSound;
+            ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         }
         if(this is BouncyBall)
         {
+            ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
             ImpactSound.Event = GLOB.BouncyBallSound;
+            ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         }
         GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
         GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
@@ -46,10 +51,8 @@ public class VR_Object : MonoBehaviour
             Debug.LogError("Team3_Interactable_Object_Extension is required to be attached to an Object that has the VRTK_InteractableObject script attached to it");
             return;
         }
-        
-
+       
         rb = GetComponent<Rigidbody>();
-        ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         //Adds the time of the spawning of the object (only listening on movement after X amount) This to patch the non-perfect spawns.
         _spawnTime = Time.time;
     }
@@ -103,9 +106,12 @@ public class VR_Object : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (!ImpactSound.IsPlaying() && Time.time > _spawnTime + 0.5f)
+        if (ImpactSound != null)
         {
-            ImpactSound.Play();
+            if (!ImpactSound.IsPlaying() && Time.time > _spawnTime + 0.5f)
+            {
+                ImpactSound.Play();
+            }
         }
     }
 
