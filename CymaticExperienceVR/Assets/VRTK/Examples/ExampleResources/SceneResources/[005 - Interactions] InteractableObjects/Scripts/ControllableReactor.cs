@@ -21,7 +21,12 @@
 
         public UnityEvent OnActivate;
         public UnityEvent OnReset;
+        public UnityEvent OnEnabled;
         public ValueChangedEvent OnValueChanged;
+
+        private float _timer;
+        private float _gracePeriod = 0.2f;
+        private bool _enabledBool = false;
 
         protected virtual void OnEnable()
         {
@@ -29,32 +34,58 @@
             controllable.ValueChanged += ValueChanged;
             controllable.MaxLimitReached += MaxLimitReached;
             controllable.MinLimitReached += MinLimitReached;
+            OnEnabled.Invoke();
+        }
+
+        protected virtual void Start()
+        {
+            _timer = Time.time;
+        }
+
+        protected virtual void Update()
+        {
+            if (_enabledBool == false)
+            {
+                if (Time.time > _timer + _gracePeriod)
+                {
+                    _enabledBool = true;
+                }
+            }
         }
 
         protected virtual void ValueChanged(object sender, ControllableEventArgs e)
         {
-            if (SnapToInt)
+            if (_enabledBool)
             {
-                if (currentValue != (int)e.value)
+                if (SnapToInt)
+                {
+                    if (currentValue != (int)e.value)
+                    {
+                        OnValueChanged.Invoke((int)e.value);
+                        currentValue = (int)e.value;
+                    }
+                }
+                else
                 {
                     OnValueChanged.Invoke((int)e.value);
-                    currentValue = (int)e.value;
                 }
-            }
-            else
-            {
-                OnValueChanged.Invoke((int)e.value);
             }
         }
 
         protected virtual void MaxLimitReached(object sender, ControllableEventArgs e)
         {
-            OnActivate.Invoke();
+            if (_enabledBool)
+            {
+                OnActivate.Invoke();
+            }
         }
 
         protected virtual void MinLimitReached(object sender, ControllableEventArgs e)
         {
-            OnReset.Invoke();
+            if (_enabledBool)
+            {
+                OnReset.Invoke();
+            }
         }
     }
 }

@@ -11,7 +11,8 @@ public class SpotlightHandler : MonoBehaviour
         PLATE = 2,
         SLIDERS = 3,
         LEVER = 4,
-        TABLET = 5
+        TABLET = 5,
+        FINISHED = 6
     };
 
     public Light[] GlobalLights;
@@ -19,21 +20,25 @@ public class SpotlightHandler : MonoBehaviour
 
     [Space(10)]
     public GameObject _lightJars;
+    public GameObject _softLightJars;
     public ParticleSystem[] _partJars;
     public GameObject _fakeJars;
     public GameObject _realJars;
     [Space(10)]
     public GameObject _lightPlate;
+    public GameObject _softLightPlate;
     public ParticleSystem[] _partPlate;
     public GameObject _fakePlate;
     public GameObject _realPlate;
     [Space(10)]
     public GameObject _lightSliders;
+    public GameObject _softLightSliders;
     public ParticleSystem[] _partSliders;
     public GameObject _fakeSliders;
     public GameObject _realSliders;
     [Space(10)]
     public GameObject _lightLever;
+    public GameObject _softLightLever;
     public ParticleSystem[] _partLever;
     public GameObject _fakeLever;
     public GameObject _realLever;
@@ -92,6 +97,13 @@ public class SpotlightHandler : MonoBehaviour
             }
         }
 
+        _softLightJars.SetActive(false);
+        _softLightPlate.SetActive(false);
+        _softLightSliders.SetActive(false);
+        _softLightLever.SetActive(false);
+
+        SwitchLights(0);
+
         _spotLightSound = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/LeverRelease");
     }
 
@@ -135,18 +147,22 @@ public class SpotlightHandler : MonoBehaviour
         for (int i = 0; i < _partJars.Length; i++)
         {
             _partJars[i].Stop();
+            _partJars[i].Clear(true);
         }
         for (int i = 0; i < _partPlate.Length; i++)
         {
             _partPlate[i].Stop();
+            _partPlate[i].Clear(true);
         }
         for (int i = 0; i < _partSliders.Length; i++)
         {
             _partSliders[i].Stop();
+            _partSliders[i].Clear(true);
         }
         for (int i = 0; i < _partLever.Length; i++)
         {
             _partLever[i].Stop();
+            _partLever[i].Clear(true);
         }
         if (!lightsAreOn)
         {
@@ -164,6 +180,125 @@ public class SpotlightHandler : MonoBehaviour
                 {
                     _videoScreens[i].StopVideo();
                 }
+                if (lightsAreOn)
+                {
+                    lightsAreOn = false;
+                    for (int i = 0; i < GlobalLights.Length; i++)
+                    {
+                        GlobalLights[i].intensity = 0;
+                        lightLerpTime = 1;
+                        GlobalLights[i].enabled = false;
+                    }
+                }
+                if (DoFakeVersions)
+                {
+                    for (int i = 0; i < _realSceneObjects.Length; i++)
+                    {
+                        _realSceneObjects[i].SetActive(false);
+                    }
+                    for (int i = 0; i < _fakeSceneObjects.Length; i++)
+                    {
+                        _fakeSceneObjects[i].SetActive(true);
+                    }
+                }
+                break;
+
+            case LightState.JARS:
+                if (DoFakeVersions)
+                {
+                    _fakeJars.SetActive(false);
+                    _realJars.SetActive(true);
+                }
+                _lightJars.SetActive(true);
+                //_softLightJars.SetActive(true);
+                for (int i = 0; i < _partJars.Length; i++)
+                {
+                    _partJars[i].Play();
+                }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.JARS - 1);
+                }
+                break;
+
+            case LightState.PLATE:
+                if (DoFakeVersions)
+                {
+                    _fakePlate.SetActive(false);
+                    _realPlate.SetActive(true);
+                }
+                _lightPlate.SetActive(true);
+                _softLightJars.SetActive(true);
+                for (int i = 0; i < _partPlate.Length; i++)
+                {
+                    _partPlate[i].Play();
+                }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.PLATE - 1);
+                }
+                break;
+
+            case LightState.SLIDERS:
+                if (DoFakeVersions)
+                {
+                    _fakeSliders.SetActive(false);
+                    _realSliders.SetActive(true);
+                }
+                _lightSliders.SetActive(true);
+                _softLightPlate.SetActive(true);
+                for (int i = 0; i < _partSliders.Length; i++)
+                {
+                    _partSliders[i].Play();
+                }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.SLIDERS - 1);
+                }
+                break;
+
+            case LightState.LEVER:
+                if (DoFakeVersions)
+                {
+                    _fakeLever.SetActive(false);
+                    _realLever.SetActive(true);
+                }
+                _lightLever.SetActive(true);
+                _softLightSliders.SetActive(true);
+                for (int i = 0; i < _partLever.Length; i++)
+                {
+                    _partLever[i].Play();
+                }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.LEVER - 1);
+                }
+                break;
+
+            case LightState.TABLET:
+                _lightLever.SetActive(true);
+                _softLightLever.SetActive(true);
+                for (int i = 0; i < _partLever.Length; i++)
+                {
+                    _partLever[i].Play(); //NOTE: Tablet uses the same lights and particles as the lever.
+                }
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].PlayVideo((int)LightState.TABLET - 1);
+                }
+                break;
+
+            case LightState.FINISHED:
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].StopVideo();
+                }
+
+                _softLightJars.SetActive(false);
+                _softLightPlate.SetActive(false);
+                _softLightSliders.SetActive(false);
+                _softLightLever.SetActive(false);
+
                 if (!lightsAreOn)
                 {
                     lightsAreOn = true;
@@ -186,81 +321,6 @@ public class SpotlightHandler : MonoBehaviour
                     }
                 }
 
-                break;
-            case LightState.JARS:
-                if (DoFakeVersions)
-                {
-                    _fakeJars.SetActive(false);
-                    _realJars.SetActive(true);
-                }
-                _lightJars.SetActive(true);
-                for (int i = 0; i < _partJars.Length; i++)
-                {
-                    _partJars[i].Play();
-                }
-                for (int i = 0; i < _videoScreens.Length; i++)
-                {
-                    _videoScreens[i].PlayVideo((int)LightState.JARS - 1);
-                }
-                break;
-            case LightState.PLATE:
-                if (DoFakeVersions)
-                {
-                    _fakePlate.SetActive(false);
-                    _realPlate.SetActive(true);
-                }
-                _lightPlate.SetActive(true);
-                for (int i = 0; i < _partPlate.Length; i++)
-                {
-                    _partPlate[i].Play();
-                }
-                for (int i = 0; i < _videoScreens.Length; i++)
-                {
-                    _videoScreens[i].PlayVideo((int)LightState.PLATE - 1);
-                }
-                break;
-            case LightState.SLIDERS:
-                if (DoFakeVersions)
-                {
-                    _fakeSliders.SetActive(false);
-                    _realSliders.SetActive(true);
-                }
-                _lightSliders.SetActive(true);
-                for (int i = 0; i < _partSliders.Length; i++)
-                {
-                    _partSliders[i].Play();
-                }
-                for (int i = 0; i < _videoScreens.Length; i++)
-                {
-                    _videoScreens[i].PlayVideo((int)LightState.SLIDERS - 1);
-                }
-                break;
-            case LightState.LEVER:
-                if (DoFakeVersions)
-                {
-                    _fakeLever.SetActive(false);
-                    _realLever.SetActive(true);
-                }
-                _lightLever.SetActive(true);
-                for (int i = 0; i < _partLever.Length; i++)
-                {
-                    _partLever[i].Play();
-                }
-                for (int i = 0; i < _videoScreens.Length; i++)
-                {
-                    _videoScreens[i].PlayVideo((int)LightState.LEVER - 1);
-                }
-                break;
-            case LightState.TABLET:
-                _lightLever.SetActive(true);
-                for (int i = 0; i < _partLever.Length; i++)
-                {
-                    _partLever[i].Play(); //NOTE: Tablet uses the same lights and particles as the lever.
-                }
-                for (int i = 0; i < _videoScreens.Length; i++)
-                {
-                    _videoScreens[i].PlayVideo((int)LightState.TABLET - 1);
-                }
                 break;
             default:
                 for (int i = 0; i < _videoScreens.Length; i++)
@@ -292,7 +352,7 @@ public class SpotlightHandler : MonoBehaviour
 
         if ((int)pLightState > (int)LightState.SLIDERS) //If the new light state is invalid, turn lights off.
         {
-            _lightState = LightState.OFF;
+            _lightState = LightState.FINISHED;
         }
         else
         {

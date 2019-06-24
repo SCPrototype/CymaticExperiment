@@ -16,6 +16,7 @@ public class MeshFade : MonoBehaviour
     void Start()
     {
         baseColor = MeshToFade.material.color;
+        hideMesh();
     }
 
     public void ShowMesh()
@@ -32,6 +33,12 @@ public class MeshFade : MonoBehaviour
             MeshToFade.material.color = new Color(baseColor.r, baseColor.g, baseColor.b, baseColor.a);
             fadeStartTime = Time.time;
         }
+    }
+
+    private void hideMesh()
+    {
+        MeshToFade.enabled = false;
+        meshIsVisible = false;
     }
 
     // Update is called once per frame

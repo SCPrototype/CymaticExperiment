@@ -18,8 +18,16 @@ public static class GLOB
     public const string JarShakeSound = "event:/PlayArea/JarShake";
     public const string SpotlightSound = "event:/PlayArea/Spotlight";
     public const string TouchingSliderSound = "event:/PlayArea/TouchingSlider";
-    public const string MonitorTurnOnSound = "event:/PlayArea/MonitorTurnOn";
     public const string LeverClickSound = "event:/PlayArea/LeverClicks";
+    public const string MonitorSwitchSound = "event:/PlayArea/MonitorSwitch";
+    public const string MonitorTurnOnSound = "event:/PlayArea/MonitorTurnOn";
 
-
+    //Sounds for tutorial
+    public const string TutorialStartSound = "event:/Tutorial/TStart";
+    public const string TutorialShakeSound = "event:/Tutorial/TShake";
+    public const string TutorialPickingUpSound = "event:/Tutorial/TPickingup";
+    public const string TutorialAslidersSound = "event:/Tutorial/TAsliders";
+    public const string TutorialFslidersSound = "event:/Tutorial/TFsliders";
+    public const string TutorialEndingSound = "event:/Tutorial/TEnding";
+    public const string TutorialSandMoveSound = "event:/Tutorial/TSandmove";
 }

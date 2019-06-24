@@ -56,11 +56,11 @@ public class Chladni : MonoBehaviour
         R = (int)(-2.0 / Mathf.Log10(A)) + 1;
         prepare();
 
-        SpawnSand();
-        SpawnSand();
-        SpawnSand();
-        SpawnSand();
-        SpawnSand();
+        //SpawnSand();
+        //SpawnSand();
+        //SpawnSand();
+        //SpawnSand();
+        //SpawnSand();
     }
 
     void prepare()
@@ -317,7 +317,10 @@ public class Chladni : MonoBehaviour
     public void ChangeAmplitude(int pValue)
     {
         amplitude = 0.5f + (pValue * 0.1f);
-        _tutorial.CompleteStage(3);
+        if (_tutorial != null)
+        {
+            _tutorial.CompleteStage(3);
+        }
     }
 
     private void manualTest()
