@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,10 @@ public class Tutorial : MonoBehaviour
     private int _currentStage = 0;
 
     public float StartDelay = 5.0f;
-    public float NextStageDelay = 0.5f;
+    //public float NextStageDelay = 0.5f;
+    public float CompleteDelay = 0.5f;
     private float stageSwitchTime;
     private bool isSwitchingStage = false;
-    public float CompleteDelay = 0.5f;
-    private float stageStartTime;
-    private bool readyToComplete = false;
 
     private float _startupTime;
     private float _delayOnStart = 5.0f;
@@ -26,32 +25,70 @@ public class Tutorial : MonoBehaviour
     private bool _welcomeSoundHasPlayed = false;
     private bool _fsliderSoundHasPlayed = false;
     private bool _sandMoveSoundHasPlayed = false;
+    private bool _sliderMoveSoundHasPlayed = false;
+    public VideoScreen[] videos;
+    private string[] _tutorialSounds;
+
+    void Awake()
+    {
+        _tutorialSounds = new string[8];
+        switch (GLOB.LanguageSelected)
+        {
+            case GLOB.Language.Dutch:
+                _tutorialSounds[0] = GLOB.TutorialStartDutchSound;
+                _tutorialSounds[1] = GLOB.TutorialPickingUpDutchSound;
+                _tutorialSounds[2] = GLOB.TutorialShakeDutchSound;
+                _tutorialSounds[3] = GLOB.TutorialSandMoveDutchSound;
+                _tutorialSounds[4] = GLOB.TutorialFslidersDutchSound;
+                _tutorialSounds[5] = GLOB.TutorialSliderMoveDutchSound;
+                _tutorialSounds[6] = GLOB.TutorialAslidersDutchSound;
+                _tutorialSounds[7] = GLOB.TutorialEndingDutchSound;
+                break;
+            case GLOB.Language.German:
+                _tutorialSounds[0] = GLOB.TutorialStartGermanSound;
+                _tutorialSounds[1] = GLOB.TutorialPickingUpGermanSound;
+                _tutorialSounds[2] = GLOB.TutorialShakeGermanSound;
+                _tutorialSounds[3] = GLOB.TutorialSandMoveGermanSound;
+                _tutorialSounds[4] = GLOB.TutorialFslidersGermanSound;
+                _tutorialSounds[5] = GLOB.TutorialSliderMoveGermanSound;
+                _tutorialSounds[6] = GLOB.TutorialAslidersGermanSound;
+                _tutorialSounds[7] = GLOB.TutorialEndingGermanSound;
+                break;
+            default:
+                break;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         _spotLightHandler = this.GetComponent<SpotlightHandler>();
         _chladniTalkBoard = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
-        _chladniTalkBoard.Event = GLOB.TutorialStartSound;
+        _chladniTalkBoard.Event = _tutorialSounds[0];
         _chladniTalkBoard.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(chladniSoundEmitter.transform));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_chladniTalkBoard.Event == GLOB.TutorialStartSound && !_chladniTalkBoard.IsPlaying() && _welcomeSoundHasPlayed)
+        if (_chladniTalkBoard.Event == _tutorialSounds[0] && !_chladniTalkBoard.IsPlaying() && _welcomeSoundHasPlayed)
         {
-            _soundTargetString = GLOB.TutorialPickingUpSound;
+            _soundTargetString = _tutorialSounds[1];
             _soundShouldChange = true;
         }
-        if (_chladniTalkBoard.Event == GLOB.TutorialSandMoveSound && !_chladniTalkBoard.IsPlaying() && _sandMoveSoundHasPlayed)
+        if (_chladniTalkBoard.Event == _tutorialSounds[3] && !_chladniTalkBoard.IsPlaying() && _sandMoveSoundHasPlayed)
         {
-            _soundTargetString = GLOB.TutorialFslidersSound;
+            _soundTargetString = _tutorialSounds[4];
             _soundShouldChange = true;
         }
-        if(_chladniTalkBoard.Event == GLOB.TutorialFslidersSound && !_chladniTalkBoard.IsPlaying() && _fsliderSoundHasPlayed)
+        if (_chladniTalkBoard.Event == _tutorialSounds[4] && !_chladniTalkBoard.IsPlaying() && _fsliderSoundHasPlayed)
         {
-            _soundTargetString = GLOB.TutorialAslidersSound;
+            _soundTargetString = _tutorialSounds[5];
+            _soundShouldChange = true;
+        }
+        if (_chladniTalkBoard.Event == _tutorialSounds[5] && !_chladniTalkBoard.IsPlaying() && _sliderMoveSoundHasPlayed)
+        {
+            _soundTargetString = _tutorialSounds[6];
             _soundShouldChange = true;
         }
         if (_currentStage <= 0)
@@ -67,23 +104,9 @@ public class Tutorial : MonoBehaviour
         }
         if (isSwitchingStage)
         {
-            if (Time.time - stageSwitchTime >= NextStageDelay)
+            if (Time.time - stageSwitchTime >= CompleteDelay)
             {
-                _currentStage++;
-                _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
                 isSwitchingStage = false;
-                if (CompleteDelay > 0)
-                {
-                    stageStartTime = Time.time;
-                    readyToComplete = false;
-                }
-            }
-        }
-        if (!readyToComplete)
-        {
-            if (Time.time - stageStartTime >= CompleteDelay)
-            {
-                readyToComplete = true;
             }
         }
 
@@ -95,7 +118,7 @@ public class Tutorial : MonoBehaviour
 
             }
         }
-        if(_soundShouldChange)
+        if (_soundShouldChange)
         {
             ChangeSounds(_soundTargetString);
         }
@@ -103,72 +126,77 @@ public class Tutorial : MonoBehaviour
 
     public void CompleteStage(int pStage)
     {
-        if (_currentStage == pStage && !isSwitchingStage && readyToComplete)
+        if (_currentStage == pStage && !isSwitchingStage)
         {
             _soundShouldChange = true;
             switch (pStage)
             {
                 case 1:
-                    _soundTargetString = GLOB.TutorialShakeSound;
+                    _soundTargetString = _tutorialSounds[2];
                     break;
                 case 2:
-                    _soundTargetString = GLOB.TutorialSandMoveSound;
+                    _soundTargetString = _tutorialSounds[3];
                     break;
                 case 3:
-                     _soundTargetString = GLOB.TutorialEndingSound;
+                    _soundTargetString = _tutorialSounds[7];
                     break;
             }
-
-            if (NextStageDelay > 0)
+            if (CompleteDelay > 0)
             {
                 stageSwitchTime = Time.time;
                 isSwitchingStage = true;
             }
-            else
-            {
-                _currentStage++;
-                _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
-                if (CompleteDelay > 0)
-                {
-                    stageStartTime = Time.time;
-                    readyToComplete = false;
-                }
-            }
+            _currentStage++;
+            _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
         }
     }
 
     public void ResetTutorial()
     {
+        if (CompleteDelay > 0)
+        {
+            stageSwitchTime = Time.time;
+            isSwitchingStage = true;
+        }
         _currentStage = 1;
-        ChangeSounds(GLOB.TutorialStartSound);
+        ChangeSounds(_tutorialSounds[0]);
         _chladniTalkBoard.Play();
         _welcomeSoundHasPlayed = true;
         _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
-        if (CompleteDelay > 0)
-        {
-            stageStartTime = Time.time;
-            readyToComplete = false;
-        }
     }
 
-    private void ChangeSounds(string pGlobName)
+    private void ChangeSounds(string pGlobName, bool pBoolInterrupt = true)
     {
+
         if (_chladniTalkBoard.IsPlaying())
         {
-            _chladniTalkBoard.Stop();
+            if (pBoolInterrupt)
+            {
+                _chladniTalkBoard.Stop();
+            }
             //Fade out.
-        } else
+        }
+        else
         {
+            for (int i = 0; i < videos.Length; i++)
+            {
+                videos[i].PlayChladniVideo(Array.IndexOf(_tutorialSounds, pGlobName));
+            }
+            Debug.Log(Array.IndexOf(_tutorialSounds, pGlobName));
             _chladniTalkBoard.ChangeEvent(pGlobName);
             _chladniTalkBoard.Play();
             _soundShouldChange = false;
-            if(pGlobName == GLOB.TutorialFslidersSound)
+            if (pGlobName == _tutorialSounds[4])
             {
                 _fsliderSoundHasPlayed = true;
             }
-            if(pGlobName == GLOB.TutorialSandMoveSound)
+            if (pGlobName == _tutorialSounds[3])
             {
                 _sandMoveSoundHasPlayed = true;
+            }
+            if (pGlobName == _tutorialSounds[5])
+            {
+                _sliderMoveSoundHasPlayed = true;
             }
         }
     }
