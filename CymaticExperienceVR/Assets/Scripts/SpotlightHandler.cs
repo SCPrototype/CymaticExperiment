@@ -217,7 +217,7 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.JARS - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.JARS - 1);
                 }
                 break;
 
@@ -235,7 +235,7 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.PLATE - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.PLATE - 1);
                 }
                 break;
 
@@ -253,7 +253,7 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.SLIDERS - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.SLIDERS - 1);
                 }
                 break;
 
@@ -271,7 +271,7 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.LEVER - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.LEVER - 1);
                 }
                 break;
 
@@ -284,7 +284,7 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.TABLET - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.TABLET - 1);
                 }
                 break;
 
