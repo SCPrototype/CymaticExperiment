@@ -14,6 +14,9 @@ public class Tutorial : MonoBehaviour
     public float CompleteDelay = 0.5f;
     private float stageSwitchTime;
     private bool isSwitchingStage = false;
+    public float NextStageDelay = 0.5f;
+    private float stageStartTime;
+    private bool readyToComplete = false;
 
     private float _startupTime;
     private float _delayOnStart = 5.0f;
@@ -104,9 +107,23 @@ public class Tutorial : MonoBehaviour
         }
         if (isSwitchingStage)
         {
-            if (Time.time - stageSwitchTime >= CompleteDelay)
+            if (Time.time - stageSwitchTime >= NextStageDelay)
             {
+                _currentStage++;
+                _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
                 isSwitchingStage = false;
+                if (CompleteDelay > 0)
+                {
+                    stageStartTime = Time.time;
+                    readyToComplete = false;
+                }
+            }
+        }
+        if (!readyToComplete)
+        {
+            if (Time.time - stageStartTime >= CompleteDelay)
+            {
+                readyToComplete = true;
             }
         }
 
@@ -126,7 +143,7 @@ public class Tutorial : MonoBehaviour
 
     public void CompleteStage(int pStage)
     {
-        if (_currentStage == pStage && !isSwitchingStage)
+        if (_currentStage == pStage && !isSwitchingStage && readyToComplete)
         {
             _soundShouldChange = true;
             switch (pStage)
@@ -141,28 +158,36 @@ public class Tutorial : MonoBehaviour
                     _soundTargetString = _tutorialSounds[7];
                     break;
             }
-            if (CompleteDelay > 0)
+            if (NextStageDelay > 0)
             {
                 stageSwitchTime = Time.time;
                 isSwitchingStage = true;
             }
-            _currentStage++;
-            _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
+            else
+            {
+                _currentStage++;
+                _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
+                if (CompleteDelay > 0)
+                {
+                    stageStartTime = Time.time;
+                    readyToComplete = false;
+                }
+            }
         }
     }
 
-    public void ResetTutorial()
+   public void ResetTutorial()
     {
-        if (CompleteDelay > 0)
-        {
-            stageSwitchTime = Time.time;
-            isSwitchingStage = true;
-        }
         _currentStage = 1;
         ChangeSounds(_tutorialSounds[0]);
         _chladniTalkBoard.Play();
         _welcomeSoundHasPlayed = true;
         _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
+        if (CompleteDelay > 0)
+        {
+            stageStartTime = Time.time;
+            readyToComplete = false;
+        }
     }
 
     private void ChangeSounds(string pGlobName, bool pBoolInterrupt = true)
@@ -182,7 +207,6 @@ public class Tutorial : MonoBehaviour
             {
                 videos[i].PlayChladniVideo(Array.IndexOf(_tutorialSounds, pGlobName));
             }
-            Debug.Log(Array.IndexOf(_tutorialSounds, pGlobName));
             _chladniTalkBoard.ChangeEvent(pGlobName);
             _chladniTalkBoard.Play();
             _soundShouldChange = false;
