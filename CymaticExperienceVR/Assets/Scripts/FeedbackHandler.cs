@@ -13,6 +13,7 @@ public class FeedbackHandler : MonoBehaviour
     public float QuestionDelay = 1;
     private float _questionAnswerTime;
     private bool _shouldAskNextQuestion = false;
+    public int charactersPerLine = 25;
 
     [Space(10)]
     public TextMesh QuestionText;
@@ -82,7 +83,27 @@ public class FeedbackHandler : MonoBehaviour
         if (_currentQuestion + 1 < FeedbackQuestions.Length)
         {
             _currentQuestion++;
-            QuestionText.text = FeedbackQuestions[_currentQuestion];
+            if (FeedbackQuestions[_currentQuestion].Length > 25)
+            {
+                string[] questionSplit = FeedbackQuestions[_currentQuestion].Split(' ');
+                string textHolder = "";
+                int charCounter = 0;
+                for (int i = 0; i < questionSplit.Length; i++)
+                {
+                    charCounter += questionSplit[i].Length + 1;
+                    if (charCounter >= 25)
+                    {
+                        textHolder += "\n";
+                        charCounter = 0;
+                    }
+                    textHolder += questionSplit[i] + " ";
+                }
+                QuestionText.text = textHolder;
+            }
+            else
+            {
+                QuestionText.text = FeedbackQuestions[_currentQuestion];
+            }
         }
         else
         {
