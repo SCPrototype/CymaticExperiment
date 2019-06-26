@@ -12,6 +12,8 @@ public class SandSpawner : VR_Object
     private FMODUnity.StudioEventEmitter _sandShakeSoundEmitter;
     private FMODUnity.StudioEventEmitter _sandJarPickUpSoundEmitter;
 
+    private ParticleSystem _sandPourParticle;
+
     private int amountOfSand = 30;
     private Vector3 startingScale;
     private Vector3 localScale;
@@ -36,6 +38,8 @@ public class SandSpawner : VR_Object
         _sandPourSoundEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _sandShakeSoundEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _sandJarPickUpSoundEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+
+        _sandPourParticle = this.gameObject.GetComponentInChildren<ParticleSystem>();
 
         _sandPourSoundEmitter.Event = GLOB.JarPourSandSound;
         _sandShakeSoundEmitter.Event = GLOB.JarShakeSound;
@@ -98,11 +102,11 @@ public class SandSpawner : VR_Object
             {
 
                 GameObject sand1 = Instantiate(SandPrefab, this.gameObject.transform);
-                sand1.transform.localPosition = new Vector3(vec2.x, .01f, vec2.y);
+                sand1.transform.localPosition = new Vector3(vec2.x, .013f, vec2.y);
                 sand1.transform.localScale = startingScale / 50;
                 sand1.transform.SetParent(null);
                 GameObject sand2 = Instantiate(SandPrefab, this.gameObject.transform);
-                sand2.transform.localPosition = new Vector3(-vec2.x, .01f, -vec2.y);
+                sand2.transform.localPosition = new Vector3(-vec2.x, .013f, -vec2.y);
                 sand2.transform.localScale = startingScale / 50;
                 sand2.transform.SetParent(null);
             }
@@ -116,6 +120,10 @@ public class SandSpawner : VR_Object
         {
             _sandPourSoundEmitter.Play();
         }
+        if (!_sandPourParticle.isPlaying)
+        {
+            _sandPourParticle.Play();
+        }
     }
 
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
@@ -127,6 +135,11 @@ public class SandSpawner : VR_Object
 
     private void FadeOutSandPour()
     {
+        if (_sandPourParticle.isPlaying)
+        {
+            _sandPourParticle.Stop();
+        }
+
         _sandPourSoundEmitter.EventInstance.getVolume(out sandPourVolume, out float finalvolume);
         if (sandPourVolume > 0)
         {

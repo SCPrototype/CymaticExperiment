@@ -13,27 +13,26 @@ public class BasketBall : MonoBehaviour
     private float _resetTimer = 30.0f;
     private float _lastScoreTime;
     private FMODUnity.StudioEventEmitter _scoreSound;
-    private string scores;
-    private System.IO.StreamReader _streamReader;
-    private System.IO.StreamWriter _streamWriter;
+    private List<string> scores = new List<string>();
     private string _path = "Assets/Resources/Scores/Highscores.txt";
-    private int _highScore;
+    private int _highScore = 0;
 
     void Awake()
     {
-        _streamReader = new System.IO.StreamReader(_path, true);
-        scores = _streamReader.ReadToEnd();
-        _streamReader.Dispose();
-        _streamReader.Close();
-        if (scores != "")
+        using (System.IO.StreamReader _streamreader = new System.IO.StreamReader(_path))
         {
-            _highScore = int.Parse(scores);
+            int counter = 0;
+            while (_streamreader.Peek() >= 0)
+            {
+                scores.Add(_streamreader.ReadLine());
+                int score = int.Parse(scores[counter]);
+                if (score > _highScore)
+                {
+                    _highScore = score;
+                }
+                counter++;
+            }
         }
-        else
-        {
-            _highScore = 0;
-        }
-        _streamWriter = new System.IO.StreamWriter(_path, false);
     }
 
     // Start is called before the first frame update
@@ -44,7 +43,6 @@ public class BasketBall : MonoBehaviour
         _scoreSound.Event = GLOB.CelebrationSound;
         _scoreSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         highscoreText.text = "Hoogste \nScore : " + _highScore;
-        _streamWriter.WriteLine(_highScore.ToString());
     }
 
 
@@ -62,30 +60,34 @@ public class BasketBall : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (!_scoreSound.IsPlaying())
+        if (Time.time > _lastScoreTime + 0.01f)
         {
-            _scoreSound.Play();
+            if (!_scoreSound.IsPlaying())
+            {
+                _scoreSound.Play();
+            }
+            particleEmitter.GetComponent<ParticleSystem>().Play();
+            _lastScoreTime = Time.time;
+            _score++;
+            if (_score > _highScore)
+            {
+                _highScore = _score;
+            }
+            text.text = "Huidige \nScore : " + _score;
+            if (!_scoreSound.IsPlaying())
+            {
+                _scoreSound.Play();
+            }
         }
-        particleEmitter.GetComponent<ParticleSystem>().Play();
-        _lastScoreTime = Time.time;
-        _score++;
-        if(_score > _highScore)
-        {
-            _streamWriter.WriteLine(_score.ToString());
-        }
-        text.text = "Huidige \nScore : " + _score;
-        FMODUnity.RuntimeManager.PlayOneShot(GLOB.CelebrationSound, GetComponent<Transform>().position);
     }
 
-    private void OnDestroy()
+    void OnApplicationQuit()
     {
-       
-        _streamWriter.Close();
-    }
-
-    private void OnApplicationQuit()
-    {
-       
-        _streamWriter.Close();
+        using (System.IO.StreamWriter _streamWriter = new System.IO.StreamWriter(_path, false))
+        {
+            _streamWriter.WriteLine(_highScore.ToString());
+            _streamWriter.Flush();
+            _streamWriter.Close();
+        }
     }
 }
