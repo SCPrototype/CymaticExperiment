@@ -252,6 +252,6 @@ public class TiltMazeTablet : VR_Object
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
-        _tutorial.CompleteStage(5);
+        _tutorial.CompleteStage(6);
     }
 }

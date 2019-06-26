@@ -74,6 +74,10 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            CompleteStage(4);
+        }
         if (_chladniTalkBoard.Event == _tutorialSounds[0] && !_chladniTalkBoard.IsPlaying() && _welcomeSoundHasPlayed)
         {
             _soundTargetString = _tutorialSounds[1];
@@ -87,11 +91,6 @@ public class Tutorial : MonoBehaviour
         if (_chladniTalkBoard.Event == _tutorialSounds[4] && !_chladniTalkBoard.IsPlaying() && _fsliderSoundHasPlayed)
         {
             _soundTargetString = _tutorialSounds[5];
-            _soundShouldChange = true;
-        }
-        if (_chladniTalkBoard.Event == _tutorialSounds[5] && !_chladniTalkBoard.IsPlaying() && _sliderMoveSoundHasPlayed)
-        {
-            _soundTargetString = _tutorialSounds[6];
             _soundShouldChange = true;
         }
         if (_currentStage <= 0)
@@ -137,7 +136,7 @@ public class Tutorial : MonoBehaviour
         }
         if (_soundShouldChange)
         {
-            ChangeSounds(_soundTargetString);
+            ChangeSounds(_soundTargetString, true);
         }
     }
 
@@ -155,6 +154,9 @@ public class Tutorial : MonoBehaviour
                     _soundTargetString = _tutorialSounds[3];
                     break;
                 case 3:
+                    _soundTargetString = _tutorialSounds[6];
+                    break;
+                case 4:
                     _soundTargetString = _tutorialSounds[7];
                     break;
             }
@@ -179,10 +181,12 @@ public class Tutorial : MonoBehaviour
    public void ResetTutorial()
     {
         _currentStage = 1;
-        ChangeSounds(_tutorialSounds[0]);
+        ChangeSounds(_tutorialSounds[0], true);
         _chladniTalkBoard.Play();
         _welcomeSoundHasPlayed = true;
-        _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
+        int filelength = 0;
+        _chladniTalkBoard.EventDescription.getLength(out filelength);
+        _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage, filelength);
         if (CompleteDelay > 0)
         {
             stageStartTime = Time.time;
@@ -192,14 +196,12 @@ public class Tutorial : MonoBehaviour
 
     private void ChangeSounds(string pGlobName, bool pBoolInterrupt = true)
     {
-
         if (_chladniTalkBoard.IsPlaying())
         {
             if (pBoolInterrupt)
             {
                 _chladniTalkBoard.Stop();
             }
-            //Fade out.
         }
         else
         {

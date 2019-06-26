@@ -65,9 +65,13 @@ public class VideoScreen : MonoBehaviour
 
     public void PlayChladniVideo(int pIndex = 90)
     {
+        vp.Stop();
         if (pIndex == 90)
         {
             pIndex = clipIndex;
+        } else
+        {
+            clipIndex = pIndex;
         }
         vp.clip = VideosCatniFace[pIndex];
         vp.isLooping = false;
@@ -104,7 +108,7 @@ public class VideoScreen : MonoBehaviour
     void EndReached(UnityEngine.Video.VideoPlayer pVidPlayer)
     {
         //If the current clip is not looping
-        if (!pVidPlayer.isLooping)
+        if (!pVidPlayer.isLooping && clipIndex != 5)
         {
             PlayRepeatingVideo(clipIndex);
         }
