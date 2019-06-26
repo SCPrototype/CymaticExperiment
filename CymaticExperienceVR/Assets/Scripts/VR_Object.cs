@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-[RequireComponent(typeof(VRTK.SecondaryControllerGrabActions.VRTK_SwapControllerGrabAction))]
-[RequireComponent(typeof(VRTK_InteractableObject))]
 [RequireComponent(typeof(VRTK_InteractObjectHighlighter))]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(AudioSource))]
 public class VR_Object : MonoBehaviour
 {
     private static float RespawnDelay = 5.0f;
@@ -19,7 +16,7 @@ public class VR_Object : MonoBehaviour
     protected Rigidbody rb;
     protected bool _isBeingGrabbed = false;
     protected bool _isOnSpawn = true;
-    private float _droppedTime;
+    protected float _droppedTime;
     protected float _spawnTime;
 
     // Start is called before the first frame update
@@ -89,6 +86,7 @@ public class VR_Object : MonoBehaviour
     {
         _isBeingGrabbed = true;
         _isOnSpawn = false;
+        rb.isKinematic = false;
     }
 
     protected virtual void ObjectReleased(object sender, InteractableObjectEventArgs e)

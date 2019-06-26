@@ -28,6 +28,14 @@ public class ResetGame : MonoBehaviour
             if (Time.time - pressStartTime >= pressDelay)
             {
                 pressStartTime = Time.time;
+                if(Input.GetKey(GermanReset))
+                {
+                    GLOB.LanguageSelected = GLOB.Language.German;
+                }
+                if(Input.GetKey(DutchReset))
+                {
+                    GLOB.LanguageSelected = GLOB.Language.Dutch;
+                }
                 DoResetGame();
             }
         }
