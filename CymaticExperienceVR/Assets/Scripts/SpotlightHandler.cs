@@ -76,6 +76,8 @@ public class SpotlightHandler : MonoBehaviour
     private LightState _lightState;
     private FMOD.Studio.EventInstance _spotLightSound;
     private float _timeSwitch;
+    private bool _lightsShouldChange;
+    private LightState _targetLightState;
     // Start is called before the first frame update
     public void Start()
     {
@@ -115,6 +117,14 @@ public class SpotlightHandler : MonoBehaviour
 
     public void Update()
     {
+        if (_lightsShouldChange)
+        {
+            if (Time.time > _timeSwitch)
+            {
+                Debug.Log("Do this");
+                SetLightState(_targetLightState);
+            }
+        }
         if (rotationLerpTime < 1)
         {
             rotationLerpTime = Mathf.Clamp(rotationLerpTime + RotationSpeed, 0.0f, 1.0f);
@@ -269,7 +279,7 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 break;
             case LightState.SLIDERA:
-                if(DoFakeVersions)
+                if (DoFakeVersions)
                 {
                     _fakeSliderA.SetActive(false);
                     _realSliderA.SetActive(true);
@@ -358,9 +368,16 @@ public class SpotlightHandler : MonoBehaviour
         return _lightState;
     }
 
-    public void SetLightState(LightState pLightState, int pLength = 0)
+    public void ChangeLight(LightState pLightState, int pLength = 0)
     {
-        
+        _targetLightState = pLightState;
+        _timeSwitch = Time.time + pLength;
+        _lightsShouldChange = true;
+    }
+
+    private void SetLightState(LightState pLightState)
+    {
+        _lightsShouldChange = false;
         if (_lightState >= 0 && (int)_lightState <= (int)LightState.TABLET)
         {
             startRotation1 = StepRotation1[(int)_lightState];

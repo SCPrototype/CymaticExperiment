@@ -74,10 +74,6 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F1))
-        {
-            CompleteStage(4);
-        }
         if (_chladniTalkBoard.Event == _tutorialSounds[0] && !_chladniTalkBoard.IsPlaying() && _welcomeSoundHasPlayed)
         {
             _soundTargetString = _tutorialSounds[1];
@@ -109,7 +105,15 @@ public class Tutorial : MonoBehaviour
             if (Time.time - stageSwitchTime >= NextStageDelay)
             {
                 _currentStage++;
-                _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
+                if (_currentStage == 3)
+                {
+                    Debug.Log("Do this");
+                    _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage, 10);
+                }
+                else
+                {
+                    _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage);
+                }
                 isSwitchingStage = false;
                 if (CompleteDelay > 0)
                 {
@@ -168,7 +172,7 @@ public class Tutorial : MonoBehaviour
             else
             {
                 _currentStage++;
-                _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage);
+                _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage);
                 if (CompleteDelay > 0)
                 {
                     stageStartTime = Time.time;
@@ -178,15 +182,14 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-   public void ResetTutorial()
+    public void ResetTutorial()
     {
         _currentStage = 1;
         ChangeSounds(_tutorialSounds[0], true);
         _chladniTalkBoard.Play();
         _welcomeSoundHasPlayed = true;
-        int filelength = 0;
-        _chladniTalkBoard.EventDescription.getLength(out filelength);
-        _spotLightHandler.SetLightState((SpotlightHandler.LightState)_currentStage, filelength);
+        int filelength = 14;
+        _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage, filelength);
         if (CompleteDelay > 0)
         {
             stageStartTime = Time.time;
