@@ -8,7 +8,7 @@
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001ED0729A858 isAsync 1 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001B793FB5F48 isAsync 1 updatePeriod 0.02
 [LOG] Thread::initThread                       : Init FMOD Studio update thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
@@ -20,4 +20,370 @@
 [LOG] Profile::init                            : Profiler listening on port: 9264
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Thread::initThread                       : Init FMOD profiler thread (recv). Priority: 0, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
+[LOG] Thread::initThread                       : Init FMOD profiler thread (send). Priority: 0, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
+[LOG] LiveUpdate::clientConnected              : client = 000001B7C2ACA0B8
+[LOG] LiveUpdate::readPacket                   : Accepting init message for client 000001B7C2ACA0B8
+[LOG] LiveUpdate::transitionToConnected        : 
+[LOG] Manager::sendConnectTimeHash             : 
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] LiveUpdate::acceptInitPacket             : Client 000001B7C2ACA0B8 connected, entering connected state
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_65.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_65.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_66.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_66.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_67.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_67.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_68.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_68.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_69.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_69.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B854C510B8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='leverrelease1', format=2, channels=2, frequency=48000, lengthbytes=23552, lengthpcm=101831, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.343079.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B854C547F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='spotlight', format=2, channels=2, frequency=48000, lengthbytes=107872, lengthpcm=107969, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B854C547F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='sparkle2', format=2, channels=2, frequency=48000, lengthbytes=37440, lengthpcm=130973, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.084320.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B854C547F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='sparkle1', format=2, channels=2, frequency=48000, lengthbytes=39648, lengthpcm=136613, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.038635.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B854C547F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Tstart', format=2, channels=2, frequency=48000, lengthbytes=51904, lengthpcm=202366, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.111969.
+[LOG] SystemI::createSoundInternal             : Create name='fmod:///remote/C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/Jarfalln1.wav', mode=0x0200C202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/Jarfalln1.wav'
+[LOG] SystemI::createSoundInternal             : Sample 0/0: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=137012, lengthpcm=34253, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
+[LOG] SystemI::createSoundInternal             : Create name='fmod:///remote/C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/Jarfalln2.wav', mode=0x0200C202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/Jarfalln2.wav'
+[LOG] SystemI::createSoundInternal             : Sample 0/0: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=185644, lengthpcm=46411, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B788EE8088
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Tpickingup', format=2, channels=2, frequency=48000, lengthbytes=110336, lengthpcm=432759, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.137207.
+[LOG] SystemI::createSoundInternal             : Create name='fmod:///remote/C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/MonitorSwitch.wav', mode=0x0200C202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/MonitorSwitch.wav'
+[LOG] SystemI::createSoundInternal             : Sample 0/0: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=346100, lengthpcm=86525, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B7860E1218
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='jarpickupn2 - Trimmed', format=2, channels=2, frequency=48000, lengthbytes=6400, lengthpcm=28987, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.066589.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B7860E1218
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='jarpickupn - Trimmed', format=2, channels=2, frequency=48000, lengthbytes=5248, lengthpcm=23463, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.092377.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B7860E1218
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='jarpickupn1 - Trimmed', format=2, channels=2, frequency=48000, lengthbytes=5952, lengthpcm=26692, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.077087.
+[LOG] SystemI::createSoundInternal             : Create name='fmod:///remote/C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/shake1.wav', mode=0x0200C202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/shake1.wav'
+[LOG] SystemI::createSoundInternal             : Sample 0/0: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=44492, lengthpcm=11123, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
+[LOG] SystemI::createSoundInternal             : Create name='fmod:///remote/C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/shake2.wav', mode=0x0200C202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/shake2.wav'
+[LOG] SystemI::createSoundInternal             : Sample 0/0: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=44260, lengthpcm=11065, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
+[LOG] SystemI::createSoundInternal             : Create name='fmod:///remote/C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/shake3.wav', mode=0x0200C202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/Documents/Project Exposure/CymaticExperienceVR/Assets/Sounds/FmodPojectExposure1/Assets/shake3.wav'
+[LOG] SystemI::createSoundInternal             : Sample 0/0: name='(null)', format=2, channels=2, frequency=44100, lengthbytes=43480, lengthpcm=10870, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
+[LOG] SoundI::release                          :  (000001B7C2B04348)
+[LOG] SoundI::release                          :     sparkle2 (000001B797CD0178)
+[LOG] SoundI::release                          :  (000001B7C2B044B8)
+[LOG] SoundI::release                          :     sparkle1 (000001B7DDA2A678)
+[LOG] SoundI::release                          :  (000001B7C2B04068)
+[LOG] SoundI::release                          :     spotlight (000001B7C1F233E8)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B8392B7538
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Tshake', format=2, channels=2, frequency=48000, lengthbytes=89952, lengthpcm=351673, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.173462.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B7CF8B8A58
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='spotlight', format=2, channels=2, frequency=48000, lengthbytes=107872, lengthpcm=107969, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B7CF8B8A58
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='sparkle2', format=2, channels=2, frequency=48000, lengthbytes=37440, lengthpcm=130973, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.084320.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1647968
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 62784
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000003EF0E0F0EC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFDC2C2E4B0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFDC2C2E480
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFDC2C2E580
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFDC2C2E640
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001B7CF8B8A58
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='sparkle1', format=2, channels=2, frequency=48000, lengthbytes=39648, lengthpcm=136613, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.038635.
+[LOG] SoundI::release                          :  (000001B7C2B04628)
+[LOG] SoundI::release                          :     Tstart (000001B783F6F738)
+[LOG] SoundI::release                          :  (000001B7C2822328)
+[LOG] SoundI::release                          :     Tpickingup (000001B797DBAF08)
+[LOG] SystemI::mixerSuspend                    : Suspending output.
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_70.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_70.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_71.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_71.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_72.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_72.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_73.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_73.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_74.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_74.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_75.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_75.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_76.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_76.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_77.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_77.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_78.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_78.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_79.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_79.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_80.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_80.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_81.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_81.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_82.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_82.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_83.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_83.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_84.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_84.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[ERR] ProfileClient::recvThreadLoopFunction    : Recv thread loop returned 16
+[LOG] ProfileClient::markForDead               : Closing client connection
+[LOG] Thread::callback                         : FMOD profiler thread (recv) finished.
+[LOG] Thread::callback                         : FMOD profiler thread (send) finished.
+[LOG] LiveUpdate::clientDisconnected           : client = 000001B7C2ACA0B8
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::initThread                       : Init FMOD profiler thread (recv). Priority: 0, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
+[LOG] Thread::initThread                       : Init FMOD profiler thread (send). Priority: 0, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
+[LOG] LiveUpdate::clientConnected              : client = 000001B8395795E8
+[LOG] LiveUpdate::readPacket                   : Accepting init message for client 000001B8395795E8
+[LOG] LiveUpdate::transitionToConnected        : 
+[LOG] Manager::sendConnectTimeHash             : 
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] LiveUpdate::acceptInitPacket             : Client 000001B8395795E8 connected, entering connected state
+[ERR] ProfileClient::recvThreadLoopFunction    : Recv thread loop returned 16
+[LOG] ProfileClient::markForDead               : Closing client connection
+[LOG] Thread::callback                         : FMOD profiler thread (recv) finished.
+[LOG] Thread::callback                         : FMOD profiler thread (send) finished.
+[LOG] LiveUpdate::clientDisconnected           : client = 000001B8395795E8
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::initThread                       : Init FMOD profiler thread (recv). Priority: 0, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
+[LOG] Thread::initThread                       : Init FMOD profiler thread (send). Priority: 0, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
+[LOG] LiveUpdate::clientConnected              : client = 000001B8395795E8
+[LOG] LiveUpdate::readPacket                   : Accepting init message for client 000001B8395795E8
+[LOG] LiveUpdate::transitionToConnected        : 
+[LOG] Manager::sendConnectTimeHash             : 
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] LiveUpdate::sendBankHash                 : 
+[LOG] LiveUpdate::acceptInitPacket             : Client 000001B8395795E8 connected, entering connected state
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_85.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_85.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_86.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_86.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_87.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_87.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_88.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_88.bank'
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::receiveLiveUpdateBank           : Received live update bank path: fmod:///remote/C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_89.bank
+[LOG] ProfileRemoteFile::fileOpen              : Attemping to open remote file 'C:/Users/amber/AppData/Local/FMOD Studio/UnsavedProjects/Hotswap-PgZZo6/hotswap_89.bank'
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
