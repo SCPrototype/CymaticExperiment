@@ -10,6 +10,11 @@ public class FeedbackHandler : MonoBehaviour
     private int _currentQuestion = -1;
 
     [Space(10)]
+    public float QuestionDelay = 1;
+    private float _questionAnswerTime;
+    private bool _shouldAskNextQuestion = false;
+
+    [Space(10)]
     public TextMesh QuestionText;
     public VotingObject MyVotingObject;
     public GameObject AnswerObjects;
@@ -36,6 +41,15 @@ public class FeedbackHandler : MonoBehaviour
         {
             AskNextQuestion();
         }
+
+        if (_shouldAskNextQuestion)
+        {
+            if (Time.time - _questionAnswerTime >= QuestionDelay)
+            {
+                MyVotingObject.ForceRespawn();
+                AskNextQuestion();
+            }
+        }
     }
 
 
@@ -53,13 +67,18 @@ public class FeedbackHandler : MonoBehaviour
 
     public void StoreAnswer(int pIndex)
     {
-        _streamWriter.WriteLine(pIndex + "\t" + FeedbackQuestions[_currentQuestion]);
-        MyVotingObject.ForceRespawn();
-        AskNextQuestion();
+        if (!_shouldAskNextQuestion)
+        {
+            _streamWriter.WriteLine(pIndex + "\t" + FeedbackQuestions[_currentQuestion]);
+            _questionAnswerTime = Time.time;
+            _shouldAskNextQuestion = true;
+        }
     }
 
     private void AskNextQuestion()
     {
+        _shouldAskNextQuestion = false;
+
         if (_currentQuestion + 1 < FeedbackQuestions.Length)
         {
             _currentQuestion++;

@@ -37,7 +37,7 @@ public class VotingObject : VR_Object
         transform.rotation = pTarget.rotation;
         _isOnSpawn = true;
         //Re-enable velocity.
-        //rb.isKinematic = false;
+        rb.isKinematic = false;
         _spawnTime = Time.time;
     }
 

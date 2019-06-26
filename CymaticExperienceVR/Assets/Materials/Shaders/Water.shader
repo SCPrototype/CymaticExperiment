@@ -67,7 +67,7 @@
 			fixed4 myFragmentShader(vertexToFragment i) : SV_Target{
 				float4 direction = normalize(_WaveDirection);
 				float interval = _WaveSpeed * _WaveInterval; //0.2 * 4 = 0.8
-				float timeScale = (((i.uv.x * -direction.x) + (i.uv.y * -direction.y) + (i.uv.z * -direction.z) + _Time.y * _WaveSpeed) % interval) / interval; //2 * 0.2 % 0.8
+				float timeScale = (((i.uv.x * -direction.x) + (i.uv.y * -direction.y) + (i.uv.z * -direction.z) + (_Time.y + 1000) * _WaveSpeed) % interval) / interval; //2 * 0.2 % 0.8
 				float alpha = saturate(1 - timeScale * (1 / _WaveLength));
 				float buildUp = saturate(1 - timeScale);
 				if (buildUp <= _WaveBuildUp)
