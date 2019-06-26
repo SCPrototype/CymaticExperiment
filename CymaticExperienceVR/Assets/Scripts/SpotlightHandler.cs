@@ -20,21 +20,25 @@ public class SpotlightHandler : MonoBehaviour
 
     [Space(10)]
     public GameObject _lightJars;
+    public GameObject _softLightJars;
     public ParticleSystem[] _partJars;
     public GameObject _fakeJars;
     public GameObject _realJars;
     [Space(10)]
     public GameObject _lightPlate;
+    public GameObject _softLightPlate;
     public ParticleSystem[] _partPlate;
     public GameObject _fakePlate;
     public GameObject _realPlate;
     [Space(10)]
     public GameObject _lightSliders;
+    public GameObject _softLightSliders;
     public ParticleSystem[] _partSliders;
     public GameObject _fakeSliders;
     public GameObject _realSliders;
     [Space(10)]
     public GameObject _lightLever;
+    public GameObject _softLightLever;
     public ParticleSystem[] _partLever;
     public GameObject _fakeLever;
     public GameObject _realLever;
@@ -93,6 +97,11 @@ public class SpotlightHandler : MonoBehaviour
             }
         }
 
+        _softLightJars.SetActive(false);
+        _softLightPlate.SetActive(false);
+        _softLightSliders.SetActive(false);
+        _softLightLever.SetActive(false);
+
         SwitchLights(0);
 
         _spotLightSound = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/LeverRelease");
@@ -138,18 +147,22 @@ public class SpotlightHandler : MonoBehaviour
         for (int i = 0; i < _partJars.Length; i++)
         {
             _partJars[i].Stop();
+            _partJars[i].Clear(true);
         }
         for (int i = 0; i < _partPlate.Length; i++)
         {
             _partPlate[i].Stop();
+            _partPlate[i].Clear(true);
         }
         for (int i = 0; i < _partSliders.Length; i++)
         {
             _partSliders[i].Stop();
+            _partSliders[i].Clear(true);
         }
         for (int i = 0; i < _partLever.Length; i++)
         {
             _partLever[i].Stop();
+            _partLever[i].Clear(true);
         }
         if (!lightsAreOn)
         {
@@ -197,13 +210,14 @@ public class SpotlightHandler : MonoBehaviour
                     _realJars.SetActive(true);
                 }
                 _lightJars.SetActive(true);
+                //_softLightJars.SetActive(true);
                 for (int i = 0; i < _partJars.Length; i++)
                 {
                     _partJars[i].Play();
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.JARS - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.JARS - 1);
                 }
                 break;
 
@@ -214,13 +228,14 @@ public class SpotlightHandler : MonoBehaviour
                     _realPlate.SetActive(true);
                 }
                 _lightPlate.SetActive(true);
+                _softLightJars.SetActive(true);
                 for (int i = 0; i < _partPlate.Length; i++)
                 {
                     _partPlate[i].Play();
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.PLATE - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.PLATE - 1);
                 }
                 break;
 
@@ -231,13 +246,14 @@ public class SpotlightHandler : MonoBehaviour
                     _realSliders.SetActive(true);
                 }
                 _lightSliders.SetActive(true);
+                _softLightPlate.SetActive(true);
                 for (int i = 0; i < _partSliders.Length; i++)
                 {
                     _partSliders[i].Play();
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.SLIDERS - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.SLIDERS - 1);
                 }
                 break;
 
@@ -248,25 +264,27 @@ public class SpotlightHandler : MonoBehaviour
                     _realLever.SetActive(true);
                 }
                 _lightLever.SetActive(true);
+                _softLightSliders.SetActive(true);
                 for (int i = 0; i < _partLever.Length; i++)
                 {
                     _partLever[i].Play();
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.LEVER - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.LEVER - 1);
                 }
                 break;
 
             case LightState.TABLET:
                 _lightLever.SetActive(true);
+                _softLightLever.SetActive(true);
                 for (int i = 0; i < _partLever.Length; i++)
                 {
                     _partLever[i].Play(); //NOTE: Tablet uses the same lights and particles as the lever.
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].PlayVideo((int)LightState.TABLET - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.TABLET - 1);
                 }
                 break;
 
@@ -275,6 +293,12 @@ public class SpotlightHandler : MonoBehaviour
                 {
                     _videoScreens[i].StopVideo();
                 }
+
+                _softLightJars.SetActive(false);
+                _softLightPlate.SetActive(false);
+                _softLightSliders.SetActive(false);
+                _softLightLever.SetActive(false);
+
                 if (!lightsAreOn)
                 {
                     lightsAreOn = true;
