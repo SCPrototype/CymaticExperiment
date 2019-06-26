@@ -43,6 +43,7 @@ public class VR_Object : MonoBehaviour
         }
         GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
         GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
+        
         if (GetComponent<VRTK_InteractableObject>() == null)
         {
             Debug.LogError("Team3_Interactable_Object_Extension is required to be attached to an Object that has the VRTK_InteractableObject script attached to it");
@@ -86,7 +87,7 @@ public class VR_Object : MonoBehaviour
     {
         _isBeingGrabbed = true;
         _isOnSpawn = false;
-        rb.isKinematic = false;
+        //rb.isKinematic = false;
     }
 
     protected virtual void ObjectReleased(object sender, InteractableObjectEventArgs e)
