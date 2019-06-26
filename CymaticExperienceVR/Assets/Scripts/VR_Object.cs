@@ -112,12 +112,4 @@ public class VR_Object : MonoBehaviour
             }
         }
     }
-
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        if (other == RespawnPoint.GetComponent<Collider>())
-        {
-
-        }
-    }
 }
