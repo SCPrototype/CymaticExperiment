@@ -9,10 +9,11 @@ public class SpotlightHandler : MonoBehaviour
         OFF = 0,
         JARS = 1,
         PLATE = 2,
-        SLIDERS = 3,
-        LEVER = 4,
-        TABLET = 5,
-        FINISHED = 6
+        SLIDERF = 3,
+        SLIDERA = 4,
+        LEVER = 5,
+        TABLET = 6,
+        FINISHED = 7
     };
 
     public Light[] GlobalLights;
@@ -31,11 +32,15 @@ public class SpotlightHandler : MonoBehaviour
     public GameObject _fakePlate;
     public GameObject _realPlate;
     [Space(10)]
-    public GameObject _lightSliders;
+    public GameObject _lightSliderF;
+    public GameObject _lightSliderA;
     public GameObject _softLightSliders;
-    public ParticleSystem[] _partSliders;
-    public GameObject _fakeSliders;
-    public GameObject _realSliders;
+    public ParticleSystem[] _partSliderF;
+    public ParticleSystem[] _partSliderA;
+    public GameObject _fakeSliderF;
+    public GameObject _realSliderF;
+    public GameObject _realSliderA;
+    public GameObject _fakeSliderA;
     [Space(10)]
     public GameObject _lightLever;
     public GameObject _softLightLever;
@@ -70,6 +75,9 @@ public class SpotlightHandler : MonoBehaviour
 
     private LightState _lightState;
     private FMOD.Studio.EventInstance _spotLightSound;
+    private float _timeSwitch;
+    private bool _lightsShouldChange;
+    private LightState _targetLightState;
     // Start is called before the first frame update
     public void Start()
     {
@@ -81,7 +89,7 @@ public class SpotlightHandler : MonoBehaviour
             _realJars.SetActive(false);
             _realLever.SetActive(false);
             _realPlate.SetActive(false);
-            _realSliders.SetActive(false);
+            _realSliderF.SetActive(false);
             for (int i = 0; i < _realSceneObjects.Length; i++)
             {
                 _realSceneObjects[i].SetActive(false);
@@ -90,7 +98,7 @@ public class SpotlightHandler : MonoBehaviour
             _fakeJars.SetActive(true);
             _fakeLever.SetActive(true);
             _fakePlate.SetActive(true);
-            _fakeSliders.SetActive(true);
+            _fakeSliderF.SetActive(true);
             for (int i = 0; i < _fakeSceneObjects.Length; i++)
             {
                 _fakeSceneObjects[i].SetActive(true);
@@ -109,6 +117,14 @@ public class SpotlightHandler : MonoBehaviour
 
     public void Update()
     {
+        if (_lightsShouldChange)
+        {
+            if (Time.time > _timeSwitch)
+            {
+                Debug.Log("Do this");
+                SetLightState(_targetLightState);
+            }
+        }
         if (rotationLerpTime < 1)
         {
             rotationLerpTime = Mathf.Clamp(rotationLerpTime + RotationSpeed, 0.0f, 1.0f);
@@ -142,8 +158,9 @@ public class SpotlightHandler : MonoBehaviour
         rotationLerpTime = 0;
         _lightJars.SetActive(false);
         _lightPlate.SetActive(false);
-        _lightSliders.SetActive(false);
+        _lightSliderF.SetActive(false);
         _lightLever.SetActive(false);
+        _lightSliderA.SetActive(false);
         for (int i = 0; i < _partJars.Length; i++)
         {
             _partJars[i].Stop();
@@ -154,10 +171,15 @@ public class SpotlightHandler : MonoBehaviour
             _partPlate[i].Stop();
             _partPlate[i].Clear(true);
         }
-        for (int i = 0; i < _partSliders.Length; i++)
+        for (int i = 0; i < _partSliderF.Length; i++)
         {
-            _partSliders[i].Stop();
-            _partSliders[i].Clear(true);
+            _partSliderF[i].Stop();
+            _partSliderF[i].Clear(true);
+        }
+        for (int i = 0; i < _partSliderA.Length; i++)
+        {
+            _partSliderA[i].Stop();
+            _partSliderA[i].Clear(true);
         }
         for (int i = 0; i < _partLever.Length; i++)
         {
@@ -239,24 +261,39 @@ public class SpotlightHandler : MonoBehaviour
                 }
                 break;
 
-            case LightState.SLIDERS:
+            case LightState.SLIDERF:
                 if (DoFakeVersions)
                 {
-                    _fakeSliders.SetActive(false);
-                    _realSliders.SetActive(true);
+                    _fakeSliderF.SetActive(false);
+                    _realSliderF.SetActive(true);
                 }
-                _lightSliders.SetActive(true);
+                _lightSliderF.SetActive(true);
                 _softLightPlate.SetActive(true);
-                for (int i = 0; i < _partSliders.Length; i++)
+                for (int i = 0; i < _partSliderF.Length; i++)
                 {
-                    _partSliders[i].Play();
+                    _partSliderF[i].Play();
                 }
                 for (int i = 0; i < _videoScreens.Length; i++)
                 {
-                    _videoScreens[i].ChangeClipIndex((int)LightState.SLIDERS - 1);
+                    _videoScreens[i].ChangeClipIndex((int)LightState.SLIDERF - 1);
                 }
                 break;
-
+            case LightState.SLIDERA:
+                if (DoFakeVersions)
+                {
+                    _fakeSliderA.SetActive(false);
+                    _realSliderA.SetActive(true);
+                }
+                _lightSliderA.SetActive(true);
+                for (int i = 0; i < _videoScreens.Length; i++)
+                {
+                    _videoScreens[i].ChangeClipIndex((int)LightState.SLIDERA - 1);
+                }
+                for (int i = 0; i < _partSliderA.Length; i++)
+                {
+                    _partSliderA[i].Play();
+                }
+                break;
             case LightState.LEVER:
                 if (DoFakeVersions)
                 {
@@ -289,11 +326,6 @@ public class SpotlightHandler : MonoBehaviour
                 break;
 
             case LightState.FINISHED:
-                for (int i = 0; i < _videoScreens.Length; i++)
-                {
-                    _videoScreens[i].StopVideo();
-                }
-
                 _softLightJars.SetActive(false);
                 _softLightPlate.SetActive(false);
                 _softLightSliders.SetActive(false);
@@ -336,9 +368,16 @@ public class SpotlightHandler : MonoBehaviour
         return _lightState;
     }
 
-    public void SetLightState(LightState pLightState)
+    public void ChangeLight(LightState pLightState, int pLength = 0)
     {
-        //_spotLightSound.start();
+        _targetLightState = pLightState;
+        _timeSwitch = Time.time + pLength;
+        _lightsShouldChange = true;
+    }
+
+    private void SetLightState(LightState pLightState)
+    {
+        _lightsShouldChange = false;
         if (_lightState >= 0 && (int)_lightState <= (int)LightState.TABLET)
         {
             startRotation1 = StepRotation1[(int)_lightState];
@@ -350,7 +389,7 @@ public class SpotlightHandler : MonoBehaviour
             startRotation2 = TargetMoveObject2.localEulerAngles;
         }
 
-        if ((int)pLightState > (int)LightState.SLIDERS) //If the new light state is invalid, turn lights off.
+        if ((int)pLightState > (int)LightState.SLIDERA) //If the new light state is invalid, turn lights off.
         {
             _lightState = LightState.FINISHED;
         }
