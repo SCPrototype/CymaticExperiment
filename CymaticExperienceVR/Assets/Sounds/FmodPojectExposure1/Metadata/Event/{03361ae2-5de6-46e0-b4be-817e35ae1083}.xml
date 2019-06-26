@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="Event" id="{03361ae2-5de6-46e0-b4be-817e35ae1083}">
         <property name="name">
-            <value>JarPickup (2)</value>
+            <value>JarPickup</value>
         </property>
         <property name="outputFormat">
             <value>2</value>
@@ -31,6 +31,9 @@
         </relationship>
         <relationship name="timeline">
             <destination>{62db7fc5-8432-49ad-9c8d-aec4c70ddb19}</destination>
+        </relationship>
+        <relationship name="banks">
+            <destination>{b8200f08-0dca-4f70-af05-188753e3ca79}</destination>
         </relationship>
     </object>
     <object class="EventMixer" id="{f2c00e49-e811-49ba-adb3-ed2cc0b362b0}">
@@ -79,6 +82,9 @@
         </relationship>
     </object>
     <object class="EventMixerMaster" id="{e413b5be-20c7-4925-a835-2079a477244d}">
+        <property name="volume">
+            <value>-2</value>
+        </property>
         <relationship name="effectChain">
             <destination>{123f0714-c4db-4a0d-8cbd-43430ddb2ed7}</destination>
         </relationship>
@@ -115,9 +121,6 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{c78cccb1-f95e-413d-8509-e57559d1b9ec}">
-        <property name="volume">
-            <value>-5</value>
-        </property>
         <property name="name">
             <value>Audio 2</value>
         </property>
@@ -143,7 +146,7 @@
     </object>
     <object class="EventMixerGroup" id="{b2930b99-a6ff-4cb8-b088-f6581d7b302d}">
         <property name="volume">
-            <value>2.5</value>
+            <value>6</value>
         </property>
         <property name="name">
             <value>Audio 1 (2)</value>
