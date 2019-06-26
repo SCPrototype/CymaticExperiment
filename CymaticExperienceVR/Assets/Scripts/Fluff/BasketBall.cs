@@ -74,7 +74,10 @@ public class BasketBall : MonoBehaviour
                 _highScore = _score;
             }
             text.text = "Huidige \nScore : " + _score;
-            FMODUnity.RuntimeManager.PlayOneShot(GLOB.CelebrationSound, GetComponent<Transform>().position);
+            if (!_scoreSound.IsPlaying())
+            {
+                _scoreSound.Play();
+            }
         }
     }
 

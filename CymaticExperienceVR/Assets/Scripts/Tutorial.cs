@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     private int _currentStage = 0;
 
     public float StartDelay = 5.0f;
+    private float SceneStartTime;
     //public float NextStageDelay = 0.5f;
     public float CompleteDelay = 0.5f;
     private float stageSwitchTime;
@@ -34,6 +35,8 @@ public class Tutorial : MonoBehaviour
 
     void Awake()
     {
+        SceneStartTime = Time.time;
+
         _tutorialSounds = new string[8];
         switch (GLOB.LanguageSelected)
         {
@@ -91,7 +94,7 @@ public class Tutorial : MonoBehaviour
         }
         if (_currentStage <= 0)
         {
-            if (Time.time >= StartDelay)
+            if (Time.time - SceneStartTime >= StartDelay)
             {
                 ResetTutorial();
             }
