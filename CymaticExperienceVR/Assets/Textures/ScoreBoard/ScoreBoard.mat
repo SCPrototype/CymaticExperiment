@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Chladni Table
+  m_Name: ScoreBoard
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 1
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: fc0a7806aa76c18429795ac0301a7e7f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7bcab5ce47c002b45b2e6d6942856d2c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -36,23 +36,23 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 99bdd139cec9b344295a8743d3907320, type: 3}
+        m_Texture: {fileID: 2800000, guid: 48448484480059e45b614d58ddcb644f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ccd5c4629e9739b4290184eba8903fc6, type: 3}
+        m_Texture: {fileID: 2800000, guid: c97e3b5f82cda9b48988b9d4729044d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: a934a5e10a1b6ad41b1e90719642749e, type: 3}
+        m_Texture: {fileID: 2800000, guid: c7a9acf96b5406c47870d9d8bb945139, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 057cb06b3610c3e44aaa05842bb1a533, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3013ea77ad393cd49a53a9dd281aa8aa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: de74a106c1285b3478f38897cac7cf05, type: 3}
+        m_Texture: {fileID: 2800000, guid: fd772834f75dbcd429a358307ef86d22, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -66,7 +66,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.005
+    - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
