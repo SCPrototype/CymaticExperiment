@@ -12720,6 +12720,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 9babe36ffb4cb0040ac5512bb57d4dc7, type: 2}
+--- !u!20 &566398115 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 446361378475606412, guid: 56f4956f64d98bc4fa5a72c3a1fe4bbb,
+    type: 3}
+  m_PrefabInstance: {fileID: 811077586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &567967253
 GameObject:
   m_ObjectHideFlags: 0
@@ -23349,7 +23355,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tableController: {fileID: 1920418497}
   sceneObjects: {fileID: 998897718}
-  mainCameraVR: {fileID: 0}
+  mainCameraVR: {fileID: 566398115}
+  mainCameraSimulator: {fileID: 2127539954}
 --- !u!1 &1008230235
 GameObject:
   m_ObjectHideFlags: 0
@@ -62938,7 +62945,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   OnEnabled:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1920418500}
+        m_MethodName: SetValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.4
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnValueChanged:
@@ -70195,6 +70213,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!20 &2127539954 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5468169562074176503, guid: 22b8c719d72d2da42b72725947dc26c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 949848068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2132448184 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: f3355669fc7597e48924b1a9682115ea,
@@ -70254,6 +70278,14 @@ MonoBehaviour:
   GermanReset: 103
   DutchQuestions: 109
   GermanQuestions: 104
+  FadeImage: {fileID: 0}
+  FadeTime: 0
+  FadeInOnStart: 1
+  OnFadedIn:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &2132924431
 Transform:
   m_ObjectHideFlags: 0
