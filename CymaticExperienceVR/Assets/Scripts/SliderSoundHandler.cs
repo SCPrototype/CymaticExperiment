@@ -35,7 +35,7 @@ public class SliderSoundHandler : VR_Object
         }
     }
 
-    protected override void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
 
     }

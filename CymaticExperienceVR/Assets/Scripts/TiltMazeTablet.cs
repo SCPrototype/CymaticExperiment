@@ -6,6 +6,8 @@ using VRTK;
 
 public class TiltMazeTablet : VR_Object
 {
+    public Transform TabletHolder;
+
     public Transform TargetTerrain;
     public Vector3 RotationLimit = new Vector3(30, 0, 30);
     public Vector3 RotationOffset = new Vector3(0, 0, 0);
@@ -25,6 +27,9 @@ public class TiltMazeTablet : VR_Object
     public bool IsActiveOnAwake = false;
     public Vector3 ActivePosition = new Vector3(0, 0.1f, 0);
     public Vector3 ActiveRotation = new Vector3(50, 0, 0);
+    public Transform LaunchPosition;
+    public int LaunchForce = 225;
+    public int LaunchOffsetY = 2;
     public float ActivateSpeed = 0.01f;
     private bool IsActive;
     private bool IsActivating = false;
@@ -36,8 +41,6 @@ public class TiltMazeTablet : VR_Object
     {
         base.Start();
 
-        //GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ResetKinematic);
-        GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ResetKinematic);
         _tutorial = GameObject.Find("LightHolders").GetComponent<Tutorial>();
 
         startRotation = TargetTerrain.transform.eulerAngles;
@@ -62,6 +65,18 @@ public class TiltMazeTablet : VR_Object
         }
     }
 
+    private void HandleHolderSpawn()
+    {
+        rb.isKinematic = true;
+        //Set object back to respawn point.
+        transform.position = TabletHolder.position;
+        transform.rotation = TabletHolder.rotation;
+        _isOnSpawn = true;
+        //Re-enable velocity.
+        //rb.isKinematic = false;
+        _spawnTime = Time.time;
+    }
+
     public void SetActive(bool pToggle)
     {
         if (pToggle && !IsActive && !IsActivating)
@@ -80,7 +95,14 @@ public class TiltMazeTablet : VR_Object
     {
         if (pToggle)
         {
-            //rb.isKinematic = false;
+            rb.isKinematic = false;
+            //rb.AddExplosionForce(LaunchForce, transform.position + (transform.position - LaunchPosition.position).normalized, 3, LaunchOffsetY, ForceMode.Impulse);
+            rb.AddForce(((LaunchPosition.position - transform.position).normalized + new Vector3(0, LaunchOffsetY, 0)) * LaunchForce, ForceMode.Impulse);
+            rb.AddRelativeTorque(new Vector3(LaunchForce * -0.1f, 0, 0), ForceMode.Impulse);
+
+            _droppedTime = Time.time;
+            _isOnSpawn = false;
+
             GetComponent<VRTK_InteractableObject>().isGrabbable = true;
         }
         else
@@ -113,7 +135,7 @@ public class TiltMazeTablet : VR_Object
             {
                 transform.position += (ActivePosition * ActivateSpeed);
             }
-            else if(((tempRotation - (transform.eulerAngles - RespawnPoint.eulerAngles)).magnitude) >= (ActiveRotation * ActivateSpeed).magnitude)
+            else if (false && ((tempRotation - (transform.eulerAngles - RespawnPoint.eulerAngles)).magnitude) >= (ActiveRotation * ActivateSpeed).magnitude)
             {
                 transform.eulerAngles += (ActiveRotation * ActivateSpeed);
             }
@@ -153,19 +175,32 @@ public class TiltMazeTablet : VR_Object
                 //TargetTerrain.transform.eulerAngles = new Vector3(Mathf.Clamp(eulerHolder.x, -RotationLimit.x, RotationLimit.x), startRotation.y, Mathf.Clamp(eulerHolder.z, -RotationLimit.z, RotationLimit.z));
                 TargetTerrain.transform.eulerAngles = Vector3.Lerp(terrainEulerHolder, new Vector3(Mathf.Clamp(eulerHolder.x, -RotationLimit.x, RotationLimit.x), terrainEulerHolder.y, Mathf.Clamp(eulerHolder.z, -RotationLimit.z, RotationLimit.z)), 0.1f);
             }
-            else if (TargetTerrain.transform.eulerAngles != startRotation)
+            else
             {
-                Vector3 eulerHolder = TargetTerrain.transform.eulerAngles;
-                if (eulerHolder.x > 180)
+                if (!_isOnSpawn)
                 {
-                    eulerHolder.x -= 360;
+                    if (TabletHolder.GetComponent<Collider>() != null)
+                    {
+                        if (TabletHolder.GetComponent<Collider>().bounds.Intersects(GetComponentInChildren<Collider>().bounds))
+                        {
+                            HandleHolderSpawn();
+                        }
+                    }
                 }
-                if (eulerHolder.z > 180)
-                {
-                    eulerHolder.z -= 360;
+
+                if (TargetTerrain.transform.eulerAngles != startRotation) {
+                    Vector3 eulerHolder = TargetTerrain.transform.eulerAngles;
+                    if (eulerHolder.x > 180)
+                    {
+                        eulerHolder.x -= 360;
+                    }
+                    if (eulerHolder.z > 180)
+                    {
+                        eulerHolder.z -= 360;
+                    }
+                    TargetTerrain.transform.eulerAngles = Vector3.Lerp(eulerHolder, startRotation, 0.1f);
+                    //TargetTerrain.transform.eulerAngles = startRotation;
                 }
-                TargetTerrain.transform.eulerAngles = Vector3.Lerp(eulerHolder, startRotation, 0.1f);
-                //TargetTerrain.transform.eulerAngles = startRotation;
             }
         }
     }
@@ -199,14 +234,30 @@ public class TiltMazeTablet : VR_Object
         setHighScore = false;
     }
 
-    private void ResetKinematic(object sender, InteractableObjectEventArgs e)
+    protected override void ObjectReleased(object sender, InteractableObjectEventArgs e)
     {
-        rb.isKinematic = false;
+        if (GetComponent<VRTK_InteractableObject>().GetGrabbingObject() == null && GetComponent<VRTK_InteractableObject>().GetSecondaryGrabbingObject() == null)
+        {
+            rb.isKinematic = false;
+        }
+        //rb.isKinematic = false;
+
+        base.ObjectReleased(sender, e);
+
+        //rb.iskinematic = true;
+
+        if (TabletHolder.GetComponent<Collider>() != null)
+        {
+            if (TabletHolder.GetComponent<Collider>().bounds.Intersects(GetComponentInChildren<Collider>().bounds))
+            {
+                HandleHolderSpawn();
+            }
+        }
     }
 
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
-        _tutorial.CompleteStage(5);
+        _tutorial.CompleteStage(6);
     }
 }

@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-[RequireComponent(typeof(VRTK.SecondaryControllerGrabActions.VRTK_SwapControllerGrabAction))]
-[RequireComponent(typeof(VRTK_InteractableObject))]
 [RequireComponent(typeof(VRTK_InteractObjectHighlighter))]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(AudioSource))]
 public class VR_Object : MonoBehaviour
 {
     private static float RespawnDelay = 5.0f;
@@ -19,37 +16,41 @@ public class VR_Object : MonoBehaviour
     protected Rigidbody rb;
     protected bool _isBeingGrabbed = false;
     protected bool _isOnSpawn = true;
-    private float _droppedTime;
+    protected float _droppedTime;
     protected float _spawnTime;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         //Add event listener for interactable object.
-        ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         if (this is SandSpawner)
         {
+            ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
             ImpactSound.Event = GLOB.JarFallSound;
+            ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         }
         if (this is BottleFlip)
         {
+            ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
             ImpactSound.Event = GLOB.BottleFallSound;
+            ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         }
         if(this is BouncyBall)
         {
+            ImpactSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
             ImpactSound.Event = GLOB.BouncyBallSound;
+            ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         }
         GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
         GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
+        
         if (GetComponent<VRTK_InteractableObject>() == null)
         {
             Debug.LogError("Team3_Interactable_Object_Extension is required to be attached to an Object that has the VRTK_InteractableObject script attached to it");
             return;
         }
-        
-
+       
         rb = GetComponent<Rigidbody>();
-        ImpactSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         //Adds the time of the spawning of the object (only listening on movement after X amount) This to patch the non-perfect spawns.
         _spawnTime = Time.time;
     }
@@ -86,6 +87,7 @@ public class VR_Object : MonoBehaviour
     {
         _isBeingGrabbed = true;
         _isOnSpawn = false;
+        //rb.isKinematic = false;
     }
 
     protected virtual void ObjectReleased(object sender, InteractableObjectEventArgs e)
@@ -103,17 +105,12 @@ public class VR_Object : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (!ImpactSound.IsPlaying() && Time.time > _spawnTime + 0.5f)
+        if (ImpactSound != null)
         {
-            ImpactSound.Play();
-        }
-    }
-
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        if (other == RespawnPoint.GetComponent<Collider>())
-        {
-
+            if (!ImpactSound.IsPlaying() && Time.time > _spawnTime + 0.5f)
+            {
+                ImpactSound.Play();
+            }
         }
     }
 }

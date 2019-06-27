@@ -15,10 +15,22 @@ public class VideoScreen : MonoBehaviour
     public bool ReturnToStart = true;
     [Tooltip("Should the next clip start playing when the previous one is finished?")]
     public bool ContinueOnFinish = true;
-    public VideoClip[] Videos;
-    private int clipIndex = -1;
+    public VideoClip[] VideosRepeating;
+    public VideoClip[] VideosCatniFace;
+    public int clipIndex = 0;
     private FMODUnity.StudioEventEmitter _monitorTurningOn;
     private FMODUnity.StudioEventEmitter _monitorSwitchClip;
+    public enum ChladniAnimations
+    {
+        START = 0,
+        PICKINGUP = 1,
+        SHAKE = 2,
+        SANDMOVE = 3,
+        FSLIDER = 4,
+        SLIDERMOVE = 5,
+        ASLIDER = 6,
+        END = 7,
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -30,15 +42,7 @@ public class VideoScreen : MonoBehaviour
         _monitorSwitchClip = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _monitorSwitchClip.Event = GLOB.MonitorSwitchSound;
         _monitorSwitchClip.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
-
-        if (PlayOnAwake)
-        {
-            PlayNextVideo(LoopVideos);
-        }
-        if (ContinueOnFinish)
-        {
-            vp.loopPointReached += EndReached;
-        }
+        vp.loopPointReached += EndReached;
     }
 
     public void StopVideo()
@@ -54,9 +58,34 @@ public class VideoScreen : MonoBehaviour
         _monitorTurningOn.Play();
     }
 
-    public void PlayVideo(int pIndex, bool pLoop = true)
+    public void PlayVideo(int pIndex, bool pLoop = false)
     {
+     
+    }
 
+    public void PlayChladniVideo(int pIndex = 90)
+    {
+        vp.Stop();
+        if (pIndex == 90)
+        {
+            pIndex = clipIndex;
+        } else
+        {
+            clipIndex = pIndex;
+        }
+        vp.clip = VideosCatniFace[pIndex];
+        vp.isLooping = false;
+        vp.Play();
+    }
+
+    public void PlayRepeatingVideo(int pIndex)
+    {
+        clipIndex = pIndex;
+        vp.isLooping = true;
+        if (!_monitorSwitchClip.IsPlaying())
+        {
+            _monitorSwitchClip.Play();
+        }
         if (vp == null)
         {
             return;
@@ -66,74 +95,35 @@ public class VideoScreen : MonoBehaviour
         {
             vp.Stop();
         }
-
-        vp.isLooping = pLoop;
-
-        if (pIndex < Videos.Length)
-        {
-            vp.clip = Videos[pIndex];
-            vp.Play();
-            clipIndex = pIndex;
-        }
-    }
-
-    public void PlayNextVideo(bool pLoop = true)
-    {
-        if (!_monitorSwitchClip.IsPlaying())
-        {
-            _monitorSwitchClip.Play();
-        }
-        if (vp.isPlaying)
-        {
-            vp.Stop();
-        }
-       
-        if (clipIndex + 1 < Videos.Length && clipIndex + 1 >= 0)
-        {
-            clipIndex++;
-            vp.isLooping = pLoop;
-            vp.clip = Videos[clipIndex];
-            vp.Play();
-        }
-        else if (ReturnToStart)
-        {
-            clipIndex = -1;
-            PlayNextVideo(pLoop);
-        }
+        vp.clip = VideosRepeating[pIndex];
+        vp.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            PlayNextVideo(LoopVideos);
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            if (vp.isPlaying)
-            {
-                vp.Pause();
-            }
-            else if (vp.isPaused)
-            {
-                vp.Play();
-            }
-        }
+
     }
 
     void EndReached(UnityEngine.Video.VideoPlayer pVidPlayer)
     {
         //If the current clip is not looping
-        if (!pVidPlayer.isLooping)
+        if (!pVidPlayer.isLooping && clipIndex != 0 && clipIndex != 7 && clipIndex != 3)
         {
-            //Play the next clip
-            PlayNextVideo(LoopVideos);
+            PlayRepeatingVideo(clipIndex);
         }
+        if(clipIndex == 7)
+        {
+            vp.Stop();
+        }
+    }
+
+    public void ChangeClipIndex(int pIndex)
+    {
+        clipIndex = pIndex;
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        //PlayNextVideo(LoopVideos);
     }
 }

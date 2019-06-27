@@ -30,9 +30,9 @@ public class BouncyBall : VR_Object
         base.Update();
     }
 
-    protected override void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
+
     }
 
     protected override void OnCollisionEnter(Collision collision)

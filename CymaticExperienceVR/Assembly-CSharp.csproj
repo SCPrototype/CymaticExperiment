@@ -66,7 +66,6 @@
     <Compile Include="Assets\GoogleVR\Scripts\Audio\FmodGvrAudio.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Audio\FmodGvrAudioRoom.cs" />
     <Compile Include="Assets\NoiseShader-master\Assets\NoiseTest.cs" />
-    <Compile Include="Assets\Oculus\AudioManager\Scenes\Scripts\TestScript.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\AmbienceEmitter.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\AudioManager_Sound.cs" />
@@ -417,9 +416,11 @@
     <Compile Include="Assets\Scripts\HandleMoveObject.cs" />
     <Compile Include="Assets\Scripts\HologramChladni.cs" />
     <Compile Include="Assets\Scripts\Hover.cs" />
+    <Compile Include="Assets\Scripts\Laser.cs" />
     <Compile Include="Assets\Scripts\LeverSoundHandler.cs" />
     <Compile Include="Assets\Scripts\MeshFade.cs" />
     <Compile Include="Assets\Scripts\Oscilator.cs" />
+    <Compile Include="Assets\Scripts\OutworldPopulator.cs" />
     <Compile Include="Assets\Scripts\Pixel.cs" />
     <Compile Include="Assets\Scripts\ResetGame.cs" />
     <Compile Include="Assets\Scripts\Sand.cs" />
@@ -799,6 +800,7 @@
     <None Include="Assets\Oculus\Avatar\Samples\CrossPlatform\Readme.txt" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\LutGen.shader" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{32c1b3f9-3c73-420f-991f-3ad36521f647}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Workspace.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Mixer.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{957beb67-f65a-45a5-a3dd-223a94266a1f}.xml" />
@@ -808,8 +810,11 @@
     <None Include="Assets\Oculus\SampleFramework\Core\CustomHands\Materials\Hands_DiffBump.shader" />
     <None Include="Assets\Oculus\SampleFramework\Usage\Stereo180Video\Resources\Multiview Stereo.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{08852c47-132e-4adc-9105-ee1963e23e95}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{c12735c6-78ca-40d5-bbf4-e11de3ab3fb0}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{3d99d38f-d9e4-44f2-9d16-ee042c8dc1d4}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Platform\{a69ae8dc-73f6-4506-bb8d-260dc89d914e}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{89499054-d637-4f50-8c02-c6af8cdbb9ca}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{a7f590dd-b371-40cb-8c5b-ecf8d5cb604e}.xml" />
     <None Include="Assets\NoiseShader-master\Assets\GLSL\NoiseTest.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{8d06b52e-0913-4dd5-93e3-d8e0c8c3c1f1}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{c48a769d-dca7-4585-8672-28d084af3189}.xml" />
@@ -852,10 +857,12 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\EventFolder\{0dbe5cbf-cb3b-4e93-8e0c-413aad9d4190}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Tags.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{cbc93821-3268-4a49-bfa5-e74eb6763912}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
     <None Include="Assets\NoiseShader-master\Assets\HLSL\SimplexNoise3D.hlsl" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{429a5293-fd3d-4edb-8f50-af4b9163ec61}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{6b802921-028b-4eff-9386-9dd36391c5b5}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{89a5ebf8-44bb-4919-b331-740e378d1c48}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\EventFolder\{7b2cfb72-5e1d-42f1-a1ac-f3348758eeb1}.xml" />
     <None Include="Assets\Materials\Shaders\electric pulse shader.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{4a095681-cfd5-420f-99ee-1513ebaa7a70}.xml" />
@@ -864,6 +871,7 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{2c3b7072-3f38-4d80-b8ad-7507cfe0d93a}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{3a1a0060-bb5b-4473-9c44-db55d552b976}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{273b583a-778f-4434-8907-8aa9da04d992}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{7b993fe3-f679-4b21-9a4c-cce64c114e50}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{b7f61bdd-2c83-459b-a44d-9917ac5a45ce}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\AvatarSurfaceShaderSelfOccluding.shader" />
@@ -872,6 +880,7 @@
     <None Include="Assets\Materials\Shaders\Planet.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{9dee7a88-9900-4341-b97d-a68702e166d4}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{ad844e88-ad21-47c3-baa7-0da0c8c4df22}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{03361ae2-5de6-46e0-b4be-817e35ae1083}.xml" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\AvatarSurfaceShaderPBS.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
@@ -882,11 +891,13 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{96aa4c10-5fde-46e7-9b78-f8d39e69432a}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{395db624-638a-462c-b3c4-66d309374b14}.xml" />
     <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{53610d55-5d3b-40d6-8e81-a4abced73938}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{6ae27f4c-b538-4f78-97ef-57c33415704e}.xml" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_Mobile_CombinedMesh.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{86225cac-40c0-4229-90d0-aac4e9cfc74c}.xml" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Expressive\Avatar_Mobile_CombinedMeshExpressive.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{5e522e9f-4ca6-4b72-b1e5-c52708ab9dfd}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{2cc75819-c143-4cf0-9cdf-4137eeb80290}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\BankFolder\{4d32424e-c471-455f-8f3d-fea1fdb04b7f}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Expressive\Avatar_PC_SingleComponentExpressive.shader" />
@@ -910,16 +921,19 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{32c5cce7-2823-4f8f-bd06-be037bbe34d1}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{d4c638fa-946d-4da7-a680-6e7c2095e2fe}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{4b7587de-7af0-415b-a917-dc81306b4b05}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{14d10a28-a819-420a-a2d3-970391b271f4}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{2f483ec5-c87d-45c2-bca4-a79a27364fa8}.xml" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Expressive\Avatar_Mobile_SingleComponentExpressive.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{3c0837e1-097a-4d58-b703-088b11a8a221}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\EncodingSetting\{50a9e33e-dc8b-4967-855b-7af9bbd3edac}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{44e2eb4e-8a8e-43f4-b2cf-e16f1a711574}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{60ab45d3-7195-4ed0-aa82-d9b92220fd13}.xml" />
     <None Include="Assets\VRTK\Source\Scripts\Internal\Shaders\VRTK_TunnelEffect.shader" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{8006d63e-608b-47d9-9f64-a55e0b4af314}.xml" />
     <None Include="Assets\Oculus\SampleFramework\Core\DebugUI\Fonts\Montserrat\OFL.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\AvatarSurfaceShaderPBSV2.shader" />
@@ -935,6 +949,7 @@
     <None Include="Assets\Materials\Shaders\Disintegrate.shader" />
     <None Include="Assets\NoiseShader-master\Assets\HLSL\SimplexNoise2D.hlsl" />
     <None Include="Assets\NoiseShader-master\Assets\HLSL\ClassicNoise3D.hlsl" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{81c0bc8a-e263-4e7c-bdef-d07fb5c3ef68}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{c8f2949b-9e3c-4db1-9f08-dee58a82b3a8}.xml" />
     <None Include="Assets\Materials\Shaders\VolumetricLight.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\EncodingSetting\{da00ee04-0bcc-4f94-ae78-1f1057a64911}.xml" />
@@ -966,26 +981,37 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{a3803c24-3a2e-4518-b2e4-84c6d3712b1d}.xml" />
     <None Include="Assets\Oculus\SampleFramework\Usage\DistanceGrab\Materials\CrosshairZCheat.shader" />
     <None Include="Assets\Materials\Shaders\Water.shader" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{2c7cdfa1-d659-455b-a605-42205a59ee78}.xml" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
+<<<<<<< HEAD
       <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+=======
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+>>>>>>> 75aa5e4c8bff96120291e443face4a70deb539d0
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
@@ -1176,17 +1202,14 @@
     <Reference Include="nunit.framework">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Vuforia.UnityExtensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

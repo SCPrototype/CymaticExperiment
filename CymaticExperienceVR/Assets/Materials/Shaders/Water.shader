@@ -48,7 +48,7 @@
 			vertexToFragment myVertexShader(vertexInput v) {
 				float4 direction = normalize(_WaveDirection);
 				float interval = _WaveSpeed * _WaveInterval;//2 = 0.5 * 4
-				float timeScale = (((v.uv.x * -direction.x) + (v.uv.y * -direction.y) + (v.uv.z * -direction.z) + _Time.y * _WaveSpeed) % interval) / interval; //11 * 0.5 = 5.5 % 2 = 1.5
+				float timeScale = (((v.uv.x * -direction.x) + (v.uv.y * -direction.y) + (v.uv.z * -direction.z) + (_Time.y + 1000) * _WaveSpeed) % interval) / interval; //11 * 0.5 = 5.5 % 2 = 1.5
 				float t = saturate(1 - timeScale * (1 / _WaveLength)); // 1 - 1.5 * (1 / 0.6) = 1 - 1.5 * 1.66 = 1 - 2.49 = -1.49 = 0
 				float buildUp = saturate(1 - timeScale); // 1 - 1 = 0
 				if (buildUp <= _WaveBuildUp)
@@ -67,7 +67,7 @@
 			fixed4 myFragmentShader(vertexToFragment i) : SV_Target{
 				float4 direction = normalize(_WaveDirection);
 				float interval = _WaveSpeed * _WaveInterval; //0.2 * 4 = 0.8
-				float timeScale = (((i.uv.x * -direction.x) + (i.uv.y * -direction.y) + (i.uv.z * -direction.z) + _Time.y * _WaveSpeed) % interval) / interval; //2 * 0.2 % 0.8
+				float timeScale = (((i.uv.x * -direction.x) + (i.uv.y * -direction.y) + (i.uv.z * -direction.z) + (_Time.y + 1000) * _WaveSpeed) % interval) / interval; //2 * 0.2 % 0.8
 				float alpha = saturate(1 - timeScale * (1 / _WaveLength));
 				float buildUp = saturate(1 - timeScale);
 				if (buildUp <= _WaveBuildUp)
