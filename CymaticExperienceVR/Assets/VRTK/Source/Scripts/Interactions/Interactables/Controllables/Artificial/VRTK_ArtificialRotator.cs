@@ -73,7 +73,7 @@ namespace VRTK.Controllables.ArtificialBased
         [Tooltip("A collection of GameObjects that will be used as the valid collisions to determine if the rotator can be interacted with.")]
         public GameObject[] onlyInteractWith = new GameObject[0];
 
-        protected VRTK_InteractableObject controlInteractableObject;
+        public VRTK_InteractableObject controlInteractableObject;
         protected VRTK_RotateTransformGrabAttach controlGrabAttach;
         protected VRTK_SwapControllerGrabAction controlSecondaryGrabAction;
         protected bool createInteractableObject;
