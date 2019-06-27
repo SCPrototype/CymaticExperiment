@@ -20328,6 +20328,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56f4956f64d98bc4fa5a72c3a1fe4bbb, type: 3}
+--- !u!20 &811077587 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 446361378475606412, guid: 56f4956f64d98bc4fa5a72c3a1fe4bbb,
+    type: 3}
+  m_PrefabInstance: {fileID: 811077586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &817290335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22605,6 +22611,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22b8c719d72d2da42b72725947dc26c7, type: 3}
+--- !u!20 &949848069 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5468169562074176503, guid: 22b8c719d72d2da42b72725947dc26c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 949848068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &954299139
 GameObject:
   m_ObjectHideFlags: 0
@@ -23496,7 +23508,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tableController: {fileID: 1920418497}
-  tableObject: {fileID: 998897718}
+  sceneObjects: {fileID: 998897718}
+  mainCameraVR: {fileID: 811077587}
+  mainCameraSimulator: {fileID: 949848069}
 --- !u!1 &1008230235
 GameObject:
   m_ObjectHideFlags: 0
@@ -32038,7 +32052,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: b3eaa85f11d1cbc49b74565b8551e8bf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -476
+      value: -561
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b3eaa85f11d1cbc49b74565b8551e8bf,
         type: 3}
@@ -53575,7 +53589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876807560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -85.14752, y: -482, z: 0}
+  m_LocalPosition: {x: -85.14752, y: -567, z: 0}
   m_LocalScale: {x: 0.5149, y: 0.5149, z: 0.5149}
   m_Children:
   - {fileID: 1862502442}
