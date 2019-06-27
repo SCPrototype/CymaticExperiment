@@ -90,6 +90,7 @@ public class SpotlightHandler : MonoBehaviour
             _realLever.SetActive(false);
             _realPlate.SetActive(false);
             _realSliderF.SetActive(false);
+            _realSliderA.SetActive(false);
             for (int i = 0; i < _realSceneObjects.Length; i++)
             {
                 _realSceneObjects[i].SetActive(false);
@@ -99,6 +100,7 @@ public class SpotlightHandler : MonoBehaviour
             _fakeLever.SetActive(true);
             _fakePlate.SetActive(true);
             _fakeSliderF.SetActive(true);
+            _fakeSliderA.SetActive(true);
             for (int i = 0; i < _fakeSceneObjects.Length; i++)
             {
                 _fakeSceneObjects[i].SetActive(true);
