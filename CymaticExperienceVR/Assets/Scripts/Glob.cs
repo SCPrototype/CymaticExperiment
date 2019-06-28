@@ -34,14 +34,14 @@ public static class GLOB
     public const string TutorialSliderMoveDutchSound = "event:/Tutorial/TSlidermove";
 
     //German
-    public const string TutorialStartGermanSound = "event:/Tutorial/TStart";
-    public const string TutorialShakeGermanSound = "event:/Tutorial/TShake";
-    public const string TutorialPickingUpGermanSound = "event:/Tutorial/TPickingup";
-    public const string TutorialAslidersGermanSound = "event:/Tutorial/TAsliders";
-    public const string TutorialFslidersGermanSound = "event:/Tutorial/TFsliders";
-    public const string TutorialEndingGermanSound = "event:/Tutorial/TEnding";
-    public const string TutorialSandMoveGermanSound = "event:/Tutorial/TSandmove";
-    public const string TutorialSliderMoveGermanSound = "event:/Tutorial/TSlidermove";
+    public const string TutorialStartGermanSound = "event:/TutorialG/TStartG";
+    public const string TutorialShakeGermanSound = "event:/TutorialG/TShakeG";
+    public const string TutorialPickingUpGermanSound = "event:/TutorialG/TPickingupG";
+    public const string TutorialAslidersGermanSound = "event:/TutorialG/TAslidersG";
+    public const string TutorialFslidersGermanSound = "event:/TutorialG/TFslidersG";
+    public const string TutorialEndingGermanSound = "event:/TutorialG/TEndingG";
+    public const string TutorialSandMoveGermanSound = "event:/TutorialG/TSandmoveG";
+    public const string TutorialSliderMoveGermanSound = "event:/TutorialG/TSlidermoveG";
 
     public enum Language
     {
