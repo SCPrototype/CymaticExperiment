@@ -4,14 +4,23 @@
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_NormalTex("Normal", 2D) = "white" {}
 		_OcclusionTex("Occlusion", 2D) = "white" {}
+<<<<<<< .merge_file_a18040
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
+=======
+		_MetallicSmoothnessTex("Metallic-Smoothness", 2D) = "white" {}
+		_HeightTex("Height", 2D) = "white" {}
+		_HeightTexScale("Height scale", Range(0, 0.08)) = 0.02
+>>>>>>> .merge_file_a07040
 
 		_GlowColor("Glow Color", Color) = (1,1,1,1)
 		_GlowTraceColor("Glow Trace Color", Color) = (0,0,0,1)
 		_GlowTex("Glow", 2D) = "white" {}
 		_GlowInterval("Glow Interval", float) = 1.5
+<<<<<<< .merge_file_a18040
 		_GlowDirection("Glow Direction", Vector) = (0,1,1,0)
+=======
+>>>>>>> .merge_file_a07040
 		_GlowSpeed("Glow Speed", Range(0.1, 10)) = 1
 		_GlowLength("Glow Length", Range(0, 1)) = 0.5
 	}
