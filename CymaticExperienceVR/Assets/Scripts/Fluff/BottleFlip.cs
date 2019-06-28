@@ -21,6 +21,7 @@ public class BottleFlip : VR_Object
     [Range(0.0f, 1.0f)]
     public float MassShiftSpeed = 0.3f;
     private FMODUnity.StudioEventEmitter _celebrationSound;
+    private FMODUnity.StudioEventEmitter _bottlePickUpSound;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -29,6 +30,9 @@ public class BottleFlip : VR_Object
         _celebrationSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _celebrationSound.Event = GLOB.CelebrationSound;
         _celebrationSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        _bottlePickUpSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _bottlePickUpSound.Event = GLOB.BottlePickupSound;
+        _bottlePickUpSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
     }
 
     // Update is called once per frame
@@ -94,6 +98,9 @@ public class BottleFlip : VR_Object
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
-
+        if(!_bottlePickUpSound.IsPlaying())
+        {
+            _bottlePickUpSound.Play();
+        }
     }
 }
