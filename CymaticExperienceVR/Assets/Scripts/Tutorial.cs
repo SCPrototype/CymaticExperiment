@@ -84,6 +84,10 @@ public class Tutorial : MonoBehaviour
             readyToComplete = true;
             isSwitchingStage = true;
             CompleteStage(6);
+            videos[0].PlayChladniVideo(7);
+            videos[1].PlayChladniVideo(7);
+            videos[0].clipIndex = 7;
+            videos[1].clipIndex = 7;
             _spotLightHandler.SwitchLights(SpotlightHandler.LightState.JARS);
             _spotLightHandler.SwitchLights(SpotlightHandler.LightState.PLATE);
             _spotLightHandler.SwitchLights(SpotlightHandler.LightState.SLIDERA);
