@@ -28,13 +28,14 @@ public class HandleMoveObject : MonoBehaviour
             //neutralPosTable = tableObject.transform.position;
             positionHasChanged = false;
         }
-        if(Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            if(mainCameraSimulator.isActiveAndEnabled == true)
+            if (mainCameraSimulator.isActiveAndEnabled == true)
             {
                 float yPos = mainCameraSimulator.transform.position.y;
                 sceneObjects.transform.position = new Vector3(sceneObjects.transform.position.x, yPos / 5, sceneObjects.transform.position.z);
-            } else
+            }
+            else
             {
                 float yPos = mainCameraVR.transform.position.y;
                 sceneObjects.transform.position = new Vector3(sceneObjects.transform.position.x, yPos / 5, sceneObjects.transform.position.z);
