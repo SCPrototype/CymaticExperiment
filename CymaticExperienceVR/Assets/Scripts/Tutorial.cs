@@ -77,6 +77,13 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            _currentStage = 6;
+            readyToComplete = true;
+            isSwitchingStage = true;
+            CompleteStage(6);
+        }
         if (_chladniTalkBoard.Event == _tutorialSounds[0] && !_chladniTalkBoard.IsPlaying() && _welcomeSoundHasPlayed)
         {
             _soundTargetString = _tutorialSounds[1];
