@@ -8,11 +8,15 @@ public class CupulaBehaviour : MonoBehaviour
     private bool cupulaOpen = false;
     private int openBool;
     private int closeBool;
+    private FMODUnity.StudioEventEmitter _cupulaSound;
     // Start is called before the first frame update
     void Start()
     {
         openBool = Animator.StringToHash("OpenCupula");
         _cupulaAnimator = this.gameObject.GetComponent<Animator>();
+        _cupulaSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _cupulaSound.Event = GLOB.DomeOpeningSound;
+        
     }
 
     // Update is called once per frame
@@ -27,7 +31,6 @@ public class CupulaBehaviour : MonoBehaviour
         {
             _cupulaAnimator.SetBool(openBool, true);
             cupulaOpen = true;
-            FMODUnity.RuntimeManager.PlayOneShot(GLOB.DomeOpeningSound, GetComponent<Transform>().position);
         }
     }
 }

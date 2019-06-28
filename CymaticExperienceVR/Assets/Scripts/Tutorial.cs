@@ -77,6 +77,20 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            Debug.Log("Complete tutorial");
+            _currentStage = 6;
+            readyToComplete = true;
+            isSwitchingStage = true;
+            CompleteStage(6);
+            _spotLightHandler.SwitchLights(SpotlightHandler.LightState.JARS);
+            _spotLightHandler.SwitchLights(SpotlightHandler.LightState.PLATE);
+            _spotLightHandler.SwitchLights(SpotlightHandler.LightState.SLIDERA);
+            _spotLightHandler.SwitchLights(SpotlightHandler.LightState.SLIDERF);
+            _spotLightHandler.SwitchLights(SpotlightHandler.LightState.FINISHED);
+
+        }
         if (_chladniTalkBoard.Event == _tutorialSounds[0] && !_chladniTalkBoard.IsPlaying() && _welcomeSoundHasPlayed)
         {
             _soundTargetString = _tutorialSounds[1];
@@ -110,8 +124,12 @@ public class Tutorial : MonoBehaviour
                 _currentStage++;
                 if (_currentStage == 3)
                 {
-                    Debug.Log("Do this");
                     _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage, 10);
+                }
+                else if (_currentStage == 4)
+                {
+                    _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage, 4);
+                    CompleteDelay = 5.5f;
                 }
                 else
                 {
@@ -120,6 +138,7 @@ public class Tutorial : MonoBehaviour
                 isSwitchingStage = false;
                 if (CompleteDelay > 0)
                 {
+
                     stageStartTime = Time.time;
                     readyToComplete = false;
                 }
@@ -138,7 +157,6 @@ public class Tutorial : MonoBehaviour
             if (Time.time > _startupTime + _delayOnStart)
             {
                 _sceneStarting = true;
-
             }
         }
         if (_soundShouldChange)
@@ -149,6 +167,7 @@ public class Tutorial : MonoBehaviour
 
     public void CompleteStage(int pStage)
     {
+        
         if (_currentStage == pStage && !isSwitchingStage && readyToComplete)
         {
             _soundShouldChange = true;
@@ -175,6 +194,7 @@ public class Tutorial : MonoBehaviour
             else
             {
                 _currentStage++;
+               
                 _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage);
                 if (CompleteDelay > 0)
                 {
@@ -231,6 +251,11 @@ public class Tutorial : MonoBehaviour
                 _sliderMoveSoundHasPlayed = true;
             }
         }
+    }
+
+    public string[] getTutorialVideoNames()
+    {
+        return _tutorialSounds;
     }
 
 }

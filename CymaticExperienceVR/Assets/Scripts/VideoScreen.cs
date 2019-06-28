@@ -20,6 +20,7 @@ public class VideoScreen : MonoBehaviour
     public int clipIndex = 0;
     private FMODUnity.StudioEventEmitter _monitorTurningOn;
     private FMODUnity.StudioEventEmitter _monitorSwitchClip;
+    private string[] clipList;
     public enum ChladniAnimations
     {
         START = 0,
@@ -43,6 +44,7 @@ public class VideoScreen : MonoBehaviour
         _monitorSwitchClip.Event = GLOB.MonitorSwitchSound;
         _monitorSwitchClip.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         vp.loopPointReached += EndReached;
+        clipList = GameObject.Find("LightHolders").GetComponent<Tutorial>().getTutorialVideoNames();
     }
 
     public void StopVideo()
@@ -80,7 +82,6 @@ public class VideoScreen : MonoBehaviour
 
     public void PlayRepeatingVideo(int pIndex)
     {
-        clipIndex = pIndex;
         vp.isLooping = true;
         if (!_monitorSwitchClip.IsPlaying())
         {
@@ -110,7 +111,14 @@ public class VideoScreen : MonoBehaviour
         //If the current clip is not looping
         if (!pVidPlayer.isLooping && clipIndex != 0 && clipIndex != 7 && clipIndex != 3)
         {
-            PlayRepeatingVideo(clipIndex);
+            if (pVidPlayer.clip.name == clipList[1])
+            {
+                PlayRepeatingVideo(1);
+            }
+            else
+            {
+                PlayRepeatingVideo(clipIndex);
+            }
         }
         if(clipIndex == 7)
         {
@@ -120,7 +128,7 @@ public class VideoScreen : MonoBehaviour
 
     public void ChangeClipIndex(int pIndex)
     {
-        clipIndex = pIndex;
+        //clipIndex = pIndex;
     }
 
     public void OnCollisionEnter(Collision collision)
