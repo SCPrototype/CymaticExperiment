@@ -236,9 +236,15 @@ public class TiltMazeTablet : VR_Object
 
     protected override void ObjectReleased(object sender, InteractableObjectEventArgs e)
     {
-        rb.isKinematic = false;
+        if (GetComponent<VRTK_InteractableObject>().GetGrabbingObject() == null && GetComponent<VRTK_InteractableObject>().GetSecondaryGrabbingObject() == null)
+        {
+            rb.isKinematic = false;
+        }
+        //rb.isKinematic = false;
 
         base.ObjectReleased(sender, e);
+
+        //rb.iskinematic = true;
 
         if (TabletHolder.GetComponent<Collider>() != null)
         {
@@ -252,6 +258,6 @@ public class TiltMazeTablet : VR_Object
     protected override void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
         base.ObjectGrabbed(sender, e);
-        _tutorial.CompleteStage(5);
+        _tutorial.CompleteStage(6);
     }
 }

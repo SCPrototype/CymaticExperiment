@@ -17,7 +17,7 @@ public class VideoScreen : MonoBehaviour
     public bool ContinueOnFinish = true;
     public VideoClip[] VideosRepeating;
     public VideoClip[] VideosCatniFace;
-    private int clipIndex = 0;
+    public int clipIndex = 0;
     private FMODUnity.StudioEventEmitter _monitorTurningOn;
     private FMODUnity.StudioEventEmitter _monitorSwitchClip;
     public enum ChladniAnimations
@@ -65,9 +65,13 @@ public class VideoScreen : MonoBehaviour
 
     public void PlayChladniVideo(int pIndex = 90)
     {
+        vp.Stop();
         if (pIndex == 90)
         {
             pIndex = clipIndex;
+        } else
+        {
+            clipIndex = pIndex;
         }
         vp.clip = VideosCatniFace[pIndex];
         vp.isLooping = false;
@@ -104,9 +108,13 @@ public class VideoScreen : MonoBehaviour
     void EndReached(UnityEngine.Video.VideoPlayer pVidPlayer)
     {
         //If the current clip is not looping
-        if (!pVidPlayer.isLooping)
+        if (!pVidPlayer.isLooping && clipIndex != 0 && clipIndex != 7 && clipIndex != 3)
         {
             PlayRepeatingVideo(clipIndex);
+        }
+        if(clipIndex == 7)
+        {
+            vp.Stop();
         }
     }
 

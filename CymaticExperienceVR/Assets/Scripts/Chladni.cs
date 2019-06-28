@@ -319,7 +319,7 @@ public class Chladni : MonoBehaviour
         amplitude = 0.5f + (pValue * 0.1f);
         if (_tutorial != null)
         {
-            _tutorial.CompleteStage(3);
+            _tutorial.CompleteStage(4);
         }
     }
 
