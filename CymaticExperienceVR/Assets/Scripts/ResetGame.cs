@@ -29,8 +29,8 @@ public class ResetGame : MonoBehaviour
 
         if (FadeInOnStart)
         {
-            FadeImage.color = new Color(FadeImage.color.r, FadeImage.color.g, FadeImage.color.b, 1);
-            DoFadeIn();
+            //FadeImage.color = new Color(FadeImage.color.r, FadeImage.color.g, FadeImage.color.b, 1);
+            //DoFadeIn();
         }
         else
         {
