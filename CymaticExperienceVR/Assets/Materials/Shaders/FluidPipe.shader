@@ -85,7 +85,7 @@
 
 			struct vertexInput {
 				float4 vertex : POSITION;
-				float2 uv : TEXCOORD0;
+				float4 uv : TEXCOORD0;
 			};
 
 			struct vertexToFragment {
@@ -99,7 +99,8 @@
 				//o.vertex = mul(UNITY_MATRIX_MVP,v.vertex); //mul = multiplication
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				//o.uv = v.vertex;
-				o.uv = mul(UNITY_MATRIX_P, v.vertex);
+				//o.uv = mul(UNITY_MATRIX_P, v.vertex);
+				o.uv = v.uv;
 				return o;
 			}
 
@@ -107,30 +108,22 @@
 
 				float interval = _GlowSpeed * _GlowInterval;
 				float timeScale = ((_Time.y * _GlowSpeed) % interval) / interval;
-				float t = (1 - timeScale) * (1 / _GlowLength);
+				float t = (1.0 - timeScale);
 
 				float4 glowTex = tex2D(_GlowTex, i.uv);
 
 				float4 output = _GlowColor;
 
-				//if (t > 0.5)
-				//{
-					if (glowTex.a * (1 / _GlowLength) < t || glowTex.a == 0)
-					{
-						output *= 0;
-					}
-					else if (t < (1 / _GlowLength))
-					{
-						t = t;
-						if (glowTex.a > t || glowTex.a == 0) //TODO: Fix the ending which is too fast.
-						{
-							output *= 0;
-						}
-					}
-				//}
-				//else {
-	
-				//}
+
+				if (glowTex.a + _GlowLength < t || glowTex.a == 0)
+				{
+					output = _GlowTraceColor;
+				}
+				else if (glowTex.a > t || glowTex.a == 0)
+				{
+					output = _GlowTraceColor;
+				}
+
 
 
 				return output;
