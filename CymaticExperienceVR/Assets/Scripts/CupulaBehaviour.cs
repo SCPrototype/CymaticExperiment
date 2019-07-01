@@ -18,7 +18,8 @@ public class CupulaBehaviour : MonoBehaviour
         _cupulaSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _cupulaSound.Event = GLOB.DomeOpeningSound;
         _outsideBackGroundSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
-        //_outsideBackGroundSound.Event = GLOB.allaroundarefamilairfaceswornoutplaces;
+        _outsideBackGroundSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(new Vector3(-8,0,0)));
+        _outsideBackGroundSound.Event = GLOB.OutsideWavesSound;
     }
 
     // Update is called once per frame
@@ -34,7 +35,7 @@ public class CupulaBehaviour : MonoBehaviour
             _cupulaSound.Play();
             _cupulaAnimator.SetBool(openBool, true);
             cupulaOpen = true;
-            //_outsideBackGroundSound.Play();
+            _outsideBackGroundSound.Play();
         }
     }
 }

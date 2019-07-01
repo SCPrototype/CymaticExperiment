@@ -937,6 +937,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 601
+--- !u!114 &-5877046120759835126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Backgroundtrack
+  guid: a42916e986b5f648ae38a3e4765d6cad
+  Banks:
+  - {fileID: 2668992897270988331}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 130568
 --- !u!114 &-5791527875363754141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1233,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 562
+--- !u!114 &-4319449372770110232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Outside/Waves
+  guid: f83051509c52e047a4e4978f6e593a7e
+  Banks:
+  - {fileID: 2668992897270988331}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 101692
 --- !u!114 &-4312463641793681246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1256,6 +1302,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1962
+--- !u!114 &-4000782487771685187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tabletshot
+  guid: c53e482f7dc8c245bca4a79a27364fa8
+  Banks:
+  - {fileID: 2668992897270988331}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2839
 --- !u!114 &-3996853572226943670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2508,9 +2577,14 @@ MonoBehaviour:
   - {fileID: -7806314092213909004}
   - {fileID: -7425442361807554000}
   - {fileID: -8476487444415132474}
+  - {fileID: 2933910628781262317}
+  - {fileID: 3717155610482723195}
+  - {fileID: -5877046120759835126}
+  - {fileID: -4000782487771685187}
+  - {fileID: -4319449372770110232}
   MasterBankRef: {fileID: 2668992897270988331}
   StringsBankRef: {fileID: 6599109317504788612}
-  stringsBankWriteTime: 636973363751440826
+  stringsBankWriteTime: 636975949196311131
   cacheVersion: 2
 --- !u!114 &34722492390327130
 MonoBehaviour:
@@ -3266,11 +3340,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\piete\Documents\CymaticExperiment\CymaticExperienceVR\Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master
     Bank.bank
-  lastModified: 636973363751321137
+  lastModified: 636975949196211390
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 2408160
+    Value: 6776832
   Exists: 1
 --- !u!114 &2841772880537006283
 MonoBehaviour:
@@ -3318,6 +3392,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &2933910628781262317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Tabletstick
+  guid: 3ed606808b60d9479f64a55e0b4af314
+  Banks:
+  - {fileID: 2668992897270988331}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2044
 --- !u!114 &3163339025395705204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3499,6 +3596,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 16386
+--- !u!114 &3717155610482723195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Outside
+  guid: 87f75e9ec9de634b9443515dfc4303c6
+  Banks:
+  - {fileID: 2668992897270988331}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 57428
 --- !u!114 &3809350628212950382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4093,11 +4213,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Sounds\FmodPojectExposure1\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636973363751440826
+  lastModified: 636975949196311131
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 2288
+    Value: 2522
   Exists: 1
 --- !u!114 &6638447379563944151
 MonoBehaviour:
