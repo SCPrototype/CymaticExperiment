@@ -32,6 +32,8 @@ public class Tutorial : MonoBehaviour
     private bool _sliderMoveSoundHasPlayed = false;
     public VideoScreen[] videos;
     private string[] _tutorialSounds;
+    private FMODUnity.StudioEventEmitter _soundAfterTutorial;
+    private bool _goodbyeHasPlayed = false;
 
     void Awake()
     {
@@ -72,6 +74,8 @@ public class Tutorial : MonoBehaviour
         _chladniTalkBoard = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _chladniTalkBoard.Event = _tutorialSounds[0];
         _chladniTalkBoard.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(chladniSoundEmitter.transform));
+        _soundAfterTutorial = this.GetComponent<FMODUnity.StudioEventEmitter>();
+       // _soundAfterTutorial.Event = GLOB.yadada
     }
 
     // Update is called once per frame
@@ -109,6 +113,10 @@ public class Tutorial : MonoBehaviour
         {
             _soundTargetString = _tutorialSounds[5];
             _soundShouldChange = true;
+        }
+        if(_chladniTalkBoard.Event == _tutorialSounds[7] && !_chladniTalkBoard.IsPlaying() && _goodbyeHasPlayed)
+        {
+            _soundAfterTutorial.Play();
         }
         if (_currentStage <= 0)
         {
@@ -254,6 +262,10 @@ public class Tutorial : MonoBehaviour
             {
                 _sliderMoveSoundHasPlayed = true;
             }
+            if(pGlobName == _tutorialSounds[7])
+            {
+                _goodbyeHasPlayed = true;
+            }
         }
     }
 
@@ -262,4 +274,5 @@ public class Tutorial : MonoBehaviour
         return _tutorialSounds;
     }
 
+    
 }

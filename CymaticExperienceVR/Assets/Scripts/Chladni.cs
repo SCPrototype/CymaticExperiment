@@ -44,6 +44,7 @@ public class Chladni : MonoBehaviour
     float amplitude = 0.5f;
     public static int[] frameNrArray = new int[] { 0, 4, 47, 65, 107, 148, 165, 189, 231, 248, 265, 281, 307, 326, 347, 364, 377, 413, 447, 468, 504, 531, 548, 573, 603, 636, 671, 690, 727, 747, 771, 790 };
     private Tutorial _tutorial;
+    private FMODUnity.StudioEventEmitter _resetBeamSound;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +56,9 @@ public class Chladni : MonoBehaviour
         sumOfWholePlate0 = sumOfWholePlate2 = plateSize * plateSize;
         R = (int)(-2.0 / Mathf.Log10(A)) + 1;
         prepare();
-
+        _resetBeamSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        //_resetBeamSound.Event = GLOB.resetBeamSound;
+        _resetBeamSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         //SpawnSand();
         //SpawnSand();
         //SpawnSand();
@@ -330,6 +333,14 @@ public class Chladni : MonoBehaviour
     private void manualAmplitude()
     {
         amplitude = 1.5f;
+    }
+
+    public void PlayResetPlateSound()
+    {
+        if(_resetBeamSound.IsPlaying())
+        {
+            _resetBeamSound.Play();
+        }
     }
 }
 
