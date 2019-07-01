@@ -17,9 +17,13 @@ public class VideoScreen : MonoBehaviour
     public bool ContinueOnFinish = true;
     public VideoClip[] VideosRepeating;
     public VideoClip[] VideosCatniFace;
+    public VideoClip[] VideosEnding;
     public int clipIndex = 0;
     private FMODUnity.StudioEventEmitter _monitorTurningOn;
     private FMODUnity.StudioEventEmitter _monitorSwitchClip;
+    private int _indexEndClip = 0;
+    private string[] clipList;
+    private bool _videothingiesended = false;
     public enum ChladniAnimations
     {
         START = 0,
@@ -43,6 +47,7 @@ public class VideoScreen : MonoBehaviour
         _monitorSwitchClip.Event = GLOB.MonitorSwitchSound;
         _monitorSwitchClip.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         vp.loopPointReached += EndReached;
+        clipList = GameObject.Find("LightHolders").GetComponent<Tutorial>().getTutorialVideoNames();
     }
 
     public void StopVideo()
@@ -80,7 +85,6 @@ public class VideoScreen : MonoBehaviour
 
     public void PlayRepeatingVideo(int pIndex)
     {
-        clipIndex = pIndex;
         vp.isLooping = true;
         if (!_monitorSwitchClip.IsPlaying())
         {
@@ -107,23 +111,53 @@ public class VideoScreen : MonoBehaviour
 
     void EndReached(UnityEngine.Video.VideoPlayer pVidPlayer)
     {
-        //If the current clip is not looping
-        if (!pVidPlayer.isLooping && clipIndex != 0 && clipIndex != 7 && clipIndex != 3)
+        if (!_videothingiesended)
         {
-            PlayRepeatingVideo(clipIndex);
-        }
-        if(clipIndex == 7)
+            //If the current clip is not looping
+            if (!pVidPlayer.isLooping && clipIndex != 0 && clipIndex != 7 && clipIndex != 3)
+            {
+                if (pVidPlayer.clip.name == clipList[1])
+                {
+                    PlayRepeatingVideo(1);
+                }
+                else
+                {
+                    PlayRepeatingVideo(clipIndex);
+                }
+            }
+            if (clipIndex == 7)
+            {
+                vp.Stop();
+                _videothingiesended = true;
+                EndReached(pVidPlayer);
+            }
+        } else
         {
-            vp.Stop();
+            PlayEndVideo(_indexEndClip);
+            if (_indexEndClip == 0)
+            {
+                _indexEndClip = 1;
+            }
+            else
+            {
+                _indexEndClip = 0;
+            }
         }
     }
 
     public void ChangeClipIndex(int pIndex)
     {
-        clipIndex = pIndex;
+        //clipIndex = pIndex;
     }
 
     public void OnCollisionEnter(Collision collision)
     {
+    }
+
+    public void PlayEndVideo(int pIndex)
+    {
+        vp.clip = VideosEnding[pIndex];
+        vp.isLooping = false;
+        vp.Play();
     }
 }

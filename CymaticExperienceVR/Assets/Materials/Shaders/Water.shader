@@ -55,7 +55,7 @@
 				{
 					t = 1 - (buildUp / _WaveBuildUp); // 1 - (0 / 0.2) = 1 - 0 = 1
 				}
-				v.vertex.y += t * _WaveHeight;
+				v.vertex.y += (t * _WaveHeight);
 				vertexToFragment o;
 				// Transform the point to clip space:
 				o.vertex = mul(UNITY_MATRIX_MVP,v.vertex); //mul = multiplication
