@@ -62,7 +62,6 @@ public class LeverSoundHandler : MonoBehaviour
     {
         if (_overHalfWay && !_leverResetSound.IsPlaying())
         {
-            Debug.Log("Play release sound");
             _leverResetSound.Play();
         }
     }
