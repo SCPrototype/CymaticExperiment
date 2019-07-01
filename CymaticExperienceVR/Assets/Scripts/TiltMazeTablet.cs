@@ -69,7 +69,6 @@ public class TiltMazeTablet : VR_Object
         if (!IsActive)
         {
             base.HandleRespawn();
-            Debug.Log(_tabletShootSound.EventInstance);
             _tabletShootSound.Play();
             rb.isKinematic = true;
         }

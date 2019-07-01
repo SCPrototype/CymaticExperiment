@@ -26,6 +26,7 @@ public static class GLOB
     public const string OutsidePeopleSound = "event:/Outside";
     public const string TabletShootSound = "event:/Tabletshot";
     public const string TabletStickSound = "event:/Tabletstick";
+    public const string LaserSound = "event:/Laser";
 
     //Sounds for tutorial
     //Dutch

@@ -76,6 +76,7 @@ public class Tutorial : MonoBehaviour
         _chladniTalkBoard.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(chladniSoundEmitter.transform));
         _soundAfterTutorial = this.GetComponent<FMODUnity.StudioEventEmitter>();
         _soundAfterTutorial.Event = GLOB.BackgroundSound;
+        _soundAfterTutorial.Stop();
     }
 
     // Update is called once per frame
@@ -103,6 +104,7 @@ public class Tutorial : MonoBehaviour
         {
             _soundTargetString = _tutorialSounds[1];
             _soundShouldChange = true;
+
         }
         if (_chladniTalkBoard.Event == _tutorialSounds[3] && !_chladniTalkBoard.IsPlaying() && _sandMoveSoundHasPlayed)
         {
@@ -114,7 +116,7 @@ public class Tutorial : MonoBehaviour
             _soundTargetString = _tutorialSounds[5];
             _soundShouldChange = true;
         }
-        if(_chladniTalkBoard.Event == _tutorialSounds[7] && !_chladniTalkBoard.IsPlaying() && _goodbyeHasPlayed)
+        if(_chladniTalkBoard.Event == _tutorialSounds[7] && !_chladniTalkBoard.IsPlaying() && _goodbyeHasPlayed && !_soundAfterTutorial.IsPlaying())
         {
             _soundAfterTutorial.Play();
         }
@@ -174,6 +176,8 @@ public class Tutorial : MonoBehaviour
         if (_soundShouldChange)
         {
             ChangeSounds(_soundTargetString, true);
+            _soundAfterTutorial.Stop();
+            //For some reason it justs randomly starts.
         }
     }
 
@@ -264,6 +268,7 @@ public class Tutorial : MonoBehaviour
             }
             if(pGlobName == _tutorialSounds[7])
             {
+                Debug.Log("Yes hello");
                 _goodbyeHasPlayed = true;
             }
         }
