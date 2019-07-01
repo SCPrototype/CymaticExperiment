@@ -8,43 +8,67 @@ public class HandleMoveObject : MonoBehaviour
     public GameObject sceneObjects;
     public Camera mainCameraVR;
     public Camera mainCameraSimulator;
-
+    public GameObject allHolder;
 
     private bool positionHasChanged = false;
     private Vector3 neutralPosTable;
+    private bool _automaticSetHeight = false;
+    private float _heightSetTime = 0;
+    private bool eyeHeightSet = false;
+    private float _startTime;
     // Start is called before the first frame update
 
     void Start()
     {
         neutralPosTable = this.transform.position;
+        _startTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_automaticSetHeight)
+        {
+            if (_heightSetTime + 0.5f < Time.time)
+            {
+                _automaticSetHeight = false;
+            }
+        }
+
         if (positionHasChanged)
         {
             sceneObjects.transform.position = new Vector3(neutralPosTable.x, neutralPosTable.y + tableController.transform.localPosition.y, neutralPosTable.z);
-            //neutralPosTable = tableObject.transform.position;
             positionHasChanged = false;
         }
-        if (Input.GetKeyDown(KeyCode.T))
+        if (!eyeHeightSet && Time.time > _startTime + 0.5f)
         {
-            if (mainCameraSimulator.isActiveAndEnabled == true)
-            {
-                float yPos = mainCameraSimulator.transform.position.y;
-                sceneObjects.transform.position = new Vector3(sceneObjects.transform.position.x, yPos / 5, sceneObjects.transform.position.z);
-            }
-            else
-            {
-                float yPos = mainCameraVR.transform.position.y;
-                sceneObjects.transform.position = new Vector3(sceneObjects.transform.position.x, yPos / 5, sceneObjects.transform.position.z);
-            }
+            SetEyeState();
+            eyeHeightSet = true;
         }
+    }
+
+    private void SetEyeState()
+    {
+        float yPos = 0;
+        if (mainCameraSimulator.isActiveAndEnabled == true)
+        {
+            yPos = mainCameraSimulator.transform.position.y;
+        }
+        else
+        {
+            yPos = mainCameraVR.transform.position.y;
+        }
+        allHolder.transform.position = new Vector3(allHolder.transform.position.x, yPos / 5, allHolder.transform.position.z);
+        neutralPosTable = this.transform.position;
+        _automaticSetHeight = true;
+        _heightSetTime = Time.time;
     }
 
     public void ChangeTablePosition(int pValue)
     {
-        positionHasChanged = true;
+        if (_automaticSetHeight == false)
+        {
+            positionHasChanged = true;
+        }
     }
 }
