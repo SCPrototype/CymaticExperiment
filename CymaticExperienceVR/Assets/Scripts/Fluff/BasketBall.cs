@@ -42,7 +42,7 @@ public class BasketBall : MonoBehaviour
         _scoreSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _scoreSound.Event = GLOB.CelebrationSound;
         _scoreSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
-        highscoreText.text = "Hoogste \nScore : " + _highScore;
+        highscoreText.text = _highScore.ToString();
     }
 
 
@@ -52,9 +52,9 @@ public class BasketBall : MonoBehaviour
         if (Time.time - _lastScoreTime > _resetTimer)
         {
             _lastScoreTime = Time.time;
-            highscoreText.text = "Hoogste \nScore : " + _highScore;
+            highscoreText.text = _highScore.ToString();
             _score = 0;
-            text.text = "Huidige \nScore : " + _score;
+            text.text = _score.ToString();
         }
     }
 
@@ -73,7 +73,7 @@ public class BasketBall : MonoBehaviour
             {
                 _highScore = _score;
             }
-            text.text = "Huidige \nScore : " + _score;
+            text.text = _score.ToString();
             if (!_scoreSound.IsPlaying())
             {
                 _scoreSound.Play();

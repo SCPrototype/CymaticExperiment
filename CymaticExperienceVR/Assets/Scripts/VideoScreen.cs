@@ -17,7 +17,8 @@ public class VideoScreen : MonoBehaviour
     public bool ContinueOnFinish = true;
     public VideoClip[] VideosRepeating;
     public VideoClip[] VideosCatniFace;
-    public VideoClip[] VideosEnding;
+    public VideoClip[] VideosEndingDutch;
+    public VideoClip[] VideosEndingGerman;
     public int clipIndex = 0;
     private FMODUnity.StudioEventEmitter _monitorTurningOn;
     private FMODUnity.StudioEventEmitter _monitorSwitchClip;
@@ -156,7 +157,13 @@ public class VideoScreen : MonoBehaviour
 
     public void PlayEndVideo(int pIndex)
     {
-        vp.clip = VideosEnding[pIndex];
+        if (GLOB.LanguageSelected == GLOB.Language.Dutch)
+        {
+            vp.clip = VideosEndingDutch[pIndex];
+        } else
+        {
+            vp.clip = VideosEndingGerman[pIndex];
+        }
         vp.isLooping = false;
         vp.Play();
     }
