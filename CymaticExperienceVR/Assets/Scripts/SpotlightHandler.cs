@@ -74,7 +74,6 @@ public class SpotlightHandler : MonoBehaviour
     private bool lightsAreOn = false;
 
     private LightState _lightState;
-    private FMOD.Studio.EventInstance _spotLightSound;
     private float _timeSwitch;
     private bool _lightsShouldChange;
     private LightState _targetLightState;
@@ -85,6 +84,7 @@ public class SpotlightHandler : MonoBehaviour
         startRotation1 = TargetMoveObject1.localEulerAngles;
         startRotation2 = TargetMoveObject2.localEulerAngles;
 
+       
         if (DoFakeVersions)
         {
             _realJars.SetActive(false);
@@ -118,6 +118,7 @@ public class SpotlightHandler : MonoBehaviour
         _spotlightEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _spotlightEmitter.Event = GLOB.SpotlightSound;
         _spotlightEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject));
+
     }
 
     public void Update()

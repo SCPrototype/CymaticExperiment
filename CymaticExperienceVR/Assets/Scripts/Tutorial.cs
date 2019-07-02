@@ -74,7 +74,7 @@ public class Tutorial : MonoBehaviour
         _chladniTalkBoard = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _chladniTalkBoard.Event = _tutorialSounds[0];
         _chladniTalkBoard.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(chladniSoundEmitter.transform));
-        _soundAfterTutorial = this.GetComponent<FMODUnity.StudioEventEmitter>();
+        _soundAfterTutorial = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _soundAfterTutorial.Event = GLOB.BackgroundSound;
         _soundAfterTutorial.Stop();
     }
