@@ -21,6 +21,7 @@ public class ResetGame : MonoBehaviour
 
     public UnityEvent OnFadedIn = new UnityEvent();
     private UnityEvent OnFadedOut = new UnityEvent();
+    private FMODUnity.StudioEventEmitter _backgroundSound;
 
     void Awake()
     {
@@ -36,6 +37,14 @@ public class ResetGame : MonoBehaviour
         {
             FadeImage.color = new Color(FadeImage.color.r, FadeImage.color.g, FadeImage.color.b, 0);
         }
+    }
+
+    void Start()
+    {
+        _backgroundSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _backgroundSound.Event = GLOB.OutsidePeopleSound;
+        _backgroundSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(new Vector3(8, 0, 4)));
+        _backgroundSound.Play();
     }
     // Update is called once per frame
     void Update()

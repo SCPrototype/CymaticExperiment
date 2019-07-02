@@ -21,6 +21,12 @@ public static class GLOB
     public const string LeverClickSound = "event:/PlayArea/LeverClicks";
     public const string MonitorSwitchSound = "event:/PlayArea/MonitorSwitch";
     public const string MonitorTurnOnSound = "event:/PlayArea/MonitorTurnOn";
+    public const string OutsideWavesSound = "event:/Outside/Waves";
+    public const string BackgroundSound = "event:/Backgroundtrack";
+    public const string OutsidePeopleSound = "event:/Outside";
+    public const string TabletShootSound = "event:/Tabletshot";
+    public const string TabletStickSound = "event:/Tabletstick";
+    public const string LaserSound = "event:/Laser";
 
     //Sounds for tutorial
     //Dutch
