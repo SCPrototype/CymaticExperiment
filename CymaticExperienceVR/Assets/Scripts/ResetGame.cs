@@ -10,8 +10,7 @@ public class ResetGame : MonoBehaviour
     private float pressStartTime;
     public KeyCode DutchReset;
     public KeyCode GermanReset;
-    public KeyCode DutchQuestions;
-    public KeyCode GermanQuestions;
+    public KeyCode QuestionsKey;
 
     public Image FadeImage;
     public float FadeTime;
@@ -75,11 +74,11 @@ public class ResetGame : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(DutchQuestions) || Input.GetKeyDown(GermanQuestions))
+            if (Input.GetKeyDown(QuestionsKey))
             {
                 pressStartTime = Time.time;
             }
-            if (Input.GetKey(DutchQuestions) || Input.GetKey(GermanQuestions))
+            if (Input.GetKey(QuestionsKey))
             {
                 if (Time.time - pressStartTime >= pressDelay)
                 {

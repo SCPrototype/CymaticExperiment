@@ -1540,6 +1540,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2754895173751532558, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 3508acced9cff2f41841be4f85d049bc, type: 3}
     m_RemovedComponents:
     - {fileID: 994149412382933620, guid: acdf0cc41b90e9b469a7c3c7503ca1bf, type: 3}
     - {fileID: 994149412382933622, guid: acdf0cc41b90e9b469a7c3c7503ca1bf, type: 3}
@@ -3033,6 +3038,16 @@ PrefabInstance:
       propertyPath: useButton
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1161244825547936333, guid: 0c844d31d62939745bf58702c7666833,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 504bc27b61ce8224d9c15b4480118c2d, type: 2}
+    - target: {fileID: 1161244826349130880, guid: 0c844d31d62939745bf58702c7666833,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c719809952debf840805f58eb563a1a5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c844d31d62939745bf58702c7666833, type: 3}
 --- !u!1 &1360692629 stripped
@@ -4087,7 +4102,7 @@ MonoBehaviour:
   DutchQuestions: 109
   GermanQuestions: 104
   FadeImage: {fileID: 712179370}
-  FadeTime: 2
+  FadeTime: 5
   FadeInOnStart: 1
   OnFadedIn:
     m_PersistentCalls:

@@ -30,12 +30,12 @@ public class Laser : MonoBehaviour
         {
             _resetBeamSound = soundEmitter.AddComponent<FMODUnity.StudioEventEmitter>();
             _resetBeamSound.Event = GLOB.LaserSound;
-            _resetBeamSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(soundEmitter.transform));
+            _resetBeamSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(soundEmitter.transform, soundEmitter.GetComponent<Rigidbody>()));
         } else
         {
             _resetBeamSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
             _resetBeamSound.Event = GLOB.LaserSound;
-            _resetBeamSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+            _resetBeamSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform, GetComponent<Rigidbody>()));
         }
         
     }
