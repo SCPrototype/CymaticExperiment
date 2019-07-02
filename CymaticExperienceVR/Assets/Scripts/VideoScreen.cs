@@ -15,6 +15,7 @@ public class VideoScreen : MonoBehaviour
     public bool ReturnToStart = true;
     [Tooltip("Should the next clip start playing when the previous one is finished?")]
     public bool ContinueOnFinish = true;
+    public VideoClip StartVideo;
     public VideoClip[] VideosRepeating;
     public VideoClip[] VideosCatniFace;
     public VideoClip[] VideosEnding;
@@ -40,6 +41,7 @@ public class VideoScreen : MonoBehaviour
     void Start()
     {
         vp = GetComponent<VideoPlayer>();
+
         _monitorTurningOn = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _monitorTurningOn.Event = GLOB.MonitorTurnOnSound;
         _monitorTurningOn.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
@@ -99,6 +101,7 @@ public class VideoScreen : MonoBehaviour
         {
             vp.Stop();
         }
+
         vp.clip = VideosRepeating[pIndex];
         vp.Play();
     }
