@@ -12,7 +12,7 @@ public class BasketBall : MonoBehaviour
 
     private GameObject _lastObjectHit;
     private float _resetTimer = 30.0f;
-    private float _lastScoreTime;
+    private float _lastScoreTime = 0;
     private FMODUnity.StudioEventEmitter _scoreSound;
     private List<string> scores = new List<string>();
     private string _path = "Assets/Resources/Scores/Highscores.txt";
@@ -21,6 +21,11 @@ public class BasketBall : MonoBehaviour
 
     void Awake()
     {
+        //Resources.Load(_path);
+        if (!Application.isEditor)
+        {
+            _path = Application.dataPath + "/Assets/Highscores.txt";
+        }
         using (System.IO.StreamReader _streamreader = new System.IO.StreamReader(_path))
         {
             int counter = 0;

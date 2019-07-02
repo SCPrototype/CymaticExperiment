@@ -26,6 +26,11 @@ public class FeedbackHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!Application.isEditor)
+        {
+            _path = Application.dataPath + "/Assets/Answers.txt";
+        }
+
         System.IO.FileStream test = new System.IO.FileStream(_path, System.IO.FileMode.Append);
         _streamWriter = new System.IO.StreamWriter(test);
 
