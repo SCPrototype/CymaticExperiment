@@ -112,7 +112,6 @@ public class Tutorial : MonoBehaviour
         }
         if (_soundTargetString == _tutorialSounds[4] && !_chladniTalkBoard.IsPlaying() && _fsliderSoundHasPlayed && _currentStage == 3)
         {
-            Debug.Log("Not this");
             _soundTargetString = _tutorialSounds[5];
             _soundShouldChange = true;
         }
@@ -198,7 +197,6 @@ public class Tutorial : MonoBehaviour
                     break;
                 case 3:
                     _soundTargetString = _tutorialSounds[6];
-                    Debug.Log("This");
                     break;
                 case 4:
                     _soundTargetString = _tutorialSounds[7];
