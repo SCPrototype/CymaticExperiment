@@ -7,6 +7,7 @@ public class BasketBall : MonoBehaviour
     private int _score = 0;
     public TextMesh text;
     public TextMesh highscoreText;
+    public TextMesh timeText;
     public GameObject particleEmitter;
 
     private GameObject _lastObjectHit;
@@ -16,6 +17,7 @@ public class BasketBall : MonoBehaviour
     private List<string> scores = new List<string>();
     private string _path = "Assets/Resources/Scores/Highscores.txt";
     private int _highScore = 0;
+    private float _timertext = 0;
 
     void Awake()
     {
@@ -56,6 +58,11 @@ public class BasketBall : MonoBehaviour
             _score = 0;
             text.text = _score.ToString();
         }
+        if(_timertext > 0)
+        {
+            _timertext -= Time.deltaTime;
+            timeText.text = Mathf.Round(_timertext).ToString();
+        }
     }
 
     public void OnTriggerEnter(Collider col)
@@ -79,6 +86,8 @@ public class BasketBall : MonoBehaviour
                 _scoreSound.Play();
             }
         }
+        timeText.text = 30.ToString();
+        _timertext = 30f;
     }
 
     void OnApplicationQuit()
