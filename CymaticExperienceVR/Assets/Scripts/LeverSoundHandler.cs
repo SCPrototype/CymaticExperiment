@@ -27,12 +27,12 @@ public class LeverSoundHandler : MonoBehaviour
         _leverEndClickSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         _leverResetSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
 
-        //GetComponent<VRTK_ArtificialRotator>().controlInteractableObject.InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
+        GetComponent<VRTK_ArtificialRotator>().controlInteractableObject.InteractableObjectUngrabbed += new InteractableObjectEventHandler(ObjectReleased);
     }
 
     public void PlayClickingSound(int pValue)
     {
-        if (pValue >= 5)
+        if (pValue >= 4)
         {
             _overHalfWay = true;
         }
