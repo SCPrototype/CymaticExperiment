@@ -4,6 +4,7 @@
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_NormalTex("Normal", 2D) = "white" {}
 		_OcclusionTex("Occlusion", 2D) = "white" {}
+
 		_MetallicSmoothnessTex("Metallic-Smoothness", 2D) = "white" {}
 		_HeightTex("Height", 2D) = "white" {}
 		_HeightTexScale("Height scale", Range(0, 0.08)) = 0.02
@@ -12,6 +13,7 @@
 		_GlowTraceColor("Glow Trace Color", Color) = (0,0,0,1)
 		_GlowTex("Glow", 2D) = "white" {}
 		_GlowInterval("Glow Interval", float) = 1.5
+
 		_GlowSpeed("Glow Speed", Range(0.1, 10)) = 1
 		_GlowLength("Glow Length", Range(0, 1)) = 0.5
 	}
@@ -85,7 +87,7 @@
 
 			struct vertexInput {
 				float4 vertex : POSITION;
-				float2 uv : TEXCOORD0;
+				float4 uv : TEXCOORD0;
 			};
 
 			struct vertexToFragment {
@@ -99,38 +101,32 @@
 				//o.vertex = mul(UNITY_MATRIX_MVP,v.vertex); //mul = multiplication
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				//o.uv = v.vertex;
-				o.uv = mul(UNITY_MATRIX_P, v.vertex);
+				//o.uv = mul(UNITY_MATRIX_P, v.vertex);
+				o.uv = v.uv;
 				return o;
 			}
 
 			fixed4 myFragmentShader(vertexToFragment i) : SV_Target{
 
+
 				float interval = _GlowSpeed * _GlowInterval;
 				float timeScale = ((_Time.y * _GlowSpeed) % interval) / interval;
-				float t = (1 - timeScale) * (1 / _GlowLength);
+				float t = (1.0 - timeScale);
 
 				float4 glowTex = tex2D(_GlowTex, i.uv);
 
 				float4 output = _GlowColor;
 
-				//if (t > 0.5)
-				//{
-					if (glowTex.a * (1 / _GlowLength) < t || glowTex.a == 0)
-					{
-						output *= 0;
-					}
-					else if (t < (1 / _GlowLength))
-					{
-						t = t;
-						if (glowTex.a > t || glowTex.a == 0) //TODO: Fix the ending which is too fast.
-						{
-							output *= 0;
-						}
-					}
-				//}
-				//else {
-	
-				//}
+
+				if (glowTex.a + _GlowLength < t || glowTex.a == 0)
+				{
+					output = _GlowTraceColor;
+				}
+				else if (glowTex.a > t || glowTex.a == 0)
+				{
+					output = _GlowTraceColor;
+				}
+
 
 
 				return output;

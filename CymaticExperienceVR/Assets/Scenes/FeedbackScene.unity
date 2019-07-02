@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc4b5dd2be1cea4aaea2850b910d3f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nearTouchHighlight: {r: 0, g: 0, b: 0, a: 0}
+  nearTouchHighlight: {r: 1, g: 0, b: 1, a: 0.5019608}
   touchHighlight: {r: 0, g: 1, b: 0, a: 0.5019608}
   grabHighlight: {r: 0, g: 0, b: 0, a: 0}
   useHighlight: {r: 0, g: 0, b: 0, a: 0}
@@ -512,6 +512,24 @@ CapsuleCollider:
   m_Height: 0.027176382
   m_Direction: 1
   m_Center: {x: 0.000119072385, y: 0, z: 0.000000007450581}
+--- !u!114 &221036979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221036974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  unhighlightOnDisable: 0
+  thickness: 1
+  customOutlineModels: []
+  customOutlineModelPaths: []
+  enableSubmeshHighlight: 0
 --- !u!4 &221036986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8142493385598017247, guid: ac0896e8bcafad442adf58df2b034379,
@@ -1522,7 +1540,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2754895173751532558, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 3508acced9cff2f41841be4f85d049bc, type: 3}
+    m_RemovedComponents:
+    - {fileID: 994149412382933620, guid: acdf0cc41b90e9b469a7c3c7503ca1bf, type: 3}
+    - {fileID: 994149412382933622, guid: acdf0cc41b90e9b469a7c3c7503ca1bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: acdf0cc41b90e9b469a7c3c7503ca1bf, type: 3}
 --- !u!1001 &960071444
 PrefabInstance:
@@ -3013,6 +3038,16 @@ PrefabInstance:
       propertyPath: useButton
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1161244825547936333, guid: 0c844d31d62939745bf58702c7666833,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 504bc27b61ce8224d9c15b4480118c2d, type: 2}
+    - target: {fileID: 1161244826349130880, guid: 0c844d31d62939745bf58702c7666833,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c719809952debf840805f58eb563a1a5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c844d31d62939745bf58702c7666833, type: 3}
 --- !u!1 &1360692629 stripped
@@ -3836,7 +3871,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413375896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -3877,7 +3912,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413375897}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -3918,7 +3953,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413375898}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -4067,7 +4102,7 @@ MonoBehaviour:
   DutchQuestions: 109
   GermanQuestions: 104
   FadeImage: {fileID: 712179370}
-  FadeTime: 2
+  FadeTime: 5
   FadeInOnStart: 1
   OnFadedIn:
     m_PersistentCalls:

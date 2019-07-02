@@ -32,7 +32,7 @@ public class LeverSoundHandler : MonoBehaviour
 
     public void PlayClickingSound(int pValue)
     {
-        if (pValue >= 5)
+        if (pValue >= 4)
         {
             _overHalfWay = true;
         }
