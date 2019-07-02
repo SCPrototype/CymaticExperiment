@@ -33,6 +33,8 @@ public class TiltMazeTablet : VR_Object
     public float ActivateSpeed = 0.01f;
     private bool IsActive;
     private bool IsActivating = false;
+    private FMODUnity.StudioEventEmitter _tabletShootSound;
+    private FMODUnity.StudioEventEmitter _tabletstickSound;
 
     private Tutorial _tutorial;
 
@@ -46,6 +48,17 @@ public class TiltMazeTablet : VR_Object
         startRotation = TargetTerrain.transform.eulerAngles;
 
         IsActive = IsActiveOnAwake;
+       
+        this.SetActive(true);
+        _tabletShootSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _tabletstickSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+
+        _tabletShootSound.Event = GLOB.TabletShootSound;
+        _tabletstickSound.Event = GLOB.TabletStickSound;
+
+        _tabletShootSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        _tabletstickSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        this.SetActive(false);
         if (!IsActive)
         {
             HandleActiveState(false);
@@ -56,6 +69,7 @@ public class TiltMazeTablet : VR_Object
         if (!IsActive)
         {
             base.HandleRespawn();
+            _tabletShootSound.Play();
             rb.isKinematic = true;
         }
         else
@@ -99,7 +113,7 @@ public class TiltMazeTablet : VR_Object
             //rb.AddExplosionForce(LaunchForce, transform.position + (transform.position - LaunchPosition.position).normalized, 3, LaunchOffsetY, ForceMode.Impulse);
             rb.AddForce(((LaunchPosition.position - transform.position).normalized + new Vector3(0, LaunchOffsetY, 0)) * LaunchForce, ForceMode.Impulse);
             rb.AddRelativeTorque(new Vector3(LaunchForce * -0.1f, 0, 0), ForceMode.Impulse);
-
+            _tabletstickSound.Play();
             _droppedTime = Time.time;
             _isOnSpawn = false;
 
@@ -188,7 +202,8 @@ public class TiltMazeTablet : VR_Object
                     }
                 }
 
-                if (TargetTerrain.transform.eulerAngles != startRotation) {
+                if (TargetTerrain.transform.eulerAngles != startRotation)
+                {
                     Vector3 eulerHolder = TargetTerrain.transform.eulerAngles;
                     if (eulerHolder.x > 180)
                     {
