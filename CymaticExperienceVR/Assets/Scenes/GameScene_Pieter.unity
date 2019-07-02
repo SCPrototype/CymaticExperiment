@@ -3336,6 +3336,36 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58080e048a1c2f04593da80ec39bc957, type: 3}
+--- !u!1 &209230631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 209230632}
+  m_Layer: 0
+  m_Name: lasersoundemitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &209230632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209230631}
+  m_LocalRotation: {x: 0.14374007, y: -0.669384, z: 0.13428737, w: 0.7164013}
+  m_LocalPosition: {x: -93.11696, y: 70.39684, z: 0.017440796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1698098833}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &213195502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6323358175240836570, guid: 93e9a48abd2efe94ab7b47bf65dd77ad,
@@ -13701,7 +13731,7 @@ Transform:
   m_Children:
   - {fileID: 2023763944}
   m_Father: {fileID: 1698098833}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 15}
 --- !u!114 &665612370
 MonoBehaviour:
@@ -13756,6 +13786,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  soundEmitter: {fileID: 209230631}
 --- !u!1001 &669483933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30206,7 +30237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndRotation: {x: 0, y: 90, z: -9.3}
-  RotationSpeed: 0.02
+  RotationSpeed: 0.01
   PlayOnAwake: 0
   OnFinished:
     m_PersistentCalls:
@@ -30224,6 +30255,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  soundEmitter: {fileID: 0}
 --- !u!1001 &1143340128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42640,6 +42672,7 @@ Transform:
   - {fileID: 85635157}
   - {fileID: 491295864}
   - {fileID: 1850257775}
+  - {fileID: 209230632}
   - {fileID: 665612369}
   m_Father: {fileID: 1772211506}
   m_RootOrder: 0
@@ -67066,19 +67099,19 @@ PrefabInstance:
         type: 3}
       propertyPath: VideosRepeating.Array.data[5]
       value: 
-      objectReference: {fileID: 32900000, guid: 7e5a440d425d1c94a9d8534dfcbeab36,
+      objectReference: {fileID: 32900000, guid: d1c3d1b4eb291534c881b847388d0a00,
         type: 3}
     - target: {fileID: 994149412382933620, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
         type: 3}
       propertyPath: VideosRepeating.Array.data[6]
       value: 
-      objectReference: {fileID: 32900000, guid: 542a61cd1c9d7144a9bd258261377d66,
+      objectReference: {fileID: 32900000, guid: 7e5a440d425d1c94a9d8534dfcbeab36,
         type: 3}
     - target: {fileID: 994149412382933620, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
         type: 3}
       propertyPath: VideosRepeating.Array.data[7]
       value: 
-      objectReference: {fileID: 32900000, guid: c55821dfc4ccd8f48a02cb4c86032ded,
+      objectReference: {fileID: 32900000, guid: 7e5a440d425d1c94a9d8534dfcbeab36,
         type: 3}
     - target: {fileID: 994149412382933620, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
         type: 3}
@@ -67230,6 +67263,16 @@ PrefabInstance:
       propertyPath: m_AudioOutputMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 994149412382933622, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 994149412382933622, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 672bdbeae09254c469034c513d411cfe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acdf0cc41b90e9b469a7c3c7503ca1bf, type: 3}
 --- !u!4 &2142898535 stripped
@@ -67371,19 +67414,19 @@ PrefabInstance:
         type: 3}
       propertyPath: VideosRepeating.Array.data[5]
       value: 
-      objectReference: {fileID: 32900000, guid: 7e5a440d425d1c94a9d8534dfcbeab36,
+      objectReference: {fileID: 32900000, guid: d1c3d1b4eb291534c881b847388d0a00,
         type: 3}
     - target: {fileID: 994149412382933620, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
         type: 3}
       propertyPath: VideosRepeating.Array.data[6]
       value: 
-      objectReference: {fileID: 32900000, guid: 542a61cd1c9d7144a9bd258261377d66,
+      objectReference: {fileID: 32900000, guid: 7e5a440d425d1c94a9d8534dfcbeab36,
         type: 3}
     - target: {fileID: 994149412382933620, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
         type: 3}
       propertyPath: VideosRepeating.Array.data[7]
       value: 
-      objectReference: {fileID: 32900000, guid: c55821dfc4ccd8f48a02cb4c86032ded,
+      objectReference: {fileID: 32900000, guid: 7e5a440d425d1c94a9d8534dfcbeab36,
         type: 3}
     - target: {fileID: 994149412382933620, guid: acdf0cc41b90e9b469a7c3c7503ca1bf,
         type: 3}
