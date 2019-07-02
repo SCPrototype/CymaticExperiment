@@ -51,7 +51,7 @@ MonoBehaviour:
       ambientOnly: 0
       highPrecision: 0
   screenSpaceReflection:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       reflection:
         blendType: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
       sampleCount: 10
       frameBlending: 0
   eyeAdaptation:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       lowPercent: 45
       highPercent: 95
@@ -114,15 +114,15 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: -0.011
-        neutralWhiteIn: 14.7
-        neutralBlackOut: 0
-        neutralWhiteOut: 10
-        neutralWhiteLevel: 5.3
-        neutralWhiteClip: 10
+        neutralBlackIn: 0.033
+        neutralWhiteIn: 9.22
+        neutralBlackOut: 0.0301
+        neutralWhiteOut: 11.66
+        neutralWhiteLevel: 8.19
+        neutralWhiteClip: 9.33
       basic:
         postExposure: 0
-        temperature: 7
+        temperature: 12.2
         tint: 9
         hueShift: 0
         saturation: 1.36
@@ -140,8 +140,8 @@ MonoBehaviour:
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
           lift: {r: 0.9001262, g: 0.850388, b: 1, a: 0}
-          gamma: {r: 0.8845826, g: 0.9394509, b: 1, a: 0}
-          gain: {r: 0.8809849, g: 1, b: 0.4465466, a: 0}
+          gamma: {r: 0.9517077, g: 1, b: 0.93062985, a: 0}
+          gain: {r: 1, g: 0.85680205, b: 0.9814434, a: 0}
       curves:
         master:
           curve:
