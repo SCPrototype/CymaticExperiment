@@ -15,6 +15,7 @@
 		_OutlineWidth("Outlines width", Range(0.0, 2.0)) = 1.1
 	
 		[Toggle] _UseNormal("Use Normal", Float) = 1
+		[Toggle] _ShowOutline("Show Outline", Float) = 1
 	}
 
 		CGINCLUDE
@@ -42,6 +43,7 @@
 		float _HeightTexScale;
 		sampler2D _EmmisionTex;
 		bool _UseNormal;
+		bool _ShowOutline;
 
 		ENDCG
 
@@ -56,18 +58,21 @@
 				ZTest LEqual
 				CGPROGRAM
 
-				#pragma vertex vert
+				#pragma vertex vert 
 				#pragma fragment frag
 
 				v2f vert(appdata v)
 				{
 					appdata original = v;
-					if (_UseNormal == 0)
+					if (_ShowOutline)
 					{
-						v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
-					}
-					else {
-						v.vertex.xyz += _OutlineWidth * normalize(v.normal.xyz);
+						if (_UseNormal == 0)
+						{
+							v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
+						}
+						else {
+							v.vertex.xyz += _OutlineWidth * normalize(v.normal.xyz);
+						}
 					}
 
 					v2f o;
@@ -78,7 +83,14 @@
 
 				half4 frag(v2f i) : COLOR
 				{
-					return _OutlineColor;
+					if (_ShowOutline)
+					{
+						return _OutlineColor;
+					}
+					else
+					{
+						return (1,1,1,0);
+					}
 				}
 
 				ENDCG

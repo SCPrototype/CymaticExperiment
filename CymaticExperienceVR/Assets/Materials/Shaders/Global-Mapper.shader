@@ -2,7 +2,36 @@
 
 Shader "Global-Mapper" {
      Properties {
-		_MainTex ("Main Texture", 2D) = "white" {}
+		_SandTex("Sand Texture", 2D) = "white" {}
+		_SandMetallicTex("Sand Metallic Texture", 2D) = "white" {}
+		_SandNormalTex("Sand Normal Texture", 2D) = "white" {}
+		_SandHeightTex("Sand Height Texture", 2D) = "white" {}
+		_SandOcclusionTex("Sand Occlusion Texture", 2D) = "white" {}
+		_SandRoughnessTex("Sand Roughness Texture", 2D) = "white" {}
+
+		_GrassTex("Grass Texture", 2D) = "white" {}
+		_GrassMetallicTex("Grass Metallic Texture", 2D) = "white" {}
+		_GrassNormalTex("Grass Normal Texture", 2D) = "white" {}
+		_GrassHeightTex("Grass Height Texture", 2D) = "white" {}
+		_GrassOcclusionTex("Grass Occlusion Texture", 2D) = "white" {}
+		_GrassRoughnessTex("Grass Roughness Texture", 2D) = "white" {}
+
+		_RockTex("Rock Texture", 2D) = "white" {}
+		_RockMetallicTex("Rock Metallic Texture", 2D) = "white" {}
+		_RockNormalTex("Rock Normal Texture", 2D) = "white" {}
+		_RockHeightTex("Rock Height Texture", 2D) = "white" {}
+		_RockOcclusionTex("Rock Occlusion Texture", 2D) = "white" {}
+		_RockRoughnessTex("Rock Roughness Texture", 2D) = "white" {}
+
+		_SnowTex("Snow Texture", 2D) = "white" {}
+		_SnowMetallicTex("Snow Metallic Texture", 2D) = "white" {}
+		_SnowNormalTex("Snow Normal Texture", 2D) = "white" {}
+		_SnowHeightTex("Snow Height Texture", 2D) = "white" {}
+		_SnowOcclusionTex("Snow Occlusion Texture", 2D) = "white" {}
+		_SnowRoughnessTex("Snow Roughness Texture", 2D) = "white" {}
+
+		_HeightTexScale("Height scale", Range(0, 0.08)) = 0.02
+
         _CenterHeight ("Center Height", Float) = 0.0
 
         _HighColor ("High Color", Color) = (1.0, 1.0, 1.0, 1.0)
@@ -22,7 +51,8 @@ Shader "Global-Mapper" {
              Cull Off
              
              CGPROGRAM
-             #pragma surface surf Lambert vertex:vert
+			 #pragma target 3.0
+             #pragma surface surf Standard vertex:vert
              #include <UnityCG.cginc>
      
              float _CenterHeight;
@@ -37,18 +67,47 @@ Shader "Global-Mapper" {
 			 float _MaxVarianceLow;
 			 float4 _BottomColor;
 			 float _BottomHeight;
-             sampler2D _MainTex;
-             
+
+			 float _HeightTexScale;
+
+			 sampler2D _SandTex;
+			 //sampler2D _SandMetallicTex;
+			 //sampler2D _SandNormalTex;
+			 sampler2D _SandRoughnessTex;
+
+			 sampler2D _GrassTex;
+			 sampler2D _GrassMetallicTex;
+			 sampler2D _GrassNormalTex;
+			 sampler2D _GrassRoughnessTex;
+
+			 sampler2D _RockTex;
+			 sampler2D _RockMetallicTex;
+			 sampler2D _RockNormalTex;
+			 sampler2D _RockRoughnessTex;
+
+			 sampler2D _SnowTex;
+			 sampler2D _SnowMetallicTex;
+			 sampler2D _SnowNormalTex;
+			 sampler2D _SnowRoughnessTex;
+
+
              struct Input{
                  float2 uv_MainTex;
+				 float2 uv_NormalTex;
+				 float2 uv_OcclusionTex;
+				 half3 viewDir;
                  float4 color : COLOR;
+				 float pDiff;
              };
              
-             void vert(inout appdata_full v){
+             void vert(inout appdata_full v, out Input o) {
+				 UNITY_INITIALIZE_OUTPUT(Input, o);
                  // Convert to world position
                  //float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 
                  float diff = v.vertex.y - _CenterHeight;
+				 o.pDiff = diff;
+
 				 float cFactor = saturate(diff / (2 * _MaxVarianceHigh) + 0.5);
 
 				 if (diff >= _HighHeight) //If the vertex is above the HighHeight.
@@ -79,8 +138,88 @@ Shader "Global-Mapper" {
 
              }
              
-             void surf(Input IN, inout SurfaceOutput o){
-                 o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * IN.color;
+             void surf(Input IN, inout SurfaceOutputStandard o){
+				 float diff = IN.pDiff - _CenterHeight;
+
+				 if (diff >= _HighHeight) //If the vertex is above the HighHeight.
+				 {
+					 //float2 offset = ParallaxOffset(tex2D(_SnowHeightTex, IN.uv_MainTex).r, _HeightTexScale, IN.viewDir);
+					 //o.Emission = tex2D(_SnowEmmisionTex, IN.uv_MainTex + offset).rgba;
+					 fixed4 albedo = tex2D(_SnowTex, IN.uv_MainTex);
+					 //fixed4 occlusion = tex2D(_SnowOcclusionTex, IN.uv_OcclusionTex + offset);
+					 fixed4 metallic = tex2D(_SnowMetallicTex, IN.uv_MainTex);
+					 fixed4 roughness = tex2D(_SnowRoughnessTex, IN.uv_MainTex);
+
+					 o.Albedo = albedo.rgb * IN.color;
+					 o.Normal = UnpackNormal(tex2D(_SnowNormalTex, IN.uv_NormalTex));
+					 //o.Occlusion = occlusion.rgb;
+					 o.Metallic = metallic.b;
+					 o.Smoothness = -roughness.a;
+					 o.Alpha = albedo.a;
+				 }
+				 else if (diff >= _MediumHeight) //If the vertex is above the middle point between medium and high.
+				 {
+					 //float2 offset = ParallaxOffset(tex2D(_RockHeightTex, IN.uv_MainTex).r, _HeightTexScale, IN.viewDir);
+					 //o.Emission = tex2D(_RockEmmisionTex, IN.uv_MainTex + offset).rgba;
+					 fixed4 albedo = tex2D(_RockTex, IN.uv_MainTex);
+					 //fixed4 occlusion = tex2D(_RockOcclusionTex, IN.uv_OcclusionTex);
+					 fixed4 metallic = tex2D(_RockMetallicTex, IN.uv_MainTex);
+					 fixed4 roughness = tex2D(_RockRoughnessTex, IN.uv_MainTex);
+
+					 o.Albedo = albedo.rgb * IN.color;
+					 o.Normal = UnpackNormal(tex2D(_RockNormalTex, IN.uv_NormalTex));
+					 //o.Occlusion = occlusion.rgb;
+					 o.Metallic = metallic.b;
+					 o.Smoothness = -roughness.a;
+					 o.Alpha = albedo.a;
+
+					 //o.Albedo = tex2D(_RockTex, IN.uv_MainTex).rgb * IN.color;
+					 //v.color = lerp(_HighColor, _MediumColor, cFactor); //Lerp the color between medium and high.
+				 }
+				 else if (diff >= _LowHeight) //If the vertex is above the middle point between low and medium.
+				 {
+					 //float2 offset = ParallaxOffset(tex2D(_GrassHeightTex, IN.uv_MainTex).r, _HeightTexScale, IN.viewDir);
+					 //o.Emission = tex2D(_GrassEmmisionTex, IN.uv_MainTex).rgba;
+					 fixed4 albedo = tex2D(_GrassTex, IN.uv_MainTex);
+					 //fixed4 occlusion = tex2D(_GrassOcclusionTex, IN.uv_OcclusionTex);
+					 fixed4 metallic = tex2D(_GrassMetallicTex, IN.uv_MainTex);
+					 fixed4 roughness = tex2D(_GrassRoughnessTex, IN.uv_MainTex);
+
+					 o.Albedo = albedo.rgb * IN.color;
+					 o.Normal = UnpackNormal(tex2D(_GrassNormalTex, IN.uv_NormalTex));
+					 //o.Occlusion = occlusion.rgb;
+					 o.Metallic = metallic.b;
+					 o.Smoothness = -roughness.a;
+					 o.Alpha = albedo.a;
+
+					// o.Albedo = tex2D(_GrassTex, IN.uv_MainTex).rgb * IN.color;
+					 //v.color = lerp(_MediumColor, _LowColor, cFactor); //Lerp the color between low and medium.
+				 }
+				 else// if (diff >= _BottomHeight) //If the vertex is above the middle point between bottom and low.
+				 {
+					 //float2 offset = ParallaxOffset(tex2D(_SandHeightTex, IN.uv_MainTex).r, _HeightTexScale, IN.viewDir);
+					 //o.Emission = tex2D(_SandEmmisionTex, IN.uv_MainTex + offset).rgba;
+					 fixed4 albedo = tex2D(_SandTex, IN.uv_MainTex);
+					 //fixed4 occlusion = tex2D(_SandOcclusionTex, IN.uv_OcclusionTex);
+					 fixed4 metallic = 0;//tex2D(_SandMetallicTex, IN.uv_MainTex);
+					 fixed4 roughness = tex2D(_SandRoughnessTex, IN.uv_MainTex);
+
+					 o.Albedo = albedo.rgb * IN.color;
+					 //o.Normal = UnpackNormal(tex2D(_SandNormalTex, IN.uv_NormalTex));
+					 //o.Occlusion = occlusion.rgb;
+					 o.Metallic = metallic.b;
+					 o.Smoothness = -roughness.a;
+					 o.Alpha = albedo.a;
+
+					 //o.Albedo = tex2D(_SandTex, IN.uv_MainTex).rgb * IN.color;
+					 //v.color = lerp(_LowColor, _BottomColor, cFactor); //Lerp the color between bottom and low.
+				 }
+				 //else { //If the vertex is below all thresholds
+					// o.Albedo = tex2D(_SandTex, IN.uv_MainTex).rgb * IN.color;
+					////v.color = _BottomColor; //Make the vertex the bottom color.
+				 //}
+				 
+				 //o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * IN.color;
              }
              
              ENDCG

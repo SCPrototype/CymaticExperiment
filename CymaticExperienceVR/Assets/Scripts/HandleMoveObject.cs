@@ -58,7 +58,7 @@ public class HandleMoveObject : MonoBehaviour
         {
             yPos = mainCameraVR.transform.position.y;
         }
-        allHolder.transform.position = new Vector3(allHolder.transform.position.x, yPos / 5, allHolder.transform.position.z);
+        allHolder.transform.position = new Vector3(allHolder.transform.position.x, Mathf.Clamp(yPos / 5.0f, -50.0f, 0.465f), allHolder.transform.position.z);
         neutralPosTable = this.transform.position;
         _automaticSetHeight = true;
         _heightSetTime = Time.time;

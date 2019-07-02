@@ -11,6 +11,8 @@ public class Laser : MonoBehaviour
     private bool shouldDoRotation = false;
     public bool PlayOnAwake = false;
     public UnityEvent OnFinished;
+    private FMODUnity.StudioEventEmitter _resetBeamSound;
+    public GameObject soundEmitter;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,18 @@ public class Laser : MonoBehaviour
         {
             handleEndOfScan(false);
         }
+       
+        if(soundEmitter != null)
+        {
+            _resetBeamSound = soundEmitter.AddComponent<FMODUnity.StudioEventEmitter>();
+            _resetBeamSound.Event = GLOB.LaserSound;
+        } else
+        {
+            _resetBeamSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+            _resetBeamSound.Event = GLOB.LaserSound;
+            _resetBeamSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
+        }
+        
     }
 
     public void DoScan()
@@ -30,6 +44,7 @@ public class Laser : MonoBehaviour
         transform.localEulerAngles = StartRotation;
         gameObject.SetActive(true);
         shouldDoRotation = true;
+        _resetBeamSound.Play();
     }
     private void handleEndOfScan(bool pRealEnd)
     {

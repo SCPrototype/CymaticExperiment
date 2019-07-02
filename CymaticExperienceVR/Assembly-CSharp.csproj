@@ -62,7 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AudioListenerHandler.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Audio\FmodGvrAudio.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Audio\FmodGvrAudioRoom.cs" />
     <Compile Include="Assets\NoiseShader-master\Assets\NoiseTest.cs" />
@@ -402,8 +401,10 @@
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudio.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudioRoom.cs" />
     <Compile Include="Assets\Scripts\AudioFade.cs" />
+    <Compile Include="Assets\Scripts\AudioListenerHandler.cs" />
     <Compile Include="Assets\Scripts\CameraPostRenderBroadcast.cs" />
     <Compile Include="Assets\Scripts\Cartridge.cs" />
+    <Compile Include="Assets\Scripts\ChimeSound.cs" />
     <Compile Include="Assets\Scripts\Chladni.cs" />
     <Compile Include="Assets\Scripts\CupulaBehaviour.cs" />
     <Compile Include="Assets\Scripts\DestructibleObject.cs" />
@@ -841,10 +842,12 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{93720b5d-7fc6-430f-bfb3-083b906adafa}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\VRTK\Documentation.txt" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{505130f8-529c-47e0-a4e4-978f6e593a7e}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{71884153-2aba-4283-8d2a-9a0f2d93b159}.xml" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_Mobile_Loader.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\NoiseShader-master\Assets\HLSL\ClassicNoise2D.hlsl" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{7f7a716f-6240-4305-928b-a290ce4d3c59}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{33cadb5b-0202-4944-bc48-533bf32ddd84}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{258b94ec-c2c9-4bfb-a8f0-8ed572d1b1cc}.xml" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
@@ -867,6 +870,7 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Tags.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{cbc93821-3268-4a49-bfa5-e74eb6763912}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{d2776729-dd4b-4a9a-866a-cf5e4a2377e2}.xml" />
     <None Include="Assets\NoiseShader-master\Assets\HLSL\SimplexNoise3D.hlsl" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{429a5293-fd3d-4edb-8f50-af4b9163ec61}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{6b802921-028b-4eff-9386-9dd36391c5b5}.xml" />
@@ -887,6 +891,7 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{64957787-045c-4fbf-b0b9-025b0015d075}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{a10e588f-7bd0-498b-a461-291cbd17f77e}.xml" />
     <None Include="Assets\Materials\Shaders\Planet.shader" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{d7024821-0a2d-44de-b19e-de183941d92c}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{9dee7a88-9900-4341-b97d-a68702e166d4}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{ad844e88-ad21-47c3-baa7-0da0c8c4df22}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{03361ae2-5de6-46e0-b4be-817e35ae1083}.xml" />
@@ -943,6 +948,7 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{9eb25049-a5ae-46a8-96e5-6e7e8b04747f}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{2f483ec5-c87d-45c2-bca4-a79a27364fa8}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{90ee3e56-8308-4332-a924-5a328ce54b22}.xml" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Expressive\Avatar_Mobile_SingleComponentExpressive.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{3c0837e1-097a-4d58-b703-088b11a8a221}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\EncodingSetting\{50a9e33e-dc8b-4967-855b-7af9bbd3edac}.xml" />
@@ -963,6 +969,7 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{cfeeb045-3936-497b-9f42-7d918e9536a0}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{66e1e359-1dad-44e1-99fb-1a66a654bb6e}.xml" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{e6439093-3871-42b4-8d4e-da95ddfea4d4}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{e91629a4-b586-48f6-ae38-a3e4765d6cad}.xml" />
     <None Include="Assets\Resources\Scores\Highscores.txt" />
     <None Include="Assets\Materials\Shaders\Disintegrate.shader" />
     <None Include="Assets\NoiseShader-master\Assets\HLSL\SimplexNoise2D.hlsl" />
@@ -989,8 +996,10 @@
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Expressive\AvatarEyeLens.shader" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\AvatarSurfaceShader.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{62ff54bc-d2aa-4a51-9ded-bfa8aa094cc5}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{9e5ef787-dec9-4b63-9443-515dfc4303c6}.xml" />
     <None Include="Assets\Oculus\SampleFramework\Usage\DistanceGrab\Materials\ToyCubeWithOutline.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{9a5f8f91-a1be-4f25-a96e-d78048cc3020}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{ad52ac3b-6a01-41b3-b673-32b00e48ce7c}.xml" />
     <None Include="Assets\Materials\Shaders\Glow.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{80428c92-351a-441d-8a43-91ef926b5322}.xml" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
@@ -998,35 +1007,36 @@
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{a9954e4a-0519-4054-9aed-59fe9b1a52bf}.xml" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{a3803c24-3a2e-4518-b2e4-84c6d3712b1d}.xml" />
+    <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\AudioFile\{d9c634df-464a-45b9-bdc9-c03775ec9f20}.xml" />
     <None Include="Assets\Oculus\SampleFramework\Usage\DistanceGrab\Materials\CrosshairZCheat.shader" />
     <None Include="Assets\Materials\Shaders\Water.shader" />
     <None Include="Assets\Sounds\FmodPojectExposure1\Metadata\Event\{2c7cdfa1-d659-455b-a605-42205a59ee78}.xml" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -1211,17 +1221,14 @@
     <Reference Include="nunit.framework">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Vuforia.UnityExtensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/Amadeo/Desktop/school/Project exposure/Git/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Harry Kamp/Desktop/School/Saxion/Courses/2.4_Project_Exposure/CymaticExperiment_Game/CymaticExperienceVR/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.1f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

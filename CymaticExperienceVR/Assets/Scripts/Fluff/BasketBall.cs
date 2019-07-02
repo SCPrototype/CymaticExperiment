@@ -7,6 +7,7 @@ public class BasketBall : MonoBehaviour
     private int _score = 0;
     public TextMesh text;
     public TextMesh highscoreText;
+    public TextMesh timeText;
     public GameObject particleEmitter;
 
     private GameObject _lastObjectHit;
@@ -16,6 +17,7 @@ public class BasketBall : MonoBehaviour
     private List<string> scores = new List<string>();
     private string _path = "Assets/Resources/Scores/Highscores.txt";
     private int _highScore = 0;
+    private float _timertext = 0;
 
     void Awake()
     {
@@ -42,7 +44,7 @@ public class BasketBall : MonoBehaviour
         _scoreSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _scoreSound.Event = GLOB.CelebrationSound;
         _scoreSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
-        highscoreText.text = "Hoogste \nScore : " + _highScore;
+        highscoreText.text = _highScore.ToString();
     }
 
 
@@ -52,9 +54,14 @@ public class BasketBall : MonoBehaviour
         if (Time.time - _lastScoreTime > _resetTimer)
         {
             _lastScoreTime = Time.time;
-            highscoreText.text = "Hoogste \nScore : " + _highScore;
+            highscoreText.text = _highScore.ToString();
             _score = 0;
-            text.text = "Huidige \nScore : " + _score;
+            text.text = _score.ToString();
+        }
+        if(_timertext > 0)
+        {
+            _timertext -= Time.deltaTime;
+            timeText.text = Mathf.Round(_timertext).ToString();
         }
     }
 
@@ -73,12 +80,14 @@ public class BasketBall : MonoBehaviour
             {
                 _highScore = _score;
             }
-            text.text = "Huidige \nScore : " + _score;
+            text.text = _score.ToString();
             if (!_scoreSound.IsPlaying())
             {
                 _scoreSound.Play();
             }
         }
+        timeText.text = 30.ToString();
+        _timertext = 30f;
     }
 
     void OnApplicationQuit()
