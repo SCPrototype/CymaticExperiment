@@ -29,6 +29,22 @@ public class FeedbackHandler : MonoBehaviour
         System.IO.FileStream test = new System.IO.FileStream(_path, System.IO.FileMode.Append);
         _streamWriter = new System.IO.StreamWriter(test);
 
+        if(GLOB.LanguageSelected == GLOB.Language.Dutch)
+        {
+            FeedbackQuestions = new string[3];
+            FeedbackQuestions[0] = GLOB.DutchQuestion1;
+            FeedbackQuestions[1] = GLOB.DutchQuestion2;
+            FeedbackQuestions[2] = GLOB.DutchQuestion3;
+            FinishedText = GLOB.DutchQuestionThanks;
+        } else
+        {
+            FeedbackQuestions = new string[3];
+            FeedbackQuestions[0] = GLOB.GermanQuestion1;
+            FeedbackQuestions[1] = GLOB.GermanQuestion2;
+            FeedbackQuestions[2] = GLOB.GermanQuestion3;
+            FinishedText = GLOB.GermanQuestionThanks;
+        }
+
         if (StartOnAwake)
         {
             AskNextQuestion();

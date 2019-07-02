@@ -3,6 +3,7 @@ using UnityEditor;
 
 public static class GLOB
 {
+    
     //Sound paths
     public const string DomeOpeningSound = "event:/Outside/DomeOpening";
     public const string BottleFallSound = "event:/PlayArea/Bottlefall";
@@ -55,4 +56,14 @@ public static class GLOB
     };
 
     public static Language LanguageSelected = Language.Dutch;
+
+    public const string DutchQuestion1 = "Vond je het spel leuk?";
+    public const string DutchQuestion2 = "Vind je resonantie interessant?";
+    public const string DutchQuestion3 = "Heeft het spel je wat geleerd over resonantie?";
+    public const string DutchQuestionThanks = "Bedankt voor het spelen!";
+
+    public const string GermanQuestion1 = "Hat dir das Spiel spaß gemacht?";
+    public const string GermanQuestion2 = "Findest du Resonanzen interessant?";
+    public const string GermanQuestion3 = "Hast du etwas über Resonanzen gelernt?";
+    public const string GermanQuestionThanks = "Danke für's teilnehmen!";
 }
