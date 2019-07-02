@@ -6,7 +6,6 @@ using UnityEngine;
 public class WorldGeneration : MonoBehaviour
 {
     [Header("Terrain settings")]
-    public Material TerrainMaterial;
     public float EdgeLength;
     public Animator _cupulaAnimation;
 
@@ -15,6 +14,17 @@ public class WorldGeneration : MonoBehaviour
     private Vector3[] poly;  // Initialized in the inspector
     private float[,] _heightMap;
     private float _amplitude = 1;
+    private Renderer rend;
+
+    [Header("Hologram settings")]
+    public float HologramTime = 5;
+    private float _hologramStartTime;
+    private bool _isHologram = false;
+    public Material HologramMaterial;
+    public Material HologramTransformMaterial;
+    private bool _hasTransformed = false;
+    public Material TerrainTransformMaterial;
+    public Material TerrainMaterial;
 
     [Header("Destructible object settings")]
     public bool PlaceObjects = true;
@@ -35,6 +45,14 @@ public class WorldGeneration : MonoBehaviour
     void Start()
     {
         myColl = GetComponent<MeshCollider>();
+        if (gameObject.GetComponent<MeshRenderer>() == null)
+        {
+            rend = gameObject.AddComponent<MeshRenderer>();
+        }
+        else
+        {
+            rend = gameObject.GetComponent<MeshRenderer>();
+        }
 
         InputCartridge();
         GenerateWorld();
@@ -94,16 +112,7 @@ public class WorldGeneration : MonoBehaviour
         Mesh mesh = new Mesh();
         mf.mesh = mesh;
 
-        Renderer rend;
-        if (gameObject.GetComponent<MeshRenderer>() == null)
-        {
-            rend = gameObject.AddComponent<MeshRenderer>();
-        }
-        else
-        {
-            rend = gameObject.GetComponent<MeshRenderer>();
-        }
-        rend.material = TerrainMaterial;
+        //rend.material = HologramMaterial;
 
         Vector3 center = FindCenter();
 
@@ -156,11 +165,23 @@ public class WorldGeneration : MonoBehaviour
 
         myColl.sharedMesh = mesh;
 
-        PopulateWorld();
+        if (HologramTime > 0)
+        {
+            rend.material = HologramMaterial;
+            _isHologram = true;
+            _hologramStartTime = Time.time;
+        }
+        else
+        {
+            PopulateWorld();
+        }
     }
 
     private void PopulateWorld()
     {
+        rend.material = TerrainMaterial;
+        _isHologram = false;
+
         for (int i = 0; i < ObjectPool.Count; i++)
         {
             Destroy(ObjectPool[i]);
@@ -284,6 +305,29 @@ public class WorldGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (_isHologram)
+        {
+            if (Time.time - _hologramStartTime >= HologramTime)
+            {
+                PopulateWorld();
+            }
+            else if(Time.time - _hologramStartTime <= HologramTime * 0.5f)
+            {
+                if (_hasTransformed)
+                {
+                    _hasTransformed = false;
+                }
+                rend.material.Lerp(HologramMaterial, HologramTransformMaterial, (Time.time - _hologramStartTime) / (HologramTime * 0.5f));
+            }
+            else
+            {
+                if (!_hasTransformed)
+                {
+                    rend.material = TerrainTransformMaterial;
+                    _hasTransformed = true;
+                }
+                rend.material.Lerp(TerrainTransformMaterial, TerrainMaterial, (Time.time - (_hologramStartTime + (HologramTime * 0.5f))) / (HologramTime * 0.5f));
+            }
+        }
     }
 }

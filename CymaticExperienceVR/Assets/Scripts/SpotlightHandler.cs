@@ -78,6 +78,7 @@ public class SpotlightHandler : MonoBehaviour
     private float _timeSwitch;
     private bool _lightsShouldChange;
     private LightState _targetLightState;
+    private FMODUnity.StudioEventEmitter _spotlightEmitter;
     // Start is called before the first frame update
     public void Start()
     {
@@ -114,7 +115,9 @@ public class SpotlightHandler : MonoBehaviour
 
         SwitchLights(0);
 
-        _spotLightSound = FMODUnity.RuntimeManager.CreateInstance("event:/PlayArea/LeverRelease");
+        _spotlightEmitter = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _spotlightEmitter.Event = GLOB.SpotlightSound;
+        _spotlightEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject));
     }
 
     public void Update()
@@ -123,7 +126,6 @@ public class SpotlightHandler : MonoBehaviour
         {
             if (Time.time > _timeSwitch)
             {
-                Debug.Log("Do this");
                 SetLightState(_targetLightState);
             }
         }
@@ -155,7 +157,7 @@ public class SpotlightHandler : MonoBehaviour
         }
     }
 
-    private void SwitchLights(LightState pLightState)
+    public void SwitchLights(LightState pLightState)
     {
         rotationLerpTime = 0;
         _lightJars.SetActive(false);
@@ -400,6 +402,6 @@ public class SpotlightHandler : MonoBehaviour
             _lightState = pLightState;
         }
         SwitchLights(_lightState);
-        FMODUnity.RuntimeManager.PlayOneShot(GLOB.SpotlightSound, GetComponent<Transform>().position);
+        _spotlightEmitter.Play();
     }
 }
