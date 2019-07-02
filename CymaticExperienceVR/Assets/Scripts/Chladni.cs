@@ -332,14 +332,6 @@ public class Chladni : MonoBehaviour
     {
         amplitude = 1.5f;
     }
-
-    public void PlayResetPlateSound()
-    {
-        if(_resetBeamSound.IsPlaying())
-        {
-            _resetBeamSound.Play();
-        }
-    }
 }
 
 /*
