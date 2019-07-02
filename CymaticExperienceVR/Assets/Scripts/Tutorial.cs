@@ -82,7 +82,7 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F5))
+        if (Input.GetKeyDown(KeyCode.F5))
         {
             Debug.Log("Complete tutorial");
             _currentStage = 6;
@@ -104,19 +104,19 @@ public class Tutorial : MonoBehaviour
         {
             _soundTargetString = _tutorialSounds[1];
             _soundShouldChange = true;
-
         }
         if (_chladniTalkBoard.Event == _tutorialSounds[3] && !_chladniTalkBoard.IsPlaying() && _sandMoveSoundHasPlayed)
         {
             _soundTargetString = _tutorialSounds[4];
             _soundShouldChange = true;
         }
-        if (_chladniTalkBoard.Event == _tutorialSounds[4] && !_chladniTalkBoard.IsPlaying() && _fsliderSoundHasPlayed)
+        if (_soundTargetString == _tutorialSounds[4] && !_chladniTalkBoard.IsPlaying() && _fsliderSoundHasPlayed && _currentStage == 3)
         {
+            Debug.Log("Not this");
             _soundTargetString = _tutorialSounds[5];
             _soundShouldChange = true;
         }
-        if(_chladniTalkBoard.Event == _tutorialSounds[7] && !_chladniTalkBoard.IsPlaying() && _goodbyeHasPlayed && !_soundAfterTutorial.IsPlaying())
+        if (_chladniTalkBoard.Event == _tutorialSounds[7] && !_chladniTalkBoard.IsPlaying() && _goodbyeHasPlayed && !_soundAfterTutorial.IsPlaying())
         {
             _soundAfterTutorial.Play();
         }
@@ -142,6 +142,7 @@ public class Tutorial : MonoBehaviour
                 }
                 else if (_currentStage == 4)
                 {
+
                     _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage, 4);
                     CompleteDelay = 5.5f;
                 }
@@ -183,10 +184,10 @@ public class Tutorial : MonoBehaviour
 
     public void CompleteStage(int pStage)
     {
-        
         if (_currentStage == pStage && !isSwitchingStage && readyToComplete)
         {
             _soundShouldChange = true;
+            _chladniTalkBoard.Stop();
             switch (pStage)
             {
                 case 1:
@@ -197,6 +198,7 @@ public class Tutorial : MonoBehaviour
                     break;
                 case 3:
                     _soundTargetString = _tutorialSounds[6];
+                    Debug.Log("This");
                     break;
                 case 4:
                     _soundTargetString = _tutorialSounds[7];
@@ -210,7 +212,6 @@ public class Tutorial : MonoBehaviour
             else
             {
                 _currentStage++;
-               
                 _spotLightHandler.ChangeLight((SpotlightHandler.LightState)_currentStage);
                 if (CompleteDelay > 0)
                 {
@@ -245,33 +246,30 @@ public class Tutorial : MonoBehaviour
                 _chladniTalkBoard.Stop();
             }
         }
-        else
+        for (int i = 0; i < videos.Length; i++)
         {
-            for (int i = 0; i < videos.Length; i++)
-            {
-                videos[i].PlayChladniVideo(Array.IndexOf(_tutorialSounds, pGlobName));
-            }
-            _chladniTalkBoard.ChangeEvent(pGlobName);
-            _chladniTalkBoard.Play();
-            _soundShouldChange = false;
-            if (pGlobName == _tutorialSounds[4])
-            {
-                _fsliderSoundHasPlayed = true;
-            }
-            if (pGlobName == _tutorialSounds[3])
-            {
-                _sandMoveSoundHasPlayed = true;
-            }
-            if (pGlobName == _tutorialSounds[5])
-            {
-                _sliderMoveSoundHasPlayed = true;
-            }
-            if(pGlobName == _tutorialSounds[7])
-            {
-                Debug.Log("Yes hello");
-                _goodbyeHasPlayed = true;
-            }
+            videos[i].PlayChladniVideo(Array.IndexOf(_tutorialSounds, pGlobName));
         }
+        _chladniTalkBoard.ChangeEvent(pGlobName);
+        _chladniTalkBoard.Play();
+        _soundShouldChange = false;
+        if (pGlobName == _tutorialSounds[4])
+        {
+            _fsliderSoundHasPlayed = true;
+        }
+        if (pGlobName == _tutorialSounds[3])
+        {
+            _sandMoveSoundHasPlayed = true;
+        }
+        if (pGlobName == _tutorialSounds[5])
+        {
+            _sliderMoveSoundHasPlayed = true;
+        }
+        if (pGlobName == _tutorialSounds[7])
+        {
+            _goodbyeHasPlayed = true;
+        }
+
     }
 
     public string[] getTutorialVideoNames()
@@ -279,5 +277,5 @@ public class Tutorial : MonoBehaviour
         return _tutorialSounds;
     }
 
-    
+
 }
