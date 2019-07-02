@@ -223,7 +223,7 @@ public class TiltMazeTablet : VR_Object
     public void AddScore(int pAmount)
     {
         currentScore += pAmount;
-        scoreText.text = "Huidige \nScore: \n" + currentScore;
+        scoreText.text = currentScore.ToString();
         if (currentScore > highScore)
         {
             SetNewHighscore();
@@ -233,7 +233,7 @@ public class TiltMazeTablet : VR_Object
     private void SetNewHighscore()
     {
         highScore = currentScore;
-        highscoreText.text = "Hoogste \nScore: \n" + highScore;
+        highscoreText.text = highScore.ToString();
 
         if (!setHighScore)
         {
