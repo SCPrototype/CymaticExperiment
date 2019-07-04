@@ -43,7 +43,11 @@ public class ResetGame : MonoBehaviour
         _backgroundSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _backgroundSound.Event = GLOB.OutsidePeopleSound;
         _backgroundSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(new Vector3(8, 0, 4)));
-        _backgroundSound.Play();
+        if (Application.loadedLevelName == "GameScene_Tiemen 1")
+        {
+            Debug.Log("Play sound");
+            _backgroundSound.Play();
+        }
     }
     // Update is called once per frame
     void Update()

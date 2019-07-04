@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GrassTex:
+        m_Texture: {fileID: 2800000, guid: 765bc7eb4fe8e9143b1e91a2dddce21f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -55,8 +59,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RockTex:
+        m_Texture: {fileID: 2800000, guid: 2efc44ca258cb8248bd4bac134f92d18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SandTex:
+        m_Texture: {fileID: 2800000, guid: ae72e2cf821410546b94935cb31dc683, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SnowTex:
+        m_Texture: {fileID: 2800000, guid: f80366731e66266438e21f752631463a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BottomHeight: -2
+    - _BottomHeight: -5
     - _BumpScale: 1
     - _CenterHeight: 0
     - _Cutoff: 0.5
@@ -65,8 +81,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _HighHeight: 20
-    - _LowHeight: 0
+    - _HighHeight: 13
+    - _LowHeight: -1
     - _MaxVariance: -20
     - _MaxVarianceHigh: -5
     - _MaxVarianceLow: -1
