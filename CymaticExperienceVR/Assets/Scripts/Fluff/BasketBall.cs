@@ -95,6 +95,16 @@ public class BasketBall : MonoBehaviour
         _timertext = 30f;
     }
 
+    private void OnDestroy()
+    {
+        using (System.IO.StreamWriter _streamWriter = new System.IO.StreamWriter(_path, false))
+        {
+            _streamWriter.WriteLine(_highScore.ToString());
+            _streamWriter.Flush();
+            _streamWriter.Close();
+        }
+    }
+
     void OnApplicationQuit()
     {
         using (System.IO.StreamWriter _streamWriter = new System.IO.StreamWriter(_path, false))

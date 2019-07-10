@@ -48,8 +48,7 @@ public class TiltMazeTablet : VR_Object
         startRotation = TargetTerrain.transform.eulerAngles;
 
         IsActive = IsActiveOnAwake;
-       
-        this.SetActive(true);
+
         _tabletShootSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
         _tabletstickSound = this.gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
 
@@ -58,7 +57,7 @@ public class TiltMazeTablet : VR_Object
 
         _tabletShootSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
         _tabletstickSound.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject.transform));
-        this.SetActive(false);
+
         if (!IsActive)
         {
             HandleActiveState(false);
@@ -69,7 +68,7 @@ public class TiltMazeTablet : VR_Object
         if (!IsActive)
         {
             base.HandleRespawn();
-            _tabletShootSound.Play();
+            //_tabletShootSound.Play();
             rb.isKinematic = true;
         }
         else
@@ -89,10 +88,12 @@ public class TiltMazeTablet : VR_Object
         //Re-enable velocity.
         //rb.isKinematic = false;
         _spawnTime = Time.time;
+        _tabletstickSound.Play();
     }
 
     public void SetActive(bool pToggle)
     {
+        Debug.Log("Toggling tablet: " + pToggle);
         if (pToggle && !IsActive && !IsActivating)
         {
             IsActivating = true;
@@ -113,7 +114,7 @@ public class TiltMazeTablet : VR_Object
             //rb.AddExplosionForce(LaunchForce, transform.position + (transform.position - LaunchPosition.position).normalized, 3, LaunchOffsetY, ForceMode.Impulse);
             rb.AddForce(((LaunchPosition.position - transform.position).normalized + new Vector3(0, LaunchOffsetY, 0)) * LaunchForce, ForceMode.Impulse);
             rb.AddRelativeTorque(new Vector3(LaunchForce * -0.1f, 0, 0), ForceMode.Impulse);
-            _tabletstickSound.Play();
+            _tabletShootSound.Play();
             _droppedTime = Time.time;
             _isOnSpawn = false;
 
